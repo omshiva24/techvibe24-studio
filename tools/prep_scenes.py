@@ -8,8 +8,7 @@ for rel in sorted({p.split('/')[0] for p in picks.values()}):
         subprocess.run(['gh', 'release', 'download', f'scenes-{rel}', '-p', 'scenes.tgz', '-D', d, '-R', os.environ['GITHUB_REPOSITORY']], check=True)
         tarfile.open(f'{d}/scenes.tgz').extractall(d)
 for sid, p in picks.items():
-    rel, v = p.split('/'); src = picks.get(sid)
-    base = f'/tmp/rel{rel}'; name = p.split('/', 1)[1]
+    rel, name = p.split('/', 1); base = f'/tmp/rel{rel}'
     cand = name if '_' in name else f'{sid}_{name}'
     shutil.copy(f'{base}/scenes/{cand}.jpg', f'www/scn/img/{sid}.jpg')
     shutil.copy(f'{base}/depth/{cand}.png', f'www/scn/depth/{sid}.png')
