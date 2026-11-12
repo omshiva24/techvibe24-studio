@@ -1,0 +1,90 @@
+name: studio
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  scenes:
+    if: contains(github.event.head_commit.message, '[scenes]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install numpy pillow onnxruntime
+      - run: python tools/scenes.py "$(cat scenes_ids.txt 2>/dev/null || true)" "$(cat scenes_variants.txt 2>/dev/null || echo AB)"
+      - name: publish candidates
+        env: { GH_TOKEN: '${{ github.token }}' }
+        run: |
+          cd out && tar czf scenes.tgz scenes depth
+          gh release create "scenes-${{ github.run_number }}" sheets/*.jpg scenes.tgz --title "Scenes ${{ github.run_number }}" --notes "Candidate scenes" -R "${{ github.repository }}"
+
+  prep:
+    if: contains(github.event.head_commit.message, '[render]')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg > /dev/null
+      - run: pip install numpy scipy
+      - name: approved audio + timeline
+        run: |
+          mkdir -p build
+          curl -sL -o /tmp/approved.mp4 "https://jh9yynx9svoagfnp.public.blob.vercel-storage.com/chalisa/HanumanChalisa_TECHVIBE24.mp4"
+          ffmpeg -y -loglevel error -i /tmp/approved.mp4 -vn -c:a copy build/audio.m4a
+          ffmpeg -y -loglevel error -i /tmp/approved.mp4 -vn -ac 1 -ar 48000 /tmp/mix.wav
+          python tools/timeline.py /tmp/mix.wav chalisa/chalisa.json build/timeline.json
+      - name: picked scenes
+        env: { GH_TOKEN: '${{ github.token }}' }
+        run: python tools/prep_scenes.py
+      - uses: actions/upload-artifact@v4
+        with: { name: build, path: build }
+      - uses: actions/upload-artifact@v4
+        with: { name: scn, path: www/scn }
+
+  render:
+    needs: prep
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        part: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg > /dev/null
+      - run: npm i --no-save playwright@1.49.1 && npx playwright install --with-deps chromium
+      - uses: actions/download-artifact@v4
+        with: { name: build, path: build }
+      - uses: actions/download-artifact@v4
+        with: { name: scn, path: www/scn }
+      - name: render part
+        run: |
+          P=${{ matrix.part }}
+          read S E < <(python3 -c "import json;T=json.load(open('build/timeline.json'))['T'];L=T/16;p=$P;print('%.4f %.4f'%(p*L,(p+1)*L if p<15 else T+1))")
+          mkdir -p parts && node tools/render.mjs $S $E parts/p$(printf %02d $P).mp4
+      - uses: actions/upload-artifact@v4
+        with: { name: 'part-${{ matrix.part }}', path: parts }
+
+  assemble:
+    needs: render
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg > /dev/null
+      - run: npm i --no-save playwright@1.49.1 && npx playwright install --with-deps chromium
+      - uses: actions/download-artifact@v4
+        with: { name: build, path: build }
+      - uses: actions/download-artifact@v4
+        with: { pattern: 'part-*', path: parts, merge-multiple: true }
+      - run: bash tools/assemble.sh
+      - name: publish video
+        env: { GH_TOKEN: '${{ github.token }}' }
+        run: gh release create "video-${{ github.run_number }}" dist/* --title "Hanuman Chalisa movie ${{ github.run_number }}" --notes "Full video, 3 Shorts, thumbnail" -R "${{ github.repository }}"

@@ -1,0 +1,84 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Yatra;src:url(../fonts/YatraOne-Regular.ttf)}
+@font-face{font-family:Tiro;src:url(../fonts/TiroDevanagariHindi-Regular.ttf)}
+@font-face{font-family:TiroI;src:url(../fonts/TiroDevanagariHindi-Italic.ttf)}
+@font-face{font-family:Cinzel;src:url(../fonts/Cinzel.ttf);font-weight:400 900}
+@font-face{font-family:Brico;src:url(../fonts/Bricolage.ttf);font-weight:200 800}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#1a0202}
+#bg{position:absolute;left:0;top:0;width:1080px;height:1920px}
+.layer{position:absolute;left:0;top:0;width:1080px;height:1920px;pointer-events:none}
+/* header */
+#title{position:absolute;left:56px;top:62px;font:44px Yatra;color:#ffd36b;letter-spacing:1px;
+  text-shadow:0 0 18px rgba(255,150,30,.55),0 3px 0 #5a1200}
+#wm{position:absolute;right:48px;top:58px;display:flex;align-items:center;gap:12px;padding:12px 22px 12px 14px;
+  border-radius:40px;background:rgba(20,2,2,.55);border:2px solid rgba(255,200,90,.55);
+  font:700 34px Brico;color:#fff4dc;letter-spacing:.5px;box-shadow:0 0 24px rgba(255,140,20,.25)}
+#wm .yt{width:52px;height:36px;border-radius:10px;background:#ff1f1f;position:relative;box-shadow:0 0 12px rgba(255,40,40,.6)}
+#wm .yt:after{content:"";position:absolute;left:20px;top:9px;border-left:16px solid #fff;border-top:9px solid transparent;border-bottom:9px solid transparent}
+/* verse */
+#pill{position:absolute;left:0;right:0;top:1170px;text-align:center}
+#pill span{display:inline-block;font:40px Yatra;color:#3a0800;padding:10px 38px 6px;border-radius:40px;
+  background:linear-gradient(180deg,#ffe39a,#ffb52e 60%,#e08a12);box-shadow:0 0 30px rgba(255,170,40,.55),inset 0 -3px 0 rgba(120,40,0,.35)}
+#verse{position:absolute;left:40px;right:40px;top:1235px;height:360px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px}
+.row{font-family:Yatra;font-size:78px;line-height:1.28;text-align:center;white-space:nowrap}
+#verse.doha .row{font-size:58px;line-height:1.24}
+#verse.big .row{font-size:96px}
+.w{display:inline-block;margin:0 .14em;color:rgba(255,236,200,.42);transform-origin:50% 60%}
+.w.past{color:#ffcf57;text-shadow:0 0 14px rgba(255,150,20,.45),0 3px 0 rgba(90,20,0,.8)}
+.w.now{background:linear-gradient(90deg,#fff 0%,#fff6c8 var(--p),rgba(255,236,200,.42) calc(var(--p) + 6%));
+  -webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 12px rgba(255,190,60,.95)) drop-shadow(0 0 30px rgba(255,120,0,.6))}
+.danda{color:#ffb347}
+#orn{position:absolute;left:0;right:0;top:1604px;text-align:center;font:34px Yatra;color:#ffb347;opacity:.85;letter-spacing:18px}
+#en{position:absolute;left:90px;right:90px;top:1650px;height:150px;text-align:center;font:italic 35px/1.38 TiroI;color:#ffe9c7;
+  text-shadow:0 2px 10px rgba(0,0,0,.7)}
+#bar{position:absolute;left:150px;right:150px;top:1828px;height:6px;border-radius:6px;background:rgba(255,220,150,.18)}
+#bar i{position:absolute;left:0;top:0;bottom:0;border-radius:6px;background:linear-gradient(90deg,#ff8a00,#ffd36b)}
+#bar b{position:absolute;top:-17px;width:40px;height:40px;margin-left:-20px;border-radius:50%;
+  background:radial-gradient(circle,#fff6c0 0,#ffb01f 35%,rgba(255,120,0,0) 70%)}
+#cnt{position:absolute;left:0;right:0;top:1852px;text-align:center;font:28px Yatra;color:rgba(255,220,160,.75)}
+/* section card */
+#sec{position:absolute;left:0;right:0;top:1300px;text-align:center;font:120px Yatra;color:#ffd36b;
+  text-shadow:0 0 40px rgba(255,140,0,.8),0 6px 0 #5a1200;opacity:0}
+/* intro / outro */
+#intro{position:absolute;left:0;right:0;top:1200px;text-align:center;opacity:0}
+#intro .pre{font:600 34px Brico;color:#ffe9c7;letter-spacing:8px;text-transform:uppercase}
+#intro h1{font:100px/1.15 Yatra;white-space:nowrap;margin-top:18px;background:linear-gradient(180deg,#fff7d0 10%,#ffd04a 45%,#ff8a00 85%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 6px 0 #4a0e00) drop-shadow(0 0 30px rgba(255,140,0,.7))}
+#intro h2{font:52px Yatra;color:#ffe4a8;margin-top:22px;text-shadow:0 0 18px rgba(255,140,0,.5)}
+#intro .en{font:italic 38px TiroI;color:#ffdcae;margin-top:20px}
+#outro{position:absolute;left:0;right:0;top:1180px;text-align:center;opacity:0}
+#outro h1{font:150px/1.1 Yatra;background:linear-gradient(180deg,#fff7d0 10%,#ffd04a 45%,#ff7a00 90%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 7px 0 #4a0e00) drop-shadow(0 0 40px rgba(255,140,0,.8))}
+#outro .sub{display:inline-flex;align-items:center;gap:22px;margin-top:56px;padding:22px 44px;border-radius:70px;background:#e8141b;
+  font:800 52px Brico;color:#fff;box-shadow:0 0 50px rgba(255,40,40,.6),inset 0 -5px 0 rgba(0,0,0,.25)}
+#outro .sub svg{width:54px;height:54px}
+#outro .h{font:700 46px Brico;color:#fff1d6;margin-top:30px;letter-spacing:1px}
+#outro .s{font:600 34px Brico;color:#ffd9a0;margin-top:14px;letter-spacing:6px}
+#fade{position:absolute;inset:0;background:#000;opacity:0}
+</style></head>
+<body>
+<canvas id="bg" width="1080" height="1920"></canvas>
+<div class="layer">
+  <div id="title">श्री हनुमान चालीसा</div>
+  <div id="wm"><div class="yt"></div>@TECHVIBE24</div>
+  <div id="pill"><span id="pillt"></span></div>
+  <div id="verse"></div>
+  <div id="orn">❖ ॐ ❖</div>
+  <div id="en"></div>
+  <div id="sec"></div>
+  <div id="intro"><div class="pre">@TECHVIBE24 presents</div><h1>॥ श्री हनुमान चालीसा ॥</h1>
+    <h2>गोस्वामी तुलसीदास जी कृत</h2><div class="en">with meaning in English</div></div>
+  <div id="outro"><h1>॥ जय श्री राम ॥</h1>
+    <div class="sub"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22zm7-6V11a7 7 0 0 0-5.5-6.84V3.5a1.5 1.5 0 0 0-3 0v.66A7 7 0 0 0 5 11v5l-2 2v1h18v-1z"/></svg>SUBSCRIBE</div>
+    <div class="h">@TECHVIBE24</div><div class="s">LIKE  •  SHARE  •  JAI HANUMAN</div></div>
+  <div id="bar"><i></i><b></b></div>
+  <div id="cnt"></div>
+  <div id="fade"></div>
+</div>
+<script src="../stage/world.js"></script>
+<script src="scene.js"></script>
+<script src="main.js"></script>
+</body></html>
