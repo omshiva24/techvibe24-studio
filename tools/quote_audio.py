@@ -96,9 +96,9 @@ for i in range(n): y += (act[i] - y) * (.3 if act[i] > y else .015); g[i] = y
 duck = np.pad(np.repeat(1 - .4 * g, hop), (0, N - n * hop), constant_values=1)
 fade = np.clip((T - tN) / 1.4, 0, 1) * np.clip(tN / .6, 0, 1)
 vox = voice + .18 * fftconvolve(voice, irs[0][:int(.9 * SR)] * .5)[:N]          # a little room on the narrator
-outL = (L * duck * fade) * .9 + vox; outR = (Rr * duck * fade) * .9 + vox
+outL = (L * duck * fade) * .62 + vox; outR = (Rr * duck * fade) * .62 + vox
 st = np.stack([outL, outR], 1); st /= np.abs(st).max() / .9
 with wave.open(f'{B}/quote_mix.wav', 'wb') as w: w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR); w.writeframes((st[:int(T * SR)] * 32767).astype(np.int16).tobytes())
 vm = np.repeat(act, hop)[:N]; vm = np.pad(vm, (0, N - len(vm))) > 0
 db = lambda x: 20 * np.log10(np.sqrt((hp(x, 120) ** 2).mean()) + 1e-9)
-print('while speaking: voice %.1f dB, music %.1f dB' % (db(vox[vm]), db((L * duck * fade * .9)[vm])))
+print('while speaking: voice %.1f dB, music %.1f dB' % (db(vox[vm]), db((L * duck * fade * .62)[vm])))

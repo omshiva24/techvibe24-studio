@@ -164,7 +164,9 @@ function captions(t) {
   const a = clamp((p.t1 - t) / .15); let x = W / 2 - total / 2; const cy = 1240;
   words.forEach((w, i) => {
     const w0 = p.words[i][1]; if (t < w0 - .04) { x += ws[i] + gap; return; }
-    const k = clamp((t - w0 + .04) / .22), key = KEY.test(norm(p.words[i][0]));
+    const nw = norm(p.words[i][0]), pv = i > 0 ? norm(p.words[i - 1][0]) : '';
+    const key = /^(insult|insults|gift|precious|fuel|leaders|leader|watch|thank)$/.test(nw) || (nw === 'me' && pv === 'watch') || (nw === 'you' && pv === 'thank');
+    const k = clamp((t - w0 + .04) / .22);
     c.save(); c.globalAlpha = a * clamp(k * 2.5);
     c.translate(x + ws[i] / 2, cy + (1 - eOut(k)) * 26); const sc = 1 + (1 - eBack(k)) * .25; c.scale(sc, sc);
     c.filter = k < .6 ? `blur(${(1 - k / .6) * 8}px)` : 'none';
