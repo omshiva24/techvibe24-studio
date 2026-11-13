@@ -334,7 +334,13 @@ CARD = card_bg()
 def star(d, cx, cy, r, fill):
     pts = [(cx + (r if k % 2 == 0 else r * .45) * math.cos(-math.pi / 2 + k * math.pi / 5), cy + (r if k % 2 == 0 else r * .45) * math.sin(-math.pi / 2 + k * math.pi / 5)) for k in range(10)]
     d.polygon(pts, fill=fill)
+_chf = {}
 def chapter_frame(pg, lt):
+    if lt > 1.8 and pg['i'] in _chf: return _chf[pg['i']]
+    r = _chapter_frame(pg, lt)
+    if lt > 1.8: _chf[pg['i']] = r
+    return r
+def _chapter_frame(pg, lt):
     im = Image.fromarray(CARD.copy()).convert('RGBA'); ov = Image.new('RGBA', (W, H), (0, 0, 0, 0)); d = ImageDraw.Draw(ov)
     k1, k2, k3 = ease(lt / .5), ease((lt - .25) / .5), ease((lt - .5) / .6)
     a = lambda k: int(255 * k)
@@ -352,13 +358,14 @@ def chapter_frame(pg, lt):
         d.rounded_rectangle([x, 960, x + 140, 968], radius=4, fill=(46, 230, 255, 230) if on else (255, 255, 255, 50))
     d.text((1760, 1000), '@TECHVIBE24', font=font('sg', 34), fill=(255, 255, 255, 200), anchor='rs')
     im = Image.alpha_composite(im, ov); return np.array(im.convert('RGB'))
-def cover_frame(pg, lt, outro=False):
+_cov = {}
+def cover_parts(outro):
+    if outro in _cov: return _cov[outro]
     a = np.zeros((H, W, 3), np.float32); yy, xx = np.mgrid[0:H, 0:W]
     a[:] = np.array([18, 30, 70], np.float32); a += (np.exp(-(((xx - 960) / 1000) ** 2 + ((yy - 500) / 600) ** 2))[..., None] * np.array([30, 50, 90]))
     rng = np.random.default_rng(3); a += (rng.random((H, W, 1)) - .5) * 10
-    im = Image.fromarray(np.clip(a, 0, 255).astype(np.uint8)).convert('RGBA'); d = ImageDraw.Draw(im)
-    d.rectangle([0, 0, 70, H], fill=(10, 16, 40, 255))   # spine
-    k = ease(lt / .8); sc = 1.04 - .04 * k
+    bg = Image.fromarray(np.clip(a, 0, 255).astype(np.uint8)).convert('RGBA'); d = ImageDraw.Draw(bg)
+    d.rectangle([0, 0, 70, H], fill=(10, 16, 40, 255))
     lab = Image.new('RGBA', (1180, 640), (0, 0, 0, 0)); ld = ImageDraw.Draw(lab)
     ld.rounded_rectangle([0, 0, 1179, 639], radius=36, fill=(251, 248, 239, 255))
     for i in range(6): ld.line([(40, 250 + 62 * i), (1140, 250 + 62 * i)], fill=(176, 200, 232, 255), width=2)
@@ -373,16 +380,27 @@ def cover_frame(pg, lt, outro=False):
         ld.text((590, 300), 'Share with friends who have the exam', font=font('body', 50), fill=INK['blue'] + (255,), anchor='ms')
         ld.text((590, 420), 'Comment: which subject next?', font=font('body', 50), fill=INK['red'] + (255,), anchor='ms')
         ld.text((590, 560), 'Subscribe  @TECHVIBE24', font=font('bold', 64), fill=INK['blue'] + (255,), anchor='ms')
-    lab = lab.resize((int(1180 * sc), int(640 * sc)), Image.BICUBIC)
-    sh = Image.new('RGBA', (W, H), (0, 0, 0, 0)); sd = ImageDraw.Draw(sh); x0, y0 = (W - lab.width) // 2 + 30, (H - lab.height) // 2 + 10
-    sd.rounded_rectangle([x0 + 14, y0 + 20, x0 + lab.width + 14, y0 + lab.height + 20], radius=36, fill=(0, 0, 0, 120)); sh = sh.filter(ImageFilter.GaussianBlur(16))
-    im = Image.alpha_composite(im, sh); im.alpha_composite(lab, (x0, y0))
+    sh = Image.new('RGBA', (W, H), (0, 0, 0, 0)); sd = ImageDraw.Draw(sh); x0, y0 = (W - 1180) // 2 + 30, (H - 640) // 2 + 10
+    sd.rounded_rectangle([x0 + 14, y0 + 20, x0 + 1180 + 14, y0 + 640 + 20], radius=36, fill=(0, 0, 0, 120)); sh = sh.filter(ImageFilter.GaussianBlur(16))
+    bg = Image.alpha_composite(bg, sh)
+    st = Image.new('RGBA', (360, 140), (0, 0, 0, 0)); sdd = ImageDraw.Draw(st); col = (220, 40, 50, 230)
+    sdd.rounded_rectangle([6, 6, 354, 134], radius=16, outline=col, width=7); sdd.text((180, 72), 'ONE SHOT', font=font('bold', 64), fill=col, anchor='mm')
+    st = st.rotate(12, expand=True, resample=Image.BICUBIC)
+    _cov[outro] = (bg, lab, st); return _cov[outro]
+_covf = {}
+def cover_frame(pg, lt, outro=False):
+    if lt > 1.4 and outro in _covf: return _covf[outro]
+    bg, lab, st = cover_parts(outro); im = bg.copy()
+    k = ease(lt / .8); sc = 1.04 - .04 * k
+    l2 = lab if sc == 1 else lab.resize((int(1180 * sc), int(640 * sc)), Image.BICUBIC)
+    im.alpha_composite(l2, ((W - l2.width) // 2 + 30, (H - l2.height) // 2 + 10))
     if not outro and lt > .9:
-        st = Image.new('RGBA', (360, 140), (0, 0, 0, 0)); sdd = ImageDraw.Draw(st); kk = ease((lt - .9) / .3); col = (220, 40, 50, int(230 * min(1, (lt - .9) * 4)))
-        sdd.rounded_rectangle([6, 6, 354, 134], radius=16, outline=col, width=7); sdd.text((180, 72), 'ONE SHOT', font=font('bold', 64), fill=col, anchor='mm')
-        st = st.rotate(12, expand=True, resample=Image.BICUBIC); s2 = 1.6 - .6 * kk; st = st.resize((int(st.width * s2), int(st.height * s2)), Image.BICUBIC)
-        im.alpha_composite(st, (1450 - st.width // 2, 230 - st.height // 2))
-    return np.array(im.convert('RGB'))
+        kk = ease((lt - .9) / .3); s2 = 1.6 - .6 * kk; s3 = st.resize((int(st.width * s2), int(st.height * s2)), Image.BICUBIC)
+        a = np.array(s3); a[..., 3] = (a[..., 3] * min(1, (lt - .9) * 4)).astype(np.uint8); s3 = Image.fromarray(a)
+        im.alpha_composite(s3, (1450 - s3.width // 2, 230 - s3.height // 2))
+    r = np.array(im.convert('RGB'))
+    if lt > 1.4: _covf[outro] = r
+    return r
 
 # ---------------------------------------------------------------- page state machine
 class PageState:
