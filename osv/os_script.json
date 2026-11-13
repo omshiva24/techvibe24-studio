@@ -7688,7 +7688,7 @@
      ]
     },
     {
-     "say": "Exam tip. In numericals, always draw the Gantt chart or the table neatly, write the formula first, and then the answer. You get step marks even if the final answer is wrong.",
+     "say": "Here's one more tip for the exam. For numericals, draw the Gantt chart or the table neatly. Write the formula first, then the answer. That way, you still get step marks, even if the final answer goes wrong.",
      "els": [
       {
        "t": "text",

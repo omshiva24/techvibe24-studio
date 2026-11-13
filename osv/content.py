@@ -788,8 +788,8 @@ beat(p, '''Four, producer consumer and dining philosophers. Five, deadlock condi
 Six, paging, T L B, and effective access time.''', *[T(k, f'{k + 1}. {q}', x=200) for k, q in enumerate(qs[:6]) if k >= 3])
 beat(p, '''Seven, page replacement with FIFO, optimal and LRU, plus Belady's anomaly. Eight, thrashing.
 Nine, file allocation methods. And ten, disk scheduling numericals.''', *[T(k, f'{k + 1}. {q}', x=200) for k, q in enumerate(qs) if k >= 6])
-beat(p, '''Exam tip. In numericals, always draw the Gantt chart or the table neatly, write the formula first, and then the answer.
-You get step marks even if the final answer is wrong.''',
+beat(p, '''Here's one more tip for the exam. For numericals, draw the Gantt chart or the table neatly. Write the formula first,
+then the answer. That way, you still get step marks, even if the final answer goes wrong.''',
      T(11, 'Tip: draw the table / Gantt chart, [h:write the formula first] => step marks!', color='red'))
 
 p = page('All the Best!', 10, kind='outro')
