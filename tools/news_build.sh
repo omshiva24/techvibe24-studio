@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Build the news Short from downloaded assets.  bash tools/news_build.sh ASSETS_DIR VOICE [PARTS]
 set -euo pipefail
-A=$1; VOICE=$2; PARTS=${3:-2}
-python3 tools/news_timeline.py "$A" "$VOICE" build
+A=$1; VOICE=$2; PARTS=${3:-2}; TEMPO=${4:-1.0}
+python3 tools/news_timeline.py "$A" "$VOICE" build "$TEMPO"
 python3 tools/news_audio.py build
 T=$(python3 -c "import json;print(json.load(open('build/news_tl.json'))['T'])")
 mkdir -p build/parts; rm -f build/parts/*.mp4

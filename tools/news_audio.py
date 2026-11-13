@@ -110,7 +110,7 @@ RISES = {'s2': '1.2', 's3': '74', 's5': '395'}
 for s in tl['segs']:
     for w in CUES.get(s['id'], []):
         t0 = cue(s, w.replace("'", "") if w != "here's" else "heres")
-        if t0: add(SFX, blip(1700 if w != 'freeze' else 900), t0, .09); add(WET, blip(), t0, .03)
+        if t0: add(SFX, blip(1700 if w != 'freeze' else 900), t0, .06); add(WET, blip(), t0, .03)
     if s['id'] in RISES:
         t0 = cue(s, RISES[s['id']])
         if t0: r = rise(.8); add(SFX, r, t0 - .5 - .3, .05)
@@ -127,12 +127,17 @@ voice = np.load(f'{B}/voice.npy'); voice = np.pad(voice, (0, max(0, N - len(voic
 hop = 240; n = N // hop; e = np.sqrt((voice[:n * hop].reshape(n, hop) ** 2).mean(1)); act = (e > .012).astype(float)
 g = np.zeros(n); y = 0
 for i in range(n): y = y + (act[i] - y) * (.25 if act[i] > y else .012); g[i] = y
-duck = np.repeat(1 - .45 * g, hop); duck = np.pad(duck, (0, N - len(duck)), constant_values=1)
+duck = np.repeat(1 - .55 * g, hop); duck = np.pad(duck, (0, N - len(duck)), constant_values=1)
 fade_out = np.clip((T - .15 - tN) / 1.0, 0, 1)
-music_gain = .5 * duck * fade_out
+music_gain = .24 * duck * fade_out
 outL = (L + revL * .5) * music_gain + (SFX + revL * .5) * fade_out * .9 + voice * .95
 outR = (Rr + revR * .5) * music_gain + (SFX + revR * .5) * fade_out * .9 + voice * .95
 mx = max(np.abs(outL).max(), np.abs(outR).max()); outL /= mx / .89; outR /= mx / .89
 st = (np.stack([outL, outR], 1)[:int(T * SR)] * 32767).astype(np.int16)
 with wave.open(f'{B}/news_mix.wav', 'wb') as w: w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR); w.writeframes(st.tobytes())
 print('mix', T, 's peak-normalised; voice rms', float(np.sqrt((voice ** 2).mean())), 'music rms', float(np.sqrt(((L * music_gain) ** 2).mean())))
+# QA: how far the music sits under the voice while someone is speaking
+vm = np.repeat(act, hop); vm = np.pad(vm, (0, N - len(vm)))[:N] > 0
+mus = ((L + revL * .5) * music_gain)[vm]; sfx = ((SFX + revL * .5) * fade_out * .9)[vm]; vv = (voice * .95)[vm]
+db = lambda x: 20 * np.log10(np.sqrt((hp(x, 120) ** 2).mean()) + 1e-9)   # rough loudness: ignore sub-bass
+print('while speaking: voice %.1f dB, music %.1f dB (%.1f dB under), sfx %.1f dB' % (db(vv), db(mus), db(vv) - db(mus), db(sfx)))

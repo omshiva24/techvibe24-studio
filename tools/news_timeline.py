@@ -3,16 +3,18 @@ python tools/news_timeline.py ASSETS_DIR VOICE build/'''
 import json, os, subprocess, sys
 import numpy as np
 A, VOICE, OUT = sys.argv[1], sys.argv[2], sys.argv[3]
+TEMPO = float(sys.argv[4]) if len(sys.argv) > 4 else 1.0
 os.makedirs(OUT, exist_ok=True)
 SR = 48000
 S = json.load(open('news/script.json')); W = json.load(open(f'{A}/vo/words.json'))[VOICE]
 def decode(mp3):
-    raw = subprocess.run(['ffmpeg', '-v', 'error', '-i', mp3, '-ac', '1', '-ar', str(SR), '-f', 's16le', '-'], capture_output=True, check=True).stdout
+    raw = subprocess.run(['ffmpeg', '-v', 'error', '-i', mp3, '-af', f'atempo={TEMPO}', '-ac', '1', '-ar', str(SR), '-f', 's16le', '-'], capture_output=True, check=True).stdout
     return np.frombuffer(raw, np.int16).astype(np.float32) / 32768
 def env(x, hop=480):
     n = len(x) // hop; return np.sqrt((x[:n * hop].reshape(n, hop) ** 2).mean(1) + 1e-12)
-GAP = {'hook': 0.30, 'cta': 0.30}      # silence before each segment's voice (transition lives here)
-START, TAILHOLD = 0.12, 1.9
+GAP = {'hook': 0.30, 'cta': 0.30}
+DEF_GAP = 0.38      # silence before each segment's voice (transition lives here)
+START, TAILHOLD = 0.12, 1.7
 t, segs, voice = START, [], []
 for i, seg in enumerate(S['segments']):
     x = decode(f'{A}/vo/{VOICE}/{seg["id"]}.mp3')
@@ -20,9 +22,15 @@ for i, seg in enumerate(S['segments']):
     a0, a1 = (on[0] * 0.01, (on[-1] + 1) * 0.01) if len(on) else (0, len(x) / SR)
     x = x[int(max(0, a0 - 0.03) * SR): int(min(len(x) / SR, a1 + 0.08) * SR)]      # trim edge silence
     shift = max(0, a0 - 0.03)
-    if i: t += GAP.get(seg['id'], 0.42)
+    if i: t += GAP.get(seg['id'], DEF_GAP)
     vo0 = t; dur = len(x) / SR
-    words = [[w, round(vo0 + a - shift, 3), round(vo0 + b - shift, 3)] for w, a, b in W[seg['id']]['words']]
+    words = []
+    for w, a, b in W[seg['id']]['words']:
+        a, b = a / TEMPO, b / TEMPO; parts = w.split()
+        if len(parts) > 1:   # tokens like "1.2 trillion dollars": spread the time over the parts by length
+            wt = np.array([len(pt) + 1.5 for pt in parts]); cum = np.concatenate([[0], np.cumsum(wt)]) / wt.sum()
+            for j, pt in enumerate(parts): words.append([pt, round(vo0 + a + (b - a) * cum[j] - shift, 3), round(vo0 + a + (b - a) * cum[j + 1] - shift, 3)])
+        else: words.append([w, round(vo0 + a - shift, 3), round(vo0 + b - shift, 3)])
     if not words:   # no boundaries from this voice: spread words over the voiced span by length
         toks = seg['vo'].split(); wt = np.array([max(2, len(k)) for k in toks], float); cum = np.concatenate([[0], np.cumsum(wt)]) / wt.sum()
         words = [[k, round(vo0 + dur * cum[j], 3), round(vo0 + dur * cum[j + 1], 3)] for j, k in enumerate(toks)]

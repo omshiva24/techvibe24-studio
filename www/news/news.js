@@ -148,7 +148,7 @@ function buildPages() {
 }
 const SEGINFO = {
   hook: { kick: 'BREAKING', l1: "NVIDIA'S CEO", l2: 'RESIGNS', c2: C.red, sub: '+ a trillion-dollar AI IPO is coming' },
-  s1: { kick: '01 · NVIDIA', l1: 'JENSEN HUANG', l2: 'STEPS DOWN', sub: 'Resigns days after admitting an affair', src: 'SOURCES: NVIDIA SEC FILING · NYT VIA FORTUNE' },
+  s1: { kick: '01 · NVIDIA', l1: 'NVIDIA BOSS', l2: 'STEPS DOWN', sub: 'Resigns days after admitting an affair', src: 'SOURCES: NVIDIA SEC FILING · NYT VIA FORTUNE' },
   s2: { kick: '02 · ANTHROPIC', l1: 'CLAUDE MAKER', l2: 'GOES PUBLIC', sub: 'Nasdaq listing planned for next week', src: 'SOURCES: RENAISSANCE CAPITAL · WSJ' },
   s3: { kick: '03 · SPACEX', l1: 'SPACEX GOES', l2: 'ALL-IN ON AI', sub: 'Two giant AI supercomputer campuses', src: 'SOURCES: QUARTZ · ANADOLU AGENCY' },
   s4: { kick: '04 · AI LAWSUIT', l1: 'AI GIANTS', l2: 'SUED TO PAUSE', sub: 'Nonprofits want next-gen AI frozen', src: 'SOURCE: AL JAZEERA' },
@@ -226,7 +226,7 @@ function headline(t, s) {
   if (I.kick === 'BREAKING') chip('BREAKING', 60, 214, t, t0, 'red', { solid: true, size: 28 });
   else chip(I.kick, 60, 214, t, t0, 'cyan', { size: 28 });
   // headline lines with mask reveal
-  const font = `400 138px ${F.big}`, Ls = [[I.l1, C.white, 400], [I.l2, I.c2 || C.cyan, 540]];
+  const font = `400 138px ${F.big}`, Ls = [[I.l1, C.white, 412], [I.l2, I.c2 || C.cyan, 552]];
   Ls.forEach(([s2, col, y], k) => {
     const kk = s.id === 'hook' ? 1 : eOut((lt - .08 - k * .09) / .42); if (kk <= 0) return;
     c.save(); c.beginPath(); c.rect(40, y - 140, 1000, 160); c.clip();
@@ -236,8 +236,8 @@ function headline(t, s) {
     c.restore();
   });
   const ks = s.id === 'hook' ? fade(t, .1, .3) : fade(lt, .35, .3);
-  if (ks > 0) { c.save(); c.globalAlpha = out * ks; txt(I.sub, 62, 612, `500 40px ${F.body}`, C.white, { glow: 'rgba(0,0,0,.8)', blur: 18 }); c.restore(); }
-  if (I.src) { const ka = fade(lt, .6, .4) * .8; if (ka > 0) { c.save(); c.globalAlpha = out * ka; txt(I.src, 62, 664, `500 20px ${F.mono}`, C.mute, { ls: '1.5px' }); c.restore(); } }
+  if (ks > 0) { c.save(); c.globalAlpha = out * ks; txt(I.sub, 62, 622, `500 40px ${F.body}`, C.white, { glow: 'rgba(0,0,0,.8)', blur: 18 }); c.restore(); }
+  if (I.src) { const ka = fade(lt, .6, .4) * .8; if (ka > 0) { c.save(); c.globalAlpha = out * ka; txt(I.src, 62, 672, `500 20px ${F.mono}`, C.mute, { ls: '1.5px' }); c.restore(); } }
   c.restore();
 }
 function nameCard(t, t0, y, name, role, out = 1) {
@@ -336,7 +336,7 @@ function transitionFx(t) {
     // glitch slices
     bx.clearRect(0, 0, W, H); bx.drawImage(cv, 0, 0);
     for (let k = 0; k < 7; k++) { const y = R(k, Math.floor(t * 30)) * H, h = 20 + R(k + 9, Math.floor(t * 30)) * 90, off = (R(k + 3, Math.floor(t * 30)) - .5) * 120 * (1 - Math.abs(d) / .16); c.drawImage(BUF, 0, y, W, h, off, y, W, h); }
-    c.save(); c.globalCompositeOperation = 'screen'; c.globalAlpha = fl * .55; c.fillStyle = '#dff9ff'; c.fillRect(0, 0, W, H); c.restore();
+    c.save(); c.globalCompositeOperation = 'screen'; c.globalAlpha = fl * .32; c.fillStyle = '#dff9ff'; c.fillRect(0, 0, W, H); c.restore();
   }
 }
 function aiTag(t) { c.save(); c.globalAlpha = .55; txt('IMAGES: AI ILLUSTRATIONS', 62, 1452, `500 18px ${F.mono}`, C.mute, { ls: '2px' }); c.restore(); }
