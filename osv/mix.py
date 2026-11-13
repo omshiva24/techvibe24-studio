@@ -85,10 +85,10 @@ for c0 in range(0, N, CH_S):
     gi = np.interp(np.arange(c0, c1) / SR * 100, np.arange(n), mgain_c).astype(np.float32)
     tt = np.arange(c0, c1, dtype=np.float32) / SR; fade = np.clip((T - tt) / 2.5, 0, 1) * np.clip(tt / 1.0, 0, 1)
     music = mus * gi * fade * .30
-    out = v + pen * .05 + fx * .55 + music
+    out = v + pen * .035 + fx * .55 + music
     st = np.stack([out + music * .1, out - music * .1], 1); st = np.tanh(st * 1.05) / 1.05
     peak = max(peak, float(np.abs(st).max())); wf.writeframes((np.clip(st, -1, 1) * 32767).astype(np.int16).tobytes())
-    speak = np.repeat(act[c0 // hop:c1 // hop], hop)[:L] > 0
+    speak = np.repeat(act[c0 // hop:c1 // hop + 1], hop)[:L]; speak = np.pad(speak, (0, L - len(speak))) > 0
     if speak.any(): vstat.append(float((v[speak] ** 2).mean())); mstat.append(float((music[speak] ** 2).mean()))
 wf.close()
 print('mix written; peak %.2f; music %.1f dB under voice while speaking' % (peak, 10 * np.log10(np.mean(vstat) / max(1e-12, np.mean(mstat)))))
