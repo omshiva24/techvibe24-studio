@@ -126,6 +126,12 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: '3.12' }
       - run: pip install edge-tts
+      - name: reuse earlier voiceover
+        env: { GH_TOKEN: '${{ github.token }}' }
+        run: |
+          prev=$(gh release list -R "${{ github.repository }}" --limit 50 --json tagName --jq '[.[] | select(.tagName|startswith("ostts"))][0].tagName' || true)
+          if [ -n "$prev" ]; then gh release download "$prev" -p os_voice.tgz -R "${{ github.repository }}" && tar xzf os_voice.tgz && rm os_voice.tgz; fi
+          ls ostts/* | head -3 || true
       - run: python osv/tts.py osv/os_script.json ostts en-US-AndrewMultilingualNeural en-IN-PrabhatNeural
       - name: publish
         env: { GH_TOKEN: '${{ github.token }}' }

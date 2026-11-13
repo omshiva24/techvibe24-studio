@@ -7,7 +7,7 @@ async def one(voice, pi, bi, text, sem):
     path = f'{OUT}/{voice}/b{pi:03d}_{bi:02d}.mp3'
     if os.path.exists(path) and os.path.getsize(path) > 1000: return True
     async with sem:
-        for k in range(5):
+        for k in range(8):
             try:
                 await edge_tts.Communicate(text, voice, rate='+0%').save(path)
                 if os.path.getsize(path) > 1000: return True
@@ -17,7 +17,7 @@ async def one(voice, pi, bi, text, sem):
     return False
 async def main():
     for v in VOICES:
-        os.makedirs(f'{OUT}/{v}', exist_ok=True); sem = asyncio.Semaphore(4); t = time.time()
+        os.makedirs(f'{OUT}/{v}', exist_ok=True); sem = asyncio.Semaphore(2); t = time.time()
         ok = await asyncio.gather(*[one(v, pi, bi, s, sem) for pi, bi, s in beats])
         print(v, sum(ok), '/', len(ok), 'ok in', round(time.time() - t), 's', flush=True)
 asyncio.run(main())
