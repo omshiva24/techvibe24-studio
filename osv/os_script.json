@@ -42,7 +42,7 @@
        "x": 200,
        "y": 276,
        "s": "1.  Introduction to OS",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -51,7 +51,7 @@
        "x": 200,
        "y": 330,
        "s": "2.  Processes & Threads",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -60,7 +60,7 @@
        "x": 200,
        "y": 384,
        "s": "3.  [h:CPU Scheduling]  (numericals)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -69,7 +69,7 @@
        "x": 200,
        "y": 438,
        "s": "4.  [h:Process Synchronization]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -78,7 +78,7 @@
        "x": 200,
        "y": 492,
        "s": "5.  [h:Deadlocks]  (Banker's algorithm)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -92,7 +92,7 @@
        "x": 200,
        "y": 546,
        "s": "6.  [h:Memory Management]  (paging, TLB)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -101,7 +101,7 @@
        "x": 200,
        "y": 600,
        "s": "7.  [h:Virtual Memory]  (page replacement)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -110,7 +110,7 @@
        "x": 200,
        "y": 654,
        "s": "8.  File Systems",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -119,7 +119,7 @@
        "x": 200,
        "y": 708,
        "s": "9.  [h:Disk Scheduling]  (numericals)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -128,7 +128,7 @@
        "x": 200,
        "y": 762,
        "s": "10.  Exam Revision - most asked questions",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -178,7 +178,7 @@
        "x": 180,
        "y": 222,
        "s": "OS = a program that acts as an [h:interface]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -187,7 +187,7 @@
        "x": 180,
        "y": 276,
        "s": "between the [r:user] and the [r:computer hardware].",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -309,7 +309,7 @@
        "x": 180,
        "y": 384,
        "s": "Example: [k:OS = manager] of the computer",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -318,7 +318,7 @@
        "x": 180,
        "y": 438,
        "s": "e.g. Windows, Linux, macOS, Android",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "green"
       }
@@ -341,7 +341,7 @@
        "x": 180,
        "y": 600,
        "s": "1) [r:Convenience] - easy to use",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -350,7 +350,7 @@
        "x": 180,
        "y": 654,
        "s": "2) [r:Efficiency] - use hardware well",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -359,7 +359,7 @@
        "x": 180,
        "y": 762,
        "s": "[h:Resource manager]: CPU, memory, files, I/O devices",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -368,7 +368,7 @@
        "x": 180,
        "y": 816,
        "s": "[k:Kernel] = core of OS, always in memory",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -398,7 +398,7 @@
        "x": 180,
        "y": 222,
        "s": "1) [r:Process management] - create, delete, schedule, sync processes",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -412,7 +412,7 @@
        "x": 180,
        "y": 276,
        "s": "2) [r:Memory management] - track & allocate/free RAM",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -421,7 +421,7 @@
        "x": 180,
        "y": 330,
        "s": "3) [r:File management] - create, delete, organise files & folders",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -435,7 +435,7 @@
        "x": 180,
        "y": 384,
        "s": "4) [r:Device (I/O) management] - drivers, buffering, spooling",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -444,7 +444,7 @@
        "x": 180,
        "y": 438,
        "s": "5) [r:Security & protection] - passwords, access control",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -453,7 +453,7 @@
        "x": 180,
        "y": 492,
        "s": "6) [r:User interface] - CLI or GUI",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -488,7 +488,7 @@
        "x": 180,
        "y": 222,
        "s": "1) [r:Batch OS] - jobs grouped in batches, no interaction (payroll)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -502,7 +502,7 @@
        "x": 180,
        "y": 276,
        "s": "2) [r:Multiprogramming] - many programs in memory;",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -511,7 +511,7 @@
        "x": 230,
        "y": 330,
        "s": "when one waits for I/O, CPU runs another => [h:CPU never idle]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -525,7 +525,7 @@
        "x": 180,
        "y": 384,
        "s": "3) [r:Multitasking / Time-sharing] - small time slices,",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -534,7 +534,7 @@
        "x": 230,
        "y": 438,
        "s": "fast switching => every user feels it is only theirs",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -548,7 +548,7 @@
        "x": 180,
        "y": 492,
        "s": "4) [r:Real-time OS] - response within a strict deadline",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -557,7 +557,7 @@
        "x": 230,
        "y": 546,
        "s": "[k:Hard]: airbag, pacemaker  |  [k:Soft]: video streaming",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -571,7 +571,7 @@
        "x": 180,
        "y": 600,
        "s": "5) [r:Distributed OS] - many computers work as one",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -580,7 +580,7 @@
        "x": 230,
        "y": 654,
        "s": "Others: Network OS, Mobile OS (Android, iOS)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "green"
       }
@@ -601,7 +601,7 @@
        "x": 180,
        "y": 222,
        "s": "[h:System call] = the way a program asks the OS for a service",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -610,7 +610,7 @@
        "x": 180,
        "y": 276,
        "s": "e.g.  open(), read(), write(), fork(), exit()",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "green"
       }
@@ -688,7 +688,7 @@
        "x": 180,
        "y": 384,
        "s": "[r:User mode]: normal programs",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -697,7 +697,7 @@
        "x": 180,
        "y": 438,
        "s": "[r:Kernel mode]: OS code",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -706,7 +706,7 @@
        "x": 180,
        "y": 492,
        "s": "Privileged instructions -> kernel mode only",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -729,7 +729,7 @@
        "x": 180,
        "y": 654,
        "s": "1) Process control (fork, exit)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -738,7 +738,7 @@
        "x": 180,
        "y": 708,
        "s": "2) File management (open, read)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -747,7 +747,7 @@
        "x": 180,
        "y": 762,
        "s": "3) Device management",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -756,7 +756,7 @@
        "x": 180,
        "y": 816,
        "s": "4) Information maintenance (time, date)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -765,7 +765,7 @@
        "x": 180,
        "y": 870,
        "s": "5) Communication (pipe, send)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -804,7 +804,7 @@
        "x": 180,
        "y": 276,
        "s": "whole OS = one big kernel. [g:fast]  but  [r:hard to maintain]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -839,7 +839,7 @@
        "x": 180,
        "y": 438,
        "s": "layers; each uses only the one below. [g:easy debug], [r:slower]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -898,7 +898,7 @@
        "x": 180,
        "y": 600,
        "s": "only basics in kernel (IPC, scheduling, memory)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -907,7 +907,7 @@
        "x": 180,
        "y": 654,
        "s": "rest in user space. [g:reliable, secure], [r:message overhead]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -965,7 +965,7 @@
        "x": 180,
        "y": 762,
        "s": "Modern OS (Linux, Windows) = [h:hybrid]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "green"
       }
@@ -1006,7 +1006,7 @@
        "x": 180,
        "y": 222,
        "s": "[r:Program] = passive (code file on disk)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -1015,7 +1015,7 @@
        "x": 180,
        "y": 276,
        "s": "[r:Process] = [h:program in execution] (active)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -1129,7 +1129,7 @@
        "x": 180,
        "y": 384,
        "s": "[k:Text] - program code",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -1138,7 +1138,7 @@
        "x": 180,
        "y": 438,
        "s": "[k:Data] - global variables",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -1147,7 +1147,7 @@
        "x": 180,
        "y": 492,
        "s": "[k:Heap] - dynamic memory (malloc / new)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -1156,7 +1156,7 @@
        "x": 180,
        "y": 546,
        "s": "[k:Stack] - function calls, local variables",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -1165,7 +1165,7 @@
        "x": 180,
        "y": 654,
        "s": "Stack & heap grow towards each other",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "green"
       }
@@ -1275,7 +1275,7 @@
        "t": "arrow",
        "p1": [
         1180,
-        540
+        545
        ],
        "p2": [
         760,
@@ -1284,8 +1284,8 @@
        "color": "black",
        "label": "interrupt",
        "lx": 0,
-       "ly": -6,
-       "curve": -110,
+       "ly": -16,
+       "curve": 170,
        "head": true,
        "size": 28,
        "both": false,
@@ -1406,7 +1406,7 @@
        "x": 180,
        "y": 222,
        "s": "[h:PCB] = Process Control Block = \"ID card\" of a process",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -1461,7 +1461,7 @@
        "x": 180,
        "y": 330,
        "s": "[k:Program counter] = address of next instruction",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -1470,7 +1470,7 @@
        "x": 180,
        "y": 384,
        "s": "[k:Scheduling info] = priority, queue pointers",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -1493,7 +1493,7 @@
        "x": 180,
        "y": 546,
        "s": "save old process state -> its PCB",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -1502,7 +1502,7 @@
        "x": 180,
        "y": 600,
        "s": "load new process state <- its PCB",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -1511,7 +1511,7 @@
        "x": 180,
        "y": 654,
        "s": "[r:Pure overhead] - no useful work during the switch",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -1541,7 +1541,7 @@
        "x": 180,
        "y": 222,
        "s": "1) [r:Long-term] (job scheduler): new -> ready",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -1550,7 +1550,7 @@
        "x": 230,
        "y": 276,
        "s": "controls [h:degree of multiprogramming]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -1564,7 +1564,7 @@
        "x": 180,
        "y": 330,
        "s": "2) [r:Short-term] (CPU scheduler): ready -> running",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -1573,7 +1573,7 @@
        "x": 230,
        "y": 384,
        "s": "runs very often => must be fast",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -1587,7 +1587,7 @@
        "x": 180,
        "y": 438,
        "s": "3) [r:Medium-term]: swapping (suspend / resume)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -1596,7 +1596,7 @@
        "x": 230,
        "y": 492,
        "s": "reduces load on memory",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -1610,7 +1610,7 @@
        "x": 180,
        "y": 600,
        "s": "[k:I/O-bound] - more I/O, short CPU bursts",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "green"
       },
@@ -1619,7 +1619,7 @@
        "x": 180,
        "y": 654,
        "s": "[k:CPU-bound] - long CPU bursts",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "green"
       },
@@ -1628,7 +1628,7 @@
        "x": 180,
        "y": 708,
        "s": "Good scheduler = [h:mix of both]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "green"
       }
@@ -1649,7 +1649,7 @@
        "x": 180,
        "y": 222,
        "s": "[h:Thread] = lightweight process, smallest unit of CPU use",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -1658,7 +1658,7 @@
        "x": 180,
        "y": 276,
        "s": "share: [g:code, data, files]   own: [r:stack, registers, PC]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -1720,7 +1720,7 @@
        "x": 180,
        "y": 384,
        "s": "Benefits: responsiveness, resource sharing,",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -1729,7 +1729,7 @@
        "x": 180,
        "y": 438,
        "s": "economy (cheap to create), scalability (multicore)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -1743,7 +1743,7 @@
        "x": 180,
        "y": 546,
        "s": "[r:User-level]: managed by library, fast, kernel unaware",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -1752,7 +1752,7 @@
        "x": 180,
        "y": 600,
        "s": "[r:Kernel-level]: managed by OS, slower, one block ≠ all block",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -1775,7 +1775,7 @@
        "x": 180,
        "y": 762,
        "s": "[k:Many-to-one]: one blocks => all block",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -1784,7 +1784,7 @@
        "x": 180,
        "y": 816,
        "s": "[k:One-to-one]: Linux, Windows",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -1793,7 +1793,7 @@
        "x": 180,
        "y": 870,
        "s": "[k:Many-to-many]: best of both",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -1823,7 +1823,7 @@
        "x": 180,
        "y": 222,
        "s": "[h:IPC] - processes exchange data. Two models:",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -1841,7 +1841,7 @@
        "x": 180,
        "y": 330,
        "s": "common memory region. [g:fast], but needs synchronization",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -1940,7 +1940,7 @@
        "x": 180,
        "y": 492,
        "s": "send() / receive() through kernel. [g:easy], [r:slower]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -1949,7 +1949,7 @@
        "x": 180,
        "y": 546,
        "s": "e.g. pipes, message queues, sockets",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "green"
       },
@@ -2034,7 +2034,7 @@
        "x": 180,
        "y": 222,
        "s": "Which ready process gets the CPU next?",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -2043,7 +2043,7 @@
        "x": 180,
        "y": 276,
        "s": "[r:Non-preemptive]: keeps CPU till it finishes / waits",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -2052,7 +2052,7 @@
        "x": 180,
        "y": 330,
        "s": "[r:Preemptive]: OS can take CPU away in between",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -2075,7 +2075,7 @@
        "x": 180,
        "y": 492,
        "s": "Maximise: CPU utilisation, throughput",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "green"
       },
@@ -2084,7 +2084,7 @@
        "x": 180,
        "y": 546,
        "s": "Minimise: turnaround, waiting, response time",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "green"
       }
@@ -2812,7 +2812,7 @@
        "x": 180,
        "y": 276,
        "s": "highest priority first (usually [k:small number = high])",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -2826,7 +2826,7 @@
        "x": 180,
        "y": 330,
        "s": "Problem: [r:starvation]   Solution: [h:aging]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -2835,7 +2835,7 @@
        "x": 230,
        "y": 384,
        "s": "aging = slowly raise priority of waiting processes",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "green"
       }
@@ -2894,7 +2894,7 @@
        "x": 180,
        "y": 546,
        "s": "separate queues, each with its own algorithm",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -2903,7 +2903,7 @@
        "x": 180,
        "y": 600,
        "s": "[k:Feedback queue]: process can move between queues",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -2998,7 +2998,7 @@
        "x": 180,
        "y": 222,
        "s": "[h:Race condition] = result depends on the order of execution",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -3007,7 +3007,7 @@
        "x": 180,
        "y": 276,
        "s": "e.g. P1: counter++   P2: counter--   (shared) => wrong value",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "green"
       }
@@ -3021,7 +3021,7 @@
        "x": 180,
        "y": 384,
        "s": "[r:Critical section] = code that uses shared data",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -3101,7 +3101,7 @@
        "x": 180,
        "y": 546,
        "s": "1) [r:Mutual exclusion] - only one inside at a time",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -3110,7 +3110,7 @@
        "x": 180,
        "y": 600,
        "s": "2) [r:Progress] - no indefinite postponement",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -3119,7 +3119,7 @@
        "x": 180,
        "y": 654,
        "s": "3) [r:Bounded waiting] - limit on others entering first",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -3140,7 +3140,7 @@
        "x": 180,
        "y": 222,
        "s": "For [k:2 processes]. Shared: [r:flag[2]] (I want to enter), [r:turn] (whose turn)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -3154,7 +3154,7 @@
        "x": 240,
        "y": 300,
        "w": 900,
-       "h": 420,
+       "h": 500,
        "label": null,
        "color": "blue",
        "size": 32,
@@ -3166,70 +3166,70 @@
        "x": 280,
        "y": 360,
        "s": "do {",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       },
       {
        "t": "text",
        "x": 340,
-       "y": 410,
+       "y": 412,
        "s": "flag[i] = true;",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       },
       {
        "t": "text",
        "x": 340,
-       "y": 460,
+       "y": 464,
        "s": "turn = j;",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       },
       {
        "t": "text",
        "x": 340,
-       "y": 510,
+       "y": 516,
        "s": "while (flag[j] && turn == j);",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       },
       {
        "t": "text",
        "x": 340,
-       "y": 570,
+       "y": 576,
        "s": "[r:// critical section]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
       {
        "t": "text",
        "x": 340,
-       "y": 630,
+       "y": 636,
        "s": "flag[i] = false;",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       },
       {
        "t": "text",
        "x": 340,
-       "y": 680,
+       "y": 696,
        "s": "[g:// remainder section]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
       {
        "t": "text",
        "x": 280,
-       "y": 710,
+       "y": 766,
        "s": "} while (true);",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       }
@@ -3243,7 +3243,7 @@
        "x": 1200,
        "y": 420,
        "s": "Satisfies all 3:",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       },
@@ -3252,7 +3252,7 @@
        "x": 1200,
        "y": 480,
        "s": "[g:Mutual exclusion]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -3261,7 +3261,7 @@
        "x": 1200,
        "y": 540,
        "s": "[g:Progress]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -3270,7 +3270,7 @@
        "x": 1200,
        "y": 600,
        "s": "[g:Bounded waiting]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -3300,7 +3300,7 @@
        "x": 180,
        "y": 222,
        "s": "[h:Semaphore] S = integer, changed only by 2 atomic operations",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -3326,7 +3326,7 @@
        "x": 280,
        "y": 360,
        "s": "wait(S)  [k:/ P(S)]:",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "red"
       },
@@ -3335,7 +3335,7 @@
        "x": 330,
        "y": 410,
        "s": "while (S <= 0);  // wait",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       },
@@ -3344,7 +3344,7 @@
        "x": 330,
        "y": 455,
        "s": "S--;",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       },
@@ -3353,7 +3353,7 @@
        "x": 280,
        "y": 525,
        "s": "signal(S)  [k:/ V(S)]:  S++;",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "red"
       }
@@ -3367,7 +3367,7 @@
        "x": 1080,
        "y": 360,
        "s": "[r:Binary semaphore] - 0 or 1 (like mutex lock)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -3376,7 +3376,7 @@
        "x": 1080,
        "y": 420,
        "s": "[r:Counting semaphore] - any value",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -3385,7 +3385,7 @@
        "x": 1110,
        "y": 470,
        "s": "(many instances of a resource)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "green"
       }
@@ -3399,7 +3399,7 @@
        "x": 180,
        "y": 762,
        "s": "Busy waiting = [r:spinlock] (wastes CPU)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -3408,7 +3408,7 @@
        "x": 180,
        "y": 816,
        "s": "Wrong order of wait() => [r:deadlock / starvation]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -3438,7 +3438,7 @@
        "x": 180,
        "y": 276,
        "s": "mutex = 1,   empty = n,   full = 0",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       }
@@ -3452,7 +3452,7 @@
        "x": 180,
        "y": 330,
        "s": "[k:Producer]: wait(empty); wait(mutex); add; signal(mutex); signal(full);",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -3461,7 +3461,7 @@
        "x": 180,
        "y": 384,
        "s": "[k:Consumer]: wait(full); wait(mutex); remove; signal(mutex); signal(empty);",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -3484,7 +3484,7 @@
        "x": 180,
        "y": 546,
        "s": "many readers together OK; writer needs [h:exclusive] access",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -3507,7 +3507,7 @@
        "x": 180,
        "y": 708,
        "s": "5 philosophers, 5 chopsticks, need 2 to eat",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -3516,7 +3516,7 @@
        "x": 180,
        "y": 762,
        "s": "all pick left => [r:deadlock]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -3525,7 +3525,7 @@
        "x": 180,
        "y": 816,
        "s": "Fix: max 4 sit / pick both / odd-even order",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "green"
       },
@@ -3611,7 +3611,7 @@
        "x": 180,
        "y": 924,
        "s": "[k:Monitor]: high-level; one process inside at a time; condition variables",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -3652,7 +3652,7 @@
        "x": 180,
        "y": 222,
        "s": "[h:Deadlock] = processes wait for each other's resources forever",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -3661,7 +3661,7 @@
        "x": 180,
        "y": 276,
        "s": "e.g. two cars on a one-lane bridge",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "green"
       }
@@ -3693,7 +3693,7 @@
        "x": 180,
        "y": 438,
        "s": "1) [r:Mutual exclusion]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -3702,7 +3702,7 @@
        "x": 180,
        "y": 492,
        "s": "2) [r:Hold and wait]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -3711,7 +3711,7 @@
        "x": 180,
        "y": 546,
        "s": "3) [r:No preemption]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -3720,7 +3720,7 @@
        "x": 180,
        "y": 600,
        "s": "4) [r:Circular wait]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -3729,7 +3729,7 @@
        "x": 180,
        "y": 654,
        "s": "Trick: [h:M - H - N - C]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "green"
       }
@@ -3871,7 +3871,7 @@
        "x": 180,
        "y": 762,
        "s": "RAG: single instance => [r:cycle = deadlock]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -3880,7 +3880,7 @@
        "x": 180,
        "y": 816,
        "s": "multiple instances => cycle = [k:maybe] deadlock",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -3901,7 +3901,7 @@
        "x": 180,
        "y": 222,
        "s": "1) [r:Prevention] - break one of the 4 conditions",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -3910,7 +3910,7 @@
        "x": 230,
        "y": 276,
        "s": "all resources at once => no hold & wait",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "green"
       },
@@ -3919,7 +3919,7 @@
        "x": 230,
        "y": 330,
        "s": "request in fixed order => no circular wait",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "green"
       }
@@ -3933,7 +3933,7 @@
        "x": 180,
        "y": 438,
        "s": "2) [r:Avoidance] - grant only if system stays in [h:safe state]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -3942,7 +3942,7 @@
        "x": 230,
        "y": 492,
        "s": "=> Banker's algorithm",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "green"
       }
@@ -3956,7 +3956,7 @@
        "x": 180,
        "y": 600,
        "s": "3) [r:Detection & recovery] - wait-for graph; kill process /",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -3965,7 +3965,7 @@
        "x": 230,
        "y": 654,
        "s": "preempt resources",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -3979,7 +3979,7 @@
        "x": 180,
        "y": 762,
        "s": "4) [r:Ignore] (ostrich approach) - Windows, Linux",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -4118,7 +4118,7 @@
        "x": 1200,
        "y": 430,
        "s": "Work = Available",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       },
@@ -4127,7 +4127,7 @@
        "x": 1200,
        "y": 480,
        "s": "if Need <= Work:",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       },
@@ -4136,7 +4136,7 @@
        "x": 1240,
        "y": 530,
        "s": "Work = Work + Alloc",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       }
@@ -4236,7 +4236,7 @@
        "x": 180,
        "y": 708,
        "s": "All can finish => [g:SAFE state]  (more than one safe sequence possible)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       },
@@ -4286,7 +4286,7 @@
        "x": 180,
        "y": 222,
        "s": "[r:Logical address] - generated by CPU (virtual)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -4295,7 +4295,7 @@
        "x": 180,
        "y": 276,
        "s": "[r:Physical address] - actual location in RAM",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -4304,7 +4304,7 @@
        "x": 180,
        "y": 330,
        "s": "[h:MMU] (Memory Management Unit) converts logical -> physical",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -4435,7 +4435,7 @@
        "x": 240,
        "y": 720,
        "s": "logical 346 + 14000 = physical [h:14346]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       }
@@ -4449,7 +4449,7 @@
        "x": 180,
        "y": 924,
        "s": "[k:Swapping]: move a process memory <-> disk",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -4470,7 +4470,7 @@
        "x": 180,
        "y": 222,
        "s": "1) [r:First fit] - first hole big enough",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -4479,7 +4479,7 @@
        "x": 180,
        "y": 276,
        "s": "2) [r:Best fit] - smallest hole big enough",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -4488,7 +4488,7 @@
        "x": 180,
        "y": 330,
        "s": "3) [r:Worst fit] - largest hole",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -4502,7 +4502,7 @@
        "x": 180,
        "y": 438,
        "s": "Partitions: 100, 500, 200, 300, 600 KB",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       },
@@ -4511,7 +4511,7 @@
        "x": 180,
        "y": 492,
        "s": "Processes: 212, 417, 112, 426 KB",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       }
@@ -4600,7 +4600,7 @@
        "x": 180,
        "y": 222,
        "s": "[r:Internal fragmentation] - waste [h:inside] an allocated block",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -4609,7 +4609,7 @@
        "x": 230,
        "y": 276,
        "s": "needs 18 KB, gets 20 KB => 2 KB wasted inside",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "green"
       },
@@ -4661,7 +4661,7 @@
        "x": 180,
        "y": 384,
        "s": "[r:External fragmentation] - enough total free memory,",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -4670,7 +4670,7 @@
        "x": 230,
        "y": 438,
        "s": "but [h:not contiguous]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -4679,7 +4679,7 @@
        "x": 230,
        "y": 492,
        "s": "Fix: [g:compaction] or [g:paging]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -4744,7 +4744,7 @@
        "x": 180,
        "y": 222,
        "s": "Physical memory -> [r:frames]   Logical memory -> [r:pages]  (same size)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -4788,8 +4788,8 @@
       },
       {
        "t": "text",
-       "x": 640,
-       "y": 260,
+       "x": 660,
+       "y": 615,
        "s": "page table",
        "size": 26,
        "font": "body",
@@ -4831,7 +4831,7 @@
       {
        "t": "arrow",
        "p1": [
-        300,
+        260,
         410
        ],
        "p2": [
@@ -4841,7 +4841,7 @@
        "color": "black",
        "label": "p",
        "lx": 0,
-       "ly": 30,
+       "ly": 34,
        "curve": 0,
        "head": true,
        "size": 28,
@@ -4856,7 +4856,7 @@
        ],
        "p2": [
         1050,
-        380
+        390
        ],
        "color": "black",
        "label": null,
@@ -4871,18 +4871,18 @@
       {
        "t": "arrow",
        "p1": [
-        400,
+        380,
         330
        ],
        "p2": [
-        1100,
+        1225,
         330
        ],
        "color": "black",
        "label": "d",
        "lx": 0,
-       "ly": -12,
-       "curve": -60,
+       "ly": -8,
+       "curve": -170,
        "head": true,
        "size": 28,
        "both": false,
@@ -4898,7 +4898,7 @@
        "x": 180,
        "y": 708,
        "s": "page size 4 KB = 2^12  =>  offset d = [h:12 bits]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       },
@@ -4907,7 +4907,7 @@
        "x": 180,
        "y": 762,
        "s": "[g:No external fragmentation], small internal (last page)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -4937,7 +4937,7 @@
        "x": 180,
        "y": 222,
        "s": "[h:TLB] = Translation Lookaside Buffer = fast cache of page table",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -4946,7 +4946,7 @@
        "x": 180,
        "y": 276,
        "s": "[g:TLB hit]: frame found fast    [r:TLB miss]: go to page table in memory",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -4983,7 +4983,7 @@
        "x": 180,
        "y": 546,
        "s": "Ex: t = 20 ns, m = 100 ns, h = 0.8",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       },
@@ -4992,7 +4992,7 @@
        "x": 180,
        "y": 600,
        "s": "EAT = 0.8 x 120 + 0.2 x 220",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -5031,7 +5031,7 @@
        "x": 180,
        "y": 222,
        "s": "Memory divided by [h:logical units]: main(), functions, stack, arrays",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -5040,7 +5040,7 @@
        "x": 180,
        "y": 276,
        "s": "segments have [r:variable size]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -5054,7 +5054,7 @@
        "x": 180,
        "y": 330,
        "s": "address = (segment no. s, offset d)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -5063,7 +5063,7 @@
        "x": 180,
        "y": 384,
        "s": "segment table: [k:base] & [k:limit]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -5072,7 +5072,7 @@
        "x": 180,
        "y": 438,
        "s": "if d < limit: physical = [h:base + d]   else => [r:trap (error)]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -5166,7 +5166,7 @@
        "x": 180,
        "y": 222,
        "s": "[h:Virtual memory] - run programs bigger than RAM",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -5175,7 +5175,7 @@
        "x": 180,
        "y": 276,
        "s": "[r:Demand paging] - load a page only when needed",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -5184,7 +5184,7 @@
        "x": 180,
        "y": 330,
        "s": "valid / invalid bit tells if the page is in memory",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -5207,7 +5207,7 @@
        "x": 180,
        "y": 492,
        "s": "1) reference -> invalid -> [r:trap] to OS",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -5216,7 +5216,7 @@
        "x": 180,
        "y": 546,
        "s": "2) find a free frame",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -5225,7 +5225,7 @@
        "x": 180,
        "y": 600,
        "s": "3) read the page from disk",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -5234,7 +5234,7 @@
        "x": 180,
        "y": 654,
        "s": "4) update the page table",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -5243,7 +5243,7 @@
        "x": 180,
        "y": 708,
        "s": "5) restart the instruction",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -5266,7 +5266,7 @@
        "x": 180,
        "y": 816,
        "s": "No free frame? => [h:page replacement]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "green"
       }
@@ -5287,7 +5287,7 @@
        "x": 180,
        "y": 222,
        "s": "Reference string (3 frames):",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       },
@@ -5296,7 +5296,7 @@
        "x": 180,
        "y": 276,
        "s": "7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -5533,7 +5533,7 @@
        "x": 180,
        "y": 222,
        "s": "Reference string (3 frames):",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       },
@@ -5542,7 +5542,7 @@
        "x": 180,
        "y": 276,
        "s": "7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -5773,7 +5773,7 @@
        "x": 180,
        "y": 222,
        "s": "Reference string (3 frames):",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       },
@@ -5782,7 +5782,7 @@
        "x": 180,
        "y": 276,
        "s": "7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -6016,7 +6016,7 @@
        "x": 180,
        "y": 222,
        "s": "[h:Belady's anomaly]: more frames => [r:more] faults (FIFO only)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -6025,7 +6025,7 @@
        "x": 180,
        "y": 276,
        "s": "1,2,3,4,1,2,5,1,2,3,4,5",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       },
@@ -6034,7 +6034,7 @@
        "x": 180,
        "y": 330,
        "s": "3 frames = [r:9] faults,   4 frames = [r:10] faults",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -6043,7 +6043,7 @@
        "x": 180,
        "y": 384,
        "s": "LRU & Optimal never suffer (stack algorithms)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "green"
       },
@@ -6066,7 +6066,7 @@
        "x": 180,
        "y": 492,
        "s": "[h:Thrashing] = too busy swapping pages, no real work",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -6075,7 +6075,7 @@
        "x": 180,
        "y": 546,
        "s": "CPU utilisation drops suddenly",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "red"
       },
@@ -6084,11 +6084,11 @@
        "pts": [
         [
          1180,
-         990
+         940
         ],
         [
          1180,
-         640
+         600
         ]
        ],
        "color": "black",
@@ -6099,11 +6099,11 @@
        "pts": [
         [
          1180,
-         990
+         940
         ],
         [
          1800,
-         990
+         940
         ]
        ],
        "color": "black",
@@ -6114,31 +6114,31 @@
        "pts": [
         [
          1190,
-         960
+         910
         ],
         [
          1300,
-         860
+         810
         ],
         [
          1420,
-         760
+         710
         ],
         [
          1520,
-         720
+         670
         ],
         [
          1580,
-         730
+         680
         ],
         [
          1640,
-         820
+         770
         ],
         [
          1720,
-         960
+         910
         ]
        ],
        "color": "red",
@@ -6147,7 +6147,7 @@
       {
        "t": "text",
        "x": 1060,
-       "y": 630,
+       "y": 590,
        "s": "CPU use",
        "size": 26,
        "font": "body",
@@ -6156,7 +6156,7 @@
       {
        "t": "text",
        "x": 1300,
-       "y": 1035,
+       "y": 985,
        "s": "degree of multiprogramming",
        "size": 26,
        "font": "body",
@@ -6165,7 +6165,7 @@
       {
        "t": "text",
        "x": 1650,
-       "y": 820,
+       "y": 770,
        "s": "thrashing",
        "size": 28,
        "font": "body",
@@ -6181,7 +6181,7 @@
        "x": 180,
        "y": 654,
        "s": "Fix: [g:working set model], [g:page-fault frequency],",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -6190,7 +6190,7 @@
        "x": 230,
        "y": 708,
        "s": "reduce degree of multiprogramming",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "green"
       }
@@ -6230,7 +6230,7 @@
        "x": 180,
        "y": 222,
        "s": "[h:File] = named collection of related data on disk",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -6239,7 +6239,7 @@
        "x": 180,
        "y": 276,
        "s": "Attributes: name, type, size, location, protection, time",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -6248,7 +6248,7 @@
        "x": 180,
        "y": 330,
        "s": "Operations: create, open, read, write, seek, delete, truncate",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -6271,7 +6271,7 @@
        "x": 180,
        "y": 492,
        "s": "1) [r:Sequential] - one after another (like a tape)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -6280,7 +6280,7 @@
        "x": 180,
        "y": 546,
        "s": "2) [r:Direct / random] - jump to any block n",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -6289,7 +6289,7 @@
        "x": 180,
        "y": 600,
        "s": "3) [r:Indexed] - index first, then the block",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -6310,7 +6310,7 @@
        "x": 180,
        "y": 222,
        "s": "1) [r:Single-level] - all files in one directory (name clash)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -6319,7 +6319,7 @@
        "x": 180,
        "y": 276,
        "s": "2) [r:Two-level] - separate directory per user",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -6333,7 +6333,7 @@
        "x": 180,
        "y": 330,
        "s": "3) [r:Tree-structured] - folders in folders ([h:most common])",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -6342,7 +6342,7 @@
        "x": 180,
        "y": 384,
        "s": "4) [r:Acyclic graph] - sharing via links",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -6351,7 +6351,7 @@
        "x": 180,
        "y": 438,
        "s": "5) [r:General graph] - cycles allowed (needs garbage collection)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -6530,7 +6530,7 @@
        "x": 180,
        "y": 276,
        "s": "blocks next to each other. [g:fast, direct access]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -6539,7 +6539,7 @@
        "x": 180,
        "y": 330,
        "s": "[r:external fragmentation, hard to grow]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -6622,7 +6622,7 @@
        "x": 180,
        "y": 492,
        "s": "each block points to the next. [g:no ext. fragmentation]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -6631,7 +6631,7 @@
        "x": 180,
        "y": 546,
        "s": "[r:slow random access, pointer overhead]   (FAT = variant)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -6762,7 +6762,7 @@
        "x": 180,
        "y": 708,
        "s": "index block keeps all pointers. [g:direct access]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -6771,7 +6771,7 @@
        "x": 180,
        "y": 762,
        "s": "[r:index block overhead]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -6781,17 +6781,17 @@
        "y": 760,
        "w": 150,
        "h": 160,
-       "label": "19\n9\n16\n1",
+       "label": "9\n16\n1",
        "color": "red",
-       "size": 26,
+       "size": 28,
        "fill": null,
        "lc": "red"
       },
       {
        "t": "text",
-       "x": 1180,
-       "y": 950,
-       "s": "index",
+       "x": 1150,
+       "y": 955,
+       "s": "index block",
        "size": 26,
        "font": "body",
        "color": "green"
@@ -6909,7 +6909,7 @@
        "x": 180,
        "y": 222,
        "s": "1) [r:Bit vector / bitmap] - 1 bit per block",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -6918,7 +6918,7 @@
        "x": 230,
        "y": 276,
        "s": "e.g. 0 0 1 1 1 1 0 0 1 1 ...  (simple, fast)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       }
@@ -6932,7 +6932,7 @@
        "x": 180,
        "y": 384,
        "s": "2) [r:Linked list] - free blocks point to next free block",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -6941,7 +6941,7 @@
        "x": 180,
        "y": 438,
        "s": "3) [r:Grouping] - one block stores many free addresses",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -6950,7 +6950,7 @@
        "x": 180,
        "y": 492,
        "s": "4) [r:Counting] - (first free block, count)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -6990,7 +6990,7 @@
        "x": 180,
        "y": 222,
        "s": "platter -> [r:tracks] -> [r:sectors];  same track on all = [r:cylinder]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -7082,7 +7082,7 @@
        "x": 180,
        "y": 384,
        "s": "Seek time = move head to the track ([r:biggest part])",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -7091,7 +7091,7 @@
        "x": 180,
        "y": 438,
        "s": "Disk scheduling goal: [g:minimise head movement]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -7112,7 +7112,7 @@
        "x": 180,
        "y": 222,
        "s": "Queue: 98, 183, 37, 122, 14, 124, 65, 67",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       },
@@ -7121,7 +7121,7 @@
        "x": 180,
        "y": 276,
        "s": "Head = 53,   cylinders 0 - 199",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       }
@@ -7153,7 +7153,7 @@
        "x": 180,
        "y": 492,
        "s": "Total head movement = [h:640]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       }
@@ -7185,7 +7185,7 @@
        "x": 180,
        "y": 708,
        "s": "Total head movement = [h:236]   ([r:may starve far requests])",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       },
@@ -7194,11 +7194,11 @@
        "pts": [
         [
          1150,
-         600
+         560
         ],
         [
          1830,
-         600
+         560
         ]
        ],
        "color": "black",
@@ -7207,7 +7207,7 @@
       {
        "t": "text",
        "x": 1136,
-       "y": 586,
+       "y": 546,
        "s": "0",
        "size": 22,
        "font": "body",
@@ -7216,7 +7216,7 @@
       {
        "t": "text",
        "x": 1306,
-       "y": 586,
+       "y": 546,
        "s": "50",
        "size": 22,
        "font": "body",
@@ -7225,7 +7225,7 @@
       {
        "t": "text",
        "x": 1477,
-       "y": 586,
+       "y": 546,
        "s": "100",
        "size": 22,
        "font": "body",
@@ -7234,7 +7234,7 @@
       {
        "t": "text",
        "x": 1648,
-       "y": 586,
+       "y": 546,
        "s": "150",
        "size": 22,
        "font": "body",
@@ -7243,7 +7243,7 @@
       {
        "t": "text",
        "x": 1816,
-       "y": 586,
+       "y": 546,
        "s": "199",
        "size": 22,
        "font": "body",
@@ -7254,43 +7254,124 @@
        "pts": [
         [
          1331,
-         630
+         590
         ],
         [
          1372,
-         675
+         635
         ],
         [
          1378,
-         720
+         680
         ],
         [
          1276,
-         765
+         725
         ],
         [
          1197,
-         810
+         770
         ],
         [
          1484,
-         855
+         815
         ],
         [
          1566,
-         900
+         860
         ],
         [
          1573,
-         945
+         905
         ],
         [
          1775,
-         990
+         950
         ]
        ],
        "color": "red",
        "w": 4
+      },
+      {
+       "t": "text",
+       "x": 1339,
+       "y": 596,
+       "s": "53",
+       "size": 22,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 1380,
+       "y": 641,
+       "s": "65",
+       "size": 22,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 1386,
+       "y": 686,
+       "s": "67",
+       "size": 22,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 1284,
+       "y": 731,
+       "s": "37",
+       "size": 22,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 1205,
+       "y": 776,
+       "s": "14",
+       "size": 22,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 1492,
+       "y": 821,
+       "s": "98",
+       "size": 22,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 1574,
+       "y": 866,
+       "s": "122",
+       "size": 22,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 1581,
+       "y": 911,
+       "s": "124",
+       "size": 22,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 1783,
+       "y": 956,
+       "s": "183",
+       "size": 22,
+       "font": "body",
+       "color": "blue"
       }
      ]
     }
@@ -7327,7 +7408,7 @@
        "x": 180,
        "y": 330,
        "s": "Total = [h:236]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       }
@@ -7359,7 +7440,7 @@
        "x": 180,
        "y": 546,
        "s": "Total = [h:208]",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       }
@@ -7391,7 +7472,7 @@
        "x": 180,
        "y": 762,
        "s": "Total = [h:382] (with return jump)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "black"
       },
@@ -7430,7 +7511,7 @@
        "x": 180,
        "y": 222,
        "s": "[h:RAID] = Redundant Array of Independent Disks",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -7438,8 +7519,8 @@
        "t": "text",
        "x": 180,
        "y": 276,
-       "s": "0) [r:Striping] - fast, [r:no redundancy]",
-       "size": 36,
+       "s": "RAID 0 - [r:Striping]: fast, no redundancy",
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -7452,8 +7533,8 @@
        "t": "text",
        "x": 180,
        "y": 330,
-       "s": "1) [r:Mirroring] - copy on 2 disks, safe, 50% space",
-       "size": 36,
+       "s": "RAID 1 - [r:Mirroring]: copy on 2 disks, safe, 50% space",
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -7461,8 +7542,8 @@
        "t": "text",
        "x": 180,
        "y": 384,
-       "s": "5) [r:Striping + distributed parity] - survives 1 disk failure",
-       "size": 36,
+       "s": "RAID 5 - [r:Striping + distributed parity]: survives 1 disk failure",
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -7471,7 +7552,7 @@
        "x": 180,
        "y": 492,
        "s": "Others: RAID 6 (double parity), RAID 10 (mirror + stripe)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "green"
       }
@@ -7509,7 +7590,7 @@
        "x": 200,
        "y": 222,
        "s": "1. Process state diagram + PCB",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -7518,7 +7599,7 @@
        "x": 200,
        "y": 276,
        "s": "2. Scheduling numericals: FCFS, SJF, RR (Gantt chart)",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -7527,7 +7608,7 @@
        "x": 200,
        "y": 330,
        "s": "3. Critical section: 3 requirements, Peterson, semaphores",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -7541,7 +7622,7 @@
        "x": 200,
        "y": 384,
        "s": "4. Producer-consumer / dining philosophers",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -7550,7 +7631,7 @@
        "x": 200,
        "y": 438,
        "s": "5. Deadlock: 4 conditions + Banker's algorithm",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -7559,7 +7640,7 @@
        "x": 200,
        "y": 492,
        "s": "6. Paging, TLB & effective access time",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -7573,7 +7654,7 @@
        "x": 200,
        "y": 546,
        "s": "7. Page replacement: FIFO, Optimal, LRU + Belady's anomaly",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -7582,7 +7663,7 @@
        "x": 200,
        "y": 600,
        "s": "8. Thrashing",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -7591,7 +7672,7 @@
        "x": 200,
        "y": 654,
        "s": "9. File allocation methods",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       },
@@ -7600,7 +7681,7 @@
        "x": 200,
        "y": 708,
        "s": "10. Disk scheduling numericals",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "blue"
       }
@@ -7614,7 +7695,7 @@
        "x": 180,
        "y": 816,
        "s": "Tip: draw the table / Gantt chart, [h:write the formula first] => step marks!",
-       "size": 36,
+       "size": 38,
        "font": "body",
        "color": "red"
       }

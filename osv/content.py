@@ -7,10 +7,10 @@ PAGES = []
 def L(n): return 222 + 54 * n            # baseline of ruled line n (0..14)
 def page(title, ch, kind='page', **kw): p = dict(kind=kind, title=title, ch=ch, beats=[], **kw); PAGES.append(p); return p
 def beat(p, say, *els): p['beats'].append({'say': ' '.join(say.split()), 'els': [e for e in els if e]})
-def T(n, s, x=180, size=36, font='body', color='blue', y=None): return dict(t='text', x=x, y=L(n) if y is None else y, s=s, size=size, font=font, color=color)
+def T(n, s, x=180, size=38, font='body', color='blue', y=None): return dict(t='text', x=x, y=L(n) if y is None else y, s=s, size=size, font=font, color=color)
 def S(n, s, x=180, color='black', size=42, y=None): return T(n, s, x, size, 'bold', color, y)
-def B(n, s, x=180, color='blue', size=36, mark='•'): return T(n, f'{mark} {s}', x, size, 'body', color)
-def N(n, k, s, x=180, color='blue', size=36): return T(n, f'{k}) {s}', x, size, 'body', color)
+def B(n, s, x=180, color='blue', size=38, mark='•'): return T(n, f'{mark} {s}', x, size, 'body', color)
+def N(n, k, s, x=180, color='blue', size=38): return T(n, f'{k}) {s}', x, size, 'body', color)
 def Box(x, y, w, h, label=None, color='black', size=32, fill=None, lc=None): return dict(t='rect', x=x, y=y, w=w, h=h, label=label, color=color, size=size, fill=fill, lc=lc or color)
 def Ell(x, y, w, h, label=None, color='black', size=32, fill=None, lc=None): return dict(t='ellipse', x=x, y=y, w=w, h=h, label=label, color=color, size=size, fill=fill, lc=lc or color)
 def Arr(x1, y1, x2, y2, color='black', label=None, lx=0, ly=-14, curve=0, head=True, size=28, both=False, lc=None): return dict(t='arrow', p1=(x1, y1), p2=(x2, y2), color=color, label=label, lx=lx, ly=ly, curve=curve, head=head, size=size, both=both, lc=lc or color)
@@ -169,7 +169,7 @@ A process starts in the New state. When it is admitted, it goes to Ready, waitin
 beat(p, '''The scheduler picks it, and it goes to Running. If an interrupt comes, or its time slice ends,
 it goes back to Ready.''',
      Ell(1100, 540, 270, 90, 'Running', size=34, color='green'),
-     Arr(810, 600, 1100, 600, label='scheduler dispatch', ly=36), Arr(1180, 540, 760, 545, curve=-110, label='interrupt', ly=-6))
+     Arr(810, 600, 1100, 600, label='scheduler dispatch', ly=36), Arr(1180, 545, 760, 545, curve=170, label='interrupt', ly=-16))
 beat(p, '''If it needs I O, or waits for some event, it goes to Waiting. When the I O completes,
 it goes back to Ready, not directly to Running. And when it finishes, it goes to Terminated.''',
      Ell(830, 800, 260, 90, 'Waiting', size=34, color='red'), Ell(1460, 280, 290, 90, 'Terminated', size=34),
@@ -359,11 +359,11 @@ A flag array, where flag of i is true means process i wants to enter. And turn, 
 beat(p, '''Process i sets its flag to true, and politely gives the turn to the other process, j.
 Then it waits while the other process wants to enter and it is the other's turn.
 After the critical section, it sets its flag back to false.''',
-     Box(240, 300, 900, 420, None, color='blue'),
-     T(0, 'do {', x=280, y=360, color='black'), T(0, 'flag[i] = true;', x=340, y=410, color='black'),
-     T(0, 'turn = j;', x=340, y=460, color='black'), T(0, 'while (flag[j] && turn == j);', x=340, y=510, color='black'),
-     T(0, '[r:// critical section]', x=340, y=570), T(0, 'flag[i] = false;', x=340, y=630, color='black'),
-     T(0, '[g:// remainder section]', x=340, y=680), T(0, '} while (true);', x=280, y=710, color='black'))
+     Box(240, 300, 900, 500, None, color='blue'),
+     T(0, 'do {', x=280, y=360, color='black'), T(0, 'flag[i] = true;', x=340, y=412, color='black'),
+     T(0, 'turn = j;', x=340, y=464, color='black'), T(0, 'while (flag[j] && turn == j);', x=340, y=516, color='black'),
+     T(0, '[r:// critical section]', x=340, y=576), T(0, 'flag[i] = false;', x=340, y=636, color='black'),
+     T(0, '[g:// remainder section]', x=340, y=696), T(0, '} while (true);', x=280, y=766, color='black'))
 beat(p, '''Peterson's solution satisfies all three requirements: mutual exclusion, progress, and bounded waiting.''',
      T(0, 'Satisfies all 3:', x=1200, y=420, color='black'), T(0, '[g:Mutual exclusion]', x=1200, y=480), T(0, '[g:Progress]', x=1200, y=540),
      T(0, '[g:Bounded waiting]', x=1200, y=600), Stamp(1300, 700, 'IMP!'))
@@ -542,10 +542,10 @@ Logical memory is divided into blocks of the same size called pages.''',
 beat(p, '''The logical address is split into a page number p and an offset d. The page number is looked up in the page table,
 which gives the frame number f. The physical address is f joined with d.''',
      Box(200, 330, 230, 80, 'p  |  d', size=34, color='blue'), T(0, 'logical', x=250, y=310, size=26, color='green'),
-     Box(620, 280, 220, 300, None), T(0, 'page table', x=640, y=260, size=26, color='green'),
+     Box(620, 280, 220, 300, None), T(0, 'page table', x=660, y=615, size=26, color='green'),
      Box(620, 400, 220, 60, 'f', size=30, color='red'),
      Box(1050, 330, 230, 80, 'f  |  d', size=34, color='red'), T(0, 'physical', x=1100, y=310, size=26, color='green'),
-     Arr(300, 410, 620, 430, label='p', ly=30), Arr(840, 430, 1050, 380), Arr(400, 330, 1100, 330, curve=-60, label='d', ly=-12))
+     Arr(260, 410, 620, 430, label='p', ly=34), Arr(840, 430, 1050, 390), Arr(380, 330, 1225, 330, curve=-170, label='d', ly=-8))
 beat(p, '''If the page size is four K B, which is two to the power twelve, then the offset needs twelve bits.
 Paging has no external fragmentation, but a little internal fragmentation in the last page.''',
      T(9, 'page size 4 KB = 2^12  =>  offset d = [h:12 bits]', color='black'),
@@ -640,10 +640,10 @@ L R U and optimal never have this problem.''',
 beat(p, '''Thrashing. When there are too many processes and too few frames, the system spends all its time swapping pages
 in and out, instead of doing real work. CPU utilization suddenly drops.''',
      T(5, '[h:Thrashing] = too busy swapping pages, no real work'), T(6, 'CPU utilisation drops suddenly', color='red'),
-     Ln([(1180, 990), (1180, 640)], 'black', 4), Ln([(1180, 990), (1800, 990)], 'black', 4),
-     Ln([(1190, 960), (1300, 860), (1420, 760), (1520, 720), (1580, 730), (1640, 820), (1720, 960)], 'red', 5),
-     T(0, 'CPU use', x=1060, y=630, size=26, color='black'), T(0, 'degree of multiprogramming', x=1300, y=1035, size=26, color='black'),
-     T(0, 'thrashing', x=1650, y=820, size=28, color='red'))
+     Ln([(1180, 940), (1180, 600)], 'black', 4), Ln([(1180, 940), (1800, 940)], 'black', 4),
+     Ln([(1190, 910), (1300, 810), (1420, 710), (1520, 670), (1580, 680), (1640, 770), (1720, 910)], 'red', 5),
+     T(0, 'CPU use', x=1060, y=590, size=26, color='black'), T(0, 'degree of multiprogramming', x=1300, y=985, size=26, color='black'),
+     T(0, 'thrashing', x=1650, y=770, size=28, color='red'))
 beat(p, '''To fix it, use the working set model, control the page fault frequency, or reduce the degree of multiprogramming.''',
      T(8, 'Fix: [g:working set model], [g:page-fault frequency],'), T(9, 'reduce degree of multiprogramming', x=100 + 130, color='green'))
 
@@ -691,7 +691,7 @@ beat(p, '''Third, indexed allocation. One index block keeps all the pointers to 
 It supports direct access and has no external fragmentation, but the index block is extra overhead.''',
      S(8, '3) Indexed', color='red', size=38), T(9, 'index block keeps all pointers. [g:direct access]'),
      T(10, '[r:index block overhead]'),
-     Box(1150, 760, 150, 160, '19\n9\n16\n1', size=26, color='red'), T(0, 'index', x=1180, y=950, size=26, color='green'),
+     Box(1150, 760, 150, 160, '9\n16\n1', size=28, color='red'), T(0, 'index block', x=1150, y=955, size=26, color='green'),
      Box(1420, 700, 90, 60, '9', size=24, color='blue'), Box(1420, 790, 90, 60, '16', size=24, color='blue'), Box(1420, 880, 90, 60, '1', size=24, color='blue'),
      Arr(1300, 790, 1420, 730), Arr(1300, 830, 1420, 820), Arr(1300, 870, 1420, 905))
 
@@ -727,6 +727,7 @@ def head_plot(path, x0, y0, w, h, color='red'):
         els.append(T(0, str(c), x=x0 + int(w * c / 199) - 14, y=y0 - 14, size=22, color='black'))
     pts = [(x0 + int(w * c / 199), y0 + 30 + int(k * (h - 40) / (len(path) - 1))) for k, c in enumerate(path)]
     els.append(Ln(pts, color, 4))
+    for (px, py), c in zip(pts, path): els.append(T(0, str(c), x=px + 8, y=py + 6, size=22, color='blue'))
     return els
 
 p = page('Disk Scheduling: FCFS & SSTF', 9)
@@ -743,7 +744,7 @@ then sixty seven, then thirty seven, fourteen, ninety eight, one twenty two, one
 Total head movement is only {total(ps_)}. But requests far away may starve.''',
      S(7, 'SSTF (nearest first)', color='red', size=38), T(8, ' -> '.join(map(str, ps_)), size=30),
      T(9, f'Total head movement = [h:{total(ps_)}]   ([r:may starve far requests])', color='black'),
-     *head_plot(ps_, 1150, 600, 680, 400))
+     *head_plot(ps_, 1150, 560, 680, 400))
 
 p = page('SCAN, C-SCAN, LOOK, C-LOOK', 9)
 sc, lk, cs, cl = d_scan_down(), d_look_down(), d_cscan_up(), d_clook_up()
@@ -766,10 +767,10 @@ C LOOK does the same but turns at the last request: total {total(cl)}. Some book
 p = page('RAID Levels', 9)
 beat(p, '''Finally, RAID. Redundant array of independent disks. Many disks used together for speed or safety.
 RAID zero is striping. Data is split across disks. Very fast, but no safety. If one disk fails, data is lost.''',
-     T(0, '[h:RAID] = Redundant Array of Independent Disks'), N(1, 0, '[r:Striping] - fast, [r:no redundancy]'))
+     T(0, '[h:RAID] = Redundant Array of Independent Disks'), T(1, 'RAID 0 - [r:Striping]: fast, no redundancy'))
 beat(p, '''RAID one is mirroring. The same data is copied on two disks. Very safe, but you lose half the space.
 RAID five is striping with distributed parity. It balances speed and safety, and survives one disk failure.''',
-     N(2, 1, '[r:Mirroring] - copy on 2 disks, safe, 50% space'), N(3, 5, '[r:Striping + distributed parity] - survives 1 disk failure'),
+     T(2, 'RAID 1 - [r:Mirroring]: copy on 2 disks, safe, 50% space'), T(3, 'RAID 5 - [r:Striping + distributed parity]: survives 1 disk failure'),
      T(5, 'Others: RAID 6 (double parity), RAID 10 (mirror + stripe)', color='green'))
 
 # ===================================================================================== CH 10

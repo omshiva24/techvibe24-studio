@@ -9,3 +9,5 @@ __pycache__/
 www/news/scn/
 www/news/fonts/
 na/
+osv/build/
+osv/__pycache__/
