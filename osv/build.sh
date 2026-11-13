@@ -12,7 +12,7 @@ rm -f build/parts/*.mp4
 python3 render.py 0 $MID build/parts/a.mp4 > build/parts/a.log 2>&1 &
 python3 render.py $MID $NP build/parts/b.mp4 > build/parts/b.log 2>&1 &
 wait
-tail -1 build/parts/a.log build/parts/b.log
+tail -qn 1 build/parts/a.log build/parts/b.log
 printf "file 'parts/a.mp4'\nfile 'parts/b.mp4'\n" > build/parts.txt
 T=$(python3 -c "import json;print(json.load(open('build/tl.json'))['T'])")
 J=$(ffmpeg -hide_banner -i build/mix.wav -af loudnorm=I=-14:TP=-1.5:LRA=11:print_format=json -f null - 2>&1 | sed -n '/^{/,/^}/p')
