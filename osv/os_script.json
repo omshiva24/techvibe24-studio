@@ -1,0 +1,7754 @@
+{
+ "pages": [
+  {
+   "kind": "cover",
+   "title": "Operating System",
+   "ch": 0,
+   "beats": [
+    {
+     "say": "Operating System. The complete subject, in one video. Simple explanations, handwritten notes, and every important exam problem solved step by step.",
+     "els": []
+    },
+    {
+     "say": "This works for B Tech computer science in almost every university. A K T U, Anna University, V T U, J N T U, Mumbai, Pune, and private universities too. And it covers the Operating System part of GATE. So grab a pen, and let's start.",
+     "els": []
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Contents",
+   "ch": 0,
+   "beats": [
+    {
+     "say": "Here's our plan for today. Ten chapters, from the basics to the exam numericals.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "What we will cover today",
+       "size": 42,
+       "font": "bold",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "We start with what an operating system is, then processes and threads. Then the big scoring topics: CPU scheduling, synchronization, and deadlocks.",
+     "els": [
+      {
+       "t": "text",
+       "x": 200,
+       "y": 276,
+       "s": "1.  Introduction to OS",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 330,
+       "s": "2.  Processes & Threads",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 384,
+       "s": "3.  [h:CPU Scheduling]  (numericals)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 438,
+       "s": "4.  [h:Process Synchronization]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 492,
+       "s": "5.  [h:Deadlocks]  (Banker's algorithm)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "After that, memory management and virtual memory, file systems, and disk scheduling. And at the end, a quick revision of the most asked exam questions. The highlighted ones are the most important.",
+     "els": [
+      {
+       "t": "text",
+       "x": 200,
+       "y": 546,
+       "s": "6.  [h:Memory Management]  (paging, TLB)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 600,
+       "s": "7.  [h:Virtual Memory]  (page replacement)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 654,
+       "s": "8.  File Systems",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 708,
+       "s": "9.  [h:Disk Scheduling]  (numericals)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 762,
+       "s": "10.  Exam Revision - most asked questions",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "stamp",
+       "x": 1500,
+       "y": 520,
+       "text": "MOST ASKED",
+       "color": "red",
+       "rot": -10,
+       "size": 34
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Introduction to OS",
+   "ch": 1,
+   "beats": [
+    {
+     "say": "Chapter one. Introduction to operating systems. Let's build the basics first.",
+     "els": []
+    }
+   ],
+   "num": 1,
+   "subs": [
+    "What is an OS",
+    "Functions",
+    "Types of OS",
+    "System calls & dual mode",
+    "OS structures"
+   ],
+   "stars": 3
+  },
+  {
+   "kind": "page",
+   "title": "What is an Operating System?",
+   "ch": 1,
+   "beats": [
+    {
+     "say": "An operating system is a program that sits between you and the hardware. It manages all the resources of the computer, and gives you an easy way to use it.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "OS = a program that acts as an [h:interface]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "between the [r:user] and the [r:computer hardware].",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1290,
+       "y": 250,
+       "w": 460,
+       "h": 80,
+       "label": "User",
+       "color": "black",
+       "size": 34,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1290,
+       "y": 380,
+       "w": 460,
+       "h": 80,
+       "label": "Application programs",
+       "color": "black",
+       "size": 32,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1290,
+       "y": 510,
+       "w": 460,
+       "h": 80,
+       "label": "Operating System",
+       "color": "red",
+       "size": 34,
+       "fill": "pink",
+       "lc": "red"
+      },
+      {
+       "t": "rect",
+       "x": 1290,
+       "y": 640,
+       "w": 460,
+       "h": 80,
+       "label": "Hardware",
+       "color": "black",
+       "size": 34,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1520,
+        330
+       ],
+       "p2": [
+        1520,
+        380
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": true,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1520,
+        460
+       ],
+       "p2": [
+        1520,
+        510
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": true,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1520,
+        590
+       ],
+       "p2": [
+        1520,
+        640
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": true,
+       "lc": "black"
+      }
+     ]
+    },
+    {
+     "say": "Think of it like a manager in a company. The hardware is the workers. The apps are the customers. And the operating system decides who gets what, and when.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "Example: [k:OS = manager] of the computer",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "e.g. Windows, Linux, macOS, Android",
+       "size": 36,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    },
+    {
+     "say": "An OS has two main goals. Convenience, which means the computer is easy to use. And efficiency, which means the hardware is used well, without waste. It is also called a resource manager, and the kernel is the core part of the OS that is always running in memory.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "Goals of OS",
+       "size": 42,
+       "font": "bold",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "1) [r:Convenience] - easy to use",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "2) [r:Efficiency] - use hardware well",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "[h:Resource manager]: CPU, memory, files, I/O devices",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "[k:Kernel] = core of OS, always in memory",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Functions of OS",
+   "ch": 1,
+   "beats": [
+    {
+     "say": "Now, functions of an operating system. This is a very common 5 mark question. First, process management. The OS creates and deletes processes, schedules them on the CPU, and handles synchronization.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1600,
+       "y": 140,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "1) [r:Process management] - create, delete, schedule, sync processes",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Second, memory management. It keeps track of which part of memory is used by whom, and allocates or frees memory. Third, file management. Creating, deleting, and organizing files and directories.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "2) [r:Memory management] - track & allocate/free RAM",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "3) [r:File management] - create, delete, organise files & folders",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Fourth, device or I O management. The OS talks to devices through device drivers, and uses buffering and spooling. Fifth, security and protection, like passwords and access control. And sixth, the user interface, which can be a command line or a graphical interface.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "4) [r:Device (I/O) management] - drivers, buffering, spooling",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "5) [r:Security & protection] - passwords, access control",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "6) [r:User interface] - CLI or GUI",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "An easy way to remember them: P M F D S U. Process, memory, file, device, security, and user interface.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "Trick to remember:  [h:P - M - F - D - S - U]",
+       "size": 40,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Types of Operating Systems",
+   "ch": 1,
+   "beats": [
+    {
+     "say": "Next, types of operating systems. One. Batch operating system. Similar jobs are grouped into batches and run one after another, without any user interaction. Example, payroll processing.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "1) [r:Batch OS] - jobs grouped in batches, no interaction (payroll)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Two. Multiprogramming. Many programs are kept in memory. When one program waits for I O, the CPU switches to another one. So the CPU is never idle.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "2) [r:Multiprogramming] - many programs in memory;",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 230,
+       "y": 330,
+       "s": "when one waits for I/O, CPU runs another => [h:CPU never idle]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Three. Multitasking, also called time sharing. CPU time is cut into small slices, and it switches so fast that every user feels the computer is only theirs.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "3) [r:Multitasking / Time-sharing] - small time slices,",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 230,
+       "y": 438,
+       "s": "fast switching => every user feels it is only theirs",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Four. Real time operating systems. Here the answer must come within a fixed deadline. Hard real time means missing the deadline is a failure, like an airbag or a pacemaker. Soft real time means small delays are okay, like video streaming.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "4) [r:Real-time OS] - response within a strict deadline",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 230,
+       "y": 546,
+       "s": "[k:Hard]: airbag, pacemaker  |  [k:Soft]: video streaming",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Five. Distributed operating system. Many computers connected by a network work together like one system. You may also see network OS and mobile OS like Android and iOS.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "5) [r:Distributed OS] - many computers work as one",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 230,
+       "y": 654,
+       "s": "Others: Network OS, Mobile OS (Android, iOS)",
+       "size": 36,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "System Calls & Dual Mode",
+   "ch": 1,
+   "beats": [
+    {
+     "say": "A system call is how a program asks the operating system for a service. For example, opening a file, reading, writing, or creating a new process with fork.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:System call] = the way a program asks the OS for a service",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "e.g.  open(), read(), write(), fork(), exit()",
+       "size": 36,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    },
+    {
+     "say": "Now, dual mode. The CPU works in two modes. User mode, where normal programs run, with mode bit one. And kernel mode, where the OS runs, with mode bit zero. Dangerous instructions, called privileged instructions, can run only in kernel mode.",
+     "els": [
+      {
+       "t": "rect",
+       "x": 1180,
+       "y": 330,
+       "w": 600,
+       "h": 90,
+       "label": "User mode  (mode bit = 1)",
+       "color": "blue",
+       "size": 30,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1180,
+       "y": 560,
+       "w": 600,
+       "h": 90,
+       "label": "Kernel mode  (mode bit = 0)",
+       "color": "red",
+       "size": 30,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1330,
+        420
+       ],
+       "p2": [
+        1330,
+        560
+       ],
+       "color": "black",
+       "label": "system call / trap",
+       "lx": -150,
+       "ly": 0,
+       "curve": 0,
+       "head": true,
+       "size": 26,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1630,
+        560
+       ],
+       "p2": [
+        1630,
+        420
+       ],
+       "color": "black",
+       "label": "return",
+       "lx": 70,
+       "ly": 0,
+       "curve": 0,
+       "head": true,
+       "size": 26,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "[r:User mode]: normal programs",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "[r:Kernel mode]: OS code",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "Privileged instructions -> kernel mode only",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Types of system calls. Process control, file management, device management, information maintenance, and communication. Remember these five.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "Types of system calls",
+       "size": 38,
+       "font": "bold",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "1) Process control (fork, exit)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "2) File management (open, read)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "3) Device management",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "4) Information maintenance (time, date)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 870,
+       "s": "5) Communication (pipe, send)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "stamp",
+       "x": 1500,
+       "y": 860,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "OS Structures",
+   "ch": 1,
+   "beats": [
+    {
+     "say": "How is an OS built inside? Three common structures. First, monolithic. The whole OS is one big kernel. It is fast, but hard to maintain, because one bug can crash everything. Example, early UNIX.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "1) Monolithic",
+       "size": 38,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "whole OS = one big kernel. [g:fast]  but  [r:hard to maintain]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1450,
+       "y": 210,
+       "w": 330,
+       "h": 170,
+       "label": "Kernel (all)",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      }
+     ]
+    },
+    {
+     "say": "Second, layered. The OS is divided into layers. Each layer uses only the layer below it. Easy to build and debug, but it can be slower.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "2) Layered",
+       "size": 38,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "layers; each uses only the one below. [g:easy debug], [r:slower]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1450,
+       "y": 400,
+       "w": 330,
+       "h": 50,
+       "label": "Layer N (UI)",
+       "color": "black",
+       "size": 26,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1450,
+       "y": 455,
+       "w": 330,
+       "h": 50,
+       "label": "...",
+       "color": "black",
+       "size": 26,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1450,
+       "y": 510,
+       "w": 330,
+       "h": 50,
+       "label": "Layer 0 (hardware)",
+       "color": "black",
+       "size": 26,
+       "fill": null,
+       "lc": "black"
+      }
+     ]
+    },
+    {
+     "say": "Third, microkernel. Only the most basic things stay in the kernel, like scheduling, memory basics, and message passing. Everything else runs in user space. It is reliable and secure, but message passing adds overhead. Example, Mach and QNX.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "3) Microkernel",
+       "size": 38,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "only basics in kernel (IPC, scheduling, memory)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "rest in user space. [g:reliable, secure], [r:message overhead]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1450,
+       "y": 640,
+       "w": 330,
+       "h": 80,
+       "label": "drivers  files  UI",
+       "color": "blue",
+       "size": 26,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1520,
+       "y": 760,
+       "w": 190,
+       "h": 70,
+       "label": "micro kernel",
+       "color": "red",
+       "size": 24,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1615,
+        720
+       ],
+       "p2": [
+        1615,
+        760
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": true,
+       "lc": "black"
+      }
+     ]
+    },
+    {
+     "say": "Modern systems like Linux and Windows are hybrids. They mix these ideas.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "Modern OS (Linux, Windows) = [h:hybrid]",
+       "size": 36,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Processes & Threads",
+   "ch": 2,
+   "beats": [
+    {
+     "say": "Chapter two. Processes and threads. This is the heart of the operating system.",
+     "els": []
+    }
+   ],
+   "num": 2,
+   "subs": [
+    "Process & its states",
+    "PCB & context switch",
+    "Schedulers",
+    "Threads",
+    "IPC"
+   ],
+   "stars": 4
+  },
+  {
+   "kind": "page",
+   "title": "Process",
+   "ch": 2,
+   "beats": [
+    {
+     "say": "A program is just a file on the disk. It is passive. When you run it, it becomes a process. So a process is a program in execution. It is active.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[r:Program] = passive (code file on disk)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[r:Process] = [h:program in execution] (active)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "In memory, a process has four parts. Text, which is the code. Data, which holds global variables. Heap, for memory allocated while running. And stack, for function calls and local variables. Stack and heap grow towards each other.",
+     "els": [
+      {
+       "t": "rect",
+       "x": 1350,
+       "y": 230,
+       "w": 340,
+       "h": 90,
+       "label": "Stack",
+       "color": "black",
+       "size": 32,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1350,
+       "y": 320,
+       "w": 340,
+       "h": 150,
+       "label": "",
+       "color": "black",
+       "size": 32,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1350,
+       "y": 470,
+       "w": 340,
+       "h": 90,
+       "label": "Heap",
+       "color": "black",
+       "size": 32,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1350,
+       "y": 560,
+       "w": 340,
+       "h": 90,
+       "label": "Data",
+       "color": "black",
+       "size": 32,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1350,
+       "y": 650,
+       "w": 340,
+       "h": 90,
+       "label": "Text (code)",
+       "color": "black",
+       "size": 32,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1520,
+        330
+       ],
+       "p2": [
+        1520,
+        380
+       ],
+       "color": "green",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1520,
+        460
+       ],
+       "p2": [
+        1520,
+        410
+       ],
+       "color": "green",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "green"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "[k:Text] - program code",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "[k:Data] - global variables",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "[k:Heap] - dynamic memory (malloc / new)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "[k:Stack] - function calls, local variables",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "Stack & heap grow towards each other",
+       "size": 36,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Process States",
+   "ch": 2,
+   "beats": [
+    {
+     "say": "The process state diagram. This is asked in almost every exam, so learn to draw it. A process starts in the New state. When it is admitted, it goes to Ready, waiting for the CPU.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1640,
+       "y": 140,
+       "text": "MUST DRAW",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "ellipse",
+       "x": 200,
+       "y": 280,
+       "w": 230,
+       "h": 90,
+       "label": "New",
+       "color": "black",
+       "size": 34,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 560,
+       "y": 540,
+       "w": 250,
+       "h": 90,
+       "label": "Ready",
+       "color": "blue",
+       "size": 34,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        380,
+        370
+       ],
+       "p2": [
+        600,
+        545
+       ],
+       "color": "black",
+       "label": "admitted",
+       "lx": -110,
+       "ly": 0,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      }
+     ]
+    },
+    {
+     "say": "The scheduler picks it, and it goes to Running. If an interrupt comes, or its time slice ends, it goes back to Ready.",
+     "els": [
+      {
+       "t": "ellipse",
+       "x": 1100,
+       "y": 540,
+       "w": 270,
+       "h": 90,
+       "label": "Running",
+       "color": "green",
+       "size": 34,
+       "fill": null,
+       "lc": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        810,
+        600
+       ],
+       "p2": [
+        1100,
+        600
+       ],
+       "color": "black",
+       "label": "scheduler dispatch",
+       "lx": 0,
+       "ly": 36,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1180,
+        540
+       ],
+       "p2": [
+        760,
+        545
+       ],
+       "color": "black",
+       "label": "interrupt",
+       "lx": 0,
+       "ly": -6,
+       "curve": -110,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      }
+     ]
+    },
+    {
+     "say": "If it needs I O, or waits for some event, it goes to Waiting. When the I O completes, it goes back to Ready, not directly to Running. And when it finishes, it goes to Terminated.",
+     "els": [
+      {
+       "t": "ellipse",
+       "x": 830,
+       "y": 800,
+       "w": 260,
+       "h": 90,
+       "label": "Waiting",
+       "color": "red",
+       "size": 34,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "ellipse",
+       "x": 1460,
+       "y": 280,
+       "w": 290,
+       "h": 90,
+       "label": "Terminated",
+       "color": "black",
+       "size": 34,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1240,
+        630
+       ],
+       "p2": [
+        1040,
+        805
+       ],
+       "color": "black",
+       "label": "I/O or event wait",
+       "lx": 150,
+       "ly": 10,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        860,
+        805
+       ],
+       "p2": [
+        690,
+        630
+       ],
+       "color": "black",
+       "label": "I/O completed",
+       "lx": -120,
+       "ly": 10,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1300,
+        540
+       ],
+       "p2": [
+        1500,
+        370
+       ],
+       "color": "black",
+       "label": "exit",
+       "lx": 40,
+       "ly": 0,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "text",
+       "x": 1080,
+       "y": 978,
+       "s": "Waiting -> Ready (never directly to Running)",
+       "size": 30,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "PCB & Context Switch",
+   "ch": 2,
+   "beats": [
+    {
+     "say": "Every process has a Process Control Block, or P C B. It is like an ID card of the process. The OS stores everything about the process here.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:PCB] = Process Control Block = \"ID card\" of a process",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "table",
+       "x": 1300,
+       "y": 250,
+       "cw": [
+        460
+       ],
+       "rh": 52,
+       "rows": [
+        [
+         "Process ID"
+        ],
+        [
+         "Process state"
+        ],
+        [
+         "Program counter"
+        ],
+        [
+         "CPU registers"
+        ],
+        [
+         "Scheduling info"
+        ],
+        [
+         "Memory info"
+        ],
+        [
+         "I/O status"
+        ],
+        [
+         "Accounting info"
+        ]
+       ],
+       "color": "blue",
+       "size": 30,
+       "hdr": false,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      }
+     ]
+    },
+    {
+     "say": "It holds the process I D, the state, the program counter, which is the address of the next instruction, the CPU registers, scheduling information like priority, memory information, I O status, and accounting information.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "[k:Program counter] = address of next instruction",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "[k:Scheduling info] = priority, queue pointers",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Context switch. When the CPU moves from one process to another, the OS saves the state of the old process in its P C B, and loads the state of the new process from its P C B. During a context switch, no useful work is done, so it is pure overhead.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "Context switch",
+       "size": 42,
+       "font": "bold",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "save old process state -> its PCB",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "load new process state <- its PCB",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "[r:Pure overhead] - no useful work during the switch",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "stamp",
+       "x": 900,
+       "y": 880,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Schedulers",
+   "ch": 2,
+   "beats": [
+    {
+     "say": "There are three types of schedulers. The long term scheduler, also called the job scheduler, picks processes from the job pool and brings them into memory, into the ready queue. It controls the degree of multiprogramming.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "1) [r:Long-term] (job scheduler): new -> ready",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 230,
+       "y": 276,
+       "s": "controls [h:degree of multiprogramming]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "The short term scheduler, or CPU scheduler, picks a process from the ready queue and gives it the CPU. It runs very often, so it must be very fast.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "2) [r:Short-term] (CPU scheduler): ready -> running",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 230,
+       "y": 384,
+       "s": "runs very often => must be fast",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "The medium term scheduler does swapping. It removes a process from memory for some time, and brings it back later. This reduces the load on memory.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "3) [r:Medium-term]: swapping (suspend / resume)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 230,
+       "y": 492,
+       "s": "reduces load on memory",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Also remember. An I O bound process spends more time doing I O. A CPU bound process spends more time computing. A good system keeps a mix of both.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "[k:I/O-bound] - more I/O, short CPU bursts",
+       "size": 36,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "[k:CPU-bound] - long CPU bursts",
+       "size": 36,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "Good scheduler = [h:mix of both]",
+       "size": 36,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Threads",
+   "ch": 2,
+   "beats": [
+    {
+     "say": "A thread is a lightweight process. It is the smallest unit of CPU execution. All threads of a process share the code, the data, and open files. But each thread has its own stack, registers, and program counter.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Thread] = lightweight process, smallest unit of CPU use",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "share: [g:code, data, files]   own: [r:stack, registers, PC]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1280,
+       "y": 330,
+       "w": 520,
+       "h": 80,
+       "label": "code | data | files",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1280,
+       "y": 410,
+       "w": 170,
+       "h": 200,
+       "label": "T1 stack",
+       "color": "blue",
+       "size": 24,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1455,
+       "y": 410,
+       "w": 170,
+       "h": 200,
+       "label": "T2 stack",
+       "color": "blue",
+       "size": 24,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1630,
+       "y": 410,
+       "w": 170,
+       "h": 200,
+       "label": "T3 stack",
+       "color": "blue",
+       "size": 24,
+       "fill": null,
+       "lc": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Why threads? Responsiveness, resource sharing, economy, because creating a thread is cheaper than a process, and scalability on multicore CPUs.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "Benefits: responsiveness, resource sharing,",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "economy (cheap to create), scalability (multicore)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "There are user level threads, managed by a library without the kernel knowing, which are fast. And kernel level threads, managed by the OS, which are slower to create, but if one blocks, others can still run.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "[r:User-level]: managed by library, fast, kernel unaware",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "[r:Kernel-level]: managed by OS, slower, one block ≠ all block",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Multithreading models. Many to one: many user threads on one kernel thread. If one blocks, all block. One to one: each user thread gets its own kernel thread, used by Linux and Windows. Many to many: many user threads on a smaller or equal number of kernel threads. The best of both.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "Multithreading models",
+       "size": 38,
+       "font": "bold",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "[k:Many-to-one]: one blocks => all block",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "[k:One-to-one]: Linux, Windows",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 870,
+       "s": "[k:Many-to-many]: best of both",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "stamp",
+       "x": 1500,
+       "y": 820,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Inter-Process Communication (IPC)",
+   "ch": 2,
+   "beats": [
+    {
+     "say": "Processes often need to talk to each other. This is called inter process communication. There are two models. Shared memory, where processes share a region of memory. It is fast, but needs synchronization.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:IPC] - processes exchange data. Two models:",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "1) Shared memory",
+       "size": 38,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "common memory region. [g:fast], but needs synchronization",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1250,
+       "y": 230,
+       "w": 170,
+       "h": 110,
+       "label": "P1",
+       "color": "black",
+       "size": 32,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1610,
+       "y": 230,
+       "w": 170,
+       "h": 110,
+       "label": "P2",
+       "color": "black",
+       "size": 32,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1390,
+       "y": 380,
+       "w": 250,
+       "h": 90,
+       "label": "shared",
+       "color": "red",
+       "size": 30,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1335,
+        340
+       ],
+       "p2": [
+        1420,
+        380
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1695,
+        340
+       ],
+       "p2": [
+        1610,
+        380
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      }
+     ]
+    },
+    {
+     "say": "And message passing, where processes send and receive messages through the kernel. It is easier to use and good for distributed systems, but slower. Pipes and sockets are examples.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "2) Message passing",
+       "size": 38,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "send() / receive() through kernel. [g:easy], [r:slower]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "e.g. pipes, message queues, sockets",
+       "size": 36,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "rect",
+       "x": 1250,
+       "y": 560,
+       "w": 170,
+       "h": 110,
+       "label": "P1",
+       "color": "black",
+       "size": 32,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1610,
+       "y": 560,
+       "w": 170,
+       "h": 110,
+       "label": "P2",
+       "color": "black",
+       "size": 32,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1420,
+        615
+       ],
+       "p2": [
+        1610,
+        615
+       ],
+       "color": "black",
+       "label": "message",
+       "lx": 0,
+       "ly": -16,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "CPU Scheduling",
+   "ch": 3,
+   "beats": [
+    {
+     "say": "Chapter three. CPU scheduling. This chapter gives you guaranteed marks, because numericals come from here every year.",
+     "els": []
+    }
+   ],
+   "num": 3,
+   "subs": [
+    "Terms & formulas",
+    "FCFS",
+    "SJF / SRTF",
+    "Round Robin",
+    "Priority & multilevel queue"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "CPU Scheduling - Basics",
+   "ch": 3,
+   "beats": [
+    {
+     "say": "CPU scheduling means deciding which process in the ready queue gets the CPU next. In non preemptive scheduling, once a process gets the CPU, it keeps it until it finishes or waits. In preemptive scheduling, the OS can take the CPU away in the middle.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "Which ready process gets the CPU next?",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[r:Non-preemptive]: keeps CPU till it finishes / waits",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "[r:Preemptive]: OS can take CPU away in between",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Scheduling criteria. We want high CPU utilization and high throughput, which is processes finished per unit time. And we want low turnaround time, low waiting time, and low response time.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "Criteria",
+       "size": 42,
+       "font": "bold",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "Maximise: CPU utilisation, throughput",
+       "size": 36,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "Minimise: turnaround, waiting, response time",
+       "size": 36,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    },
+    {
+     "say": "Now the formulas. Write them down. Turnaround time equals completion time minus arrival time. Waiting time equals turnaround time minus burst time. Response time equals the time it first gets the CPU, minus arrival time.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1500,
+       "y": 520,
+       "text": "FORMULAS",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "[h:TAT = CT - AT]",
+       "size": 44,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "[h:WT = TAT - BT]",
+       "size": 44,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "[h:RT = first CPU time - AT]",
+       "size": 44,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 870,
+       "s": "AT = arrival, BT = burst, CT = completion time",
+       "size": 32,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "FCFS - First Come First Serve",
+   "ch": 3,
+   "beats": [
+    {
+     "say": "First come first serve. The simplest one. Whoever comes first, gets the CPU first. It is non preemptive. Let's solve this example. Four processes, P1 to P4, with these arrival times and burst times.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 200,
+       "cw": [
+        110,
+        110,
+        110
+       ],
+       "rh": 50,
+       "rows": [
+        [
+         "P",
+         "AT",
+         "BT"
+        ],
+        [
+         "P1",
+         "0",
+         "5"
+        ],
+        [
+         "P2",
+         "1",
+         "3"
+        ],
+        [
+         "P3",
+         "2",
+         "1"
+        ],
+        [
+         "P4",
+         "3",
+         "2"
+        ]
+       ],
+       "color": "black",
+       "size": 30,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      }
+     ]
+    },
+    {
+     "say": "P1 arrives at zero and runs for five units, till five. Then P2 runs from five to eight. P3 from eight to nine. And P4 from nine to eleven.",
+     "els": [
+      {
+       "t": "text",
+       "x": 640,
+       "y": 222,
+       "s": "Gantt chart",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "gantt",
+       "x": 640,
+       "y": 260,
+       "u": 78,
+       "h": 80,
+       "segs": [
+        [
+         "P1",
+         0,
+         5
+        ],
+        [
+         "P2",
+         5,
+         8
+        ],
+        [
+         "P3",
+         8,
+         9
+        ],
+        [
+         "P4",
+         9,
+         11
+        ]
+       ],
+       "color": "blue",
+       "size": 30
+      }
+     ]
+    },
+    {
+     "say": "Now apply the formulas. Turnaround time is completion minus arrival. Waiting time is turnaround minus burst. So the average turnaround time is 6.75, and the average waiting time is 4.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 500,
+       "cw": [
+        110,
+        110,
+        120,
+        110
+       ],
+       "rh": 50,
+       "rows": [
+        [
+         "P",
+         "CT",
+         "TAT",
+         "WT"
+        ],
+        [
+         "P1",
+         "5",
+         "5",
+         "0"
+        ],
+        [
+         "P2",
+         "8",
+         "7",
+         "4"
+        ],
+        [
+         "P3",
+         "9",
+         "7",
+         "6"
+        ],
+        [
+         "P4",
+         "11",
+         "8",
+         "6"
+        ]
+       ],
+       "color": "black",
+       "size": 30,
+       "hdr": true,
+       "order": "row",
+       "colors": {
+        "1,3": "red",
+        "2,3": "red",
+        "3,3": "red",
+        "4,3": "red"
+       },
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 700,
+       "y": 600,
+       "s": "Avg TAT = 27/4 = [h:6.75]",
+       "size": 40,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 700,
+       "y": 670,
+       "s": "Avg WT = 16/4 = [h:4]",
+       "size": 40,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "FCFS is simple, but it has the convoy effect. Short processes get stuck waiting behind one long process.",
+     "els": [
+      {
+       "t": "text",
+       "x": 700,
+       "y": 760,
+       "s": "Non-preemptive, simple",
+       "size": 34,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 700,
+       "y": 816,
+       "s": "Problem: [r:convoy effect] - short jobs",
+       "size": 34,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 700,
+       "y": 872,
+       "s": "wait behind one long job",
+       "size": 34,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "SJF - Shortest Job First",
+   "ch": 3,
+   "beats": [
+    {
+     "say": "Shortest job first. Among the processes that have arrived, pick the one with the smallest burst time. Same example. Watch carefully.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 200,
+       "cw": [
+        110,
+        110,
+        110
+       ],
+       "rh": 50,
+       "rows": [
+        [
+         "P",
+         "AT",
+         "BT"
+        ],
+        [
+         "P1",
+         "0",
+         "5"
+        ],
+        [
+         "P2",
+         "1",
+         "3"
+        ],
+        [
+         "P3",
+         "2",
+         "1"
+        ],
+        [
+         "P4",
+         "3",
+         "2"
+        ]
+       ],
+       "color": "black",
+       "size": 30,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      }
+     ]
+    },
+    {
+     "say": "At time zero, only P1 has arrived, so P1 runs till five. At five, P2, P3 and P4 are all waiting. P3 has the smallest burst, one, so it runs next. Then P4 with two. And finally P2.",
+     "els": [
+      {
+       "t": "text",
+       "x": 640,
+       "y": 222,
+       "s": "Gantt chart",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "gantt",
+       "x": 640,
+       "y": 260,
+       "u": 78,
+       "h": 80,
+       "segs": [
+        [
+         "P1",
+         0,
+         5
+        ],
+        [
+         "P3",
+         5,
+         6
+        ],
+        [
+         "P4",
+         6,
+         8
+        ],
+        [
+         "P2",
+         8,
+         11
+        ]
+       ],
+       "color": "blue",
+       "size": 30
+      }
+     ]
+    },
+    {
+     "say": "Calculating again, the average turnaround time is 6, and the average waiting time drops to 3.25. Better than FCFS.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 500,
+       "cw": [
+        110,
+        110,
+        120,
+        110
+       ],
+       "rh": 50,
+       "rows": [
+        [
+         "P",
+         "CT",
+         "TAT",
+         "WT"
+        ],
+        [
+         "P1",
+         "5",
+         "5",
+         "0"
+        ],
+        [
+         "P2",
+         "11",
+         "10",
+         "7"
+        ],
+        [
+         "P3",
+         "6",
+         "4",
+         "3"
+        ],
+        [
+         "P4",
+         "8",
+         "5",
+         "3"
+        ]
+       ],
+       "color": "black",
+       "size": 30,
+       "hdr": true,
+       "order": "row",
+       "colors": {
+        "1,3": "red",
+        "2,3": "red",
+        "3,3": "red",
+        "4,3": "red"
+       },
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 700,
+       "y": 600,
+       "s": "Avg TAT = 24/4 = [h:6]",
+       "size": 40,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 700,
+       "y": 670,
+       "s": "Avg WT = 13/4 = [h:3.25]",
+       "size": 40,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "SJF gives the minimum average waiting time, so it is called optimal. But long jobs can starve, and in real life we do not know the burst time in advance. The preemptive version is called shortest remaining time first, or S R T F.",
+     "els": [
+      {
+       "t": "text",
+       "x": 700,
+       "y": 760,
+       "s": "[h:Optimal] - minimum avg waiting time",
+       "size": 34,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 700,
+       "y": 816,
+       "s": "Problem: [r:starvation] of long jobs",
+       "size": 34,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 700,
+       "y": 872,
+       "s": "Preemptive SJF = [k:SRTF]",
+       "size": 34,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Round Robin (time quantum = 2)",
+   "ch": 3,
+   "beats": [
+    {
+     "say": "Round robin. Every process gets a fixed time slice, called the time quantum. Here the quantum is two. When the time is up, the process goes to the back of the ready queue. This is preemptive.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 200,
+       "cw": [
+        110,
+        110,
+        110
+       ],
+       "rh": 50,
+       "rows": [
+        [
+         "P",
+         "AT",
+         "BT"
+        ],
+        [
+         "P1",
+         "0",
+         "5"
+        ],
+        [
+         "P2",
+         "1",
+         "3"
+        ],
+        [
+         "P3",
+         "2",
+         "1"
+        ],
+        [
+         "P4",
+         "3",
+         "2"
+        ]
+       ],
+       "color": "black",
+       "size": 30,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      }
+     ]
+    },
+    {
+     "say": "P1 runs from zero to two. Meanwhile P2 and P3 have arrived, so they are ahead of P1 in the queue. P2 runs two to four. P3 needs only one unit, so it finishes at five. Then P1 again, five to seven. P4 from seven to nine. P2 finishes at ten, and P1 at eleven.",
+     "els": [
+      {
+       "t": "text",
+       "x": 640,
+       "y": 222,
+       "s": "Gantt chart",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "gantt",
+       "x": 640,
+       "y": 260,
+       "u": 78,
+       "h": 80,
+       "segs": [
+        [
+         "P1",
+         0,
+         2
+        ],
+        [
+         "P2",
+         2,
+         4
+        ],
+        [
+         "P3",
+         4,
+         5
+        ],
+        [
+         "P1",
+         5,
+         7
+        ],
+        [
+         "P4",
+         7,
+         9
+        ],
+        [
+         "P2",
+         9,
+         10
+        ],
+        [
+         "P1",
+         10,
+         11
+        ]
+       ],
+       "color": "blue",
+       "size": 30
+      }
+     ]
+    },
+    {
+     "say": "The average turnaround time is 7.25, and the average waiting time is 4.5. Round robin is not about the lowest waiting time. It is about fairness and quick response.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 500,
+       "cw": [
+        110,
+        110,
+        120,
+        110
+       ],
+       "rh": 50,
+       "rows": [
+        [
+         "P",
+         "CT",
+         "TAT",
+         "WT"
+        ],
+        [
+         "P1",
+         "11",
+         "11",
+         "6"
+        ],
+        [
+         "P2",
+         "10",
+         "9",
+         "6"
+        ],
+        [
+         "P3",
+         "5",
+         "3",
+         "2"
+        ],
+        [
+         "P4",
+         "9",
+         "6",
+         "4"
+        ]
+       ],
+       "color": "black",
+       "size": 30,
+       "hdr": true,
+       "order": "row",
+       "colors": {
+        "1,3": "red",
+        "2,3": "red",
+        "3,3": "red",
+        "4,3": "red"
+       },
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 700,
+       "y": 600,
+       "s": "Avg TAT = 29/4 = [h:7.25]",
+       "size": 40,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 700,
+       "y": 670,
+       "s": "Avg WT = 18/4 = [h:4.5]",
+       "size": 40,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "If the quantum is very large, round robin becomes FCFS. If it is very small, there are too many context switches. So choose it carefully.",
+     "els": [
+      {
+       "t": "text",
+       "x": 700,
+       "y": 760,
+       "s": "Fair, good response time (time-sharing)",
+       "size": 34,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 700,
+       "y": 816,
+       "s": "[r:Large q] -> becomes FCFS",
+       "size": 34,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 700,
+       "y": 872,
+       "s": "[r:Small q] -> too many context switches",
+       "size": 34,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Priority & Multilevel Queue",
+   "ch": 3,
+   "beats": [
+    {
+     "say": "Priority scheduling. Each process has a priority, and the highest priority runs first. Usually a smaller number means higher priority, but always check the question. It can be preemptive or non preemptive.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "Priority scheduling",
+       "size": 38,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "highest priority first (usually [k:small number = high])",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "The problem is starvation. A low priority process may wait forever. The solution is aging. We slowly increase the priority of processes that wait for a long time.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "Problem: [r:starvation]   Solution: [h:aging]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 230,
+       "y": 384,
+       "s": "aging = slowly raise priority of waiting processes",
+       "size": 36,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    },
+    {
+     "say": "Multilevel queue. The ready queue is split into separate queues. For example system processes, interactive processes, and batch processes. Each queue can have its own algorithm. In a multilevel feedback queue, a process can move between queues based on its behaviour.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "Multilevel queue",
+       "size": 38,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "rect",
+       "x": 1250,
+       "y": 470,
+       "w": 520,
+       "h": 70,
+       "label": "System  (highest)",
+       "color": "red",
+       "size": 28,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "rect",
+       "x": 1250,
+       "y": 545,
+       "w": 520,
+       "h": 70,
+       "label": "Interactive  (RR)",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1250,
+       "y": 620,
+       "w": 520,
+       "h": 70,
+       "label": "Batch  (FCFS, lowest)",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "separate queues, each with its own algorithm",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "[k:Feedback queue]: process can move between queues",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Here's a quick summary to revise. FCFS is non preemptive, and has the convoy effect. SJF is optimal for waiting time, but long jobs can starve. Round robin is preemptive and fair. Priority can starve, fixed with aging.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 640,
+       "cw": [
+        260,
+        230,
+        360
+       ],
+       "rh": 52,
+       "rows": [
+        [
+         "Algorithm",
+         "Preemptive?",
+         "Key point"
+        ],
+        [
+         "FCFS",
+         "No",
+         "convoy effect"
+        ],
+        [
+         "SJF",
+         "No",
+         "optimal avg WT"
+        ],
+        [
+         "SRTF",
+         "Yes",
+         "starvation"
+        ],
+        [
+         "Round Robin",
+         "Yes",
+         "fair, time quantum"
+        ],
+        [
+         "Priority",
+         "Both",
+         "starvation -> aging"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Process Synchronization",
+   "ch": 4,
+   "beats": [
+    {
+     "say": "Chapter four. Process synchronization. Theory questions from here are very common.",
+     "els": []
+    }
+   ],
+   "num": 4,
+   "subs": [
+    "Race condition",
+    "Critical section",
+    "Peterson's solution",
+    "Semaphores",
+    "Classical problems"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "Race Condition & Critical Section",
+   "ch": 4,
+   "beats": [
+    {
+     "say": "Imagine two processes updating the same shared variable, counter, at the same time. One adds one, the other subtracts one. Because their steps mix up, the final answer can be wrong. When the result depends on the order of execution, it is called a race condition.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Race condition] = result depends on the order of execution",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "e.g. P1: counter++   P2: counter--   (shared) => wrong value",
+       "size": 36,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    },
+    {
+     "say": "The part of the code where a process uses shared data is called the critical section. Each process follows this structure. Entry section, then critical section, then exit section, then remainder section.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "[r:Critical section] = code that uses shared data",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1300,
+       "y": 380,
+       "w": 420,
+       "h": 64,
+       "label": "entry section",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1300,
+       "y": 444,
+       "w": 420,
+       "h": 74,
+       "label": "CRITICAL SECTION",
+       "color": "red",
+       "size": 30,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "rect",
+       "x": 1300,
+       "y": 518,
+       "w": 420,
+       "h": 64,
+       "label": "exit section",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1300,
+       "y": 582,
+       "w": 420,
+       "h": 64,
+       "label": "remainder section",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      }
+     ]
+    },
+    {
+     "say": "Any solution to the critical section problem must satisfy three requirements. Remember them. Mutual exclusion: only one process inside the critical section at a time. Progress: if nobody is inside, the decision of who enters next cannot be postponed forever. And bounded waiting: there is a limit on how many times others can enter before you.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "3 requirements",
+       "size": 42,
+       "font": "bold",
+       "color": "black"
+      },
+      {
+       "t": "stamp",
+       "x": 700,
+       "y": 480,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "1) [r:Mutual exclusion] - only one inside at a time",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "2) [r:Progress] - no indefinite postponement",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "3) [r:Bounded waiting] - limit on others entering first",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Peterson's Solution",
+   "ch": 4,
+   "beats": [
+    {
+     "say": "Peterson's solution works for two processes. It uses two shared variables. A flag array, where flag of i is true means process i wants to enter. And turn, which says whose turn it is.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "For [k:2 processes]. Shared: [r:flag[2]] (I want to enter), [r:turn] (whose turn)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Process i sets its flag to true, and politely gives the turn to the other process, j. Then it waits while the other process wants to enter and it is the other's turn. After the critical section, it sets its flag back to false.",
+     "els": [
+      {
+       "t": "rect",
+       "x": 240,
+       "y": 300,
+       "w": 900,
+       "h": 420,
+       "label": null,
+       "color": "blue",
+       "size": 32,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "text",
+       "x": 280,
+       "y": 360,
+       "s": "do {",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 340,
+       "y": 410,
+       "s": "flag[i] = true;",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 340,
+       "y": 460,
+       "s": "turn = j;",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 340,
+       "y": 510,
+       "s": "while (flag[j] && turn == j);",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 340,
+       "y": 570,
+       "s": "[r:// critical section]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 340,
+       "y": 630,
+       "s": "flag[i] = false;",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 340,
+       "y": 680,
+       "s": "[g:// remainder section]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 280,
+       "y": 710,
+       "s": "} while (true);",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "Peterson's solution satisfies all three requirements: mutual exclusion, progress, and bounded waiting.",
+     "els": [
+      {
+       "t": "text",
+       "x": 1200,
+       "y": 420,
+       "s": "Satisfies all 3:",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 1200,
+       "y": 480,
+       "s": "[g:Mutual exclusion]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 1200,
+       "y": 540,
+       "s": "[g:Progress]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 1200,
+       "y": 600,
+       "s": "[g:Bounded waiting]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "stamp",
+       "x": 1300,
+       "y": 700,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Semaphores",
+   "ch": 4,
+   "beats": [
+    {
+     "say": "A semaphore is an integer variable, S, that can be changed only by two atomic operations. Wait, also called P. And signal, also called V.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Semaphore] S = integer, changed only by 2 atomic operations",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Wait checks if S is less than or equal to zero, and waits. Otherwise it decreases S by one. Signal simply increases S by one.",
+     "els": [
+      {
+       "t": "rect",
+       "x": 240,
+       "y": 300,
+       "w": 760,
+       "h": 260,
+       "label": null,
+       "color": "blue",
+       "size": 32,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "text",
+       "x": 280,
+       "y": 360,
+       "s": "wait(S)  [k:/ P(S)]:",
+       "size": 36,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 330,
+       "y": 410,
+       "s": "while (S <= 0);  // wait",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 330,
+       "y": 455,
+       "s": "S--;",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 280,
+       "y": 525,
+       "s": "signal(S)  [k:/ V(S)]:  S++;",
+       "size": 36,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "There are two types. A binary semaphore takes only zero or one, and works like a mutex lock. A counting semaphore can take any value, and is used when there are many copies of a resource.",
+     "els": [
+      {
+       "t": "text",
+       "x": 1080,
+       "y": 360,
+       "s": "[r:Binary semaphore] - 0 or 1 (like mutex lock)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 1080,
+       "y": 420,
+       "s": "[r:Counting semaphore] - any value",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 1110,
+       "y": 470,
+       "s": "(many instances of a resource)",
+       "size": 36,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    },
+    {
+     "say": "One problem. This version keeps looping while waiting. That is called busy waiting, or a spinlock. And if semaphores are used in the wrong order, they can cause deadlock and starvation.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "Busy waiting = [r:spinlock] (wastes CPU)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "Wrong order of wait() => [r:deadlock / starvation]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Classical Synchronization Problems",
+   "ch": 4,
+   "beats": [
+    {
+     "say": "First, the producer consumer problem, also called the bounded buffer problem. The producer puts items in a buffer of size n, the consumer takes them out. We use three semaphores. Mutex starts at one. Empty starts at n. Full starts at zero.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "1) Producer-Consumer (bounded buffer)",
+       "size": 38,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "mutex = 1,   empty = n,   full = 0",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "The producer does: wait empty, wait mutex, add the item, signal mutex, signal full. The consumer does the opposite: wait full, wait mutex, remove the item, signal mutex, signal empty.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "[k:Producer]: wait(empty); wait(mutex); add; signal(mutex); signal(full);",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "[k:Consumer]: wait(full); wait(mutex); remove; signal(mutex); signal(empty);",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Second, readers writers. Many readers can read at the same time, but a writer needs the data alone.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "2) Readers-Writers",
+       "size": 38,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "many readers together OK; writer needs [h:exclusive] access",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Third, dining philosophers. Five philosophers sit at a round table with five chopsticks. Each needs two chopsticks to eat. If all of them pick up their left chopstick at once, nobody can eat. That's a deadlock. Fixes: allow only four at the table, pick both chopsticks together, or odd ones pick left first and even ones pick right first.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "3) Dining Philosophers",
+       "size": 38,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "5 philosophers, 5 chopsticks, need 2 to eat",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "all pick left => [r:deadlock]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "Fix: max 4 sit / pick both / odd-even order",
+       "size": 36,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "ellipse",
+       "x": 1420,
+       "y": 600,
+       "w": 280,
+       "h": 280,
+       "label": null,
+       "color": "black",
+       "size": 32,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 1520,
+       "y": 501,
+       "w": 80,
+       "h": 80,
+       "label": "P0",
+       "color": "blue",
+       "size": 24,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1710,
+       "y": 639,
+       "w": 80,
+       "h": 80,
+       "label": "P1",
+       "color": "blue",
+       "size": 24,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1637,
+       "y": 861,
+       "w": 80,
+       "h": 80,
+       "label": "P2",
+       "color": "blue",
+       "size": 24,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1403,
+       "y": 861,
+       "w": 80,
+       "h": 80,
+       "label": "P3",
+       "color": "blue",
+       "size": 24,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1330,
+       "y": 639,
+       "w": 80,
+       "h": 80,
+       "label": "P4",
+       "color": "blue",
+       "size": 24,
+       "fill": null,
+       "lc": "blue"
+      }
+     ]
+    },
+    {
+     "say": "A monitor is a higher level tool. Only one process can be active inside a monitor at a time, and it uses condition variables with wait and signal.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 924,
+       "s": "[k:Monitor]: high-level; one process inside at a time; condition variables",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Deadlocks",
+   "ch": 5,
+   "beats": [
+    {
+     "say": "Chapter five. Deadlocks. Banker's algorithm is one of the most asked numericals in the whole subject.",
+     "els": []
+    }
+   ],
+   "num": 5,
+   "subs": [
+    "4 necessary conditions",
+    "Resource allocation graph",
+    "Prevention / avoidance",
+    "Banker's algorithm",
+    "Detection & recovery"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "Deadlock",
+   "ch": 5,
+   "beats": [
+    {
+     "say": "A deadlock is when a set of processes are all waiting for resources held by each other, so none of them can ever continue. Like two cars facing each other on a one lane bridge.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Deadlock] = processes wait for each other's resources forever",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "e.g. two cars on a one-lane bridge",
+       "size": 36,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    },
+    {
+     "say": "A deadlock can happen only if all four of these conditions hold at the same time. Mutual exclusion: a resource can be used by only one process. Hold and wait: a process holds one resource and waits for another. No preemption: a resource cannot be taken away by force. And circular wait: P1 waits for P2, P2 waits for P1, in a circle.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "4 necessary conditions (all must hold)",
+       "size": 42,
+       "font": "bold",
+       "color": "black"
+      },
+      {
+       "t": "stamp",
+       "x": 1500,
+       "y": 360,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "1) [r:Mutual exclusion]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "2) [r:Hold and wait]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "3) [r:No preemption]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "4) [r:Circular wait]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "Trick: [h:M - H - N - C]",
+       "size": 36,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    },
+    {
+     "say": "We show this with a resource allocation graph. Circles are processes, boxes are resources. An arrow from a process to a resource is a request. An arrow from a resource to a process means it is allocated. Here P1 holds R2 and wants R1, while P2 holds R1 and wants R2. There's a cycle, so there's a deadlock.",
+     "els": [
+      {
+       "t": "ellipse",
+       "x": 1180,
+       "y": 560,
+       "w": 130,
+       "h": 130,
+       "label": "P1",
+       "color": "blue",
+       "size": 34,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1600,
+       "y": 560,
+       "w": 130,
+       "h": 130,
+       "label": "P2",
+       "color": "blue",
+       "size": 34,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1400,
+       "y": 420,
+       "w": 100,
+       "h": 90,
+       "label": "R1",
+       "color": "red",
+       "size": 32,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "rect",
+       "x": 1400,
+       "y": 780,
+       "w": 100,
+       "h": 90,
+       "label": "R2",
+       "color": "red",
+       "size": 32,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1300,
+        580
+       ],
+       "p2": [
+        1400,
+        480
+       ],
+       "color": "black",
+       "label": "request",
+       "lx": -80,
+       "ly": -10,
+       "curve": 0,
+       "head": true,
+       "size": 24,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1500,
+        480
+       ],
+       "p2": [
+        1610,
+        580
+       ],
+       "color": "black",
+       "label": "held",
+       "lx": 60,
+       "ly": -10,
+       "curve": 0,
+       "head": true,
+       "size": 24,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1610,
+        670
+       ],
+       "p2": [
+        1500,
+        800
+       ],
+       "color": "black",
+       "label": "request",
+       "lx": 80,
+       "ly": 10,
+       "curve": 0,
+       "head": true,
+       "size": 24,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1400,
+        800
+       ],
+       "p2": [
+        1300,
+        670
+       ],
+       "color": "black",
+       "label": "held",
+       "lx": -60,
+       "ly": 10,
+       "curve": 0,
+       "head": true,
+       "size": 24,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "RAG: single instance => [r:cycle = deadlock]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "multiple instances => cycle = [k:maybe] deadlock",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Handling Deadlocks",
+   "ch": 5,
+   "beats": [
+    {
+     "say": "There are four ways to handle deadlocks. First, prevention. Make sure at least one of the four conditions can never hold. For example, ask for all resources at once, so there's no hold and wait. Or number the resources and request them in order, so there's no circular wait.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "1) [r:Prevention] - break one of the 4 conditions",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 230,
+       "y": 276,
+       "s": "all resources at once => no hold & wait",
+       "size": 36,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 230,
+       "y": 330,
+       "s": "request in fixed order => no circular wait",
+       "size": 36,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    },
+    {
+     "say": "Second, avoidance. Before giving a resource, check if the system will still be in a safe state. If not, make the process wait. Banker's algorithm does this.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "2) [r:Avoidance] - grant only if system stays in [h:safe state]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 230,
+       "y": 492,
+       "s": "=> Banker's algorithm",
+       "size": 36,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    },
+    {
+     "say": "Third, detection and recovery. Let deadlocks happen, detect them using a wait for graph, and then recover, by killing a process or taking resources away.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "3) [r:Detection & recovery] - wait-for graph; kill process /",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 230,
+       "y": 654,
+       "s": "preempt resources",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Fourth, just ignore it. This is called the ostrich approach, and most systems like Windows and Linux actually do this, because deadlocks are rare and prevention is costly.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "4) [r:Ignore] (ostrich approach) - Windows, Linux",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Banker's Algorithm - Example",
+   "ch": 5,
+   "beats": [
+    {
+     "say": "Now the famous Banker's algorithm example. Five processes, P0 to P4, and three resource types, A, B, and C. Here is the allocation, what each process currently holds. And max, the most each process may ever need.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 200,
+       "cw": [
+        120,
+        230,
+        230
+       ],
+       "rh": 54,
+       "rows": [
+        [
+         "",
+         "Alloc A B C",
+         "Max A B C"
+        ],
+        [
+         "P0",
+         "0 1 0",
+         "7 5 3"
+        ],
+        [
+         "P1",
+         "2 0 0",
+         "3 2 2"
+        ],
+        [
+         "P2",
+         "3 0 2",
+         "9 0 2"
+        ],
+        [
+         "P3",
+         "2 1 1",
+         "2 2 2"
+        ],
+        [
+         "P4",
+         "0 0 2",
+         "4 3 3"
+        ]
+       ],
+       "color": "black",
+       "size": 30,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 1200,
+       "y": 260,
+       "s": "Available = [h:3 3 2]",
+       "size": 40,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "Step one. Find the need matrix. Need equals max minus allocation. For P0, seven five three minus zero one zero, is seven four three. Do the same for every process.",
+     "els": [
+      {
+       "t": "text",
+       "x": 1200,
+       "y": 340,
+       "s": "[r:Need = Max - Allocation]",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "table",
+       "x": 760,
+       "y": 200,
+       "cw": [
+        230
+       ],
+       "rh": 54,
+       "rows": [
+        [
+         "Need A B C"
+        ],
+        [
+         "7 4 3"
+        ],
+        [
+         "1 2 2"
+        ],
+        [
+         "6 0 0"
+        ],
+        [
+         "0 1 1"
+        ],
+        [
+         "4 3 1"
+        ]
+       ],
+       "color": "black",
+       "size": 30,
+       "hdr": true,
+       "order": "row",
+       "colors": {
+        "1,0": "red",
+        "2,0": "red",
+        "3,0": "red",
+        "4,0": "red",
+        "5,0": "red"
+       },
+       "fills": {}
+      }
+     ]
+    },
+    {
+     "say": "Step two. Start with work equal to available, three three two. Find a process whose need is less than or equal to work. When it finishes, it releases its allocation, so add its allocation to work. Repeat.",
+     "els": [
+      {
+       "t": "text",
+       "x": 1200,
+       "y": 430,
+       "s": "Work = Available",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 1200,
+       "y": 480,
+       "s": "if Need <= Work:",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 1240,
+       "y": 530,
+       "s": "Work = Work + Alloc",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Banker's Algorithm - Safe Sequence",
+   "ch": 5,
+   "beats": [
+    {
+     "say": "P1 needs one two two, which is less than three three two. So P1 runs. Work becomes five three two.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "P1: Need (1 2 2) <= Work (3 3 2)  =>  Work = [g:5 3 2]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "P2 needs six zero zero. That is more than five three two, so skip it. P3 needs zero one one. Yes. Work becomes seven four three.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "P3: Need (0 1 1) <= Work (5 3 2)  =>  Work = [g:7 4 3]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "P4 needs four three one. Yes. Work becomes seven four five.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "P4: Need (4 3 1) <= Work (7 4 3)  =>  Work = [g:7 4 5]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Back to P0. It needs seven four three. Yes. Work becomes seven five five.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "P0: Need (7 4 3) <= Work (7 4 5)  =>  Work = [g:7 5 5]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Finally P2, six zero zero. Yes. Work becomes ten five seven.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "P2: Need (6 0 0) <= Work (7 5 5)  =>  Work = [g:10 5 7]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "All processes can finish, so the system is in a safe state. The safe sequence is P1, P3, P4, P0, P2. Remember, there can be more than one safe sequence, and any correct one gets full marks.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "Safe sequence:  [h:< P1, P3, P4, P0, P2 >]",
+       "size": 46,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "All can finish => [g:SAFE state]  (more than one safe sequence possible)",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "stamp",
+       "x": 1500,
+       "y": 560,
+       "text": "MOST ASKED",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Memory Management",
+   "ch": 6,
+   "beats": [
+    {
+     "say": "Chapter six. Memory management. Paging and TLB questions come here.",
+     "els": []
+    }
+   ],
+   "num": 6,
+   "subs": [
+    "Logical vs physical address",
+    "First / best / worst fit",
+    "Fragmentation",
+    "Paging & TLB",
+    "Segmentation"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "Logical vs Physical Address",
+   "ch": 6,
+   "beats": [
+    {
+     "say": "The CPU generates a logical address, also called a virtual address. The actual location in RAM is the physical address. A hardware unit called the M M U, the memory management unit, converts logical to physical.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[r:Logical address] - generated by CPU (virtual)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[r:Physical address] - actual location in RAM",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "[h:MMU] (Memory Management Unit) converts logical -> physical",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "A simple example with a relocation register. If the relocation register holds fourteen thousand, and the logical address is three four six, the physical address is fourteen thousand three hundred forty six.",
+     "els": [
+      {
+       "t": "rect",
+       "x": 240,
+       "y": 520,
+       "w": 200,
+       "h": 90,
+       "label": "CPU",
+       "color": "black",
+       "size": 34,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 640,
+       "y": 515,
+       "w": 140,
+       "h": 100,
+       "label": "+",
+       "color": "red",
+       "size": 48,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "rect",
+       "x": 620,
+       "y": 380,
+       "w": 180,
+       "h": 70,
+       "label": "14000",
+       "color": "red",
+       "size": 30,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "text",
+       "x": 580,
+       "y": 360,
+       "s": "relocation register",
+       "size": 26,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "rect",
+       "x": 1000,
+       "y": 520,
+       "w": 240,
+       "h": 90,
+       "label": "Memory",
+       "color": "black",
+       "size": 34,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        440,
+        565
+       ],
+       "p2": [
+        640,
+        565
+       ],
+       "color": "black",
+       "label": "346",
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        710,
+        450
+       ],
+       "p2": [
+        710,
+        515
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        780,
+        565
+       ],
+       "p2": [
+        1000,
+        565
+       ],
+       "color": "black",
+       "label": "14346",
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "text",
+       "x": 240,
+       "y": 720,
+       "s": "logical 346 + 14000 = physical [h:14346]",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "Swapping means moving a whole process out of memory to the disk, and back in later.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 924,
+       "s": "[k:Swapping]: move a process memory <-> disk",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Contiguous Allocation: First / Best / Worst Fit",
+   "ch": 6,
+   "beats": [
+    {
+     "say": "In contiguous allocation, each process gets one continuous block of memory. When a process arrives, we choose a free hole using one of three strategies. First fit: the first hole that is big enough. Best fit: the smallest hole that is big enough. Worst fit: the largest hole.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "1) [r:First fit] - first hole big enough",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "2) [r:Best fit] - smallest hole big enough",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "3) [r:Worst fit] - largest hole",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Classic example. Memory partitions of one hundred, five hundred, two hundred, three hundred, and six hundred K B. Processes of two hundred twelve, four hundred seventeen, one hundred twelve, and four hundred twenty six K B arrive in order.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "Partitions: 100, 500, 200, 300, 600 KB",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "Processes: 212, 417, 112, 426 KB",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "With first fit, two twelve goes into five hundred. Four seventeen goes into six hundred. One twelve goes into the leftover two eighty eight of the five hundred block. And four twenty six has to wait. With best fit, all four fit perfectly. With worst fit, four twenty six waits again. So in this example, best fit is the winner.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 560,
+       "cw": [
+        220,
+        250,
+        250,
+        250
+       ],
+       "rh": 54,
+       "rows": [
+        [
+         "Process",
+         "First fit",
+         "Best fit",
+         "Worst fit"
+        ],
+        [
+         "212 KB",
+         "500",
+         "300",
+         "600"
+        ],
+        [
+         "417 KB",
+         "600",
+         "500",
+         "500"
+        ],
+        [
+         "112 KB",
+         "288 block",
+         "200",
+         "388 block"
+        ],
+        [
+         "426 KB",
+         "waits",
+         "600",
+         "waits"
+        ]
+       ],
+       "color": "black",
+       "size": 30,
+       "hdr": true,
+       "order": "row",
+       "colors": {
+        "4,1": "red",
+        "4,3": "red",
+        "4,2": "green"
+       },
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 1240,
+       "y": 760,
+       "s": "Here [h:best fit] wins",
+       "size": 40,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Fragmentation",
+   "ch": 6,
+   "beats": [
+    {
+     "say": "Fragmentation means wasted memory. Internal fragmentation is waste inside an allocated block. For example, a process needs eighteen K B but gets a twenty K B block. Two K B is wasted inside.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[r:Internal fragmentation] - waste [h:inside] an allocated block",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 230,
+       "y": 276,
+       "s": "needs 18 KB, gets 20 KB => 2 KB wasted inside",
+       "size": 36,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "rect",
+       "x": 1300,
+       "y": 250,
+       "w": 420,
+       "h": 150,
+       "label": null,
+       "color": "black",
+       "size": 32,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "hl",
+       "x": 1300,
+       "y": 330,
+       "w": 420,
+       "h": 70,
+       "color": "pink"
+      },
+      {
+       "t": "text",
+       "x": 1420,
+       "y": 300,
+       "s": "used 18 KB",
+       "size": 30,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 1410,
+       "y": 375,
+       "s": "wasted 2 KB",
+       "size": 30,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "External fragmentation is when the total free memory is enough, but it is not continuous, so a process still cannot fit. The fix is compaction, which moves processes together. Or use paging.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "[r:External fragmentation] - enough total free memory,",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 230,
+       "y": 438,
+       "s": "but [h:not contiguous]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 230,
+       "y": 492,
+       "s": "Fix: [g:compaction] or [g:paging]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Quick rule: fixed partitions and paging cause internal fragmentation. Variable partitions and segmentation cause external fragmentation.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 560,
+       "cw": [
+        440,
+        380
+       ],
+       "rh": 54,
+       "rows": [
+        [
+         "Causes internal",
+         "Causes external"
+        ],
+        [
+         "fixed partitions",
+         "variable partitions"
+        ],
+        [
+         "paging",
+         "segmentation"
+        ]
+       ],
+       "color": "black",
+       "size": 30,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "stamp",
+       "x": 1300,
+       "y": 620,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Paging",
+   "ch": 6,
+   "beats": [
+    {
+     "say": "Paging solves external fragmentation. Physical memory is divided into fixed size blocks called frames. Logical memory is divided into blocks of the same size called pages.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "Physical memory -> [r:frames]   Logical memory -> [r:pages]  (same size)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "The logical address is split into a page number p and an offset d. The page number is looked up in the page table, which gives the frame number f. The physical address is f joined with d.",
+     "els": [
+      {
+       "t": "rect",
+       "x": 200,
+       "y": 330,
+       "w": 230,
+       "h": 80,
+       "label": "p  |  d",
+       "color": "blue",
+       "size": 34,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "text",
+       "x": 250,
+       "y": 310,
+       "s": "logical",
+       "size": 26,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "rect",
+       "x": 620,
+       "y": 280,
+       "w": 220,
+       "h": 300,
+       "label": null,
+       "color": "black",
+       "size": 32,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "text",
+       "x": 640,
+       "y": 260,
+       "s": "page table",
+       "size": 26,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "rect",
+       "x": 620,
+       "y": 400,
+       "w": 220,
+       "h": 60,
+       "label": "f",
+       "color": "red",
+       "size": 30,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "rect",
+       "x": 1050,
+       "y": 330,
+       "w": 230,
+       "h": 80,
+       "label": "f  |  d",
+       "color": "red",
+       "size": 34,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "text",
+       "x": 1100,
+       "y": 310,
+       "s": "physical",
+       "size": 26,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        300,
+        410
+       ],
+       "p2": [
+        620,
+        430
+       ],
+       "color": "black",
+       "label": "p",
+       "lx": 0,
+       "ly": 30,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        840,
+        430
+       ],
+       "p2": [
+        1050,
+        380
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        400,
+        330
+       ],
+       "p2": [
+        1100,
+        330
+       ],
+       "color": "black",
+       "label": "d",
+       "lx": 0,
+       "ly": -12,
+       "curve": -60,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      }
+     ]
+    },
+    {
+     "say": "If the page size is four K B, which is two to the power twelve, then the offset needs twelve bits. Paging has no external fragmentation, but a little internal fragmentation in the last page.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "page size 4 KB = 2^12  =>  offset d = [h:12 bits]",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "[g:No external fragmentation], small internal (last page)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "stamp",
+       "x": 1450,
+       "y": 760,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "TLB & Effective Access Time",
+   "ch": 6,
+   "beats": [
+    {
+     "say": "The page table is in memory, so every access needs two memory reads. To speed this up, we use a T L B, the translation lookaside buffer. It is a small, fast cache of page table entries.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:TLB] = Translation Lookaside Buffer = fast cache of page table",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[g:TLB hit]: frame found fast    [r:TLB miss]: go to page table in memory",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Effective access time. E A T equals hit ratio times T L B time plus memory time, plus one minus hit ratio, times T L B time plus two memory times. Because on a miss, we access memory twice.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "[h:EAT = h(t + m) + (1 - h)(t + 2m)]",
+       "size": 44,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "h = hit ratio, t = TLB time, m = memory time",
+       "size": 32,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "Example. T L B takes twenty nanoseconds, memory takes one hundred, and the hit ratio is eighty percent. E A T equals point eight times one twenty, plus point two times two twenty. That is ninety six plus forty four, which is one hundred forty nanoseconds.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "Ex: t = 20 ns, m = 100 ns, h = 0.8",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "EAT = 0.8 x 120 + 0.2 x 220",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "= 96 + 44 = [h:140 ns]",
+       "size": 44,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "stamp",
+       "x": 1400,
+       "y": 600,
+       "text": "NUMERICAL",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Segmentation",
+   "ch": 6,
+   "beats": [
+    {
+     "say": "Segmentation divides memory the way the user sees a program. Main function, other functions, stack, arrays. Each segment can have a different size.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "Memory divided by [h:logical units]: main(), functions, stack, arrays",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "segments have [r:variable size]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "The logical address is a segment number and an offset. The segment table stores a base and a limit for each segment. If the offset is less than the limit, physical address equals base plus offset. Otherwise it is an error, a trap.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "address = (segment no. s, offset d)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "segment table: [k:base] & [k:limit]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "if d < limit: physical = [h:base + d]   else => [r:trap (error)]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Paging versus segmentation. Paging uses fixed size pages and has internal fragmentation. It is invisible to the user. Segmentation uses variable sizes, has external fragmentation, and matches the user's view.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 560,
+       "cw": [
+        360,
+        360,
+        400
+       ],
+       "rh": 54,
+       "rows": [
+        [
+         "",
+         "Paging",
+         "Segmentation"
+        ],
+        [
+         "size",
+         "fixed",
+         "variable"
+        ],
+        [
+         "fragmentation",
+         "internal",
+         "external"
+        ],
+        [
+         "user view",
+         "no",
+         "yes (logical units)"
+        ]
+       ],
+       "color": "black",
+       "size": 30,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "stamp",
+       "x": 1500,
+       "y": 660,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Virtual Memory",
+   "ch": 7,
+   "beats": [
+    {
+     "say": "Chapter seven. Virtual memory. Page replacement numericals are asked every single year.",
+     "els": []
+    }
+   ],
+   "num": 7,
+   "subs": [
+    "Demand paging",
+    "Page fault",
+    "FIFO / Optimal / LRU",
+    "Belady's anomaly",
+    "Thrashing"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "Virtual Memory & Demand Paging",
+   "ch": 7,
+   "beats": [
+    {
+     "say": "Virtual memory lets us run programs that are bigger than the RAM. Only the pages that are needed are loaded into memory. This is called demand paging. A valid invalid bit in the page table tells if a page is in memory.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Virtual memory] - run programs bigger than RAM",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[r:Demand paging] - load a page only when needed",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "valid / invalid bit tells if the page is in memory",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "If a process uses a page that is not in memory, a page fault happens. The steps are. One, the reference hits an invalid bit, and a trap goes to the OS. Two, the OS finds a free frame. Three, it reads the page from the disk. Four, it updates the page table. Five, the instruction is restarted.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "Page fault - steps",
+       "size": 42,
+       "font": "bold",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "1) reference -> invalid -> [r:trap] to OS",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "2) find a free frame",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "3) read the page from disk",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "4) update the page table",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "5) restart the instruction",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "stamp",
+       "x": 1400,
+       "y": 520,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    },
+    {
+     "say": "If there is no free frame, we must remove a page. That is page replacement. Let's solve the classic example.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "No free frame? => [h:page replacement]",
+       "size": 36,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Page Replacement - FIFO",
+   "ch": 7,
+   "beats": [
+    {
+     "say": "FIFO. First in, first out. When we need space, we remove the page that came in earliest. Here's the reference string with three frames.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "Reference string (3 frames):",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Seven, zero, one fill the empty frames. Three faults. Two comes, and seven is the oldest, so seven goes out. Zero is already there, that's a hit. Three replaces zero, the oldest now. And we continue the same way, always removing the oldest page.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 330,
+       "cw": [
+        100,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+       ],
+       "rh": 54,
+       "rows": [
+        [
+         "ref",
+         "7",
+         "0",
+         "1",
+         "2",
+         "0",
+         "3",
+         "0",
+         "4",
+         "2",
+         "3",
+         "0",
+         "3",
+         "2",
+         "1",
+         "2",
+         "0",
+         "1",
+         "7",
+         "0",
+         "1"
+        ],
+        [
+         "F1",
+         "7",
+         "7",
+         "7",
+         "2",
+         "2",
+         "2",
+         "2",
+         "4",
+         "4",
+         "4",
+         "0",
+         "0",
+         "0",
+         "0",
+         "0",
+         "0",
+         "0",
+         "7",
+         "7",
+         "7"
+        ],
+        [
+         "F2",
+         "",
+         "0",
+         "0",
+         "0",
+         "0",
+         "3",
+         "3",
+         "3",
+         "2",
+         "2",
+         "2",
+         "2",
+         "2",
+         "1",
+         "1",
+         "1",
+         "1",
+         "1",
+         "0",
+         "0"
+        ],
+        [
+         "F3",
+         "",
+         "",
+         "1",
+         "1",
+         "1",
+         "1",
+         "0",
+         "0",
+         "0",
+         "3",
+         "3",
+         "3",
+         "3",
+         "3",
+         "2",
+         "2",
+         "2",
+         "2",
+         "2",
+         "1"
+        ],
+        [
+         "",
+         "F",
+         "F",
+         "F",
+         "F",
+         "H",
+         "F",
+         "F",
+         "F",
+         "F",
+         "F",
+         "F",
+         "H",
+         "H",
+         "F",
+         "F",
+         "H",
+         "H",
+         "F",
+         "F",
+         "F"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "col",
+       "colors": {
+        "4,1": "red",
+        "4,2": "red",
+        "4,3": "red",
+        "4,4": "red",
+        "4,5": "green",
+        "4,6": "red",
+        "4,7": "red",
+        "4,8": "red",
+        "4,9": "red",
+        "4,10": "red",
+        "4,11": "red",
+        "4,12": "green",
+        "4,13": "green",
+        "4,14": "red",
+        "4,15": "red",
+        "4,16": "green",
+        "4,17": "green",
+        "4,18": "red",
+        "4,19": "red",
+        "4,20": "red",
+        "1,1": "red",
+        "2,2": "red",
+        "3,3": "red",
+        "1,4": "red",
+        "2,6": "red",
+        "3,7": "red",
+        "1,8": "red",
+        "2,9": "red",
+        "3,10": "red",
+        "1,11": "red",
+        "2,14": "red",
+        "3,15": "red",
+        "1,18": "red",
+        "2,19": "red",
+        "3,20": "red"
+       },
+       "fills": {}
+      }
+     ]
+    },
+    {
+     "say": "Count them. FIFO gives fifteen page faults and five hits.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 680,
+       "s": "Page faults = [h:15]   Hits = 5",
+       "size": 46,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 1300,
+       "y": 680,
+       "s": "F = fault,  H = hit",
+       "size": 30,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Page Replacement - Optimal",
+   "ch": 7,
+   "beats": [
+    {
+     "say": "Optimal. Remove the page that will not be used for the longest time in the future. It gives the fewest faults, but it cannot be built in real life, because we cannot see the future. It is used to compare other algorithms.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "Reference string (3 frames):",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "At two, look ahead. Zero is used next, then one is used much later, and seven is used last of all. So replace seven. Keep doing this, always looking into the future.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 330,
+       "cw": [
+        100,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+       ],
+       "rh": 54,
+       "rows": [
+        [
+         "ref",
+         "7",
+         "0",
+         "1",
+         "2",
+         "0",
+         "3",
+         "0",
+         "4",
+         "2",
+         "3",
+         "0",
+         "3",
+         "2",
+         "1",
+         "2",
+         "0",
+         "1",
+         "7",
+         "0",
+         "1"
+        ],
+        [
+         "F1",
+         "7",
+         "7",
+         "7",
+         "2",
+         "2",
+         "2",
+         "2",
+         "2",
+         "2",
+         "2",
+         "2",
+         "2",
+         "2",
+         "2",
+         "2",
+         "2",
+         "2",
+         "7",
+         "7",
+         "7"
+        ],
+        [
+         "F2",
+         "",
+         "0",
+         "0",
+         "0",
+         "0",
+         "0",
+         "0",
+         "4",
+         "4",
+         "4",
+         "0",
+         "0",
+         "0",
+         "0",
+         "0",
+         "0",
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        [
+         "F3",
+         "",
+         "",
+         "1",
+         "1",
+         "1",
+         "3",
+         "3",
+         "3",
+         "3",
+         "3",
+         "3",
+         "3",
+         "3",
+         "1",
+         "1",
+         "1",
+         "1",
+         "1",
+         "1",
+         "1"
+        ],
+        [
+         "",
+         "F",
+         "F",
+         "F",
+         "F",
+         "H",
+         "F",
+         "H",
+         "F",
+         "H",
+         "H",
+         "F",
+         "H",
+         "H",
+         "F",
+         "H",
+         "H",
+         "H",
+         "F",
+         "H",
+         "H"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "col",
+       "colors": {
+        "4,1": "red",
+        "4,2": "red",
+        "4,3": "red",
+        "4,4": "red",
+        "4,5": "green",
+        "4,6": "red",
+        "4,7": "green",
+        "4,8": "red",
+        "4,9": "green",
+        "4,10": "green",
+        "4,11": "red",
+        "4,12": "green",
+        "4,13": "green",
+        "4,14": "red",
+        "4,15": "green",
+        "4,16": "green",
+        "4,17": "green",
+        "4,18": "red",
+        "4,19": "green",
+        "4,20": "green",
+        "1,1": "red",
+        "2,2": "red",
+        "3,3": "red",
+        "1,4": "red",
+        "3,6": "red",
+        "2,8": "red",
+        "2,11": "red",
+        "3,14": "red",
+        "1,18": "red"
+       },
+       "fills": {}
+      }
+     ]
+    },
+    {
+     "say": "Optimal gives only nine page faults. That's the minimum possible.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 680,
+       "s": "Page faults = [h:9]   Hits = 11",
+       "size": 46,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 1300,
+       "y": 680,
+       "s": "F = fault,  H = hit",
+       "size": 30,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Page Replacement - LRU",
+   "ch": 7,
+   "beats": [
+    {
+     "say": "L R U. Least recently used. Remove the page that has not been used for the longest time in the past. It is like optimal, but looking backwards. This is the one used in practice.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "Reference string (3 frames):",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "At two, seven was used longest ago, so seven goes. At three, look back. One was used longest ago, so one is replaced. Continue the same way.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 330,
+       "cw": [
+        100,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+       ],
+       "rh": 54,
+       "rows": [
+        [
+         "ref",
+         "7",
+         "0",
+         "1",
+         "2",
+         "0",
+         "3",
+         "0",
+         "4",
+         "2",
+         "3",
+         "0",
+         "3",
+         "2",
+         "1",
+         "2",
+         "0",
+         "1",
+         "7",
+         "0",
+         "1"
+        ],
+        [
+         "F1",
+         "7",
+         "7",
+         "7",
+         "2",
+         "2",
+         "2",
+         "2",
+         "4",
+         "4",
+         "4",
+         "0",
+         "0",
+         "0",
+         "1",
+         "1",
+         "1",
+         "1",
+         "1",
+         "1",
+         "1"
+        ],
+        [
+         "F2",
+         "",
+         "0",
+         "0",
+         "0",
+         "0",
+         "0",
+         "0",
+         "0",
+         "0",
+         "3",
+         "3",
+         "3",
+         "3",
+         "3",
+         "3",
+         "0",
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        [
+         "F3",
+         "",
+         "",
+         "1",
+         "1",
+         "1",
+         "3",
+         "3",
+         "3",
+         "2",
+         "2",
+         "2",
+         "2",
+         "2",
+         "2",
+         "2",
+         "2",
+         "2",
+         "7",
+         "7",
+         "7"
+        ],
+        [
+         "",
+         "F",
+         "F",
+         "F",
+         "F",
+         "H",
+         "F",
+         "H",
+         "F",
+         "F",
+         "F",
+         "F",
+         "H",
+         "H",
+         "F",
+         "H",
+         "F",
+         "H",
+         "F",
+         "H",
+         "H"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "col",
+       "colors": {
+        "4,1": "red",
+        "4,2": "red",
+        "4,3": "red",
+        "4,4": "red",
+        "4,5": "green",
+        "4,6": "red",
+        "4,7": "green",
+        "4,8": "red",
+        "4,9": "red",
+        "4,10": "red",
+        "4,11": "red",
+        "4,12": "green",
+        "4,13": "green",
+        "4,14": "red",
+        "4,15": "green",
+        "4,16": "red",
+        "4,17": "green",
+        "4,18": "red",
+        "4,19": "green",
+        "4,20": "green",
+        "1,1": "red",
+        "2,2": "red",
+        "3,3": "red",
+        "1,4": "red",
+        "3,6": "red",
+        "1,8": "red",
+        "3,9": "red",
+        "2,10": "red",
+        "1,11": "red",
+        "1,14": "red",
+        "2,16": "red",
+        "3,18": "red"
+       },
+       "fills": {}
+      }
+     ]
+    },
+    {
+     "say": "LRU gives twelve page faults. So the order is: optimal nine, LRU twelve, FIFO fifteen.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 680,
+       "s": "Page faults = [h:12]   Hits = 8",
+       "size": 46,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 1300,
+       "y": 680,
+       "s": "F = fault,  H = hit",
+       "size": 30,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Belady's Anomaly & Thrashing",
+   "ch": 7,
+   "beats": [
+    {
+     "say": "Belady's anomaly. Normally, more frames means fewer page faults. But with FIFO, sometimes more frames give more faults. For the string one two three four one two five one two three four five, three frames give 9 faults, but four frames give 10. L R U and optimal never have this problem.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Belady's anomaly]: more frames => [r:more] faults (FIFO only)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "1,2,3,4,1,2,5,1,2,3,4,5",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "3 frames = [r:9] faults,   4 frames = [r:10] faults",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "LRU & Optimal never suffer (stack algorithms)",
+       "size": 36,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "stamp",
+       "x": 1500,
+       "y": 320,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    },
+    {
+     "say": "Thrashing. When there are too many processes and too few frames, the system spends all its time swapping pages in and out, instead of doing real work. CPU utilization suddenly drops.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "[h:Thrashing] = too busy swapping pages, no real work",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "CPU utilisation drops suddenly",
+       "size": 36,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         1180,
+         990
+        ],
+        [
+         1180,
+         640
+        ]
+       ],
+       "color": "black",
+       "w": 4
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         1180,
+         990
+        ],
+        [
+         1800,
+         990
+        ]
+       ],
+       "color": "black",
+       "w": 4
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         1190,
+         960
+        ],
+        [
+         1300,
+         860
+        ],
+        [
+         1420,
+         760
+        ],
+        [
+         1520,
+         720
+        ],
+        [
+         1580,
+         730
+        ],
+        [
+         1640,
+         820
+        ],
+        [
+         1720,
+         960
+        ]
+       ],
+       "color": "red",
+       "w": 5
+      },
+      {
+       "t": "text",
+       "x": 1060,
+       "y": 630,
+       "s": "CPU use",
+       "size": 26,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 1300,
+       "y": 1035,
+       "s": "degree of multiprogramming",
+       "size": 26,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 1650,
+       "y": 820,
+       "s": "thrashing",
+       "size": 28,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "To fix it, use the working set model, control the page fault frequency, or reduce the degree of multiprogramming.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "Fix: [g:working set model], [g:page-fault frequency],",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 230,
+       "y": 708,
+       "s": "reduce degree of multiprogramming",
+       "size": 36,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "File Systems",
+   "ch": 8,
+   "beats": [
+    {
+     "say": "Chapter eight. File systems.",
+     "els": []
+    }
+   ],
+   "num": 8,
+   "subs": [
+    "File & access methods",
+    "Directory structures",
+    "Allocation methods",
+    "Free space management"
+   ],
+   "stars": 4
+  },
+  {
+   "kind": "page",
+   "title": "Files & Access Methods",
+   "ch": 8,
+   "beats": [
+    {
+     "say": "A file is a named collection of related data, stored on secondary storage. Every file has attributes like name, type, size, location, protection, and time. And operations like create, open, read, write, seek, and delete.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:File] = named collection of related data on disk",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "Attributes: name, type, size, location, protection, time",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "Operations: create, open, read, write, seek, delete, truncate",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Three access methods. Sequential access reads records one after another, like a tape. Direct, or random access, can jump to any block directly. And indexed access first looks up an index, then goes to the block.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "Access methods",
+       "size": 42,
+       "font": "bold",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "1) [r:Sequential] - one after another (like a tape)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "2) [r:Direct / random] - jump to any block n",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "3) [r:Indexed] - index first, then the block",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Directory Structures",
+   "ch": 8,
+   "beats": [
+    {
+     "say": "Directory structures. Single level: all files in one directory, so names can clash. Two level: a separate directory for each user.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "1) [r:Single-level] - all files in one directory (name clash)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "2) [r:Two-level] - separate directory per user",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Tree structured: directories inside directories, like folders on your computer. This is the most common. Acyclic graph: like a tree, but a file can be shared through links. And general graph allows cycles, which need extra care.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "3) [r:Tree-structured] - folders in folders ([h:most common])",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "4) [r:Acyclic graph] - sharing via links",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "5) [r:General graph] - cycles allowed (needs garbage collection)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1000,
+       "y": 620,
+       "w": 160,
+       "h": 70,
+       "label": "root",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 760,
+       "y": 760,
+       "w": 160,
+       "h": 70,
+       "label": "home",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1240,
+       "y": 760,
+       "w": 160,
+       "h": 70,
+       "label": "bin",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 640,
+       "y": 900,
+       "w": 160,
+       "h": 70,
+       "label": "a.txt",
+       "color": "blue",
+       "size": 26,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 880,
+       "y": 900,
+       "w": 160,
+       "h": 70,
+       "label": "b.c",
+       "color": "blue",
+       "size": 26,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1040,
+        690
+       ],
+       "p2": [
+        860,
+        760
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1120,
+        690
+       ],
+       "p2": [
+        1300,
+        760
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        820,
+        830
+       ],
+       "p2": [
+        730,
+        900
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        860,
+        830
+       ],
+       "p2": [
+        950,
+        900
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "File Allocation Methods",
+   "ch": 8,
+   "beats": [
+    {
+     "say": "How are file blocks placed on the disk? Three methods, very important. First, contiguous allocation. The file uses blocks next to each other. Reading is fast, and direct access is easy. But it causes external fragmentation, and the file is hard to grow.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1600,
+       "y": 140,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "1) Contiguous",
+       "size": 38,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "blocks next to each other. [g:fast, direct access]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "[r:external fragmentation, hard to grow]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1150,
+       "y": 250,
+       "w": 80,
+       "h": 70,
+       "label": "4",
+       "color": "blue",
+       "size": 26,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1230,
+       "y": 250,
+       "w": 80,
+       "h": 70,
+       "label": "5",
+       "color": "blue",
+       "size": 26,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1310,
+       "y": 250,
+       "w": 80,
+       "h": 70,
+       "label": "6",
+       "color": "blue",
+       "size": 26,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1390,
+       "y": 250,
+       "w": 80,
+       "h": 70,
+       "label": "7",
+       "color": "blue",
+       "size": 26,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1470,
+       "y": 250,
+       "w": 80,
+       "h": 70,
+       "label": "8",
+       "color": "blue",
+       "size": 26,
+       "fill": null,
+       "lc": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Second, linked allocation. Each block holds a pointer to the next block. No external fragmentation, and the file can grow easily. But random access is slow, and pointers use space. The FAT system is a version of this.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "2) Linked",
+       "size": 38,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "each block points to the next. [g:no ext. fragmentation]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "[r:slow random access, pointer overhead]   (FAT = variant)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1150,
+       "y": 470,
+       "w": 90,
+       "h": 70,
+       "label": "9",
+       "color": "blue",
+       "size": 26,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1330,
+       "y": 470,
+       "w": 90,
+       "h": 70,
+       "label": "16",
+       "color": "blue",
+       "size": 26,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1510,
+       "y": 470,
+       "w": 90,
+       "h": 70,
+       "label": "1",
+       "color": "blue",
+       "size": 26,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1690,
+       "y": 470,
+       "w": 90,
+       "h": 70,
+       "label": "25",
+       "color": "blue",
+       "size": 26,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1240,
+        505
+       ],
+       "p2": [
+        1330,
+        505
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1420,
+        505
+       ],
+       "p2": [
+        1510,
+        505
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1600,
+        505
+       ],
+       "p2": [
+        1690,
+        505
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      }
+     ]
+    },
+    {
+     "say": "Third, indexed allocation. One index block keeps all the pointers to the file's blocks. It supports direct access and has no external fragmentation, but the index block is extra overhead.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "3) Indexed",
+       "size": 38,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "index block keeps all pointers. [g:direct access]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "[r:index block overhead]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1150,
+       "y": 760,
+       "w": 150,
+       "h": 160,
+       "label": "19\n9\n16\n1",
+       "color": "red",
+       "size": 26,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "text",
+       "x": 1180,
+       "y": 950,
+       "s": "index",
+       "size": 26,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "rect",
+       "x": 1420,
+       "y": 700,
+       "w": 90,
+       "h": 60,
+       "label": "9",
+       "color": "blue",
+       "size": 24,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1420,
+       "y": 790,
+       "w": 90,
+       "h": 60,
+       "label": "16",
+       "color": "blue",
+       "size": 24,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1420,
+       "y": 880,
+       "w": 90,
+       "h": 60,
+       "label": "1",
+       "color": "blue",
+       "size": 24,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1300,
+        790
+       ],
+       "p2": [
+        1420,
+        730
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1300,
+        830
+       ],
+       "p2": [
+        1420,
+        820
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1300,
+        870
+       ],
+       "p2": [
+        1420,
+        905
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Free Space Management",
+   "ch": 8,
+   "beats": [
+    {
+     "say": "The OS must also track which disk blocks are free. First, the bit vector, or bitmap. One bit per block. Zero means free, one means allocated, or the opposite, depending on the book. It is simple and fast.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "1) [r:Bit vector / bitmap] - 1 bit per block",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 230,
+       "y": 276,
+       "s": "e.g. 0 0 1 1 1 1 0 0 1 1 ...  (simple, fast)",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "Second, a linked list, where each free block points to the next free block. Third, grouping, where one free block stores addresses of many free blocks. And fourth, counting, which stores the first free block, and how many free blocks follow it.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "2) [r:Linked list] - free blocks point to next free block",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "3) [r:Grouping] - one block stores many free addresses",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "4) [r:Counting] - (first free block, count)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Disk Scheduling",
+   "ch": 9,
+   "beats": [
+    {
+     "say": "Chapter nine. Disk scheduling. Another sure shot numerical.",
+     "els": []
+    }
+   ],
+   "num": 9,
+   "subs": [
+    "Disk structure & access time",
+    "FCFS & SSTF",
+    "SCAN, C-SCAN, LOOK, C-LOOK",
+    "RAID levels"
+   ],
+   "stars": 4
+  },
+  {
+   "kind": "page",
+   "title": "Disk Structure & Access Time",
+   "ch": 9,
+   "beats": [
+    {
+     "say": "A hard disk has platters. Each platter has circular tracks, and each track is divided into sectors. The same track on all platters forms a cylinder. The read write head moves across tracks.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "platter -> [r:tracks] -> [r:sectors];  same track on all = [r:cylinder]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1300,
+       "y": 380,
+       "w": 420,
+       "h": 420,
+       "label": null,
+       "color": "black",
+       "size": 32,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 1380,
+       "y": 460,
+       "w": 260,
+       "h": 260,
+       "label": null,
+       "color": "blue",
+       "size": 32,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1460,
+       "y": 540,
+       "w": 100,
+       "h": 100,
+       "label": null,
+       "color": "black",
+       "size": 32,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         1510,
+         380
+        ],
+        [
+         1510,
+         540
+        ]
+       ],
+       "color": "red",
+       "w": 3
+      },
+      {
+       "t": "text",
+       "x": 1720,
+       "y": 470,
+       "s": "track",
+       "size": 28,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 1540,
+       "y": 450,
+       "s": "sector",
+       "size": 28,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "Disk access time equals seek time, plus rotational latency, plus transfer time. Seek time is the time to move the head to the right track. It's the biggest part, so disk scheduling tries to reduce head movement.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "[h:Access time = Seek + Rotational latency + Transfer]",
+       "size": 40,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "Seek time = move head to the track ([r:biggest part])",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "Disk scheduling goal: [g:minimise head movement]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Disk Scheduling: FCFS & SSTF",
+   "ch": 9,
+   "beats": [
+    {
+     "say": "Classic example. The disk has cylinders zero to one ninety nine. The request queue is ninety eight, one eighty three, thirty seven, one twenty two, fourteen, one twenty four, sixty five, sixty seven. And the head starts at fifty three.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "Queue: 98, 183, 37, 122, 14, 124, 65, 67",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "Head = 53,   cylinders 0 - 199",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "FCFS. Just go in the given order. Fifty three to ninety eight, to one eighty three, and so on. Add up all the jumps. The total head movement is 640 cylinders.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "FCFS",
+       "size": 38,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "53 -> 98 -> 183 -> 37 -> 122 -> 14 -> 124 -> 65 -> 67",
+       "size": 30,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "Total head movement = [h:640]",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "S S T F. Shortest seek time first. Always go to the nearest request. From fifty three, the nearest is sixty five, then sixty seven, then thirty seven, fourteen, ninety eight, one twenty two, one twenty four, and one eighty three. Total head movement is only 236. But requests far away may starve.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "SSTF (nearest first)",
+       "size": 38,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "53 -> 65 -> 67 -> 37 -> 14 -> 98 -> 122 -> 124 -> 183",
+       "size": 30,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "Total head movement = [h:236]   ([r:may starve far requests])",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         1150,
+         600
+        ],
+        [
+         1830,
+         600
+        ]
+       ],
+       "color": "black",
+       "w": 3
+      },
+      {
+       "t": "text",
+       "x": 1136,
+       "y": 586,
+       "s": "0",
+       "size": 22,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 1306,
+       "y": 586,
+       "s": "50",
+       "size": 22,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 1477,
+       "y": 586,
+       "s": "100",
+       "size": 22,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 1648,
+       "y": 586,
+       "s": "150",
+       "size": 22,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 1816,
+       "y": 586,
+       "s": "199",
+       "size": 22,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         1331,
+         630
+        ],
+        [
+         1372,
+         675
+        ],
+        [
+         1378,
+         720
+        ],
+        [
+         1276,
+         765
+        ],
+        [
+         1197,
+         810
+        ],
+        [
+         1484,
+         855
+        ],
+        [
+         1566,
+         900
+        ],
+        [
+         1573,
+         945
+        ],
+        [
+         1775,
+         990
+        ]
+       ],
+       "color": "red",
+       "w": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "SCAN, C-SCAN, LOOK, C-LOOK",
+   "ch": 9,
+   "beats": [
+    {
+     "say": "SCAN, also called the elevator algorithm. The head moves in one direction to the end of the disk, serving requests, then turns back. Moving towards zero first: fifty three, thirty seven, fourteen, zero, then sixty five up to one eighty three. Total is 236.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "SCAN (elevator), towards 0",
+       "size": 36,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "53 -> 37 -> 14 -> 0 -> 65 -> 67 -> 98 -> 122 -> 124 -> 183",
+       "size": 30,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "Total = [h:236]",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "LOOK is the same, but the head only goes as far as the last request, not to the end. So it turns at fourteen. Total is 208.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "LOOK (turn at last request)",
+       "size": 36,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "53 -> 37 -> 14 -> 65 -> 67 -> 98 -> 122 -> 124 -> 183",
+       "size": 30,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "Total = [h:208]",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "C SCAN, or circular SCAN, moves in only one direction. Going up: sixty five to one eighty three, to the end, one ninety nine. Then it jumps back to zero and continues up to fourteen and thirty seven. Counting the return jump, the total is 382. C LOOK does the same but turns at the last request: total 322. Some books do not count the return jump, so follow your textbook.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "C-SCAN (one direction, jump back), going up",
+       "size": 36,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "53 -> 65 -> 67 -> 98 -> 122 -> 124 -> 183 -> 199 -> 0 -> 14 -> 37",
+       "size": 28,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "Total = [h:382] (with return jump)",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 870,
+       "s": "C-LOOK",
+       "size": 36,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 924,
+       "s": "53 -> 65 -> 67 -> 98 -> 122 -> 124 -> 183 -> 14 -> 37   Total = [h:322]",
+       "size": 28,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "RAID Levels",
+   "ch": 9,
+   "beats": [
+    {
+     "say": "Finally, RAID. Redundant array of independent disks. Many disks used together for speed or safety. RAID zero is striping. Data is split across disks. Very fast, but no safety. If one disk fails, data is lost.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:RAID] = Redundant Array of Independent Disks",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "0) [r:Striping] - fast, [r:no redundancy]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "RAID one is mirroring. The same data is copied on two disks. Very safe, but you lose half the space. RAID five is striping with distributed parity. It balances speed and safety, and survives one disk failure.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "1) [r:Mirroring] - copy on 2 disks, safe, 50% space",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "5) [r:Striping + distributed parity] - survives 1 disk failure",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "Others: RAID 6 (double parity), RAID 10 (mirror + stripe)",
+       "size": 36,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Exam Revision",
+   "ch": 10,
+   "beats": [
+    {
+     "say": "Chapter ten. Exam revision. If you're short on time, revise these first.",
+     "els": []
+    }
+   ],
+   "num": 10,
+   "subs": [
+    "Most asked questions",
+    "Last-minute tips"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "Most Asked Exam Questions",
+   "ch": 10,
+   "beats": [
+    {
+     "say": "Here are the most asked questions across universities. One, the process state diagram and P C B. Two, scheduling numericals with Gantt charts. Three, the critical section requirements, Peterson's solution, and semaphores.",
+     "els": [
+      {
+       "t": "text",
+       "x": 200,
+       "y": 222,
+       "s": "1. Process state diagram + PCB",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 276,
+       "s": "2. Scheduling numericals: FCFS, SJF, RR (Gantt chart)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 330,
+       "s": "3. Critical section: 3 requirements, Peterson, semaphores",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Four, producer consumer and dining philosophers. Five, deadlock conditions and Banker's algorithm. Six, paging, T L B, and effective access time.",
+     "els": [
+      {
+       "t": "text",
+       "x": 200,
+       "y": 384,
+       "s": "4. Producer-consumer / dining philosophers",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 438,
+       "s": "5. Deadlock: 4 conditions + Banker's algorithm",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 492,
+       "s": "6. Paging, TLB & effective access time",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Seven, page replacement with FIFO, optimal and LRU, plus Belady's anomaly. Eight, thrashing. Nine, file allocation methods. And ten, disk scheduling numericals.",
+     "els": [
+      {
+       "t": "text",
+       "x": 200,
+       "y": 546,
+       "s": "7. Page replacement: FIFO, Optimal, LRU + Belady's anomaly",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 600,
+       "s": "8. Thrashing",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 654,
+       "s": "9. File allocation methods",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 708,
+       "s": "10. Disk scheduling numericals",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Exam tip. In numericals, always draw the Gantt chart or the table neatly, write the formula first, and then the answer. You get step marks even if the final answer is wrong.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "Tip: draw the table / Gantt chart, [h:write the formula first] => step marks!",
+       "size": 36,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "outro",
+   "title": "All the Best!",
+   "ch": 10,
+   "beats": [
+    {
+     "say": "That's the complete operating system subject. If this helped you, share it with your friends who have the exam, and subscribe to TechVibe24 for more one shot videos. Tell me in the comments which subject you want next. All the best for your exam!",
+     "els": []
+    }
+   ]
+  }
+ ],
+ "chapters": [
+  [
+   1,
+   "Introduction to OS",
+   [
+    "What is an OS",
+    "Functions",
+    "Types of OS",
+    "System calls & dual mode",
+    "OS structures"
+   ],
+   3
+  ],
+  [
+   2,
+   "Processes & Threads",
+   [
+    "Process & its states",
+    "PCB & context switch",
+    "Schedulers",
+    "Threads",
+    "IPC"
+   ],
+   4
+  ],
+  [
+   3,
+   "CPU Scheduling",
+   [
+    "Terms & formulas",
+    "FCFS",
+    "SJF / SRTF",
+    "Round Robin",
+    "Priority & multilevel queue"
+   ],
+   5
+  ],
+  [
+   4,
+   "Process Synchronization",
+   [
+    "Race condition",
+    "Critical section",
+    "Peterson's solution",
+    "Semaphores",
+    "Classical problems"
+   ],
+   5
+  ],
+  [
+   5,
+   "Deadlocks",
+   [
+    "4 necessary conditions",
+    "Resource allocation graph",
+    "Prevention / avoidance",
+    "Banker's algorithm",
+    "Detection & recovery"
+   ],
+   5
+  ],
+  [
+   6,
+   "Memory Management",
+   [
+    "Logical vs physical address",
+    "First / best / worst fit",
+    "Fragmentation",
+    "Paging & TLB",
+    "Segmentation"
+   ],
+   5
+  ],
+  [
+   7,
+   "Virtual Memory",
+   [
+    "Demand paging",
+    "Page fault",
+    "FIFO / Optimal / LRU",
+    "Belady's anomaly",
+    "Thrashing"
+   ],
+   5
+  ],
+  [
+   8,
+   "File Systems",
+   [
+    "File & access methods",
+    "Directory structures",
+    "Allocation methods",
+    "Free space management"
+   ],
+   4
+  ],
+  [
+   9,
+   "Disk Scheduling",
+   [
+    "Disk structure & access time",
+    "FCFS & SSTF",
+    "SCAN, C-SCAN, LOOK, C-LOOK",
+    "RAID levels"
+   ],
+   4
+  ],
+  [
+   10,
+   "Exam Revision",
+   [
+    "Most asked questions",
+    "Last-minute tips"
+   ],
+   5
+  ]
+ ]
+}
