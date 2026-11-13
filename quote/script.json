@@ -1,0 +1,15 @@
+{
+  "date": "",
+  "voices": ["en-US-ChristopherNeural", "en-US-GuyNeural", "en-US-AndrewMultilingualNeural", "en-US-EricNeural"],
+  "rate": "-6%",
+  "pitch": "-4Hz",
+  "segments": [
+    {"id": "q1", "scenes": ["rain"], "vo": "The most precious gift you will ever receive... is an insult."},
+    {"id": "q2", "scenes": ["crowd"], "vo": "They laughed at you. They doubted you. They said you would never make it."},
+    {"id": "q3", "scenes": ["fist"], "vo": "But every insult... became fuel."},
+    {"id": "q4", "scenes": ["study", "stairs"], "vo": "While they talked, you worked. Every you can't, became, watch me."},
+    {"id": "q5", "scenes": ["peak"], "vo": "Because insults don't break leaders."},
+    {"id": "q6", "scenes": ["stage"], "vo": "Insults create leaders."},
+    {"id": "q7", "scenes": ["walk"], "vo": "So the next time they insult you... just say, thank you."}
+  ]
+}

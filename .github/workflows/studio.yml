@@ -138,3 +138,24 @@ jobs:
         run: |
           tar czf os_voice.tgz ostts
           gh release create "ostts-${{ github.run_number }}" os_voice.tgz --title "OS video voiceover ${{ github.run_number }}" --notes "Beat voiceovers" -R "${{ github.repository }}"
+
+  quote:
+    if: contains(github.event.head_commit.message, '[quote]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install numpy pillow onnxruntime edge-tts
+      - name: voiceover
+        run: python tools/news_assets.py quote/script.json qa vo
+      - name: scenes
+        env: { PROMPTS: quote_prompts }
+        run: python tools/news_assets.py quote/script.json qa img
+      - name: publish
+        if: always()
+        env: { GH_TOKEN: '${{ github.token }}' }
+        run: |
+          cd qa && tar czf quote_assets.tgz vo scenes depth
+          gh release create "quote-${{ github.run_number }}" sheets/*.jpg quote_assets.tgz --title "Quote Short assets ${{ github.run_number }}" --notes "Voice + scenes" -R "${{ github.repository }}"

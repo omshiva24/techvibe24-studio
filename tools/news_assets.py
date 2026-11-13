@@ -5,16 +5,17 @@ import asyncio, json, os, sys, time, urllib.request, urllib.error
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 sys.path.insert(0, os.path.dirname(__file__))
-from news_prompts import P, full
+import importlib
+_pm = importlib.import_module(os.environ.get('PROMPTS', 'news_prompts')); P, full = _pm.P, _pm.full
 SCRIPT, OUT = sys.argv[1], sys.argv[2]
 for d in ('vo', 'scenes', 'depth', 'sheets'): os.makedirs(f'{OUT}/{d}', exist_ok=True)
 def log(*a): print(time.strftime('%H:%M:%S'), *a, flush=True)
 
 # ---------------- voiceover ----------------
-async def tts_one(text, voice, rate, mp3):
+async def tts_one(text, voice, rate, mp3, pitch='+0Hz'):
     import edge_tts
-    try: com = edge_tts.Communicate(text, voice, rate=rate, boundary='WordBoundary')
-    except TypeError: com = edge_tts.Communicate(text, voice, rate=rate)
+    try: com = edge_tts.Communicate(text, voice, rate=rate, pitch=pitch, boundary='WordBoundary')
+    except TypeError: com = edge_tts.Communicate(text, voice, rate=rate, pitch=pitch)
     words, sents = [], []
     with open(mp3, 'wb') as f:
         async for ch in com.stream():
@@ -29,7 +30,7 @@ def voiceover():
         for seg in S['segments']:
             for k in range(4):
                 try:
-                    w, s = asyncio.run(tts_one(seg['vo'], voice, S.get('rate', '+0%'), f'{vd}/{seg["id"]}.mp3'))
+                    w, s = asyncio.run(tts_one(seg['vo'], voice, S.get('rate', '+0%'), f'{vd}/{seg["id"]}.mp3', S.get('pitch', '+0Hz')))
                     meta[voice][seg['id']] = {'words': w, 'sentences': s}; break
                 except Exception as e:
                     log('tts retry', voice, seg['id'], repr(e)[:120]); time.sleep(4 + 4 * k)
