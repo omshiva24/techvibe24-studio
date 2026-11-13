@@ -88,3 +88,31 @@ jobs:
       - name: publish video
         env: { GH_TOKEN: '${{ github.token }}' }
         run: gh release create "video-${{ github.run_number }}" dist/* --title "Hanuman Chalisa movie ${{ github.run_number }}" --notes "Full video, 3 Shorts, thumbnail" -R "${{ github.repository }}"
+
+  news:
+    if: contains(github.event.head_commit.message, '[news]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install numpy pillow onnxruntime edge-tts
+      - name: fonts
+        run: |
+          mkdir -p na/fonts && cd na/fonts
+          B=https://raw.githubusercontent.com/google/fonts/main/ofl
+          for f in "anton/Anton-Regular.ttf" "inter/Inter%5Bopsz,wght%5D.ttf" "spacegrotesk/SpaceGrotesk%5Bwght%5D.ttf" "jetbrainsmono/JetBrainsMono%5Bwght%5D.ttf" "bebasneue/BebasNeue-Regular.ttf" "montserrat/Montserrat%5Bwght%5D.ttf"; do
+            n=$(basename "$f" | sed 's/%5B.*//; s/-Regular//; s/\.ttf$//'); curl -sfL -o "$n.ttf" "$B/$f" && echo "font $n ok" || echo "font $n FAILED"
+          done
+          ls -la
+      - name: voiceover
+        run: python tools/news_assets.py news/script.json na vo
+      - name: backdrops
+        run: python tools/news_assets.py news/script.json na img
+      - name: publish
+        if: always()
+        env: { GH_TOKEN: '${{ github.token }}' }
+        run: |
+          cd na && tar czf news_assets.tgz vo scenes depth fonts
+          gh release create "news-${{ github.run_number }}" sheets/*.jpg news_assets.tgz --title "News assets ${{ github.run_number }}" --notes "Voiceover, backdrops, depth maps, fonts" -R "${{ github.repository }}"

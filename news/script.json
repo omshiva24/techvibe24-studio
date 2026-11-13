@@ -1,0 +1,21 @@
+{
+  "date": "13 NOV 2026",
+  "voices": ["en-US-AndrewMultilingualNeural", "en-US-AndrewNeural", "en-US-ChristopherNeural", "en-US-GuyNeural"],
+  "rate": "+7%",
+  "segments": [
+    {"id": "hook", "scenes": ["hook"],
+     "vo": "Nvidia's CEO just resigned, and an AI company is heading for a trillion-dollar IPO. Here's your tech news in 60 seconds."},
+    {"id": "s1", "n": 1, "scenes": ["nv1", "nv2"],
+     "vo": "Number one. Jensen Huang has resigned as Nvidia's CEO, days after admitting an affair with a woman US officials reportedly tied to Chinese intelligence. Nothing is proven, and Nvidia says it has no reason to believe secrets leaked. CFO Colette Kress steps in as interim CEO."},
+    {"id": "s2", "n": 2, "scenes": ["ipo"],
+     "vo": "Number two. Anthropic, the company behind Claude, plans to list on Nasdaq next week, at a value of about 1.2 trillion dollars."},
+    {"id": "s3", "n": 3, "scenes": ["spx"],
+     "vo": "Number three. SpaceX will spend over 74 billion dollars on giant AI supercomputer campuses in Texas and Arizona."},
+    {"id": "s4", "n": 4, "scenes": ["law"],
+     "vo": "Number four. Nonprofit groups are suing OpenAI, Google, Meta, Anthropic and SpaceX, asking a court to freeze next-gen AI until it's proven safe."},
+    {"id": "s5", "n": 5, "scenes": ["gls"],
+     "vo": "And number five. Google and Samsung's Gemini smart glasses are on pre-order from 395 dollars, shipping December 10th."},
+    {"id": "cta", "scenes": ["cta"],
+     "vo": "Which story shocked you most? Comment below, and follow TechVibe24 for more."}
+  ]
+}
