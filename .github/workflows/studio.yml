@@ -139,6 +139,28 @@ jobs:
           tar czf os_voice.tgz ostts
           gh release create "ostts-${{ github.run_number }}" os_voice.tgz --title "OS video voiceover ${{ github.run_number }}" --notes "Beat voiceovers" -R "${{ github.repository }}"
 
+  cdtts:
+    if: contains(github.event.head_commit.message, '[cdtts]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install edge-tts
+      - name: reuse earlier voiceover
+        env: { GH_TOKEN: '${{ github.token }}' }
+        run: |
+          prev=$(gh release list -R "${{ github.repository }}" --limit 50 --json tagName --jq '[.[] | select(.tagName|startswith("cdtts"))][0].tagName' || true)
+          if [ -n "$prev" ]; then gh release download "$prev" -p cd_voice.tgz -R "${{ github.repository }}" && tar xzf cd_voice.tgz && rm cd_voice.tgz; fi
+          ls cdtts/* | head -3 || true
+      - run: python cdv/tts.py cdv/cd_script.json cdtts en-US-AndrewMultilingualNeural
+      - name: publish
+        env: { GH_TOKEN: '${{ github.token }}' }
+        run: |
+          tar czf cd_voice.tgz cdtts
+          gh release create "cdtts-${{ github.run_number }}" cd_voice.tgz --title "Compiler Design voiceover ${{ github.run_number }}" --notes "Beat voiceovers" -R "${{ github.repository }}"
+
   quote:
     if: contains(github.event.head_commit.message, '[quote]')
     runs-on: ubuntu-latest

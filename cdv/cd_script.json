@@ -1,0 +1,6680 @@
+{
+ "pages": [
+  {
+   "kind": "cover",
+   "title": "Compiler Design",
+   "ch": 0,
+   "beats": [
+    {
+     "say": "Compiler Design. The complete subject, in one video. Simple explanations, handwritten notes, and every important exam problem solved step by step.",
+     "els": []
+    },
+    {
+     "say": "This works for B Tech computer science in almost every university. A K T U, Anna University, V T U, J N T U, Mumbai, Pune, and private universities too. And it covers the Compiler Design part of GATE. So grab a pen, and let's start.",
+     "els": []
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Contents",
+   "ch": 0,
+   "beats": [
+    {
+     "say": "Here's our plan. Eleven chapters, from the basics to the exam numericals.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "What we will cover today",
+       "size": 42,
+       "font": "bold",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "We start with what a compiler is and its phases. Then lexical analysis, grammars, and the big scoring topics: top down and bottom up parsing.",
+     "els": [
+      {
+       "t": "text",
+       "x": 200,
+       "y": 276,
+       "s": "1.  Introduction to Compilers",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 330,
+       "s": "2.  [h:Lexical Analysis]  (RE -> DFA)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 384,
+       "s": "3.  Grammars & Syntax Analysis",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 438,
+       "s": "4.  [h:Top-Down Parsing]  (FIRST, FOLLOW, LL(1))",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 492,
+       "s": "5.  [h:Bottom-Up Parsing]  (LR(0), SLR)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "After that, syntax directed translation, intermediate code, runtime environment, code optimization, and code generation. And at the end, a quick revision of the most asked questions. The highlighted ones are the most important.",
+     "els": [
+      {
+       "t": "text",
+       "x": 200,
+       "y": 546,
+       "s": "6.  Syntax-Directed Translation",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 600,
+       "s": "7.  [h:Intermediate Code]  (quadruples, triples)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 654,
+       "s": "8.  Runtime Environment",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 708,
+       "s": "9.  [h:Code Optimization]  (basic blocks, DAG)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 762,
+       "s": "10.  Code Generation",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 816,
+       "s": "11.  Exam Revision - most asked questions",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "stamp",
+       "x": 1520,
+       "y": 520,
+       "text": "MOST ASKED",
+       "color": "red",
+       "rot": -10,
+       "size": 34
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Introduction to Compilers",
+   "ch": 1,
+   "beats": [
+    {
+     "say": "Chapter one. Introduction to compilers. Let's build the basics first.",
+     "els": []
+    }
+   ],
+   "num": 1,
+   "subs": [
+    "Language processors",
+    "Compiler vs interpreter",
+    "Phases of a compiler",
+    "Passes & bootstrapping"
+   ],
+   "stars": 4
+  },
+  {
+   "kind": "page",
+   "title": "What is a Compiler?",
+   "ch": 1,
+   "beats": [
+    {
+     "say": "A compiler is a program that translates a program written in a high level language, like C or Java, into an equivalent program in a low level language, like assembly or machine code. While translating, it also reports errors to the programmer.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Compiler] = translates high-level program",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "-> equivalent low-level (machine / assembly) program",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "+ reports errors",
+       "size": 38,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "rect",
+       "x": 1180,
+       "y": 260,
+       "w": 250,
+       "h": 100,
+       "label": "source\nprogram",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1520,
+       "y": 260,
+       "w": 250,
+       "h": 100,
+       "label": "Compiler",
+       "color": "red",
+       "size": 32,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "rect",
+       "x": 1520,
+       "y": 470,
+       "w": 250,
+       "h": 100,
+       "label": "target\nprogram",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1180,
+       "y": 470,
+       "w": 250,
+       "h": 100,
+       "label": "error\nmessages",
+       "color": "red",
+       "size": 28,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1430,
+        310
+       ],
+       "p2": [
+        1520,
+        310
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1645,
+        360
+       ],
+       "p2": [
+        1645,
+        470
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1560,
+        360
+       ],
+       "p2": [
+        1430,
+        490
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      }
+     ]
+    },
+    {
+     "say": "Compiler versus interpreter. A compiler translates the whole program at once, and then you run the output. It is fast to run, but errors are shown after the whole program is checked. An interpreter translates and runs line by line. It is slower, but it is easier to debug. C and C plus plus use compilers. Python mostly uses an interpreter.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 420,
+       "cw": [
+        300,
+        420,
+        420
+       ],
+       "rh": 54,
+       "rows": [
+        [
+         "",
+         "Compiler",
+         "Interpreter"
+        ],
+        [
+         "translates",
+         "whole program at once",
+         "line by line"
+        ],
+        [
+         "speed",
+         "[g:fast] execution",
+         "[r:slower]"
+        ],
+        [
+         "errors",
+         "after full check",
+         "one at a time (easy debug)"
+        ],
+        [
+         "examples",
+         "C, C++",
+         "Python, JavaScript"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "stamp",
+       "x": 1560,
+       "y": 760,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    },
+    {
+     "say": "Other language processors. A preprocessor handles things like macros and include files. An assembler converts assembly to machine code. And the linker and loader join object files and load the program into memory.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 870,
+       "s": "Preprocessor -> Compiler -> Assembler -> Linker / Loader",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Phases of a Compiler",
+   "ch": 1,
+   "beats": [
+    {
+     "say": "The phases of a compiler. This is the most asked question in unit one, so learn this diagram. There are six phases. Lexical analysis, syntax analysis, semantic analysis, intermediate code generation, code optimization, and code generation.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "MUST DRAW",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "rect",
+       "x": 560,
+       "y": 200,
+       "w": 420,
+       "h": 84,
+       "label": "Lexical Analyzer",
+       "color": "blue",
+       "size": 30,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 560,
+       "y": 328,
+       "w": 420,
+       "h": 84,
+       "label": "Syntax Analyzer",
+       "color": "blue",
+       "size": 30,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 560,
+       "y": 456,
+       "w": 420,
+       "h": 84,
+       "label": "Semantic Analyzer",
+       "color": "blue",
+       "size": 30,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 560,
+       "y": 584,
+       "w": 420,
+       "h": 84,
+       "label": "Intermediate Code Gen.",
+       "color": "blue",
+       "size": 30,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 560,
+       "y": 712,
+       "w": 420,
+       "h": 84,
+       "label": "Code Optimizer",
+       "color": "blue",
+       "size": 30,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 560,
+       "y": 840,
+       "w": 420,
+       "h": 84,
+       "label": "Code Generator",
+       "color": "blue",
+       "size": 30,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        770,
+        284
+       ],
+       "p2": [
+        770,
+        328
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        770,
+        412
+       ],
+       "p2": [
+        770,
+        456
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        770,
+        540
+       ],
+       "p2": [
+        770,
+        584
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        770,
+        668
+       ],
+       "p2": [
+        770,
+        712
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        770,
+        796
+       ],
+       "p2": [
+        770,
+        840
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "text",
+       "x": 640,
+       "y": 190,
+       "s": "source program",
+       "size": 26,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 640,
+       "y": 1000,
+       "s": "target program",
+       "size": 26,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    },
+    {
+     "say": "Two things are used by every phase. The symbol table, which stores information about identifiers, and the error handler, which reports and recovers from errors.",
+     "els": [
+      {
+       "t": "rect",
+       "x": 1180,
+       "y": 420,
+       "w": 330,
+       "h": 110,
+       "label": "Symbol table",
+       "color": "red",
+       "size": 32,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "rect",
+       "x": 1180,
+       "y": 640,
+       "w": 330,
+       "h": 110,
+       "label": "Error handler",
+       "color": "red",
+       "size": 32,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        980,
+        470
+       ],
+       "p2": [
+        1180,
+        475
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": true,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        980,
+        690
+       ],
+       "p2": [
+        1180,
+        695
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": true,
+       "lc": "black"
+      }
+     ]
+    },
+    {
+     "say": "The first part, lexical to intermediate code, is called the front end. It depends on the source language. The optimizer and code generator form the back end, which depends on the target machine.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 420,
+       "s": "[k:Front end]: analysis",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 465,
+       "s": "(depends on language)",
+       "size": 28,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 780,
+       "s": "[k:Back end]: synthesis",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 825,
+       "s": "(depends on machine)",
+       "size": 28,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Phases - Example: position = initial + rate * 60",
+   "ch": 1,
+   "beats": [
+    {
+     "say": "Let's see the phases with the famous example. Position equals initial plus rate times sixty. The lexical analyzer breaks it into tokens: id one, equals, id two, plus, id three, times, the number sixty.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "position = initial + rate * 60",
+       "size": 40,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[r:Lexical]:  id1  =  id2  +  id3  *  60",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "The syntax analyzer builds a syntax tree from these tokens. The semantic analyzer checks types. Since rate is a float, it converts sixty to a float.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "[r:Syntax]: builds the syntax tree",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "[r:Semantic]: type check -> inttofloat(60)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1500,
+       "y": 220,
+       "w": 90,
+       "h": 70,
+       "label": "=",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 1340,
+       "y": 330,
+       "w": 110,
+       "h": 70,
+       "label": "id1",
+       "color": "black",
+       "size": 26,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 1650,
+       "y": 330,
+       "w": 90,
+       "h": 70,
+       "label": "+",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 1520,
+       "y": 440,
+       "w": 110,
+       "h": 70,
+       "label": "id2",
+       "color": "black",
+       "size": 26,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 1790,
+       "y": 440,
+       "w": 90,
+       "h": 70,
+       "label": "*",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 1660,
+       "y": 550,
+       "w": 110,
+       "h": 70,
+       "label": "id3",
+       "color": "black",
+       "size": 26,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 1790,
+       "y": 550,
+       "w": 120,
+       "h": 70,
+       "label": "60",
+       "color": "red",
+       "size": 26,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1520,
+        285
+       ],
+       "p2": [
+        1410,
+        330
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1570,
+        285
+       ],
+       "p2": [
+        1680,
+        330
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1670,
+        395
+       ],
+       "p2": [
+        1590,
+        440
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1720,
+        395
+       ],
+       "p2": [
+        1820,
+        440
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1810,
+        505
+       ],
+       "p2": [
+        1720,
+        550
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1840,
+        505
+       ],
+       "p2": [
+        1850,
+        550
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      }
+     ]
+    },
+    {
+     "say": "Then intermediate code is generated in three address form. The optimizer removes the extra conversion and temporary. And finally, the code generator produces machine code with registers.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "[r:Intermediate]:  t1 = inttofloat(60);  t2 = id3 * t1;",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 470,
+       "y": 546,
+       "s": "t3 = id2 + t2;  id1 = t3",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "[r:Optimized]:  t1 = id3 * 60.0;  id1 = id2 + t1",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "[r:Code]:  LDF R2, id3;  MULF R2, R2, #60.0;",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 310,
+       "y": 708,
+       "s": "LDF R1, id2;  ADDF R1, R1, R2;  STF id1, R1",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Passes, Bootstrapping & Cross Compiler",
+   "ch": 1,
+   "beats": [
+    {
+     "say": "A pass means reading the whole program once. A one pass compiler does everything in one reading, so it is fast, but it uses more memory and can do less optimization. A multi pass compiler reads it several times, and produces better code.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Pass] = one complete reading of the program",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[k:One-pass]: fast, less optimisation",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "[k:Multi-pass]: slower, better code, less memory per pass",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Bootstrapping means writing a compiler in its own language. For example, writing a C compiler in C. We first write a small compiler for a subset of the language, and then use it to compile a bigger version. It is shown using T diagrams.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "[h:Bootstrapping] = write a compiler in its own language",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "small compiler for a subset -> compiles the full one",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "rect",
+       "x": 1250,
+       "y": 520,
+       "w": 330,
+       "h": 80,
+       "label": "C   ->   M",
+       "color": "black",
+       "size": 32,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1355,
+       "y": 600,
+       "w": 120,
+       "h": 120,
+       "label": "C",
+       "color": "black",
+       "size": 32,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "text",
+       "x": 1350,
+       "y": 780,
+       "s": "T-diagram",
+       "size": 28,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    },
+    {
+     "say": "A cross compiler runs on one machine but produces code for another machine. For example, compiling on a laptop for a mobile phone or a microcontroller. Tools that help build compilers include LEX for scanners, and YACC for parsers.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "[h:Cross compiler] = runs on machine A, code for machine B",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "e.g. laptop -> mobile / microcontroller",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "Tools: [k:LEX] (scanner generator), [k:YACC] (parser generator)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Lexical Analysis",
+   "ch": 2,
+   "beats": [
+    {
+     "say": "Chapter two. Lexical analysis. The first phase of the compiler.",
+     "els": []
+    }
+   ],
+   "num": 2,
+   "subs": [
+    "Tokens, lexemes, patterns",
+    "Input buffering",
+    "Regular expressions & finite automata",
+    "RE -> NFA -> DFA",
+    "LEX"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "Lexical Analysis: Tokens, Lexemes, Patterns",
+   "ch": 2,
+   "beats": [
+    {
+     "say": "The lexical analyzer, also called the scanner, reads the source program character by character, and groups them into meaningful units called tokens. It also removes white spaces and comments, and enters identifiers into the symbol table.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Lexical analyzer (scanner)]: characters -> tokens",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "removes spaces & comments, fills symbol table",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1250,
+       "y": 380,
+       "w": 230,
+       "h": 90,
+       "label": "Lexical\nanalyzer",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1600,
+       "y": 380,
+       "w": 230,
+       "h": 90,
+       "label": "Parser",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1480,
+        410
+       ],
+       "p2": [
+        1600,
+        410
+       ],
+       "color": "black",
+       "label": "token",
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 24,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1600,
+        450
+       ],
+       "p2": [
+        1480,
+        450
+       ],
+       "color": "black",
+       "label": "get next token",
+       "lx": 0,
+       "ly": 30,
+       "curve": 0,
+       "head": true,
+       "size": 24,
+       "both": false,
+       "lc": "black"
+      }
+     ]
+    },
+    {
+     "say": "Three terms you must know. A token is a category, like identifier, number, or keyword. A lexeme is the actual text that matches, like count, or ten. And a pattern is the rule that describes the token, usually a regular expression.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1600,
+       "y": 600,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "table",
+       "x": 180,
+       "y": 560,
+       "cw": [
+        260,
+        300,
+        600
+       ],
+       "rh": 54,
+       "rows": [
+        [
+         "Token",
+         "Lexeme",
+         "Pattern"
+        ],
+        [
+         "id",
+         "count, sum",
+         "letter (letter | digit)*"
+        ],
+        [
+         "num",
+         "10, 3.14",
+         "digit+ (. digit+)?"
+        ],
+        [
+         "if",
+         "if",
+         "the characters i, f"
+        ],
+        [
+         "relop",
+         "<, <=, ==",
+         "< | <= | = | > | >= | <>"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      }
+     ]
+    },
+    {
+     "say": "For example, in the statement int count equals ten semicolon, there are five tokens.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 924,
+       "s": "int count = 10;  =>  [h:5 tokens]  (int, count, =, 10, ;)",
+       "size": 38,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Input Buffering",
+   "ch": 2,
+   "beats": [
+    {
+     "say": "Reading one character at a time from the disk is slow. So the scanner uses input buffering with two buffers, each of size N. Two pointers are used. lexeme begin marks the start of the current lexeme, and forward moves ahead until a token is found.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "Two-buffer scheme (each of size N)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[k:lexemeBegin]: start of lexeme   [k:forward]: scans ahead",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 180,
+       "y": 420,
+       "w": 70,
+       "h": 70,
+       "label": "E",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 250,
+       "y": 420,
+       "w": 70,
+       "h": 70,
+       "label": "=",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 320,
+       "y": 420,
+       "w": 70,
+       "h": 70,
+       "label": "M",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 390,
+       "y": 420,
+       "w": 70,
+       "h": 70,
+       "label": "*",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 460,
+       "y": 420,
+       "w": 70,
+       "h": 70,
+       "label": "C",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 530,
+       "y": 420,
+       "w": 70,
+       "h": 70,
+       "label": "*",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 600,
+       "y": 420,
+       "w": 70,
+       "h": 70,
+       "label": "*",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 670,
+       "y": 420,
+       "w": 70,
+       "h": 70,
+       "label": "2",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 740,
+       "y": 420,
+       "w": 70,
+       "h": 70,
+       "label": "eof",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        250,
+        540
+       ],
+       "p2": [
+        250,
+        490
+       ],
+       "color": "black",
+       "label": "lexemeBegin",
+       "lx": 0,
+       "ly": 36,
+       "curve": 0,
+       "head": true,
+       "size": 24,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        670,
+        540
+       ],
+       "p2": [
+        670,
+        490
+       ],
+       "color": "black",
+       "label": "forward",
+       "lx": 40,
+       "ly": 36,
+       "curve": 0,
+       "head": true,
+       "size": 24,
+       "both": false,
+       "lc": "black"
+      }
+     ]
+    },
+    {
+     "say": "To avoid checking for the end of the buffer every time, a special character called a sentinel, usually e o f, is placed at the end of each buffer. Then only one check is needed for most characters.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "[h:Sentinel] (eof) at the end of each buffer",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "=> fewer checks, faster scanning",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Regular Expressions & Finite Automata",
+   "ch": 2,
+   "beats": [
+    {
+     "say": "Tokens are described using regular expressions. The basic operators are union, written as a bar, which means or. Concatenation, which means one after another. And the Kleene star, which means zero or more times. Plus means one or more.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "a | b  = a [k:or] b      ab = a [k:then] b",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "a*  = zero or more a      a+  = one or more a",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "e.g. identifier = letter (letter | digit)*",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    },
+    {
+     "say": "Regular expressions are recognised by finite automata. In an N F A, a non deterministic automaton, a state can have many moves on the same symbol, and epsilon moves. In a D F A, a deterministic automaton, each state has exactly one move for each symbol, and no epsilon moves. D F As are faster, so scanners use D F As.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 420,
+       "cw": [
+        300,
+        450,
+        450
+       ],
+       "rh": 54,
+       "rows": [
+        [
+         "",
+         "NFA",
+         "DFA"
+        ],
+        [
+         "moves per symbol",
+         "zero, one or many",
+         "exactly one"
+        ],
+        [
+         "ε-moves",
+         "allowed",
+         "not allowed"
+        ],
+        [
+         "speed",
+         "slower",
+         "[g:faster]"
+        ],
+        [
+         "states",
+         "fewer",
+         "may be more"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "stamp",
+       "x": 1560,
+       "y": 520,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    },
+    {
+     "say": "The steps to build a scanner are: regular expression, to N F A using Thompson's construction, to D F A using subset construction, and then minimize the D F A.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 924,
+       "s": "RE -> NFA (Thompson) -> DFA (subset construction) -> minimised DFA",
+       "size": 38,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "RE to DFA: (a|b)*abb",
+   "ch": 2,
+   "beats": [
+    {
+     "say": "Let's solve the classic question. Convert a or b star, a b b, into a D F A. Using Thompson's construction, we get an N F A with eleven states, numbered zero to ten. State ten is the final state.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "RE = (a|b)*abb    NFA (Thompson): states 0 - 10, final = 10",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Now subset construction. Start with epsilon closure of state zero. That is zero, one, two, four, seven. Call it A. From each set, find where a and b go, and take the epsilon closure again. Each new set becomes a new D F A state.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "A = ε-closure(0) = {0, 1, 2, 4, 7}",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "table",
+       "x": 180,
+       "y": 330,
+       "cw": [
+        130,
+        560,
+        160,
+        160
+       ],
+       "rh": 50,
+       "rows": [
+        [
+         "DFA",
+         "NFA states",
+         "a",
+         "b"
+        ],
+        [
+         "A",
+         "{0, 1, 2, 4, 7}",
+         "B",
+         "C"
+        ],
+        [
+         "B",
+         "{1, 2, 3, 4, 6, 7, 8}",
+         "B",
+         "D"
+        ],
+        [
+         "C",
+         "{1, 2, 4, 5, 6, 7}",
+         "B",
+         "C"
+        ],
+        [
+         "D",
+         "{1, 2, 4, 5, 6, 7, 9}",
+         "B",
+         "E"
+        ],
+        [
+         "E *",
+         "{1, 2, 4, 5, 6, 7, 10}",
+         "B",
+         "C"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {
+        "5,0": "red"
+       },
+       "fills": {}
+      }
+     ]
+    },
+    {
+     "say": "We get five states, A to E. E contains state ten, so E is the final state. A and C have the same moves, so after minimization they merge. The minimized D F A has just four states.",
+     "els": [
+      {
+       "t": "text",
+       "x": 1250,
+       "y": 420,
+       "s": "E contains 10 => [r:final state]",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 1250,
+       "y": 480,
+       "s": "A ≡ C  =>  minimised DFA",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 1250,
+       "y": 540,
+       "s": "has [h:4 states]",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 180,
+       "y": 760,
+       "w": 110,
+       "h": 90,
+       "label": "A",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 470,
+       "y": 760,
+       "w": 110,
+       "h": 90,
+       "label": "B",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 760,
+       "y": 760,
+       "w": 110,
+       "h": 90,
+       "label": "D",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 1050,
+       "y": 760,
+       "w": 110,
+       "h": 90,
+       "label": "E",
+       "color": "red",
+       "size": 30,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        290,
+        805
+       ],
+       "p2": [
+        470,
+        805
+       ],
+       "color": "black",
+       "label": "a",
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        580,
+        805
+       ],
+       "p2": [
+        760,
+        805
+       ],
+       "color": "black",
+       "label": "b",
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        870,
+        805
+       ],
+       "p2": [
+        1050,
+        805
+       ],
+       "color": "black",
+       "label": "b",
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1100,
+        850
+       ],
+       "p2": [
+        520,
+        850
+       ],
+       "color": "black",
+       "label": "a",
+       "lx": 0,
+       "ly": -10,
+       "curve": -120,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        810,
+        850
+       ],
+       "p2": [
+        520,
+        850
+       ],
+       "color": "black",
+       "label": "a",
+       "lx": 0,
+       "ly": -4,
+       "curve": -60,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1080,
+        760
+       ],
+       "p2": [
+        260,
+        760
+       ],
+       "color": "black",
+       "label": "b",
+       "lx": 0,
+       "ly": -16,
+       "curve": -170,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "LEX - Lexical Analyzer Generator",
+   "ch": 2,
+   "beats": [
+    {
+     "say": "LEX is a tool that generates a lexical analyzer automatically. You write the patterns and actions in a file called lex dot l. LEX converts it to lex dot y y dot c, which the C compiler turns into the scanner.",
+     "els": [
+      {
+       "t": "rect",
+       "x": 180,
+       "y": 300,
+       "w": 230,
+       "h": 80,
+       "label": "lex.l",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 560,
+       "y": 300,
+       "w": 230,
+       "h": 80,
+       "label": "LEX",
+       "color": "red",
+       "size": 30,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "rect",
+       "x": 940,
+       "y": 300,
+       "w": 280,
+       "h": 80,
+       "label": "lex.yy.c",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1370,
+       "y": 300,
+       "w": 230,
+       "h": 80,
+       "label": "C compiler",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1700,
+       "y": 300,
+       "w": 160,
+       "h": 80,
+       "label": "a.out",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        410,
+        340
+       ],
+       "p2": [
+        560,
+        340
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        790,
+        340
+       ],
+       "p2": [
+        940,
+        340
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1220,
+        340
+       ],
+       "p2": [
+        1370,
+        340
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1600,
+        340
+       ],
+       "p2": [
+        1700,
+        340
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      }
+     ]
+    },
+    {
+     "say": "A LEX program has three parts, separated by double percent signs. Declarations, translation rules, and auxiliary functions.",
+     "els": [
+      {
+       "t": "text",
+       "x": 240,
+       "y": 492,
+       "s": "declarations",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 240,
+       "y": 546,
+       "s": "%%",
+       "size": 38,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 240,
+       "y": 600,
+       "s": "translation rules   (pattern   { action })",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 240,
+       "y": 654,
+       "s": "%%",
+       "size": 38,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 240,
+       "y": 708,
+       "s": "auxiliary functions",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "stamp",
+       "x": 1400,
+       "y": 600,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Grammars & Syntax Analysis",
+   "ch": 3,
+   "beats": [
+    {
+     "say": "Chapter three. Grammars and syntax analysis.",
+     "els": []
+    }
+   ],
+   "num": 3,
+   "subs": [
+    "Context-free grammar",
+    "Derivations & parse trees",
+    "Ambiguity",
+    "Left recursion & left factoring",
+    "Error recovery"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "Context-Free Grammar & Derivations",
+   "ch": 3,
+   "beats": [
+    {
+     "say": "The syntax analyzer, or parser, checks if the tokens follow the grammar of the language, and builds a parse tree. The grammar is written as a context free grammar, which has four parts. Terminals, non terminals, a start symbol, and productions.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Parser]: tokens -> parse tree (checks grammar)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[k:CFG] G = (V, T, P, S): variables, terminals, productions, start",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Example grammar: E goes to E plus E, or E times E, or open bracket E close bracket, or id. A derivation replaces non terminals step by step. In a leftmost derivation, we always replace the leftmost non terminal. In a rightmost derivation, the rightmost one.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "E -> E + E  |  E * E  |  ( E )  |  id",
+       "size": 40,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "[r:Leftmost]: always replace the leftmost non-terminal",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "[r:Rightmost]: always replace the rightmost one",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "For id plus id times id, the leftmost derivation is: E, to E plus E, to id plus E, to id plus E times E, to id plus id times E, to id plus id times id.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "E => E + E => id + E => id + E * E",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 210,
+       "y": 654,
+       "s": "=> id + id * E => id + id * id",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Ambiguity",
+   "ch": 3,
+   "beats": [
+    {
+     "say": "A grammar is ambiguous if one string has more than one parse tree, or more than one leftmost derivation. Our grammar is ambiguous, because id plus id times id has two parse trees.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Ambiguous] = a string has 2+ parse trees (or 2+ leftmost derivations)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 340,
+       "y": 330,
+       "w": 80,
+       "h": 64,
+       "label": "E",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 220,
+       "y": 430,
+       "w": 80,
+       "h": 64,
+       "label": "E",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 340,
+       "y": 430,
+       "w": 60,
+       "h": 64,
+       "label": "+",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 460,
+       "y": 430,
+       "w": 80,
+       "h": 64,
+       "label": "E",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 380,
+       "y": 530,
+       "w": 70,
+       "h": 64,
+       "label": "E",
+       "color": "black",
+       "size": 26,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 470,
+       "y": 530,
+       "w": 50,
+       "h": 64,
+       "label": "*",
+       "color": "black",
+       "size": 26,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 540,
+       "y": 530,
+       "w": 70,
+       "h": 64,
+       "label": "E",
+       "color": "black",
+       "size": 26,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        360,
+        394
+       ],
+       "p2": [
+        260,
+        430
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        380,
+        394
+       ],
+       "p2": [
+        370,
+        430
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        400,
+        394
+       ],
+       "p2": [
+        500,
+        430
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        480,
+        494
+       ],
+       "p2": [
+        415,
+        530
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        500,
+        494
+       ],
+       "p2": [
+        495,
+        530
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        520,
+        494
+       ],
+       "p2": [
+        575,
+        530
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "text",
+       "x": 250,
+       "y": 650,
+       "s": "id + (id * id)",
+       "size": 32,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "ellipse",
+       "x": 960,
+       "y": 330,
+       "w": 80,
+       "h": 64,
+       "label": "E",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 840,
+       "y": 430,
+       "w": 80,
+       "h": 64,
+       "label": "E",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 960,
+       "y": 430,
+       "w": 60,
+       "h": 64,
+       "label": "*",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 1080,
+       "y": 430,
+       "w": 80,
+       "h": 64,
+       "label": "E",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 760,
+       "y": 530,
+       "w": 70,
+       "h": 64,
+       "label": "E",
+       "color": "black",
+       "size": 26,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 850,
+       "y": 530,
+       "w": 50,
+       "h": 64,
+       "label": "+",
+       "color": "black",
+       "size": 26,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 920,
+       "y": 530,
+       "w": 70,
+       "h": 64,
+       "label": "E",
+       "color": "black",
+       "size": 26,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        980,
+        394
+       ],
+       "p2": [
+        880,
+        430
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1000,
+        394
+       ],
+       "p2": [
+        990,
+        430
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1020,
+        394
+       ],
+       "p2": [
+        1120,
+        430
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        860,
+        494
+       ],
+       "p2": [
+        795,
+        530
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        880,
+        494
+       ],
+       "p2": [
+        875,
+        530
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        900,
+        494
+       ],
+       "p2": [
+        955,
+        530
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "text",
+       "x": 860,
+       "y": 650,
+       "s": "(id + id) * id",
+       "size": 32,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "To remove ambiguity, we rewrite the grammar using precedence and associativity. Times binds tighter than plus. So we get: E goes to E plus T or T. T goes to T times F or F. F goes to bracket E or id.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "Unambiguous:  E -> E + T | T     T -> T * F | F     F -> ( E ) | id",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "(* has higher precedence than +, both left-associative)",
+       "size": 32,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Left Recursion & Left Factoring",
+   "ch": 3,
+   "beats": [
+    {
+     "say": "Top down parsers cannot handle left recursion, because they go into an infinite loop. A grammar is left recursive if A goes to A alpha. The rule to remove it is very important. A goes to A alpha or beta, becomes: A goes to beta A dash. A dash goes to alpha A dash, or epsilon.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1600,
+       "y": 140,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Left recursion]: A -> A α | β",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "becomes:   A -> β A'       A' -> α A' | ε",
+       "size": 42,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "Example. E goes to E plus T or T. Here alpha is plus T, and beta is T. So we get: E goes to T E dash, and E dash goes to plus T E dash, or epsilon. Same for T.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "E -> E + T | T   =>   E -> T E'      E' -> + T E' | ε",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "T -> T * F | F   =>   T -> F T'      T' -> * F T' | ε",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "Left factoring. When two productions start with the same symbols, the parser cannot decide which one to use. So we take out the common part. A goes to alpha beta one, or alpha beta two, becomes: A goes to alpha A dash, and A dash goes to beta one or beta two.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "[h:Left factoring]: A -> α β1 | α β2",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "becomes:   A -> α A'       A' -> β1 | β2",
+       "size": 42,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "e.g.  S -> iEtS | iEtSeS | a   =>   S -> iEtS S' | a,   S' -> eS | ε",
+       "size": 34,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Syntax Error Recovery",
+   "ch": 3,
+   "beats": [
+    {
+     "say": "When the parser finds an error, it should report it and continue. There are four recovery strategies. Panic mode skips input symbols until a synchronizing token, like a semicolon. It is simple and never loops forever.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "1) [r:Panic mode] - skip till a synchronising token ( ; } )",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Phrase level recovery makes a small local fix, like inserting a missing semicolon. Error productions add rules for common mistakes to the grammar. And global correction finds the smallest change to make the program correct, but it is too costly in practice.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "2) [r:Phrase level] - local fix (insert missing ;)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "3) [r:Error productions] - grammar rules for common mistakes",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "4) [r:Global correction] - minimum changes (too costly)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Top-Down Parsing",
+   "ch": 4,
+   "beats": [
+    {
+     "say": "Chapter four. Top down parsing. FIRST, FOLLOW, and the LL one table. Numericals come from here every year.",
+     "els": []
+    }
+   ],
+   "num": 4,
+   "subs": [
+    "Recursive descent",
+    "FIRST & FOLLOW",
+    "LL(1) parsing table",
+    "LL(1) parsing moves"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "Top-Down Parsing & Recursive Descent",
+   "ch": 4,
+   "beats": [
+    {
+     "say": "Top down parsing builds the parse tree from the root, the start symbol, down to the leaves. It finds a leftmost derivation. Recursive descent parsing uses one function for each non terminal. It may need backtracking, if it chooses the wrong production.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Top-down]: root -> leaves, leftmost derivation",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[k:Recursive descent]: one function per non-terminal",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "may need [r:backtracking] (try another production)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "A predictive parser, also called L L one, never backtracks. It looks at just one input symbol to choose the production. L L one means: scan input from Left, produce a Leftmost derivation, using one symbol of lookahead. The grammar must have no left recursion and no ambiguity, and it should be left factored.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "[h:LL(1)]: Left-to-right scan, Leftmost derivation, 1 lookahead",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "no backtracking. Needs: no left recursion, no ambiguity,",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 230,
+       "y": 546,
+       "s": "left-factored grammar",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "stamp",
+       "x": 1500,
+       "y": 440,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "FIRST & FOLLOW",
+   "ch": 4,
+   "beats": [
+    {
+     "say": "Rules for FIRST. FIRST of a terminal is the terminal itself. If X goes to epsilon, add epsilon. If X goes to Y one Y two, add FIRST of Y one. If Y one can be epsilon, also add FIRST of Y two, and so on.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "FIRST(X): first terminals X can start with",
+       "size": 38,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "terminal a: FIRST = {a};  X -> ε: add ε;  X -> Y1Y2: FIRST(Y1), if ε then FIRST(Y2) ...",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Rules for FOLLOW. Put dollar in FOLLOW of the start symbol. For A goes to alpha B beta, add FIRST of beta, without epsilon, to FOLLOW of B. If beta can be epsilon, or B is at the end, add FOLLOW of A to FOLLOW of B.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "FOLLOW(A): terminals that can come right after A",
+       "size": 38,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "$ in FOLLOW(start);  A -> αBβ: FIRST(β) - ε into FOLLOW(B);",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 230,
+       "y": 438,
+       "s": "if β =>* ε or B at end: FOLLOW(A) into FOLLOW(B)",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Now apply them to our expression grammar, after removing left recursion. FIRST of E, T and F are all open bracket and id. FIRST of E dash is plus and epsilon. FIRST of T dash is star and epsilon. FOLLOW of E and E dash is close bracket and dollar. FOLLOW of T and T dash is plus, close bracket, and dollar. And FOLLOW of F is plus, star, close bracket, and dollar.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "E -> TE'   E' -> +TE' | ε   T -> FT'   T' -> *FT' | ε   F -> (E) | id",
+       "size": 32,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "table",
+       "x": 240,
+       "y": 620,
+       "cw": [
+        200,
+        400,
+        420
+       ],
+       "rh": 54,
+       "rows": [
+        [
+         "",
+         "FIRST",
+         "FOLLOW"
+        ],
+        [
+         "E",
+         "{ (, id }",
+         "{ $, ) }"
+        ],
+        [
+         "E'",
+         "{ +, ε }",
+         "{ $, ) }"
+        ],
+        [
+         "T",
+         "{ (, id }",
+         "{ $, ), + }"
+        ],
+        [
+         "T'",
+         "{ *, ε }",
+         "{ $, ), + }"
+        ],
+        [
+         "F",
+         "{ (, id }",
+         "{ $, ), *, + }"
+        ]
+       ],
+       "color": "black",
+       "size": 30,
+       "hdr": true,
+       "order": "row",
+       "colors": {
+        "1,2": "red",
+        "2,2": "red",
+        "3,2": "red",
+        "4,2": "red",
+        "5,2": "red"
+       },
+       "fills": {}
+      },
+      {
+       "t": "stamp",
+       "x": 1500,
+       "y": 720,
+       "text": "MOST ASKED",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "LL(1) Parsing Table",
+   "ch": 4,
+   "beats": [
+    {
+     "say": "Now we build the L L one table. For each production A goes to alpha: for each terminal in FIRST of alpha, put the production in the row A and that terminal's column. If FIRST of alpha has epsilon, put it under every terminal in FOLLOW of A.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "For A -> α:  M[A, a] for every a in FIRST(α);  if ε ∈ FIRST(α): M[A, b] for b in FOLLOW(A)",
+       "size": 30,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Here is the complete table. For example, E dash goes to epsilon is placed under close bracket and dollar, because those are in FOLLOW of E dash. Empty cells mean error. Since no cell has two entries, this grammar is L L one.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 300,
+       "cw": [
+        130,
+        260,
+        260,
+        260,
+        260,
+        220,
+        220
+       ],
+       "rh": 64,
+       "rows": [
+        [
+         "",
+         "id",
+         "+",
+         "*",
+         "(",
+         ")",
+         "$"
+        ],
+        [
+         "E",
+         "E->TE'",
+         "",
+         "",
+         "E->TE'",
+         "",
+         ""
+        ],
+        [
+         "E'",
+         "",
+         "E'->+TE'",
+         "",
+         "",
+         "E'->ε",
+         "E'->ε"
+        ],
+        [
+         "T",
+         "T->FT'",
+         "",
+         "",
+         "T->FT'",
+         "",
+         ""
+        ],
+        [
+         "T'",
+         "",
+         "T'->ε",
+         "T'->*FT'",
+         "",
+         "T'->ε",
+         "T'->ε"
+        ],
+        [
+         "F",
+         "F->id",
+         "",
+         "",
+         "F->(E)",
+         "",
+         ""
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 870,
+       "s": "No cell has 2 entries => grammar is [h:LL(1)]",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "stamp",
+       "x": 1600,
+       "y": 820,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "LL(1) Parsing: id + id * id",
+   "ch": 4,
+   "beats": [
+    {
+     "say": "Let's parse id plus id times id using the table. The stack starts with dollar and E. At each step, look at the top of the stack and the current input symbol. If they match, pop and move ahead. Otherwise, replace the top with the production from the table.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "Stack starts: $ E.  Top = input => match;  else use M[top, input]",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "E with id gives E goes to T E dash. T gives F T dash. F gives id, and it matches. T dash with plus gives epsilon. E dash with plus gives plus T E dash. We continue the same way, until the stack and the input are both just dollar. Accepted.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 260,
+       "cw": [
+        420,
+        420,
+        420
+       ],
+       "rh": 44,
+       "rows": [
+        [
+         "Stack",
+         "Input",
+         "Action"
+        ],
+        [
+         "$ E",
+         "id + id * id $",
+         "E->T E'"
+        ],
+        [
+         "$ E' T",
+         "id + id * id $",
+         "T->F T'"
+        ],
+        [
+         "$ E' T' F",
+         "id + id * id $",
+         "F->id"
+        ],
+        [
+         "$ E' T' id",
+         "id + id * id $",
+         "match id"
+        ],
+        [
+         "$ E' T'",
+         "+ id * id $",
+         "T'->ε"
+        ],
+        [
+         "$ E'",
+         "+ id * id $",
+         "E'->+ T E'"
+        ],
+        [
+         "$ E' T +",
+         "+ id * id $",
+         "match +"
+        ],
+        [
+         "$ E' T",
+         "id * id $",
+         "T->F T'"
+        ],
+        [
+         "$ E' T' F",
+         "id * id $",
+         "F->id"
+        ],
+        [
+         "$ E' T' id",
+         "id * id $",
+         "match id"
+        ],
+        [
+         "$ E' T'",
+         "* id $",
+         "T'->* F T'"
+        ],
+        [
+         "$ E' T' F *",
+         "* id $",
+         "match *"
+        ],
+        [
+         "$ E' T' F",
+         "id $",
+         "F->id"
+        ],
+        [
+         "$ E' T' id",
+         "id $",
+         "match id"
+        ],
+        [
+         "$ E' T'",
+         "$",
+         "T'->ε"
+        ],
+        [
+         "$ E'",
+         "$",
+         "E'->ε"
+        ],
+        [
+         "$",
+         "$",
+         "accept"
+        ]
+       ],
+       "color": "black",
+       "size": 26,
+       "hdr": true,
+       "order": "row",
+       "colors": {
+        "17,2": "green"
+       },
+       "fills": {}
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Bottom-Up Parsing",
+   "ch": 5,
+   "beats": [
+    {
+     "say": "Chapter five. Bottom up parsing. Shift reduce, and the LR parsers.",
+     "els": []
+    }
+   ],
+   "num": 5,
+   "subs": [
+    "Shift-reduce parsing",
+    "Handles",
+    "LR(0) items",
+    "SLR table",
+    "CLR vs LALR"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "Shift-Reduce Parsing",
+   "ch": 5,
+   "beats": [
+    {
+     "say": "Bottom up parsing builds the tree from the leaves up to the root. It finds a rightmost derivation, in reverse. A handle is the part of the string that matches the right side of a production, and reducing it is one step back in the rightmost derivation.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Bottom-up]: leaves -> root, rightmost derivation in reverse",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[k:Handle]: substring matching a RHS, whose reduction is the right step",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "A shift reduce parser has four actions. Shift, which pushes the next input symbol. Reduce, which replaces a handle on top of the stack with its left side. Accept. And error.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "Actions: [r:shift], [r:reduce], [g:accept], error",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Example. Parse id times id with the grammar E goes to E plus T or T, T goes to T times F or F, F goes to id. Shift id. Reduce F goes to id. Reduce T goes to F. Shift times, shift id. Reduce F goes to id. Then reduce T times F to T, reduce T to E, and accept.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 420,
+       "cw": [
+        360,
+        360,
+        480
+       ],
+       "rh": 50,
+       "rows": [
+        [
+         "Stack",
+         "Input",
+         "Action"
+        ],
+        [
+         "$",
+         "id * id $",
+         "shift"
+        ],
+        [
+         "$ id",
+         "* id $",
+         "reduce F->id"
+        ],
+        [
+         "$ F",
+         "* id $",
+         "reduce T->F"
+        ],
+        [
+         "$ T",
+         "* id $",
+         "shift"
+        ],
+        [
+         "$ T *",
+         "id $",
+         "shift"
+        ],
+        [
+         "$ T * id",
+         "$",
+         "reduce F->id"
+        ],
+        [
+         "$ T * F",
+         "$",
+         "reduce T->T * F"
+        ],
+        [
+         "$ T",
+         "$",
+         "reduce E->T"
+        ],
+        [
+         "$ E",
+         "$",
+         "accept"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {
+        "9,2": "green"
+       },
+       "fills": {}
+      },
+      {
+       "t": "stamp",
+       "x": 1560,
+       "y": 520,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    },
+    {
+     "say": "Two conflicts can happen. A shift reduce conflict, when the parser cannot decide between shift and reduce. And a reduce reduce conflict, when two reductions are possible.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 978,
+       "s": "Conflicts: [r:shift-reduce], [r:reduce-reduce]",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "LR(0) Items: S -> AA,  A -> aA | b",
+   "ch": 5,
+   "beats": [
+    {
+     "say": "L R parsers are the most powerful shift reduce parsers. L R means Left to right scan, Rightmost derivation in reverse. They use items. An item is a production with a dot, showing how much has been seen. For example, A goes to dot a A.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:LR]: Left-to-right, Rightmost derivation in reverse.  Item = production + dot",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Classic example. S goes to A A, A goes to a A or b. First, augment the grammar with S dash goes to S. I zero is the closure of S dash goes to dot S. Since the dot is before S, add S's productions. Since the dot is before A, add A's productions.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "Augmented: S' -> S,  (1) S -> AA,  (2) A -> aA,  (3) A -> b",
+       "size": 34,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "Now find goto on every symbol. Goto of I zero on S gives I one, the accept item. On A gives I two. On a gives I three. On b gives I four. From I two, on A we get I five. From I three, on A we get I six. Goto of I two and I three on a and b go back to I three and I four. So there are seven states, I zero to I six.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "I0: S'->.S,  S->.AA,  A->.aA,  A->.b",
+       "size": 32,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "I1: S'->S.",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "I2: S->A.A,  A->.aA,  A->.b",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "I3: A->.aA,  A->a.A,  A->.b",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "I4: A->b.",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "I5: S->AA.",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "I6: A->aA.",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "goto: I0-S->I1, I0-A->I2, I0-a->I3, I0-b->I4, I2-A->I5, I3-A->I6",
+       "size": 30,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "I2, I3 on a -> I3;  on b -> I4",
+       "size": 30,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "SLR Parsing Table",
+   "ch": 5,
+   "beats": [
+    {
+     "say": "Now the S L R table. For a transition on a terminal, write shift. For a completed item, A goes to alpha dot, write reduce under every terminal in FOLLOW of A. FOLLOW of S is dollar. FOLLOW of A is a, b, and dollar.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "shift on terminal transitions;  A -> α.  => reduce on FOLLOW(A)",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "FOLLOW(S) = { $ }     FOLLOW(A) = { a, b, $ }",
+       "size": 34,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "So I zero, I two and I three shift on a to three, and on b to four. I four reduces by production three on a, b, and dollar. I five reduces by production one on dollar. I six reduces by production two. And I one accepts on dollar.",
+     "els": [
+      {
+       "t": "table",
+       "x": 240,
+       "y": 380,
+       "cw": [
+        140,
+        170,
+        170,
+        170,
+        170,
+        170
+       ],
+       "rh": 60,
+       "rows": [
+        [
+         "State",
+         "a",
+         "b",
+         "$",
+         "A",
+         "S"
+        ],
+        [
+         "I0",
+         "s3",
+         "s4",
+         "",
+         "2",
+         "1"
+        ],
+        [
+         "I1",
+         "",
+         "",
+         "acc",
+         "",
+         ""
+        ],
+        [
+         "I2",
+         "s3",
+         "s4",
+         "",
+         "5",
+         ""
+        ],
+        [
+         "I3",
+         "s3",
+         "s4",
+         "",
+         "6",
+         ""
+        ],
+        [
+         "I4",
+         "r3",
+         "r3",
+         "r3",
+         "",
+         ""
+        ],
+        [
+         "I5",
+         "",
+         "",
+         "r1",
+         "",
+         ""
+        ],
+        [
+         "I6",
+         "r2",
+         "r2",
+         "r2",
+         "",
+         ""
+        ]
+       ],
+       "color": "black",
+       "size": 30,
+       "hdr": true,
+       "order": "row",
+       "colors": {
+        "2,3": "green"
+       },
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 500,
+       "y": 360,
+       "s": "ACTION",
+       "size": 28,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 1060,
+       "y": 360,
+       "s": "GOTO",
+       "size": 28,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "stamp",
+       "x": 1500,
+       "y": 520,
+       "text": "MOST ASKED",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    },
+    {
+     "say": "No cell has two entries, so this grammar is S L R one.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 978,
+       "s": "No conflicts => grammar is [h:SLR(1)]",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "LR Parsers Compared",
+   "ch": 5,
+   "beats": [
+    {
+     "say": "There are four L R parsers. L R zero uses no lookahead. S L R uses FOLLOW sets for reduce entries. Canonical L R, or C L R, uses L R one items with lookaheads, so it is the most powerful, but has the most states. L A L R merges C L R states with the same core. It has the same number of states as S L R, and is used by YACC.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 220,
+       "cw": [
+        260,
+        420,
+        300,
+        460
+       ],
+       "rh": 56,
+       "rows": [
+        [
+         "Parser",
+         "Items / lookahead",
+         "States",
+         "Power"
+        ],
+        [
+         "LR(0)",
+         "LR(0), none",
+         "few",
+         "weakest"
+        ],
+        [
+         "SLR(1)",
+         "LR(0) + FOLLOW",
+         "few",
+         "weak"
+        ],
+        [
+         "LALR(1)",
+         "merged LR(1)",
+         "same as SLR",
+         "strong (YACC)"
+        ],
+        [
+         "CLR(1)",
+         "LR(1) items",
+         "[r:most]",
+         "[g:most powerful]"
+        ]
+       ],
+       "color": "black",
+       "size": 30,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      }
+     ]
+    },
+    {
+     "say": "Remember the order of power. L R zero is the weakest, then S L R, then L A L R, and canonical L R is the strongest. Also, every L L one grammar is L R one.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "Power:  [h:LR(0) < SLR < LALR < CLR]",
+       "size": 42,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "Every LL(1) grammar is LR(1)",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "stamp",
+       "x": 1500,
+       "y": 700,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    },
+    {
+     "say": "Operator precedence parsing is another bottom up method for expression grammars, where no two non terminals are next to each other, and no production has epsilon. It uses precedence relations: less than, equal, and greater than.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "[k:Operator precedence]: no ε, no two adjacent non-terminals;",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 230,
+       "y": 870,
+       "s": "relations  <·   =·   ·>  between terminals",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Syntax-Directed Translation",
+   "ch": 6,
+   "beats": [
+    {
+     "say": "Chapter six. Syntax directed translation.",
+     "els": []
+    }
+   ],
+   "num": 6,
+   "subs": [
+    "SDD & attributes",
+    "S- and L-attributed",
+    "Annotated parse tree",
+    "YACC"
+   ],
+   "stars": 4
+  },
+  {
+   "kind": "page",
+   "title": "Syntax-Directed Definitions",
+   "ch": 6,
+   "beats": [
+    {
+     "say": "A syntax directed definition attaches attributes to grammar symbols, and semantic rules to productions. For example, E goes to E one plus T, with the rule E dot val equals E one dot val plus T dot val.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:SDD] = grammar + attributes + semantic rules",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "E -> E1 + T     { E.val = E1.val + T.val }",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "There are two kinds of attributes. A synthesized attribute gets its value from the children of the node. An inherited attribute gets its value from the parent or the siblings.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "[r:Synthesized]: from children (bottom-up)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "[r:Inherited]: from parent / siblings",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "stamp",
+       "x": 1500,
+       "y": 360,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    },
+    {
+     "say": "An S attributed definition uses only synthesized attributes, so it can be evaluated bottom up, with an L R parser. An L attributed definition allows inherited attributes, but only from the parent or the siblings on the left. Every S attributed definition is also L attributed.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "[k:S-attributed]: only synthesized  (bottom-up, LR)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "[k:L-attributed]: inherited only from parent / left siblings",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "Every S-attributed SDD is L-attributed",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Annotated Parse Tree: 3 * 5 + 4",
+   "ch": 6,
+   "beats": [
+    {
+     "say": "An annotated parse tree shows the attribute values at each node. Let's draw it for three times five plus four, using the rules: E dot val equals E one dot val plus T dot val, T dot val equals T one dot val times F dot val, and F dot val equals digit dot lexval.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "E.val = E1.val + T.val   T.val = T1.val * F.val   F.val = digit.lexval",
+       "size": 30,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "The leaves are digits three, five and four. F gets three, so T gets three. Then T equals three times five, fifteen. E gets fifteen. On the right, F and T get four. Finally, E equals fifteen plus four, which is nineteen.",
+     "els": [
+      {
+       "t": "text",
+       "x": 810,
+       "y": 280,
+       "s": "E.val = 19",
+       "size": 32,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 510,
+       "y": 400,
+       "s": "E.val = 15",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 891,
+       "y": 400,
+       "s": "+",
+       "size": 32,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 1119,
+       "y": 400,
+       "s": "T.val = 4",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 510,
+       "y": 520,
+       "s": "T.val = 15",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 1119,
+       "y": 520,
+       "s": "F.val = 4",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 339,
+       "y": 640,
+       "s": "T.val = 3",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 611,
+       "y": 640,
+       "s": "*",
+       "size": 32,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 719,
+       "y": 640,
+       "s": "F.val = 5",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 1137,
+       "y": 640,
+       "s": "digit 4",
+       "size": 32,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 339,
+       "y": 760,
+       "s": "F.val = 3",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 737,
+       "y": 760,
+       "s": "digit 5",
+       "size": 32,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 357,
+       "y": 880,
+       "s": "digit 3",
+       "size": 32,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        900,
+        292
+       ],
+       "p2": [
+        600,
+        360
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        900,
+        292
+       ],
+       "p2": [
+        900,
+        360
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        900,
+        292
+       ],
+       "p2": [
+        1200,
+        360
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        600,
+        412
+       ],
+       "p2": [
+        600,
+        480
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1200,
+        412
+       ],
+       "p2": [
+        1200,
+        480
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        600,
+        532
+       ],
+       "p2": [
+        420,
+        600
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        600,
+        532
+       ],
+       "p2": [
+        620,
+        600
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        600,
+        532
+       ],
+       "p2": [
+        800,
+        600
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1200,
+        532
+       ],
+       "p2": [
+        1200,
+        600
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        420,
+        652
+       ],
+       "p2": [
+        420,
+        720
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        800,
+        652
+       ],
+       "p2": [
+        800,
+        720
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        420,
+        772
+       ],
+       "p2": [
+        420,
+        840
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "text",
+       "x": 1350,
+       "y": 820,
+       "s": "Answer: [h:E.val = 19]",
+       "size": 40,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "YACC - Parser Generator",
+   "ch": 6,
+   "beats": [
+    {
+     "say": "YACC, yet another compiler compiler, generates an L A L R parser automatically. You write the grammar with actions in a file called parse dot y. YACC produces y dot tab dot c. It is usually used together with LEX.",
+     "els": [
+      {
+       "t": "rect",
+       "x": 180,
+       "y": 300,
+       "w": 240,
+       "h": 80,
+       "label": "parse.y",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 560,
+       "y": 300,
+       "w": 220,
+       "h": 80,
+       "label": "YACC",
+       "color": "red",
+       "size": 30,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "rect",
+       "x": 920,
+       "y": 300,
+       "w": 280,
+       "h": 80,
+       "label": "y.tab.c",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1340,
+       "y": 300,
+       "w": 240,
+       "h": 80,
+       "label": "C compiler",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1700,
+       "y": 300,
+       "w": 160,
+       "h": 80,
+       "label": "a.out",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        420,
+        340
+       ],
+       "p2": [
+        560,
+        340
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        780,
+        340
+       ],
+       "p2": [
+        920,
+        340
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1200,
+        340
+       ],
+       "p2": [
+        1340,
+        340
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1580,
+        340
+       ],
+       "p2": [
+        1700,
+        340
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "YACC builds an [h:LALR(1)] parser; works with LEX (yylex())",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Intermediate Code",
+   "ch": 7,
+   "beats": [
+    {
+     "say": "Chapter seven. Intermediate code generation. Quadruples and triples are asked every year.",
+     "els": []
+    }
+   ],
+   "num": 7,
+   "subs": [
+    "Syntax tree & postfix",
+    "Three-address code",
+    "Quadruples & triples"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "Intermediate Representations",
+   "ch": 7,
+   "beats": [
+    {
+     "say": "Why intermediate code? It makes the compiler portable. The front end produces intermediate code, and different back ends can turn it into code for different machines. It also makes optimization easier.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "Why? [g:portability] (many back ends) + [g:easier optimisation]",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "There are three common forms. A syntax tree, or a D A G. Postfix notation, where a plus b becomes a b plus. And three address code, where each instruction has at most three addresses, like x equals y op z.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "1) [r:Syntax tree / DAG]",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "2) [r:Postfix]:  a + b * c  ->  a b c * +",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "3) [r:Three-address code]:  x = y op z  (at most 3 addresses)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "stamp",
+       "x": 1500,
+       "y": 360,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    },
+    {
+     "say": "Types of three address statements: assignment, copy, unconditional jump with goto, conditional jump with if, procedure calls with param and call, indexed assignments with arrays, and address and pointer assignments.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "x = y op z,  x = op y,  x = y,  goto L,  if x relop y goto L,",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "param x, call p, n,  x = y[i],  x = &y,  x = *y",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Three-Address Code: a = b * -c + b * -c",
+   "ch": 7,
+   "beats": [
+    {
+     "say": "Classic question. Write the three address code, quadruples, and triples for a equals b times minus c plus b times minus c. First, the three address code. t one equals minus c. t two equals b times t one. t three equals minus c. t four equals b times t three. t five equals t two plus t four. And a equals t five.",
+     "els": [
+      {
+       "t": "text",
+       "x": 200,
+       "y": 222,
+       "s": "t1 = minus c",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 276,
+       "s": "t2 = b * t1",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 330,
+       "s": "t3 = minus c",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 384,
+       "s": "t4 = b * t3",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 438,
+       "s": "t5 = t2 + t4",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 492,
+       "s": "a = t5",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "stamp",
+       "x": 1600,
+       "y": 140,
+       "text": "MOST ASKED",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    },
+    {
+     "say": "Quadruples have four fields: operator, argument one, argument two, and result. Each temporary gets its own name in the result field.",
+     "els": [
+      {
+       "t": "text",
+       "x": 700,
+       "y": 200,
+       "s": "[h:Quadruples]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "table",
+       "x": 700,
+       "y": 220,
+       "cw": [
+        90,
+        150,
+        130,
+        130,
+        130
+       ],
+       "rh": 50,
+       "rows": [
+        [
+         "#",
+         "op",
+         "arg1",
+         "arg2",
+         "result"
+        ],
+        [
+         "0",
+         "minus",
+         "c",
+         "",
+         "t1"
+        ],
+        [
+         "1",
+         "*",
+         "b",
+         "t1",
+         "t2"
+        ],
+        [
+         "2",
+         "minus",
+         "c",
+         "",
+         "t3"
+        ],
+        [
+         "3",
+         "*",
+         "b",
+         "t3",
+         "t4"
+        ],
+        [
+         "4",
+         "+",
+         "t2",
+         "t4",
+         "t5"
+        ],
+        [
+         "5",
+         "=",
+         "t5",
+         "",
+         "a"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      }
+     ]
+    },
+    {
+     "say": "Triples have only three fields: operator, argument one, and argument two. Instead of temporaries, we refer to the position of an earlier triple, written in brackets. Indirect triples keep a separate list of pointers to triples, so the statements can be reordered easily during optimization.",
+     "els": [
+      {
+       "t": "text",
+       "x": 700,
+       "y": 620,
+       "s": "[h:Triples]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "table",
+       "x": 700,
+       "y": 640,
+       "cw": [
+        90,
+        150,
+        130,
+        130
+       ],
+       "rh": 50,
+       "rows": [
+        [
+         "#",
+         "op",
+         "arg1",
+         "arg2"
+        ],
+        [
+         "0",
+         "minus",
+         "c",
+         ""
+        ],
+        [
+         "1",
+         "*",
+         "b",
+         "(0)"
+        ],
+        [
+         "2",
+         "minus",
+         "c",
+         ""
+        ],
+        [
+         "3",
+         "*",
+         "b",
+         "(2)"
+        ],
+        [
+         "4",
+         "+",
+         "(1)",
+         "(3)"
+        ],
+        [
+         "5",
+         "=",
+         "a",
+         "(4)"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 1340,
+       "y": 760,
+       "s": "[k:Indirect triples]: list of pointers",
+       "size": 30,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 1340,
+       "y": 805,
+       "s": "to triples (easy reordering)",
+       "size": 30,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Runtime Environment",
+   "ch": 8,
+   "beats": [
+    {
+     "say": "Chapter eight. Runtime environment and the symbol table.",
+     "els": []
+    }
+   ],
+   "num": 8,
+   "subs": [
+    "Storage organisation",
+    "Activation record",
+    "Parameter passing",
+    "Symbol table"
+   ],
+   "stars": 4
+  },
+  {
+   "kind": "page",
+   "title": "Storage Organisation & Activation Record",
+   "ch": 8,
+   "beats": [
+    {
+     "say": "At run time, memory for a program is divided into four parts. The code area, the static data area, the stack, and the heap. The stack and heap grow towards each other. The stack holds activation records for function calls. The heap holds dynamically allocated memory.",
+     "els": [
+      {
+       "t": "rect",
+       "x": 220,
+       "y": 240,
+       "w": 360,
+       "h": 80,
+       "label": "Code",
+       "color": "black",
+       "size": 32,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 220,
+       "y": 320,
+       "w": 360,
+       "h": 80,
+       "label": "Static data",
+       "color": "black",
+       "size": 32,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 220,
+       "y": 400,
+       "w": 360,
+       "h": 110,
+       "label": "Stack",
+       "color": "blue",
+       "size": 32,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 220,
+       "y": 510,
+       "w": 360,
+       "h": 120,
+       "label": "",
+       "color": "black",
+       "size": 32,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 220,
+       "y": 630,
+       "w": 360,
+       "h": 110,
+       "label": "Heap",
+       "color": "red",
+       "size": 32,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        400,
+        500
+       ],
+       "p2": [
+        400,
+        550
+       ],
+       "color": "green",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        400,
+        640
+       ],
+       "p2": [
+        400,
+        590
+       ],
+       "color": "green",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "green"
+      }
+     ]
+    },
+    {
+     "say": "Each time a function is called, an activation record is pushed on the stack. It contains the actual parameters, the returned value, the control link which points to the caller's record, the access link for non local data, the saved machine status, local data, and temporaries.",
+     "els": [
+      {
+       "t": "table",
+       "x": 1100,
+       "y": 230,
+       "cw": [
+        560
+       ],
+       "rh": 56,
+       "rows": [
+        [
+         "Actual parameters"
+        ],
+        [
+         "Returned value"
+        ],
+        [
+         "Control link (caller)"
+        ],
+        [
+         "Access link (non-local)"
+        ],
+        [
+         "Saved machine status"
+        ],
+        [
+         "Local data"
+        ],
+        [
+         "Temporaries"
+        ]
+       ],
+       "color": "blue",
+       "size": 30,
+       "hdr": false,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 1180,
+       "y": 210,
+       "s": "Activation record",
+       "size": 30,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "stamp",
+       "x": 900,
+       "y": 860,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    },
+    {
+     "say": "Static allocation fixes memory at compile time, so it does not support recursion. Stack allocation supports recursion. Heap allocation is for data that lives longer than the function call.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 978,
+       "s": "[k:Static]: no recursion   [k:Stack]: recursion OK   [k:Heap]: dynamic data",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Scoping & Parameter Passing",
+   "ch": 8,
+   "beats": [
+    {
+     "say": "Static scoping, also called lexical scoping, finds a variable's meaning from the program text, where it is written. Dynamic scoping finds it from the calling sequence at run time. C and Java use static scoping.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[r:Static (lexical) scope]: decided by program text (C, Java)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[r:Dynamic scope]: decided by the calling sequence at run time",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Parameter passing methods. Call by value copies the value, so changes inside the function do not affect the caller. Call by reference passes the address, so changes affect the caller. Copy restore, or value result, copies in, and copies back at the end. And call by name substitutes the actual expression, like a macro.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1500,
+       "y": 360,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "1) [k:Call by value]: copy of value, caller unchanged",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "2) [k:Call by reference]: address passed, caller changes",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "3) [k:Copy-restore (value-result)]: copy in, copy back at end",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "4) [k:Call by name]: argument text substituted (like macro)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Symbol Table",
+   "ch": 8,
+   "beats": [
+    {
+     "say": "The symbol table stores information about every identifier: its name, type, scope, size, and memory location. Every phase of the compiler uses it.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Symbol table]: name, type, scope, size, address of each identifier",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "table",
+       "x": 1100,
+       "y": 300,
+       "cw": [
+        200,
+        160,
+        160,
+        200
+       ],
+       "rh": 52,
+       "rows": [
+        [
+         "Name",
+         "Type",
+         "Size",
+         "Address"
+        ],
+        [
+         "count",
+         "int",
+         "4",
+         "1000"
+        ],
+        [
+         "rate",
+         "float",
+         "4",
+         "1004"
+        ],
+        [
+         "name",
+         "char[20]",
+         "20",
+         "1008"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      }
+     ]
+    },
+    {
+     "say": "It can be organised as a linear list, which is simple but slow to search. A binary search tree, which is faster. Or a hash table, which is the fastest and most commonly used.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "Organisation:",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "1) Linear list - simple, [r:slow] O(n)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "2) Search tree - O(log n)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "3) [h:Hash table] - [g:fastest], most used",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Code Optimization",
+   "ch": 9,
+   "beats": [
+    {
+     "say": "Chapter nine. Code optimization. Basic blocks, D A Gs, and optimization techniques.",
+     "els": []
+    }
+   ],
+   "num": 9,
+   "subs": [
+    "Basic blocks & flow graph",
+    "DAG",
+    "Optimisation techniques",
+    "Peephole",
+    "Data-flow analysis"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "Basic Blocks & Flow Graph",
+   "ch": 9,
+   "beats": [
+    {
+     "say": "A basic block is a sequence of statements where control enters only at the beginning and leaves only at the end. To find basic blocks, first find the leaders. Rule one, the first statement is a leader. Rule two, the target of any jump is a leader. Rule three, the statement right after a jump is a leader.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Basic block]: enter only at start, leave only at end",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "Leaders:",
+       "size": 36,
+       "font": "bold",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "1) first statement",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "2) target of any goto",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "3) statement right after a goto",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "stamp",
+       "x": 1600,
+       "y": 240,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    },
+    {
+     "say": "Example. Statement one is the first, so it is a leader. Statement two is the target of the goto, so it is a leader. Statement seven comes right after the goto, so it is a leader too. So we get three basic blocks.",
+     "els": [
+      {
+       "t": "text",
+       "x": 220,
+       "y": 546,
+       "s": "(1) i = 1",
+       "size": 34,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 220,
+       "y": 600,
+       "s": "(2) t1 = 4 * i",
+       "size": 34,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 220,
+       "y": 654,
+       "s": "(3) t2 = a[t1]",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 220,
+       "y": 708,
+       "s": "(4) sum = sum + t2",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 220,
+       "y": 762,
+       "s": "(5) i = i + 1",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 220,
+       "y": 816,
+       "s": "(6) if i <= 20 goto (2)",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 220,
+       "y": 870,
+       "s": "(7) x = sum",
+       "size": 34,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 760,
+       "y": 546,
+       "s": "Leaders: (1), (2), (7)",
+       "size": 34,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "B one is statement one. B two is statements two to six, which is the loop. And B three is statement seven. In the flow graph, B one goes to B two. B two goes back to itself, and also to B three.",
+     "els": [
+      {
+       "t": "rect",
+       "x": 1200,
+       "y": 560,
+       "w": 260,
+       "h": 70,
+       "label": "B1: (1)",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1200,
+       "y": 690,
+       "w": 260,
+       "h": 70,
+       "label": "B2: (2)-(6)",
+       "color": "blue",
+       "size": 30,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1200,
+       "y": 820,
+       "w": 260,
+       "h": 70,
+       "label": "B3: (7)",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1330,
+        630
+       ],
+       "p2": [
+        1330,
+        690
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1330,
+        760
+       ],
+       "p2": [
+        1330,
+        820
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1460,
+        740
+       ],
+       "p2": [
+        1460,
+        700
+       ],
+       "color": "black",
+       "label": "loop",
+       "lx": 60,
+       "ly": 0,
+       "curve": -90,
+       "head": true,
+       "size": 24,
+       "both": false,
+       "lc": "black"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "DAG for a Basic Block",
+   "ch": 9,
+   "beats": [
+    {
+     "say": "A D A G, a directed acyclic graph, represents a basic block. It helps find common sub expressions automatically. Example: a equals b plus c. b equals a minus d. c equals b plus c. d equals a minus d.",
+     "els": [
+      {
+       "t": "text",
+       "x": 200,
+       "y": 222,
+       "s": "a = b + c",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 276,
+       "s": "b = a - d",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 330,
+       "s": "c = b + c",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 384,
+       "s": "d = a - d",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "Look at the second and fourth statements. Both compute a minus d, and a and d have not changed in between. So the D A G uses just one node for both, labelled b and d. That is a common sub expression.",
+     "els": [
+      {
+       "t": "ellipse",
+       "x": 1130,
+       "y": 230,
+       "w": 160,
+       "h": 80,
+       "label": "+   c",
+       "color": "red",
+       "size": 28,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "ellipse",
+       "x": 1330,
+       "y": 380,
+       "w": 170,
+       "h": 80,
+       "label": "-   b,d",
+       "color": "red",
+       "size": 28,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "ellipse",
+       "x": 1530,
+       "y": 530,
+       "w": 150,
+       "h": 80,
+       "label": "+   a",
+       "color": "red",
+       "size": 28,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "ellipse",
+       "x": 1400,
+       "y": 700,
+       "w": 90,
+       "h": 70,
+       "label": "b0",
+       "color": "black",
+       "size": 26,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 1640,
+       "y": 700,
+       "w": 90,
+       "h": 70,
+       "label": "c0",
+       "color": "black",
+       "size": 26,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 1210,
+       "y": 530,
+       "w": 90,
+       "h": 70,
+       "label": "d0",
+       "color": "black",
+       "size": 26,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1180,
+        310
+       ],
+       "p2": [
+        1360,
+        385
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1230,
+        310
+       ],
+       "p2": [
+        1640,
+        700
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1380,
+        460
+       ],
+       "p2": [
+        1550,
+        540
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1360,
+        460
+       ],
+       "p2": [
+        1260,
+        530
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1570,
+        610
+       ],
+       "p2": [
+        1450,
+        700
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1630,
+        610
+       ],
+       "p2": [
+        1680,
+        700
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      }
+     ]
+    },
+    {
+     "say": "So the optimized block is: a equals b plus c. d equals a minus d. c equals d plus c.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "Optimised:",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "a = b + c;   d = a - d;   c = d + c",
+       "size": 40,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "stamp",
+       "x": 700,
+       "y": 700,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Optimization Techniques",
+   "ch": 9,
+   "beats": [
+    {
+     "say": "The main machine independent optimizations. Common sub expression elimination: compute a repeated expression only once. Constant folding: compute constant expressions at compile time, so two times three becomes six.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "MOST ASKED",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "1) [r:Common sub-expression elimination]: t = a*b; x = t; y = t",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "2) [r:Constant folding]: x = 2 * 3  ->  x = 6",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Constant propagation and copy propagation: replace a variable with its known constant, or with the variable it was copied from. Dead code elimination: remove code whose result is never used, or that can never run.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "3) [r:Constant / copy propagation]: x = 5; y = x + 1 -> y = 6",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "4) [r:Dead code elimination]: remove unused / unreachable code",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Loop optimizations are the most important, because programs spend most of their time in loops. Code motion moves loop invariant code, which gives the same result every time, outside the loop. Strength reduction replaces costly operations with cheaper ones, like multiplication with addition. And induction variable elimination removes extra loop counters.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "Loop optimisations",
+       "size": 38,
+       "font": "bold",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "5) [r:Code motion]: move loop-invariant code out of the loop",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "6) [r:Strength reduction]: i * 4  ->  t = t + 4",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "7) [r:Induction variable elimination]: remove extra counters",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Peephole optimization looks at a small window of instructions and improves them. It removes redundant loads and stores, unreachable code, jumps to jumps, and uses algebraic simplification, like x equals x plus zero, and machine idioms like increment.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "Peephole optimisation",
+       "size": 38,
+       "font": "bold",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "redundant load/store, unreachable code, jump-to-jump,",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 870,
+       "s": "algebraic simplification (x = x + 0), machine idioms (INC)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Data-Flow Analysis (GATE)",
+   "ch": 9,
+   "beats": [
+    {
+     "say": "Data flow analysis collects information about how values flow through the program. Reaching definitions finds which assignments can reach a point. The equations are: out of B equals gen of B, union, in of B minus kill of B. And in of B is the union of out of all predecessors.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "Reaching definitions (forward)",
+       "size": 36,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "out[B] = gen[B] ∪ (in[B] - kill[B])",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "in[B] = ∪ out[P]  over predecessors P",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Live variable analysis finds which variables will be used later. It is used for register allocation and dead code elimination. It works backwards: in of B equals use of B, union, out of B minus def of B. And out of B is the union of in of all successors.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "Live variables (backward)",
+       "size": 36,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "in[B] = use[B] ∪ (out[B] - def[B])",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "out[B] = ∪ in[S]  over successors S",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "stamp",
+       "x": 1500,
+       "y": 420,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    },
+    {
+     "say": "Available expressions finds expressions already computed, which helps common sub expression elimination. And constant propagation tracks which variables hold constants. All of these are in the GATE syllabus.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "Available expressions (forward)",
+       "size": 36,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "used for common sub-expression elimination",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "Also: constant propagation - in GATE syllabus",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Code Generation",
+   "ch": 10,
+   "beats": [
+    {
+     "say": "Chapter ten. Code generation. The last phase of the compiler.",
+     "els": []
+    }
+   ],
+   "num": 10,
+   "subs": [
+    "Issues in code generation",
+    "Simple code generator",
+    "Register allocation"
+   ],
+   "stars": 4
+  },
+  {
+   "kind": "page",
+   "title": "Issues in Code Generation",
+   "ch": 10,
+   "beats": [
+    {
+     "say": "The code generator converts intermediate code into target machine code. The main issues in its design are: the input to the code generator, the target program, memory management, instruction selection, register allocation, and the order of evaluation.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1600,
+       "y": 140,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "1) Input to the code generator (IR + symbol table)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "2) Target program (absolute / relocatable / assembly)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "3) Memory management",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "4) Instruction selection",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "5) Register allocation & assignment",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "6) Evaluation order",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Register allocation is very important, because registers are the fastest storage. It is usually done using graph colouring. Each variable is a node, and two nodes are connected if they are live at the same time. Colours are registers.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "[h:Register allocation]: graph colouring",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "node = variable, edge = live at same time, colour = register",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Simple Code Generator - Example",
+   "ch": 10,
+   "beats": [
+    {
+     "say": "Example. Generate code for: t equals a minus b, u equals a minus c, v equals t plus u, d equals v plus u. The code generator uses a register descriptor, which says what each register holds, and an address descriptor, which says where each variable's value is.",
+     "els": [
+      {
+       "t": "text",
+       "x": 220,
+       "y": 222,
+       "s": "t = a - b",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 220,
+       "y": 276,
+       "s": "u = a - c",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 220,
+       "y": 330,
+       "s": "v = t + u",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 220,
+       "y": 384,
+       "s": "d = v + u",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "[k:Register descriptor]: what each register holds",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "[k:Address descriptor]: where each value is",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Move a into R zero, subtract b, so R zero holds t. Move a into R one, subtract c, so R one holds u. Add R one to R zero, so R zero holds v. Add R one again, so R zero holds d. Finally, store R zero into d.",
+     "els": [
+      {
+       "t": "table",
+       "x": 1000,
+       "y": 230,
+       "cw": [
+        380,
+        420
+       ],
+       "rh": 54,
+       "rows": [
+        [
+         "Code",
+         "Register contents"
+        ],
+        [
+         "MOV a, R0",
+         "R0: a"
+        ],
+        [
+         "SUB b, R0",
+         "R0: t"
+        ],
+        [
+         "MOV a, R1",
+         "R0: t, R1: a"
+        ],
+        [
+         "SUB c, R1",
+         "R0: t, R1: u"
+        ],
+        [
+         "ADD R1, R0",
+         "R0: v, R1: u"
+        ],
+        [
+         "ADD R1, R0",
+         "R0: d, R1: u"
+        ],
+        [
+         "MOV R0, d",
+         "d in memory"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "stamp",
+       "x": 1500,
+       "y": 760,
+       "text": "NUMERICAL",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Exam Revision",
+   "ch": 11,
+   "beats": [
+    {
+     "say": "Chapter eleven. Exam revision. If you're short on time, revise these first.",
+     "els": []
+    }
+   ],
+   "num": 11,
+   "subs": [
+    "Most asked questions",
+    "Last-minute tips"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "Most Asked Exam Questions",
+   "ch": 11,
+   "beats": [
+    {
+     "say": "Here are the most asked questions. Phases of a compiler with an example. Tokens, lexemes and patterns. Regular expression to D F A. And ambiguity, left recursion and left factoring.",
+     "els": [
+      {
+       "t": "text",
+       "x": 200,
+       "y": 222,
+       "s": "1. Phases of a compiler (with example)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 276,
+       "s": "2. Token, lexeme, pattern + input buffering",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 330,
+       "s": "3. RE -> NFA -> DFA, e.g. (a|b)*abb",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 384,
+       "s": "4. Ambiguity, left recursion, left factoring",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "FIRST and FOLLOW with the L L one table. Shift reduce parsing. L R zero items and the S L R table, and C L R versus L A L R. And annotated parse trees.",
+     "els": [
+      {
+       "t": "text",
+       "x": 200,
+       "y": 438,
+       "s": "5. FIRST & FOLLOW + LL(1) table + parsing moves",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 492,
+       "s": "6. Shift-reduce parsing, handle",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 546,
+       "s": "7. LR(0) items + SLR table; CLR vs LALR",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 600,
+       "s": "8. Annotated parse tree, S/L-attributed",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Three address code with quadruples and triples. Activation records and parameter passing. Basic blocks, D A G and optimization. And code generation.",
+     "els": [
+      {
+       "t": "text",
+       "x": 200,
+       "y": 654,
+       "s": "9. Three-address code, quadruples, triples",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 708,
+       "s": "10. Activation record, parameter passing",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 762,
+       "s": "11. Basic blocks, DAG, loop & peephole optimisation",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 816,
+       "s": "12. Code generation issues + example",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Here's one more tip for the exam. For numericals, draw the table neatly, and write the rule or formula first. That way, you still get step marks, even if the final answer goes wrong.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 924,
+       "s": "Tip: draw the table neatly, [h:write the rule first] => step marks!",
+       "size": 38,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "outro",
+   "title": "All the Best!",
+   "ch": 11,
+   "beats": [
+    {
+     "say": "That's the complete compiler design subject. If this helped you, share it with your friends who have the exam, and subscribe to TechVibe24 for more one shot videos. Tell me in the comments which subject you want next. All the best for your exam!",
+     "els": []
+    }
+   ]
+  }
+ ],
+ "chapters": [
+  [
+   1,
+   "Introduction to Compilers",
+   [
+    "Language processors",
+    "Compiler vs interpreter",
+    "Phases of a compiler",
+    "Passes & bootstrapping"
+   ],
+   4
+  ],
+  [
+   2,
+   "Lexical Analysis",
+   [
+    "Tokens, lexemes, patterns",
+    "Input buffering",
+    "Regular expressions & finite automata",
+    "RE -> NFA -> DFA",
+    "LEX"
+   ],
+   5
+  ],
+  [
+   3,
+   "Grammars & Syntax Analysis",
+   [
+    "Context-free grammar",
+    "Derivations & parse trees",
+    "Ambiguity",
+    "Left recursion & left factoring",
+    "Error recovery"
+   ],
+   5
+  ],
+  [
+   4,
+   "Top-Down Parsing",
+   [
+    "Recursive descent",
+    "FIRST & FOLLOW",
+    "LL(1) parsing table",
+    "LL(1) parsing moves"
+   ],
+   5
+  ],
+  [
+   5,
+   "Bottom-Up Parsing",
+   [
+    "Shift-reduce parsing",
+    "Handles",
+    "LR(0) items",
+    "SLR table",
+    "CLR vs LALR"
+   ],
+   5
+  ],
+  [
+   6,
+   "Syntax-Directed Translation",
+   [
+    "SDD & attributes",
+    "S- and L-attributed",
+    "Annotated parse tree",
+    "YACC"
+   ],
+   4
+  ],
+  [
+   7,
+   "Intermediate Code",
+   [
+    "Syntax tree & postfix",
+    "Three-address code",
+    "Quadruples & triples"
+   ],
+   5
+  ],
+  [
+   8,
+   "Runtime Environment",
+   [
+    "Storage organisation",
+    "Activation record",
+    "Parameter passing",
+    "Symbol table"
+   ],
+   4
+  ],
+  [
+   9,
+   "Code Optimization",
+   [
+    "Basic blocks & flow graph",
+    "DAG",
+    "Optimisation techniques",
+    "Peephole",
+    "Data-flow analysis"
+   ],
+   5
+  ],
+  [
+   10,
+   "Code Generation",
+   [
+    "Issues in code generation",
+    "Simple code generator",
+    "Register allocation"
+   ],
+   4
+  ],
+  [
+   11,
+   "Exam Revision",
+   [
+    "Most asked questions",
+    "Last-minute tips"
+   ],
+   5
+  ]
+ ]
+}

@@ -17,3 +17,5 @@ qa_assets/
 build_kids/
 www/kids/scn/
 ka_assets/
+cdv/build/
+cdv/__pycache__/
