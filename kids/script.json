@@ -1,79 +1,17 @@
 {
  "date": "14 NOV",
- "voices": [
-  "en-IN-PrabhatNeural",
-  "en-US-GuyNeural",
-  "en-IN-NeerjaExpressiveNeural",
-  "en-US-ChristopherNeural"
- ],
- "rate": "-4%",
- "pitch": "+0Hz",
+ "voices": ["en-US-AndrewMultilingualNeural", "en-US-AndrewNeural", "en-US-BrianNeural", "en-US-ChristopherNeural"],
+ "rate": "-10%",
+ "pitch": "-2Hz",
+ "card_seg": "m7",
+ "tail": 3.4,
  "segments": [
-  {
-   "id": "k1",
-   "scenes": [
-    "college"
-   ],
-   "vo": "We are college students now. Assignments, deadlines, placements.",
-   "gap": 0.45
-  },
-  {
-   "id": "k2",
-   "scenes": [
-    "photo"
-   ],
-   "vo": "But somewhere inside us, that little kid is still alive.",
-   "gap": 0.6
-  },
-  {
-   "id": "k3",
-   "scenes": [
-    "boat"
-   ],
-   "vo": "The kid who made paper boats in the rain.",
-   "gap": 0.55
-  },
-  {
-   "id": "k4",
-   "scenes": [
-    "tiffin"
-   ],
-   "vo": "Who shared tiffin with best friends.",
-   "gap": 0.45
-  },
-  {
-   "id": "k5",
-   "scenes": [
-    "cricket"
-   ],
-   "vo": "Who played cricket till the street lights came on.",
-   "gap": 0.45
-  },
-  {
-   "id": "k6",
-   "scenes": [
-    "kite"
-   ],
-   "vo": "Who believed that anything was possible.",
-   "gap": 0.45
-  },
-  {
-   "id": "k7",
-   "scenes": [
-    "friends"
-   ],
-   "vo": "So today, let's not grow up too fast.",
-   "gap": 0.45
-  },
-  {
-   "id": "k8",
-   "scenes": [
-    "final"
-   ],
-   "vo": "Happy Children's Day. To every kid, and to the kid inside all of us.",
-   "gap": 0.75
-  }
- ],
- "card_seg": "k8",
- "tail": 3.2
+  {"id": "m1", "scenes": ["stars"], "gap": 0.5, "vo": "Dear little ones... this one is for you."},
+  {"id": "m2", "scenes": ["dream"], "gap": 0.7, "vo": "Never stop dreaming. Even the biggest stars began as tiny sparks."},
+  {"id": "m3", "scenes": ["bike"], "gap": 0.7, "vo": "If you fall, it's okay. Get up... and smile again."},
+  {"id": "m4", "scenes": ["paint"], "gap": 0.6, "vo": "Be curious. Ask questions. Paint, play, and wonder."},
+  {"id": "m5", "scenes": ["kind"], "gap": 0.6, "vo": "And be kind... because kindness is the real superpower."},
+  {"id": "m6", "scenes": ["special"], "gap": 0.6, "vo": "You are special, just the way you are."},
+  {"id": "m7", "scenes": ["final"], "gap": 0.8, "vo": "Happy Children's Day."}
+ ]
 }
