@@ -8,7 +8,7 @@ for pg in tl['pages']:
     if pg['kind'] == 'chapter': chap.append(f"{ts(int(pg['t0']))} Ch {pg['num']}: {pg['title']}")
     NUM = {'RE to DFA: (a|b)*abb': 'RE to DFA: (a|b)*abb', 'FIRST & FOLLOW': 'FIRST & FOLLOW', 'LL(1) Parsing Table': 'LL(1) parsing table',
            'LR(0) Items: S -> AA,  A -> aA | b': 'LR(0) items & SLR table', 'Three-Address Code: a = b * -c + b * -c': 'Three-address code, quadruples, triples',
-           'Basic Blocks & Flow Graph': 'Basic blocks & DAG'}
+           'DAG for a Basic Block': 'DAG for a basic block'}
     if pg['kind'] == 'page' and pg['title'] in NUM:      # YouTube rejects < and > in descriptions, so no '->' here
         chap.append(f"{ts(int(pg['t0']))}   • {NUM[pg['title']]} (numerical)")
 open(f'{OUT}/chapters.txt', 'w').write('\n'.join(chap) + '\n')
