@@ -1,17 +1,79 @@
 {
  "date": "14 NOV",
- "voices": ["en-US-AndrewMultilingualNeural", "en-US-AndrewNeural", "en-US-BrianNeural", "en-US-ChristopherNeural"],
+ "voices": [
+  "en-US-AndrewMultilingualNeural",
+  "en-US-AndrewNeural",
+  "en-US-BrianNeural",
+  "en-US-ChristopherNeural"
+ ],
  "rate": "-10%",
  "pitch": "-2Hz",
- "card_seg": "m7",
- "tail": 3.4,
+ "card_seg": "m8",
+ "tail": 4.2,
  "segments": [
-  {"id": "m1", "scenes": ["stars"], "gap": 0.5, "vo": "Dear little ones... this one is for you."},
-  {"id": "m2", "scenes": ["dream"], "gap": 0.7, "vo": "Never stop dreaming. Even the biggest stars began as tiny sparks."},
-  {"id": "m3", "scenes": ["bike"], "gap": 0.7, "vo": "If you fall, it's okay. Get up... and smile again."},
-  {"id": "m4", "scenes": ["paint"], "gap": 0.6, "vo": "Be curious. Ask questions. Paint, play, and wonder."},
-  {"id": "m5", "scenes": ["kind"], "gap": 0.6, "vo": "And be kind... because kindness is the real superpower."},
-  {"id": "m6", "scenes": ["special"], "gap": 0.6, "vo": "You are special, just the way you are."},
-  {"id": "m7", "scenes": ["final"], "gap": 0.8, "vo": "Happy Children's Day."}
+  {
+   "id": "m1",
+   "scenes": [
+    "stars"
+   ],
+   "gap": 0.5,
+   "vo": "Dear little ones... this one is for you."
+  },
+  {
+   "id": "m2",
+   "scenes": [
+    "dream"
+   ],
+   "gap": 0.7,
+   "vo": "Never stop dreaming. Even the biggest stars began as tiny sparks."
+  },
+  {
+   "id": "m3",
+   "scenes": [
+    "bike"
+   ],
+   "gap": 0.7,
+   "vo": "If you fall, it's okay. Get up... and smile again."
+  },
+  {
+   "id": "m4",
+   "scenes": [
+    "paint"
+   ],
+   "gap": 0.6,
+   "vo": "Be curious. Ask questions. Paint, play, and wonder."
+  },
+  {
+   "id": "m5",
+   "scenes": [
+    "kind"
+   ],
+   "gap": 0.6,
+   "vo": "And be kind... because kindness is the real superpower."
+  },
+  {
+   "id": "m6",
+   "scenes": [
+    "special"
+   ],
+   "gap": 0.6,
+   "vo": "You are special, just the way you are."
+  },
+  {
+   "id": "m7",
+   "scenes": [
+    "grow"
+   ],
+   "gap": 0.8,
+   "vo": "And remember... grow up, but never let the child inside you grow old."
+  },
+  {
+   "id": "m8",
+   "scenes": [
+    "final"
+   ],
+   "gap": 0.7,
+   "vo": "Happy Children's Day."
+  }
  ]
 }

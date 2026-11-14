@@ -10,6 +10,7 @@ P = {
  'paint': 'a cute little Indian girl happily painting a big colorful rainbow on a canvas, paint splashes, bright cozy room with sunlight, joyful',
  'kind': 'a cute little Indian boy sharing his yellow umbrella with a small wet puppy in the rain, warm glowing street lights, heartwarming',
  'special': 'a cute little Indian girl smiling with arms wide open in a flower field at sunrise, butterflies around her, warm golden light, happiness',
+ 'grow': 'a grown-up Indian man and his younger self as a cute little boy walking side by side holding hands on a sunset beach, both smiling, warm golden light, heartwarming',
  'final': 'happy cute Indian kids running together holding colorful balloons on a green hill at sunrise, joyful celebration, confetti in the air',
 }
 def full(sid): return P[sid] + STY + NEG
