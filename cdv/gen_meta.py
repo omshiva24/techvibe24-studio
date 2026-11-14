@@ -6,8 +6,11 @@ def ts(t): return '%d:%02d:%02d' % (t // 3600, t % 3600 // 60, t % 60) if t >= 3
 chap = ['0:00 Introduction & contents']
 for pg in tl['pages']:
     if pg['kind'] == 'chapter': chap.append(f"{ts(int(pg['t0']))} Ch {pg['num']}: {pg['title']}")
-    if pg['kind'] == 'page' and pg['title'] in ('FCFS - First Come First Serve', "Banker's Algorithm - Example", 'Page Replacement - FIFO', 'Disk Scheduling: FCFS & SSTF', 'TLB & Effective Access Time'):
-        chap.append(f"{ts(int(pg['t0']))}   • {pg['title']} (numerical)")
+    NUM = {'RE to DFA: (a|b)*abb': 'RE to DFA: (a|b)*abb', 'FIRST & FOLLOW': 'FIRST & FOLLOW', 'LL(1) Parsing Table': 'LL(1) parsing table',
+           'LR(0) Items: S -> AA,  A -> aA | b': 'LR(0) items & SLR table', 'Three-Address Code: a = b * -c + b * -c': 'Three-address code, quadruples, triples',
+           'Basic Blocks & Flow Graph': 'Basic blocks & DAG'}
+    if pg['kind'] == 'page' and pg['title'] in NUM:      # YouTube rejects < and > in descriptions, so no '->' here
+        chap.append(f"{ts(int(pg['t0']))}   • {NUM[pg['title']]} (numerical)")
 open(f'{OUT}/chapters.txt', 'w').write('\n'.join(chap) + '\n')
 def srt_t(t): ms = int(round(t * 1000)); return '%02d:%02d:%02d,%03d' % (ms // 3600000, ms % 3600000 // 60000, ms % 60000 // 1000, ms % 1000)
 subs = []

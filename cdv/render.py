@@ -12,7 +12,7 @@ CHAPS = S['chapters']
 INK = {'blue': (22, 50, 168), 'black': (30, 30, 36), 'red': (204, 36, 40), 'green': (16, 118, 66), 'grey': (120, 120, 128)}
 HLC = {'yellow': (255, 232, 64), 'pink': (255, 170, 200), 'green': (150, 240, 170)}
 FF = {'body': 'Kalam-Regular.ttf', 'bold': 'Kalam-Bold.ttf', 'light': 'Kalam-Light.ttf', 'cav': 'Caveat.ttf', 'anton': 'Anton.ttf',
-      'sg': 'SpaceGrotesk.ttf', 'inter': 'Inter.ttf', 'mono': 'JetBrainsMono.ttf'}
+      'sg': 'SpaceGrotesk.ttf', 'inter': 'Inter.ttf', 'mono': 'JetBrainsMono.ttf', 'math': 'DejaVuSans-Oblique.ttf'}
 _fc = {}
 def font(kind, size):
     k = (kind, size)
@@ -66,8 +66,14 @@ def parse(s):
 from fontTools.ttLib import TTFont
 _CMAP = set(TTFont(f'{HERE}/fonts/Kalam-Regular.ttf').getBestCmap())
 def runs(txt):
+    '''split text into runs: True = handwriting font, False = fallback font (glyph missing), 'mul' = multiplication star'''
     out = []
-    for ch in txt:
+    for i, ch in enumerate(txt):
+        if ch == '*':
+            pv = txt[i - 1] if i else ' '; nx = txt[i + 1] if i + 1 < len(txt) else ' '
+            kleene = pv.isalnum() or pv in ")'" or (pv == '>' and nx == ' ')
+            if not kleene: out.append([ch, 'mul']); continue
+        if ch == '∪': out.append([ch, 'big']); continue
         ok = ord(ch) in _CMAP or ch == ' '
         if out and out[-1][1] == ok: out[-1][0] += ch
         else: out.append([ch, ok])
@@ -76,16 +82,19 @@ _tc = {}
 def text_layer(e):
     key = (e['s'], e['size'], e['font'], e['color'])
     if key in _tc: return _tc[key]
-    f = font(e['font'], e['size']); fb = font('inter', int(e['size'] * .9)); spans = parse(e['s']); x = 0; parts = []; hls = []
+    f = font(e['font'], e['size']); fb = font('math', int(e['size'] * .82)); spans = parse(e['s']); x = 0; parts = []; hls = []
     for txt, m in spans:
         col = INK[{'r': 'red', 'g': 'green', 'k': 'black'}.get(m, e['color'])]
         x0 = x
-        for run, ok in runs(txt):                      # symbols the handwriting font lacks (ε, α, β, ∪) use Inter
-            ff = f if ok else fb; w = ff.getlength(run); parts.append((x, run, col, ff)); x += w
+        for run, ok in runs(txt):                      # symbols the handwriting font lacks (ε, α, β, ∪, ∈, ₀) use DejaVu
+            if ok == 'mul':                            # Kalam's * sits high and small: draw it bigger, centred like +
+                fm = font(e['font'], int(e['size'] * 1.5)); w = fm.getlength('*'); parts.append((x, '*', col, fm, int(e['size'] * .7))); x += w; continue
+            if ok == 'big': fu = font('math', int(e['size'] * 1.1)); parts.append((x + 2, run, col, fu, 0)); x += fu.getlength(run) + 4; continue
+            ff = f if ok else fb; w = ff.getlength(run); parts.append((x, run, col, ff, 0)); x += w
         if m in ('h', 'p'): hls.append((x0 - 4, x + 4, 'yellow' if m == 'h' else 'pink'))
     wid = int(x) + 16; asc = int(e['size'] * 1.15); hgt = int(e['size'] * 1.75)
     im = Image.new('RGBA', (wid, hgt), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
-    for px, txt, col, ff in parts: d.text((px + 6, asc), txt, font=ff, fill=col + (255,), anchor='ls')
+    for px, txt, col, ff, dy in parts: d.text((px + 6, asc + dy), txt, font=ff, fill=col + (255,), anchor='ls')
     a = np.array(im); a[..., 3] = (a[..., 3].astype(np.float32) * .94).astype(np.uint8)   # ink is never perfectly opaque
     r = (a, asc, hls); _tc[key] = r; return r
 def blend(base, layer, x, y, cut=None):

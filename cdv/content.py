@@ -16,6 +16,22 @@ def Arr(x1, y1, x2, y2, color='black', label=None, lx=0, ly=-14, curve=0, head=T
 def Ln(pts, color='black', w=4): return dict(t='line', pts=pts, color=color, w=w)
 def Tab(x, y, cw, rh, rows, color='black', size=30, hdr=True, order='row', colors=None): return dict(t='table', x=x, y=y, cw=cw, rh=rh, rows=rows, color=color, size=size, hdr=hdr, order=order, colors={f'{r},{c}': v for (r, c), v in (colors or {}).items()}, fills={})
 def Stamp(x, y, text='IMP!', color='red', rot=-8, size=34): return dict(t='stamp', x=x, y=y, text=text, color=color, rot=rot, size=size)
+def Tree(nodes, edges, w=70, h=56, size=28, head=False, ecol='black'):
+    '''nodes: {name: (cx, cy, label, color[, w])}; edges: [(parent, child)] in drawing order. Each child is drawn right after its edge.'''
+    import math
+    def ell(n):
+        cx, cy, lab, col, *ww = nodes[n]; nw = ww[0] if ww else w
+        return Ell(cx - nw / 2, cy - h / 2, nw, h, lab, color=col, size=size, lc=col)
+    def rim(n, dx, dy):
+        cx, cy, lab, col, *ww = nodes[n]; nw = ww[0] if ww else w; a, b = nw / 2 + 4, h / 2 + 4
+        k = 1 / math.sqrt((dx / a) ** 2 + (dy / b) ** 2); return cx + dx * k, cy + dy * k
+    out = [ell(edges[0][0])]; done = {edges[0][0]}
+    for a, b in edges:
+        dx, dy = nodes[b][0] - nodes[a][0], nodes[b][1] - nodes[a][1]
+        x1, y1 = rim(a, dx, dy); x2, y2 = rim(b, -dx, -dy)
+        out.append(Arr(round(x1), round(y1), round(x2), round(y2), head=head, color=ecol))
+        if b not in done: out.append(ell(b)); done.add(b)
+    return out
 
 CHAPTERS = [
  (1, 'Introduction to Compilers', ['Language processors', 'Compiler vs interpreter', 'Phases of a compiler', 'Passes & bootstrapping'], 4),
@@ -62,9 +78,9 @@ into an equivalent program in a low level language, like assembly or machine cod
 it also reports errors to the programmer.''',
      T(0, '[h:Compiler] = translates high-level program'), T(1, '-> equivalent low-level (machine / assembly) program'),
      T(2, '+ reports errors', color='red'),
-     Box(1180, 260, 250, 100, 'source\nprogram', size=28), Box(1520, 260, 250, 100, 'Compiler', color='red', size=32),
-     Box(1520, 470, 250, 100, 'target\nprogram', size=28), Box(1180, 470, 250, 100, 'error\nmessages', color='red', size=28),
-     Arr(1430, 310, 1520, 310), Arr(1645, 360, 1645, 470), Arr(1560, 360, 1430, 490))
+     Box(1100, 200, 220, 90, 'source\nprogram', size=28), Box(1420, 200, 220, 90, 'Compiler', color='red', size=32),
+     Box(1420, 330, 220, 80, 'target\nprogram', size=28), Box(1700, 200, 180, 90, 'error\nmessages', color='red', size=26),
+     Arr(1320, 245, 1420, 245), Arr(1530, 290, 1530, 330), Arr(1640, 245, 1700, 245))
 beat(p, '''Compiler versus interpreter. A compiler translates the whole program at once, and then you run the output.
 It is fast to run, but errors are shown after the whole program is checked. An interpreter translates and runs line by line.
 It is slower, but it is easier to debug. C and C plus plus use compilers. Python mostly uses an interpreter.''',
@@ -80,17 +96,18 @@ phases = ['Lexical Analyzer', 'Syntax Analyzer', 'Semantic Analyzer', 'Intermedi
 beat(p, '''The phases of a compiler. This is the most asked question in unit one, so learn this diagram.
 There are six phases. Lexical analysis, syntax analysis, semantic analysis, intermediate code generation,
 code optimization, and code generation.''',
-     Stamp(1650, 140, 'MUST DRAW'), *[Box(560, 200 + k * 128, 420, 84, s, size=30, color='blue') for k, s in enumerate(phases)],
-     *[Arr(770, 284 + k * 128, 770, 328 + k * 128) for k in range(5)],
-     T(0, 'source program', x=640, y=190, size=26, color='green'), T(0, 'target program', x=640, y=1000, size=26, color='green'))
+     Stamp(1650, 140, 'MUST DRAW'), *[Box(640, 240 + k * 116, 420, 78, s, size=30, color='blue') for k, s in enumerate(phases)],
+     *[Arr(850, 318 + k * 116, 850, 356 + k * 116) for k in range(5)],
+     T(0, 'source program  ↓', x=760, y=228, size=26, color='green'), T(0, 'target program', x=770, y=975, size=26, color='green'),
+     Arr(850, 898, 850, 945, color='green'))
 beat(p, '''Two things are used by every phase. The symbol table, which stores information about identifiers,
 and the error handler, which reports and recovers from errors.''',
-     Box(1180, 420, 330, 110, 'Symbol table', color='red', size=32), Box(1180, 640, 330, 110, 'Error handler', color='red', size=32),
-     Arr(980, 470, 1180, 475, both=True), Arr(980, 690, 1180, 695, both=True))
+     Box(1260, 400, 330, 110, 'Symbol table', color='red', size=32), Box(1260, 640, 330, 110, 'Error handler', color='red', size=32),
+     Arr(1060, 455, 1260, 455, both=True), Arr(1060, 695, 1260, 695, both=True))
 beat(p, '''The first part, lexical to intermediate code, is called the front end. It depends on the source language.
 The optimizer and code generator form the back end, which depends on the target machine.''',
      T(0, '[k:Front end]: analysis', x=180, y=420, size=32), T(0, '(depends on language)', x=180, y=465, size=28, color='green'),
-     T(0, '[k:Back end]: synthesis', x=180, y=780, size=32), T(0, '(depends on machine)', x=180, y=825, size=28, color='green'))
+     T(0, '[k:Back end]: synthesis', x=180, y=800, size=32), T(0, '(depends on machine)', x=180, y=845, size=28, color='green'))
 
 p = page('Phases - Example: position = initial + rate * 60', 1)
 beat(p, '''Let's see the phases with the famous example. Position equals initial plus rate times sixty.
@@ -134,8 +151,8 @@ beat(p, '''The lexical analyzer, also called the scanner, reads the source progr
 and groups them into meaningful units called tokens. It also removes white spaces and comments,
 and enters identifiers into the symbol table.''',
      T(0, '[h:Lexical analyzer (scanner)]: characters -> tokens'), T(1, 'removes spaces & comments, fills symbol table'),
-     Box(1250, 380, 230, 90, 'Lexical\nanalyzer', size=28, color='blue'), Box(1600, 380, 230, 90, 'Parser', size=30),
-     Arr(1480, 410, 1600, 410, label='token', ly=-14, size=24), Arr(1600, 450, 1480, 450, label='get next token', ly=30, size=24))
+     Box(1150, 330, 230, 90, 'Lexical\nanalyzer', size=28, color='blue'), Box(1650, 330, 230, 90, 'Parser', size=30),
+     Arr(1380, 355, 1650, 355, label='token', ly=-12, size=26), Arr(1650, 400, 1380, 400, label='get next token', ly=36, size=26))
 beat(p, '''Three terms you must know. A token is a category, like identifier, number, or keyword.
 A lexeme is the actual text that matches, like count, or ten. And a pattern is the rule that describes the token,
 usually a regular expression.''',
@@ -149,8 +166,9 @@ beat(p, '''Reading one character at a time from the disk is slow. So the scanner
 each of size N. Two pointers are used. lexeme begin marks the start of the current lexeme,
 and forward moves ahead until a token is found.''',
      T(0, 'Two-buffer scheme (each of size N)'), T(1, '[k:lexemeBegin]: start of lexeme   [k:forward]: scans ahead'),
-     *[Box(180 + 70 * k, 420, 70, 70, c, size=30) for k, c in enumerate('E = M * C * * 2 eof'.split())],
-     Arr(250, 540, 250, 490, label='lexemeBegin', lx=0, ly=36, size=24), Arr(670, 540, 670, 490, label='forward', lx=40, ly=36, size=24))
+     *[Box(180 + 90 * k, 400, 90, 80, c, size=32) for k, c in enumerate('E = M * C * * 2 eof'.split())],
+     Arr(225, 570, 225, 488, color='green'), T(0, 'lexemeBegin', x=170, y=610, size=30, color='green'),
+     Arr(765, 570, 765, 488, color='green'), T(0, 'forward', x=715, y=610, size=30, color='green'))
 beat(p, '''To avoid checking for the end of the buffer every time, a special character called a sentinel, usually e o f,
 is placed at the end of each buffer. Then only one check is needed for most characters.''',
      T(9, '[h:Sentinel] (eof) at the end of each buffer'), T(10, '=> fewer checks, faster scanning', color='green'))
@@ -183,13 +201,15 @@ From each set, find where a and b go, and take the epsilon closure again. Each n
          size=28, colors={(5, 0): 'red'}))
 beat(p, '''We get five states, A to E. E contains state ten, so E is the final state. A and C have the same moves,
 so after minimization they merge. The minimized D F A has just four states.''',
-     T(0, 'E contains 10 => [r:final state]', x=1250, y=420, size=34), T(0, 'A ≡ C  =>  minimised DFA', x=1250, y=480, size=34),
-     T(0, 'has [h:4 states]', x=1250, y=540, size=34),
-     Ell(180, 760, 110, 90, 'A', size=30), Ell(470, 760, 110, 90, 'B', size=30), Ell(760, 760, 110, 90, 'D', size=30),
-     Ell(1050, 760, 110, 90, 'E', size=30, color='red'),
-     Arr(290, 805, 470, 805, label='a', ly=-14), Arr(580, 805, 760, 805, label='b', ly=-14), Arr(870, 805, 1050, 805, label='b', ly=-14),
-     Arr(1100, 850, 520, 850, curve=-120, label='a', ly=-10), Arr(810, 850, 520, 850, curve=-60, label='a', ly=-4),
-     Arr(1080, 760, 260, 760, curve=-170, label='b', ly=-16))
+     T(0, 'E contains 10 => [r:final state]', x=1250, y=400, size=34), T(0, 'A and C have the same moves', x=1250, y=460, size=34),
+     T(0, '=> merge: minimised DFA has [h:4 states]', x=1250, y=520, size=34),
+     Ell(245, 805, 110, 90, 'A', size=32), Ell(625, 805, 110, 90, 'B', size=32), Ell(1005, 805, 110, 90, 'D', size=32),
+     Ell(1385, 805, 110, 90, 'E', size=32, color='red'), Ell(1395, 815, 90, 70, color='red'),
+     Arr(185, 850, 243, 850, color='green'),
+     Arr(357, 850, 623, 850, label='a', ly=-14), Arr(737, 850, 1003, 850, label='b', ly=-14), Arr(1117, 850, 1383, 850, label='b', ly=-14),
+     Arr(325, 897, 275, 897, curve=-110, label='b', ly=34), Arr(655, 804, 705, 804, curve=-110, label='a', ly=-10),
+     Arr(1035, 893, 705, 893, curve=-70, label='a', ly=30), Arr(1415, 893, 690, 897, curve=-150, label='a', ly=30),
+     Arr(1420, 806, 330, 812, curve=260, label='b', ly=-12))
 
 p = page('LEX - Lexical Analyzer Generator', 2)
 beat(p, '''LEX is a tool that generates a lexical analyzer automatically. You write the patterns and actions in a file
@@ -223,20 +243,20 @@ p = page('Ambiguity', 3)
 beat(p, '''A grammar is ambiguous if one string has more than one parse tree, or more than one leftmost derivation.
 Our grammar is ambiguous, because id plus id times id has two parse trees.''',
      T(0, '[h:Ambiguous] = a string has 2+ parse trees (or 2+ leftmost derivations)'),
-     Ell(340, 330, 80, 64, 'E', size=28), Ell(220, 430, 80, 64, 'E', size=28), Ell(340, 430, 60, 64, '+', size=28), Ell(460, 430, 80, 64, 'E', size=28),
-     Ell(380, 530, 70, 64, 'E', size=26), Ell(470, 530, 50, 64, '*', size=26), Ell(540, 530, 70, 64, 'E', size=26),
-     Arr(360, 394, 260, 430, head=False), Arr(380, 394, 370, 430, head=False), Arr(400, 394, 500, 430, head=False),
-     Arr(480, 494, 415, 530, head=False), Arr(500, 494, 495, 530, head=False), Arr(520, 494, 575, 530, head=False),
-     T(0, 'id + (id * id)', x=250, y=650, size=32, color='green'),
-     Ell(960, 330, 80, 64, 'E', size=28), Ell(840, 430, 80, 64, 'E', size=28), Ell(960, 430, 60, 64, '*', size=28), Ell(1080, 430, 80, 64, 'E', size=28),
-     Ell(760, 530, 70, 64, 'E', size=26), Ell(850, 530, 50, 64, '+', size=26), Ell(920, 530, 70, 64, 'E', size=26),
-     Arr(980, 394, 880, 430, head=False), Arr(1000, 394, 990, 430, head=False), Arr(1020, 394, 1120, 430, head=False),
-     Arr(860, 494, 795, 530, head=False), Arr(880, 494, 875, 530, head=False), Arr(900, 494, 955, 530, head=False),
-     T(0, '(id + id) * id', x=860, y=650, size=32, color='red'))
+     *Tree({'R': (420, 310, 'E', 'black'), 'L': (270, 410, 'E', 'black'), 'p': (420, 410, '+', 'black'), 'M': (570, 410, 'E', 'black'),
+            'i1': (270, 510, 'id', 'green'), 'M1': (470, 510, 'E', 'black'), 'st': (570, 510, '*', 'black'), 'M2': (670, 510, 'E', 'black'),
+            'i2': (470, 610, 'id', 'green'), 'i3': (670, 610, 'id', 'green')},
+           [('R', 'L'), ('R', 'p'), ('R', 'M'), ('L', 'i1'), ('M', 'M1'), ('M', 'st'), ('M', 'M2'), ('M1', 'i2'), ('M2', 'i3')]),
+     T(0, 'id + (id * id)', x=330, y=700, size=32, color='green'),
+     *Tree({'R': (1270, 310, 'E', 'black'), 'L': (1120, 410, 'E', 'black'), 'st': (1270, 410, '*', 'black'), 'M': (1420, 410, 'E', 'black'),
+            'L1': (1020, 510, 'E', 'black'), 'p': (1120, 510, '+', 'black'), 'L2': (1220, 510, 'E', 'black'), 'i3': (1420, 510, 'id', 'green'),
+            'i1': (1020, 610, 'id', 'green'), 'i2': (1220, 610, 'id', 'green')},
+           [('R', 'L'), ('R', 'st'), ('R', 'M'), ('L', 'L1'), ('L', 'p'), ('L', 'L2'), ('M', 'i3'), ('L1', 'i1'), ('L2', 'i2')], ecol='red'),
+     T(0, '(id + id) * id', x=1170, y=700, size=32, color='red'))
 beat(p, '''To remove ambiguity, we rewrite the grammar using precedence and associativity. Times binds tighter than plus.
 So we get: E goes to E plus T or T. T goes to T times F or F. F goes to bracket E or id.''',
-     T(10, 'Unambiguous:  E -> E + T | T     T -> T * F | F     F -> ( E ) | id', color='black', size=36),
-     T(11, '(* has higher precedence than +, both left-associative)', color='green', size=32))
+     T(11, 'Unambiguous:  E -> E + T | T     T -> T * F | F     F -> ( E ) | id', color='black', size=36),
+     T(12, '( * has higher precedence than +, both left-associative)', color='green', size=32))
 
 p = page('Left Recursion & Left Factoring', 3)
 beat(p, '''Top down parsers cannot handle left recursion, because they go into an infinite loop.
@@ -262,6 +282,11 @@ for common mistakes to the grammar. And global correction finds the smallest cha
 but it is too costly in practice.''',
      N(1, 2, '[r:Phrase level] - local fix (insert missing ;)'), N(2, 3, '[r:Error productions] - grammar rules for common mistakes'),
      N(3, 4, '[r:Global correction] - minimum changes (too costly)'))
+beat(p, '''Also remember the four types of errors. Lexical errors, like an invalid character. Syntax errors, like a missing semicolon.
+Semantic errors, like a type mismatch. And logical errors, like an infinite loop, which the compiler cannot detect.''',
+     S(5, 'Types of errors', size=38), T(6, '[k:Lexical]: invalid character, e.g. int a = 5 @;'), T(7, '[k:Syntax]: missing ; or unbalanced ( )'),
+     T(8, '[k:Semantic]: type mismatch, undeclared variable'), T(9, '[k:Logical]: infinite loop, wrong formula  (compiler cannot detect)'),
+     Stamp(1500, 560))
 
 # ===================================================================================== CH 4
 p = chapter(4)
@@ -304,7 +329,7 @@ def cellp(A, a):
 p = page('LL(1) Parsing Table', 4)
 beat(p, '''Now we build the L L one table. For each production A goes to alpha: for each terminal in FIRST of alpha,
 put the production in the row A and that terminal's column. If FIRST of alpha has epsilon, put it under every terminal in FOLLOW of A.''',
-     T(0, 'For A -> α:  M[A, a] for every a in FIRST(α);  if ε ∈ FIRST(α): M[A, b] for b in FOLLOW(A)', size=30))
+     T(0, 'For A -> α:  M[A, a] for every a in FIRST(α);  if ε in FIRST(α): M[A, b] for b in FOLLOW(A)', size=30))
 beat(p, '''Here is the complete table. For example, E dash goes to epsilon is placed under close bracket and dollar,
 because those are in FOLLOW of E dash. Empty cells mean error. Since no cell has two entries, this grammar is L L one.''',
      Tab(180, 300, [130, 260, 260, 260, 260, 220, 220], 64, [['', *TS]] + [[A, *[cellp(A, a) for a in TS]] for A in NTs], size=28),
@@ -315,10 +340,14 @@ p = page('LL(1) Parsing: id + id * id', 4)
 beat(p, '''Let's parse id plus id times id using the table. The stack starts with dollar and E. At each step, look at the top of the stack
 and the current input symbol. If they match, pop and move ahead. Otherwise, replace the top with the production from the table.''',
      T(0, 'Stack starts: $ E.  Top = input => match;  else use M[top, input]', size=32))
-beat(p, '''E with id gives E goes to T E dash. T gives F T dash. F gives id, and it matches. T dash with plus gives epsilon.
-E dash with plus gives plus T E dash. We continue the same way, until the stack and the input are both just dollar. Accepted.''',
-     Tab(180, 260, [420, 420, 420], 44, [['Stack', 'Input', 'Action']] + [[a, b, c.replace(' -> ', '->')] for a, b, c in moves], size=26,
-         colors={(len(moves), 2): 'green'}))
+mv = [[a, b, c if c.startswith(('match', 'accept')) else c.replace(' ', '')] for a, b, c in moves]
+beat(p, '''E with id gives E goes to T E dash. T gives F T dash. F gives id, and it matches. T dash with plus gives epsilon,
+and E dash with plus gives plus T E dash. Plus matches, and then T and F expand again for the second id.''',
+     Tab(180, 290, [250, 250, 250], 52, [['Stack', 'Input', 'Action']] + mv[:9], size=28))
+beat(p, '''id matches. With star, T dash goes to star F T dash. Star matches, F gives id, and id matches.
+Finally T dash and E dash go to epsilon. Now the stack and the input are both just dollar, so the string is accepted.''',
+     Tab(1000, 290, [250, 250, 250], 52, [['Stack', 'Input', 'Action']] + mv[9:], size=28, colors={(len(mv) - 9, 2): 'green'}),
+     T(14, 'Stack = $ and input = $  =>  [h:accepted]', x=1000, color='green'))
 
 # ===================================================================================== CH 5
 p = chapter(5)
@@ -350,16 +379,26 @@ They use items. An item is a production with a dot, showing how much has been se
 beat(p, '''Classic example. S goes to A A, A goes to a A or b. First, augment the grammar with S dash goes to S.
 I zero is the closure of S dash goes to dot S. Since the dot is before S, add S's productions. Since the dot is before A, add A's productions.''',
      T(1, "Augmented: S' -> S,  (1) S -> AA,  (2) A -> aA,  (3) A -> b", color='black', size=34))
+SUB = '₀₁₂₃₄₅₆₇₈₉'
+def In(i): return 'I' + SUB[i]
 items_txt = []
 for i, I in enumerate(C):
-    its = [item_str(Gp, p_, d).replace(' -> ', '->').replace(' ', '') for p_, d in sorted(I)]
-    items_txt.append(f'I{i}: ' + ',  '.join(its))
+    its = [item_str(Gp, p_, d).replace(' -> ', '->').replace(' ', '') for p_, d in sorted(I, key=lambda it: (it[1] == 0 and it[0] != 0, it))]
+    items_txt.append(f'{In(i)}: ' + ',  '.join(its))
 beat(p, '''Now find goto on every symbol. Goto of I zero on S gives I one, the accept item. On A gives I two. On a gives I three.
 On b gives I four. From I two, on A we get I five. From I three, on A we get I six. Goto of I two and I three on a and b
 go back to I three and I four. So there are seven states, I zero to I six.''',
      *[T(2 + k, s, size=32, color='red' if k == 0 else 'blue') for k, s in enumerate(items_txt)],
-     T(10, 'goto: I0-S->I1, I0-A->I2, I0-a->I3, I0-b->I4, I2-A->I5, I3-A->I6', size=30, color='green'),
-     T(11, 'I2, I3 on a -> I3;  on b -> I4', size=30, color='green'))
+     *[Box(cx - 60, cy - 32, 120, 64, In(i), size=32, color='red' if i == 0 else 'blue') for i, (cx, cy) in
+       enumerate([(1050, 470), (1410, 280), (1410, 470), (1410, 680), (1410, 890), (1760, 470), (1760, 680)])],
+     Arr(1112, 452, 1348, 292, label='S', ly=-12, color='green'), Arr(1112, 470, 1348, 470, label='A', color='green'),
+     Arr(1112, 488, 1360, 646, label='a', ly=-12, color='green'), Arr(1100, 504, 1365, 856, label='b', lx=-34, color='green'),
+     Arr(1472, 470, 1698, 470, label='A', color='green'), Arr(1472, 680, 1698, 680, label='A', color='green'),
+     Arr(1440, 504, 1440, 646, label='a', lx=18, ly=6, color='green'), Arr(1395, 714, 1395, 856, label='b', lx=-18, ly=6, color='green'),
+     Arr(1472, 494, 1472, 884, curve=-170, label='b', lx=14, ly=-56, color='green'),
+     Arr(1350, 664, 1350, 700, curve=110, label='a', lx=-18, ly=8, color='green'),
+     T(10, 'goto: I₀ on S -> I₁,  on A -> I₂,  on a -> I₃,  on b -> I₄', size=32, color='green'),
+     T(11, 'I₂ on A -> I₅,   I₃ on A -> I₆,   I₂, I₃ on a -> I₃,  on b -> I₄', size=32, color='green'))
 
 acts = lambda i, a: ', '.join(sorted(action.get((i, a), [])))
 p = page('SLR Parsing Table', 5)
@@ -370,7 +409,7 @@ write reduce under every terminal in FOLLOW of A. FOLLOW of S is dollar. FOLLOW 
 beat(p, '''So I zero, I two and I three shift on a to three, and on b to four. I four reduces by production three on a, b, and dollar.
 I five reduces by production one on dollar. I six reduces by production two. And I one accepts on dollar.''',
      Tab(240, 380, [140, 170, 170, 170, 170, 170], 60, [['State', 'a', 'b', '$', 'A', 'S']] +
-         [[f'I{i}', acts(i, 'a'), acts(i, 'b'), acts(i, '$'), str(gto.get((i, 'A'), '')), str(gto.get((i, 'S'), ''))] for i in range(len(C))],
+         [[In(i), acts(i, 'a'), acts(i, 'b'), acts(i, '$'), str(gto.get((i, 'A'), '')), str(gto.get((i, 'S'), ''))] for i in range(len(C))],
          size=30, colors={(2, 3): 'green'}), T(0, 'ACTION', x=500, y=360, size=28, color='red'), T(0, 'GOTO', x=1060, y=360, size=28, color='red'),
      Stamp(1500, 520, 'MOST ASKED'))
 beat(p, '''No cell has two entries, so this grammar is S L R one.''', T(14, 'No conflicts => grammar is [h:SLR(1)]', color='green'))
@@ -445,7 +484,24 @@ And three address code, where each instruction has at most three addresses, like
      Stamp(1500, 360))
 beat(p, '''Types of three address statements: assignment, copy, unconditional jump with goto, conditional jump with if,
 procedure calls with param and call, indexed assignments with arrays, and address and pointer assignments.''',
-     T(6, 'x = y op z,  x = op y,  x = y,  goto L,  if x relop y goto L,', size=34), T(7, 'param x, call p, n,  x = y[i],  x = &y,  x = *y', size=34))
+     T(5, 'x = y op z,  x = op y,  x = y,  goto L,  if x relop y goto L,  param x,  call p, n,  x = y[i],  x = &y,  x = *y', size=30))
+beat(p, '''Here is the syntax tree and the D A G for a plus a times, b minus c, plus, b minus c times d. In the syntax tree,
+every sub expression gets its own node. In the D A G, common parts are shared. b minus c is drawn only once, and a is used from the same node.
+So the D A G is smaller, and it shows the compiler what to compute only once.''',
+     T(0, 'e.g.  a + a * (b - c) + (b - c) * d', x=180, y=L(6), size=34, color='black'),
+     *Tree({'R': (560, 600, '+', 'black'), 'P': (380, 685, '+', 'black'), 'M2': (760, 685, '*', 'black'), 'a1': (270, 770, 'a', 'green'),
+            'M1': (470, 770, '*', 'black'), 'S2': (720, 770, '-', 'black'), 'd': (860, 770, 'd', 'green'), 'a2': (400, 855, 'a', 'green'),
+            'S1': (540, 855, '-', 'black'), 'b2': (670, 855, 'b', 'green'), 'c2': (770, 855, 'c', 'green'), 'b1': (490, 940, 'b', 'green'),
+            'c1': (590, 940, 'c', 'green')},
+           [('R', 'P'), ('R', 'M2'), ('P', 'a1'), ('P', 'M1'), ('M2', 'S2'), ('M2', 'd'), ('M1', 'a2'), ('M1', 'S1'), ('S2', 'b2'), ('S2', 'c2'),
+            ('S1', 'b1'), ('S1', 'c1')], w=60, h=50, size=28),
+     T(0, 'Syntax tree', x=180, y=650, size=32, color='blue'),
+     *Tree({'R': (1450, 600, '+', 'red'), 'P': (1290, 685, '+', 'red'), 'M2': (1630, 685, '*', 'red'), 'M1': (1390, 770, '*', 'red'),
+            'a': (1220, 855, 'a', 'green'), 'S': (1530, 855, '-', 'red'), 'd': (1740, 770, 'd', 'green'), 'b': (1470, 940, 'b', 'green'),
+            'c': (1590, 940, 'c', 'green')},
+           [('R', 'P'), ('R', 'M2'), ('P', 'M1'), ('P', 'a'), ('M1', 'a'), ('M1', 'S'), ('M2', 'S'), ('M2', 'd'), ('S', 'b'), ('S', 'c')],
+           w=60, h=50, size=28, ecol='red'),
+     T(0, 'DAG (shared nodes)', x=1560, y=L(6), size=32, color='red'))
 
 p = page('Three-Address Code: a = b * -c + b * -c', 7)
 tac = ['t1 = minus c', 't2 = b * t1', 't3 = minus c', 't4 = b * t3', 't5 = t2 + t4', 'a = t5']
@@ -454,16 +510,18 @@ First, the three address code. t one equals minus c. t two equals b times t one.
 t five equals t two plus t four. And a equals t five.''',
      *[T(k, s, x=200, size=36) for k, s in enumerate(tac)], Stamp(1600, 140, 'MOST ASKED'))
 beat(p, '''Quadruples have four fields: operator, argument one, argument two, and result. Each temporary gets its own name in the result field.''',
-     T(0, '[h:Quadruples]', x=700, y=200, size=36),
-     Tab(700, 220, [90, 150, 130, 130, 130], 50, [['#', 'op', 'arg1', 'arg2', 'result'], ['0', 'minus', 'c', '', 't1'], ['1', '*', 'b', 't1', 't2'],
+     T(0, '[h:Quadruples]', x=560, y=L(1), size=36),
+     Tab(560, 300, [80, 140, 110, 110, 120], 50, [['#', 'op', 'arg1', 'arg2', 'result'], ['0', 'minus', 'c', '', 't1'], ['1', '*', 'b', 't1', 't2'],
          ['2', 'minus', 'c', '', 't3'], ['3', '*', 'b', 't3', 't4'], ['4', '+', 't2', 't4', 't5'], ['5', '=', 't5', '', 'a']], size=28))
 beat(p, '''Triples have only three fields: operator, argument one, and argument two. Instead of temporaries,
 we refer to the position of an earlier triple, written in brackets. Indirect triples keep a separate list of pointers to triples,
 so the statements can be reordered easily during optimization.''',
-     T(0, '[h:Triples]', x=700, y=620, size=36),
-     Tab(700, 640, [90, 150, 130, 130], 50, [['#', 'op', 'arg1', 'arg2'], ['0', 'minus', 'c', ''], ['1', '*', 'b', '(0)'], ['2', 'minus', 'c', ''],
+     T(0, '[h:Triples]', x=1260, y=L(1), size=36),
+     Tab(1260, 300, [80, 140, 120, 120], 50, [['#', 'op', 'arg1', 'arg2'], ['0', 'minus', 'c', ''], ['1', '*', 'b', '(0)'], ['2', 'minus', 'c', ''],
          ['3', '*', 'b', '(2)'], ['4', '+', '(1)', '(3)'], ['5', '=', 'a', '(4)']], size=28),
-     T(0, '[k:Indirect triples]: list of pointers', x=1340, y=760, size=30), T(0, 'to triples (easy reordering)', x=1340, y=805, size=30))
+     T(10, '[k:Indirect triples]: a separate list of pointers to triples (easy reordering)', size=34),
+     Tab(180, 820, [220] + [110] * 6, 50, [['statement', '35', '36', '37', '38', '39', '40'], ['points to', '(0)', '(1)', '(2)', '(3)', '(4)', '(5)']],
+         size=28))
 
 # ===================================================================================== CH 8
 p = chapter(8)
@@ -495,6 +553,13 @@ Call by reference passes the address, so changes affect the caller. Copy restore
 and copies back at the end. And call by name substitutes the actual expression, like a macro.''',
      Stamp(1500, 360), N(3, 1, '[k:Call by value]: copy of value, caller unchanged'), N(4, 2, '[k:Call by reference]: address passed, caller changes'),
      N(5, 3, '[k:Copy-restore (value-result)]: copy in, copy back at end'), N(6, 4, '[k:Call by name]: argument text substituted (like macro)'))
+beat(p, '''A quick GATE style example. x is ten globally. Function g declares its own x as twenty, and then calls f, which prints x.
+With static scoping, f sees the global x, so it prints ten. With dynamic scoping, f uses the most recent x in the calling sequence,
+so it prints twenty.''',
+     T(8, 'int x = 10;', x=220, color='black'), T(9, 'void f() { print(x); }', x=220, color='black'), T(10, 'void g() { int x = 20; f(); }', x=220, color='black'),
+     T(11, 'main() { g(); }', x=220, color='black'),
+     T(9, 'Static scope  =>  prints [h:10]', x=1100, color='red'), T(10, 'Dynamic scope  =>  prints [h:20]', x=1100, color='red'),
+     Stamp(1600, 820, 'GATE'))
 
 p = page('Symbol Table', 8)
 beat(p, '''The symbol table stores information about every identifier: its name, type, scope, size, and memory location.
@@ -525,7 +590,7 @@ Statement seven comes right after the goto, so it is a leader too. So we get thr
 beat(p, '''B one is statement one. B two is statements two to six, which is the loop. And B three is statement seven.
 In the flow graph, B one goes to B two. B two goes back to itself, and also to B three.''',
      Box(1200, 560, 260, 70, 'B1: (1)', size=30), Box(1200, 690, 260, 70, 'B2: (2)-(6)', size=30, color='blue'), Box(1200, 820, 260, 70, 'B3: (7)', size=30),
-     Arr(1330, 630, 1330, 690), Arr(1330, 760, 1330, 820), Arr(1460, 740, 1460, 700, curve=-90, label='loop', lx=60, ly=0, size=24))
+     Arr(1330, 630, 1330, 690), Arr(1330, 760, 1330, 820), Arr(1460, 705, 1460, 745, curve=-150, label='loop', lx=58, ly=10, size=28))
 
 p = page('DAG for a Basic Block', 9)
 beat(p, '''A D A G, a directed acyclic graph, represents a basic block. It helps find common sub expressions automatically.
@@ -533,17 +598,17 @@ Example: a equals b plus c. b equals a minus d. c equals b plus c. d equals a mi
      *[T(k, s, x=200, size=36, color='black') for k, s in enumerate(['a = b + c', 'b = a - d', 'c = b + c', 'd = a - d'])])
 beat(p, '''Look at the second and fourth statements. Both compute a minus d, and a and d have not changed in between.
 So the D A G uses just one node for both, labelled b and d. That is a common sub expression.''',
-     Ell(1130, 230, 160, 80, '+   c', size=28, color='red'), Ell(1330, 380, 170, 80, '-   b,d', size=28, color='red'), Ell(1530, 530, 150, 80, '+   a', size=28, color='red'),
-     Ell(1400, 700, 90, 70, 'b0', size=26), Ell(1640, 700, 90, 70, 'c0', size=26), Ell(1210, 530, 90, 70, 'd0', size=26),
-     Arr(1180, 310, 1360, 385), Arr(1230, 310, 1640, 700), Arr(1380, 460, 1550, 540), Arr(1360, 460, 1260, 530),
-     Arr(1570, 610, 1450, 700), Arr(1630, 610, 1680, 700))
-beat(p, '''So the optimized block is: a equals b plus c. d equals a minus d. c equals d plus c.''',
-     T(6, 'Optimised:', color='green'), T(7, 'a = b + c;   d = a - d;   c = d + c', color='green', size=40), Stamp(700, 700))
+     *Tree({'n3': (1500, 250, '+    c', 'red', 160), 'n2': (1280, 420, '-   b, d', 'red', 170), 'c0': (1600, 760, 'c0', 'black'),
+            'n1': (1060, 590, '+    a', 'red', 160), 'd0': (1450, 590, 'd0', 'black'), 'b0': (960, 760, 'b0', 'black')},
+           [('n3', 'n2'), ('n3', 'c0'), ('n2', 'n1'), ('n2', 'd0'), ('n1', 'b0'), ('n1', 'c0')], w=90, h=64, size=30, head=True))
+beat(p, '''So the optimized block is: a equals b plus c. d equals a minus d. c equals d plus c. This works if b is not used after the block.''',
+     T(6, 'Optimised:', color='green'), T(7, 'a = b + c;   d = a - d;   c = d + c', color='green', size=40),
+     T(8, '(if b is not used after the block)', color='green', size=32), Stamp(560, 300))
 
 p = page('Optimization Techniques', 9)
 beat(p, '''The main machine independent optimizations. Common sub expression elimination: compute a repeated expression only once.
 Constant folding: compute constant expressions at compile time, so two times three becomes six.''',
-     Stamp(1650, 140, 'MOST ASKED'), N(0, 1, '[r:Common sub-expression elimination]: t = a*b; x = t; y = t'), N(1, 2, '[r:Constant folding]: x = 2 * 3  ->  x = 6'))
+     Stamp(1650, 140, 'MOST ASKED'), N(0, 1, '[r:Common sub-expression elimination]: t = a * b; x = t; y = t'), N(1, 2, '[r:Constant folding]: x = 2 * 3  ->  x = 6'))
 beat(p, '''Constant propagation and copy propagation: replace a variable with its known constant, or with the variable it was copied from.
 Dead code elimination: remove code whose result is never used, or that can never run.''',
      N(2, 3, '[r:Constant / copy propagation]: x = 5; y = x + 1 -> y = 6'), N(3, 4, '[r:Dead code elimination]: remove unused / unreachable code'))

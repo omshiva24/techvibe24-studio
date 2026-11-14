@@ -210,10 +210,10 @@
       },
       {
        "t": "rect",
-       "x": 1180,
-       "y": 260,
-       "w": 250,
-       "h": 100,
+       "x": 1100,
+       "y": 200,
+       "w": 220,
+       "h": 90,
        "label": "source\nprogram",
        "color": "black",
        "size": 28,
@@ -222,10 +222,10 @@
       },
       {
        "t": "rect",
-       "x": 1520,
-       "y": 260,
-       "w": 250,
-       "h": 100,
+       "x": 1420,
+       "y": 200,
+       "w": 220,
+       "h": 90,
        "label": "Compiler",
        "color": "red",
        "size": 32,
@@ -234,10 +234,10 @@
       },
       {
        "t": "rect",
-       "x": 1520,
-       "y": 470,
-       "w": 250,
-       "h": 100,
+       "x": 1420,
+       "y": 330,
+       "w": 220,
+       "h": 80,
        "label": "target\nprogram",
        "color": "black",
        "size": 28,
@@ -246,25 +246,25 @@
       },
       {
        "t": "rect",
-       "x": 1180,
-       "y": 470,
-       "w": 250,
-       "h": 100,
+       "x": 1700,
+       "y": 200,
+       "w": 180,
+       "h": 90,
        "label": "error\nmessages",
        "color": "red",
-       "size": 28,
+       "size": 26,
        "fill": null,
        "lc": "red"
       },
       {
        "t": "arrow",
        "p1": [
-        1430,
-        310
+        1320,
+        245
        ],
        "p2": [
-        1520,
-        310
+        1420,
+        245
        ],
        "color": "black",
        "label": null,
@@ -279,12 +279,12 @@
       {
        "t": "arrow",
        "p1": [
-        1645,
-        360
+        1530,
+        290
        ],
        "p2": [
-        1645,
-        470
+        1530,
+        330
        ],
        "color": "black",
        "label": null,
@@ -299,12 +299,12 @@
       {
        "t": "arrow",
        "p1": [
-        1560,
-        360
+        1640,
+        245
        ],
        "p2": [
-        1430,
-        490
+        1700,
+        245
        ],
        "color": "black",
        "label": null,
@@ -411,10 +411,10 @@
       },
       {
        "t": "rect",
-       "x": 560,
-       "y": 200,
+       "x": 640,
+       "y": 240,
        "w": 420,
-       "h": 84,
+       "h": 78,
        "label": "Lexical Analyzer",
        "color": "blue",
        "size": 30,
@@ -423,10 +423,10 @@
       },
       {
        "t": "rect",
-       "x": 560,
-       "y": 328,
+       "x": 640,
+       "y": 356,
        "w": 420,
-       "h": 84,
+       "h": 78,
        "label": "Syntax Analyzer",
        "color": "blue",
        "size": 30,
@@ -435,10 +435,10 @@
       },
       {
        "t": "rect",
-       "x": 560,
-       "y": 456,
+       "x": 640,
+       "y": 472,
        "w": 420,
-       "h": 84,
+       "h": 78,
        "label": "Semantic Analyzer",
        "color": "blue",
        "size": 30,
@@ -447,10 +447,10 @@
       },
       {
        "t": "rect",
-       "x": 560,
-       "y": 584,
+       "x": 640,
+       "y": 588,
        "w": 420,
-       "h": 84,
+       "h": 78,
        "label": "Intermediate Code Gen.",
        "color": "blue",
        "size": 30,
@@ -459,10 +459,10 @@
       },
       {
        "t": "rect",
-       "x": 560,
-       "y": 712,
+       "x": 640,
+       "y": 704,
        "w": 420,
-       "h": 84,
+       "h": 78,
        "label": "Code Optimizer",
        "color": "blue",
        "size": 30,
@@ -471,10 +471,10 @@
       },
       {
        "t": "rect",
-       "x": 560,
-       "y": 840,
+       "x": 640,
+       "y": 820,
        "w": 420,
-       "h": 84,
+       "h": 78,
        "label": "Code Generator",
        "color": "blue",
        "size": 30,
@@ -484,12 +484,12 @@
       {
        "t": "arrow",
        "p1": [
-        770,
-        284
+        850,
+        318
        ],
        "p2": [
-        770,
-        328
+        850,
+        356
        ],
        "color": "black",
        "label": null,
@@ -504,12 +504,12 @@
       {
        "t": "arrow",
        "p1": [
-        770,
-        412
+        850,
+        434
        ],
        "p2": [
-        770,
-        456
+        850,
+        472
        ],
        "color": "black",
        "label": null,
@@ -524,12 +524,12 @@
       {
        "t": "arrow",
        "p1": [
-        770,
-        540
+        850,
+        550
        ],
        "p2": [
-        770,
-        584
+        850,
+        588
        ],
        "color": "black",
        "label": null,
@@ -544,12 +544,12 @@
       {
        "t": "arrow",
        "p1": [
-        770,
-        668
+        850,
+        666
        ],
        "p2": [
-        770,
-        712
+        850,
+        704
        ],
        "color": "black",
        "label": null,
@@ -564,12 +564,12 @@
       {
        "t": "arrow",
        "p1": [
-        770,
-        796
+        850,
+        782
        ],
        "p2": [
-        770,
-        840
+        850,
+        820
        ],
        "color": "black",
        "label": null,
@@ -583,21 +583,41 @@
       },
       {
        "t": "text",
-       "x": 640,
-       "y": 190,
-       "s": "source program",
+       "x": 760,
+       "y": 228,
+       "s": "source program  ↓",
        "size": 26,
        "font": "body",
        "color": "green"
       },
       {
        "t": "text",
-       "x": 640,
-       "y": 1000,
+       "x": 770,
+       "y": 975,
        "s": "target program",
        "size": 26,
        "font": "body",
        "color": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        850,
+        898
+       ],
+       "p2": [
+        850,
+        945
+       ],
+       "color": "green",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "green"
       }
      ]
     },
@@ -606,8 +626,8 @@
      "els": [
       {
        "t": "rect",
-       "x": 1180,
-       "y": 420,
+       "x": 1260,
+       "y": 400,
        "w": 330,
        "h": 110,
        "label": "Symbol table",
@@ -618,7 +638,7 @@
       },
       {
        "t": "rect",
-       "x": 1180,
+       "x": 1260,
        "y": 640,
        "w": 330,
        "h": 110,
@@ -631,12 +651,12 @@
       {
        "t": "arrow",
        "p1": [
-        980,
-        470
+        1060,
+        455
        ],
        "p2": [
-        1180,
-        475
+        1260,
+        455
        ],
        "color": "black",
        "label": null,
@@ -651,11 +671,11 @@
       {
        "t": "arrow",
        "p1": [
-        980,
-        690
+        1060,
+        695
        ],
        "p2": [
-        1180,
+        1260,
         695
        ],
        "color": "black",
@@ -694,7 +714,7 @@
       {
        "t": "text",
        "x": 180,
-       "y": 780,
+       "y": 800,
        "s": "[k:Back end]: synthesis",
        "size": 32,
        "font": "body",
@@ -703,7 +723,7 @@
       {
        "t": "text",
        "x": 180,
-       "y": 825,
+       "y": 845,
        "s": "(depends on machine)",
        "size": 28,
        "font": "body",
@@ -1195,8 +1215,8 @@
       },
       {
        "t": "rect",
-       "x": 1250,
-       "y": 380,
+       "x": 1150,
+       "y": 330,
        "w": 230,
        "h": 90,
        "label": "Lexical\nanalyzer",
@@ -1207,8 +1227,8 @@
       },
       {
        "t": "rect",
-       "x": 1600,
-       "y": 380,
+       "x": 1650,
+       "y": 330,
        "w": 230,
        "h": 90,
        "label": "Parser",
@@ -1220,40 +1240,40 @@
       {
        "t": "arrow",
        "p1": [
-        1480,
-        410
+        1380,
+        355
        ],
        "p2": [
-        1600,
-        410
+        1650,
+        355
        ],
        "color": "black",
        "label": "token",
        "lx": 0,
-       "ly": -14,
+       "ly": -12,
        "curve": 0,
        "head": true,
-       "size": 24,
+       "size": 26,
        "both": false,
        "lc": "black"
       },
       {
        "t": "arrow",
        "p1": [
-        1600,
-        450
+        1650,
+        400
        ],
        "p2": [
-        1480,
-        450
+        1380,
+        400
        ],
        "color": "black",
        "label": "get next token",
        "lx": 0,
-       "ly": 30,
+       "ly": 36,
        "curve": 0,
        "head": true,
-       "size": 24,
+       "size": 26,
        "both": false,
        "lc": "black"
       }
@@ -1362,150 +1382,168 @@
       {
        "t": "rect",
        "x": 180,
-       "y": 420,
-       "w": 70,
-       "h": 70,
+       "y": 400,
+       "w": 90,
+       "h": 80,
        "label": "E",
        "color": "black",
-       "size": 30,
+       "size": 32,
        "fill": null,
        "lc": "black"
       },
       {
        "t": "rect",
-       "x": 250,
-       "y": 420,
-       "w": 70,
-       "h": 70,
+       "x": 270,
+       "y": 400,
+       "w": 90,
+       "h": 80,
        "label": "=",
        "color": "black",
-       "size": 30,
+       "size": 32,
        "fill": null,
        "lc": "black"
       },
       {
        "t": "rect",
-       "x": 320,
-       "y": 420,
-       "w": 70,
-       "h": 70,
+       "x": 360,
+       "y": 400,
+       "w": 90,
+       "h": 80,
        "label": "M",
        "color": "black",
-       "size": 30,
+       "size": 32,
        "fill": null,
        "lc": "black"
       },
       {
        "t": "rect",
-       "x": 390,
-       "y": 420,
-       "w": 70,
-       "h": 70,
+       "x": 450,
+       "y": 400,
+       "w": 90,
+       "h": 80,
        "label": "*",
        "color": "black",
-       "size": 30,
+       "size": 32,
        "fill": null,
        "lc": "black"
       },
       {
        "t": "rect",
-       "x": 460,
-       "y": 420,
-       "w": 70,
-       "h": 70,
+       "x": 540,
+       "y": 400,
+       "w": 90,
+       "h": 80,
        "label": "C",
        "color": "black",
-       "size": 30,
+       "size": 32,
        "fill": null,
        "lc": "black"
       },
       {
        "t": "rect",
-       "x": 530,
-       "y": 420,
-       "w": 70,
-       "h": 70,
+       "x": 630,
+       "y": 400,
+       "w": 90,
+       "h": 80,
        "label": "*",
        "color": "black",
-       "size": 30,
+       "size": 32,
        "fill": null,
        "lc": "black"
       },
       {
        "t": "rect",
-       "x": 600,
-       "y": 420,
-       "w": 70,
-       "h": 70,
+       "x": 720,
+       "y": 400,
+       "w": 90,
+       "h": 80,
        "label": "*",
        "color": "black",
-       "size": 30,
+       "size": 32,
        "fill": null,
        "lc": "black"
       },
       {
        "t": "rect",
-       "x": 670,
-       "y": 420,
-       "w": 70,
-       "h": 70,
+       "x": 810,
+       "y": 400,
+       "w": 90,
+       "h": 80,
        "label": "2",
        "color": "black",
-       "size": 30,
+       "size": 32,
        "fill": null,
        "lc": "black"
       },
       {
        "t": "rect",
-       "x": 740,
-       "y": 420,
-       "w": 70,
-       "h": 70,
+       "x": 900,
+       "y": 400,
+       "w": 90,
+       "h": 80,
        "label": "eof",
        "color": "black",
-       "size": 30,
+       "size": 32,
        "fill": null,
        "lc": "black"
       },
       {
        "t": "arrow",
        "p1": [
-        250,
-        540
+        225,
+        570
        ],
        "p2": [
-        250,
-        490
+        225,
+        488
        ],
-       "color": "black",
-       "label": "lexemeBegin",
+       "color": "green",
+       "label": null,
        "lx": 0,
-       "ly": 36,
+       "ly": -14,
        "curve": 0,
        "head": true,
-       "size": 24,
+       "size": 28,
        "both": false,
-       "lc": "black"
+       "lc": "green"
+      },
+      {
+       "t": "text",
+       "x": 170,
+       "y": 610,
+       "s": "lexemeBegin",
+       "size": 30,
+       "font": "body",
+       "color": "green"
       },
       {
        "t": "arrow",
        "p1": [
-        670,
-        540
+        765,
+        570
        ],
        "p2": [
-        670,
-        490
+        765,
+        488
        ],
-       "color": "black",
-       "label": "forward",
-       "lx": 40,
-       "ly": 36,
+       "color": "green",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
        "curve": 0,
        "head": true,
-       "size": 24,
+       "size": 28,
        "both": false,
-       "lc": "black"
+       "lc": "green"
+      },
+      {
+       "t": "text",
+       "x": 715,
+       "y": 610,
+       "s": "forward",
+       "size": 30,
+       "font": "body",
+       "color": "green"
       }
      ]
     },
@@ -1742,7 +1780,7 @@
       {
        "t": "text",
        "x": 1250,
-       "y": 420,
+       "y": 400,
        "s": "E contains 10 => [r:final state]",
        "size": 34,
        "font": "body",
@@ -1751,8 +1789,8 @@
       {
        "t": "text",
        "x": 1250,
-       "y": 480,
-       "s": "A ≡ C  =>  minimised DFA",
+       "y": 460,
+       "s": "A and C have the same moves",
        "size": 34,
        "font": "body",
        "color": "blue"
@@ -1760,69 +1798,101 @@
       {
        "t": "text",
        "x": 1250,
-       "y": 540,
-       "s": "has [h:4 states]",
+       "y": 520,
+       "s": "=> merge: minimised DFA has [h:4 states]",
        "size": 34,
        "font": "body",
        "color": "blue"
       },
       {
        "t": "ellipse",
-       "x": 180,
-       "y": 760,
+       "x": 245,
+       "y": 805,
        "w": 110,
        "h": 90,
        "label": "A",
        "color": "black",
-       "size": 30,
+       "size": 32,
        "fill": null,
        "lc": "black"
       },
       {
        "t": "ellipse",
-       "x": 470,
-       "y": 760,
+       "x": 625,
+       "y": 805,
        "w": 110,
        "h": 90,
        "label": "B",
        "color": "black",
-       "size": 30,
+       "size": 32,
        "fill": null,
        "lc": "black"
       },
       {
        "t": "ellipse",
-       "x": 760,
-       "y": 760,
+       "x": 1005,
+       "y": 805,
        "w": 110,
        "h": 90,
        "label": "D",
        "color": "black",
-       "size": 30,
+       "size": 32,
        "fill": null,
        "lc": "black"
       },
       {
        "t": "ellipse",
-       "x": 1050,
-       "y": 760,
+       "x": 1385,
+       "y": 805,
        "w": 110,
        "h": 90,
        "label": "E",
        "color": "red",
-       "size": 30,
+       "size": 32,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "ellipse",
+       "x": 1395,
+       "y": 815,
+       "w": 90,
+       "h": 70,
+       "label": null,
+       "color": "red",
+       "size": 32,
        "fill": null,
        "lc": "red"
       },
       {
        "t": "arrow",
        "p1": [
-        290,
-        805
+        185,
+        850
        ],
        "p2": [
-        470,
-        805
+        243,
+        850
+       ],
+       "color": "green",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        357,
+        850
+       ],
+       "p2": [
+        623,
+        850
        ],
        "color": "black",
        "label": "a",
@@ -1837,12 +1907,12 @@
       {
        "t": "arrow",
        "p1": [
-        580,
-        805
+        737,
+        850
        ],
        "p2": [
-        760,
-        805
+        1003,
+        850
        ],
        "color": "black",
        "label": "b",
@@ -1857,12 +1927,12 @@
       {
        "t": "arrow",
        "p1": [
-        870,
-        805
+        1117,
+        850
        ],
        "p2": [
-        1050,
-        805
+        1383,
+        850
        ],
        "color": "black",
        "label": "b",
@@ -1877,18 +1947,38 @@
       {
        "t": "arrow",
        "p1": [
-        1100,
-        850
+        325,
+        897
        ],
        "p2": [
-        520,
-        850
+        275,
+        897
+       ],
+       "color": "black",
+       "label": "b",
+       "lx": 0,
+       "ly": 34,
+       "curve": -110,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        655,
+        804
+       ],
+       "p2": [
+        705,
+        804
        ],
        "color": "black",
        "label": "a",
        "lx": 0,
        "ly": -10,
-       "curve": -120,
+       "curve": -110,
        "head": true,
        "size": 28,
        "both": false,
@@ -1897,18 +1987,18 @@
       {
        "t": "arrow",
        "p1": [
-        810,
-        850
+        1035,
+        893
        ],
        "p2": [
-        520,
-        850
+        705,
+        893
        ],
        "color": "black",
        "label": "a",
        "lx": 0,
-       "ly": -4,
-       "curve": -60,
+       "ly": 30,
+       "curve": -70,
        "head": true,
        "size": 28,
        "both": false,
@@ -1917,18 +2007,38 @@
       {
        "t": "arrow",
        "p1": [
-        1080,
-        760
+        1415,
+        893
        ],
        "p2": [
-        260,
-        760
+        690,
+        897
+       ],
+       "color": "black",
+       "label": "a",
+       "lx": 0,
+       "ly": 30,
+       "curve": -150,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1420,
+        806
+       ],
+       "p2": [
+        330,
+        812
        ],
        "color": "black",
        "label": "b",
        "lx": 0,
-       "ly": -16,
-       "curve": -170,
+       "ly": -12,
+       "curve": 260,
        "head": true,
        "size": 28,
        "both": false,
@@ -2273,10 +2383,10 @@
       },
       {
        "t": "ellipse",
-       "x": 340,
-       "y": 330,
-       "w": 80,
-       "h": 64,
+       "x": 385.0,
+       "y": 282.0,
+       "w": 70,
+       "h": 56,
        "label": "E",
        "color": "black",
        "size": 28,
@@ -2284,11 +2394,31 @@
        "lc": "black"
       },
       {
+       "t": "arrow",
+       "p1": [
+        390,
+        330
+       ],
+       "p2": [
+        300,
+        390
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
        "t": "ellipse",
-       "x": 220,
-       "y": 430,
-       "w": 80,
-       "h": 64,
+       "x": 235.0,
+       "y": 382.0,
+       "w": 70,
+       "h": 56,
        "label": "E",
        "color": "black",
        "size": 28,
@@ -2296,11 +2426,31 @@
        "lc": "black"
       },
       {
+       "t": "arrow",
+       "p1": [
+        420,
+        342
+       ],
+       "p2": [
+        420,
+        378
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
        "t": "ellipse",
-       "x": 340,
-       "y": 430,
-       "w": 60,
-       "h": 64,
+       "x": 385.0,
+       "y": 382.0,
+       "w": 70,
+       "h": 56,
        "label": "+",
        "color": "black",
        "size": 28,
@@ -2308,142 +2458,78 @@
        "lc": "black"
       },
       {
-       "t": "ellipse",
-       "x": 460,
-       "y": 430,
-       "w": 80,
-       "h": 64,
-       "label": "E",
+       "t": "arrow",
+       "p1": [
+        450,
+        330
+       ],
+       "p2": [
+        540,
+        390
+       ],
        "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
        "size": 28,
-       "fill": null,
+       "both": false,
        "lc": "black"
       },
       {
        "t": "ellipse",
-       "x": 380,
-       "y": 530,
+       "x": 535.0,
+       "y": 382.0,
        "w": 70,
-       "h": 64,
+       "h": 56,
        "label": "E",
        "color": "black",
-       "size": 26,
+       "size": 28,
        "fill": null,
        "lc": "black"
       },
       {
-       "t": "ellipse",
-       "x": 470,
-       "y": 530,
-       "w": 50,
-       "h": 64,
-       "label": "*",
+       "t": "arrow",
+       "p1": [
+        270,
+        442
+       ],
+       "p2": [
+        270,
+        478
+       ],
        "color": "black",
-       "size": 26,
-       "fill": null,
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
        "lc": "black"
       },
       {
        "t": "ellipse",
-       "x": 540,
-       "y": 530,
+       "x": 235.0,
+       "y": 482.0,
        "w": 70,
-       "h": 64,
-       "label": "E",
-       "color": "black",
-       "size": 26,
+       "h": 56,
+       "label": "id",
+       "color": "green",
+       "size": 28,
        "fill": null,
-       "lc": "black"
+       "lc": "green"
       },
       {
        "t": "arrow",
        "p1": [
-        360,
-        394
-       ],
-       "p2": [
-        260,
-        430
-       ],
-       "color": "black",
-       "label": null,
-       "lx": 0,
-       "ly": -14,
-       "curve": 0,
-       "head": false,
-       "size": 28,
-       "both": false,
-       "lc": "black"
-      },
-      {
-       "t": "arrow",
-       "p1": [
-        380,
-        394
-       ],
-       "p2": [
-        370,
-        430
-       ],
-       "color": "black",
-       "label": null,
-       "lx": 0,
-       "ly": -14,
-       "curve": 0,
-       "head": false,
-       "size": 28,
-       "both": false,
-       "lc": "black"
-      },
-      {
-       "t": "arrow",
-       "p1": [
-        400,
-        394
-       ],
-       "p2": [
-        500,
-        430
-       ],
-       "color": "black",
-       "label": null,
-       "lx": 0,
-       "ly": -14,
-       "curve": 0,
-       "head": false,
-       "size": 28,
-       "both": false,
-       "lc": "black"
-      },
-      {
-       "t": "arrow",
-       "p1": [
-        480,
-        494
-       ],
-       "p2": [
-        415,
-        530
-       ],
-       "color": "black",
-       "label": null,
-       "lx": 0,
-       "ly": -14,
-       "curve": 0,
-       "head": false,
-       "size": 28,
-       "both": false,
-       "lc": "black"
-      },
-      {
-       "t": "arrow",
-       "p1": [
-        500,
-        494
+        545,
+        435
        ],
        "p2": [
         495,
-        530
+        485
        ],
        "color": "black",
        "label": null,
@@ -2453,17 +2539,29 @@
        "head": false,
        "size": 28,
        "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 435.0,
+       "y": 482.0,
+       "w": 70,
+       "h": 56,
+       "label": "E",
+       "color": "black",
+       "size": 28,
+       "fill": null,
        "lc": "black"
       },
       {
        "t": "arrow",
        "p1": [
-        520,
-        494
+        570,
+        442
        ],
        "p2": [
-        575,
-        530
+        570,
+        478
        ],
        "color": "black",
        "label": null,
@@ -2476,9 +2574,117 @@
        "lc": "black"
       },
       {
+       "t": "ellipse",
+       "x": 535.0,
+       "y": 482.0,
+       "w": 70,
+       "h": 56,
+       "label": "*",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        595,
+        435
+       ],
+       "p2": [
+        645,
+        485
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 635.0,
+       "y": 482.0,
+       "w": 70,
+       "h": 56,
+       "label": "E",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        470,
+        542
+       ],
+       "p2": [
+        470,
+        578
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 435.0,
+       "y": 582.0,
+       "w": 70,
+       "h": 56,
+       "label": "id",
+       "color": "green",
+       "size": 28,
+       "fill": null,
+       "lc": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        670,
+        542
+       ],
+       "p2": [
+        670,
+        578
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 635.0,
+       "y": 582.0,
+       "w": 70,
+       "h": 56,
+       "label": "id",
+       "color": "green",
+       "size": 28,
+       "fill": null,
+       "lc": "green"
+      },
+      {
        "t": "text",
-       "x": 250,
-       "y": 650,
+       "x": 330,
+       "y": 700,
        "s": "id + (id * id)",
        "size": 32,
        "font": "body",
@@ -2486,10 +2692,10 @@
       },
       {
        "t": "ellipse",
-       "x": 960,
-       "y": 330,
-       "w": 80,
-       "h": 64,
+       "x": 1235.0,
+       "y": 282.0,
+       "w": 70,
+       "h": 56,
        "label": "E",
        "color": "black",
        "size": 28,
@@ -2497,11 +2703,31 @@
        "lc": "black"
       },
       {
+       "t": "arrow",
+       "p1": [
+        1240,
+        330
+       ],
+       "p2": [
+        1150,
+        390
+       ],
+       "color": "red",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "red"
+      },
+      {
        "t": "ellipse",
-       "x": 840,
-       "y": 430,
-       "w": 80,
-       "h": 64,
+       "x": 1085.0,
+       "y": 382.0,
+       "w": 70,
+       "h": 56,
        "label": "E",
        "color": "black",
        "size": 28,
@@ -2509,11 +2735,31 @@
        "lc": "black"
       },
       {
+       "t": "arrow",
+       "p1": [
+        1270,
+        342
+       ],
+       "p2": [
+        1270,
+        378
+       ],
+       "color": "red",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "red"
+      },
+      {
        "t": "ellipse",
-       "x": 960,
-       "y": 430,
-       "w": 60,
-       "h": 64,
+       "x": 1235.0,
+       "y": 382.0,
+       "w": 70,
+       "h": 56,
        "label": "*",
        "color": "black",
        "size": 28,
@@ -2521,11 +2767,31 @@
        "lc": "black"
       },
       {
+       "t": "arrow",
+       "p1": [
+        1300,
+        330
+       ],
+       "p2": [
+        1390,
+        390
+       ],
+       "color": "red",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "red"
+      },
+      {
        "t": "ellipse",
-       "x": 1080,
-       "y": 430,
-       "w": 80,
-       "h": 64,
+       "x": 1385.0,
+       "y": 382.0,
+       "w": 70,
+       "h": 56,
        "label": "E",
        "color": "black",
        "size": 28,
@@ -2533,52 +2799,112 @@
        "lc": "black"
       },
       {
+       "t": "arrow",
+       "p1": [
+        1095,
+        435
+       ],
+       "p2": [
+        1045,
+        485
+       ],
+       "color": "red",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "red"
+      },
+      {
        "t": "ellipse",
-       "x": 760,
-       "y": 530,
+       "x": 985.0,
+       "y": 482.0,
        "w": 70,
-       "h": 64,
+       "h": 56,
        "label": "E",
        "color": "black",
-       "size": 26,
+       "size": 28,
        "fill": null,
        "lc": "black"
       },
       {
+       "t": "arrow",
+       "p1": [
+        1120,
+        442
+       ],
+       "p2": [
+        1120,
+        478
+       ],
+       "color": "red",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "red"
+      },
+      {
        "t": "ellipse",
-       "x": 850,
-       "y": 530,
-       "w": 50,
-       "h": 64,
+       "x": 1085.0,
+       "y": 482.0,
+       "w": 70,
+       "h": 56,
        "label": "+",
        "color": "black",
-       "size": 26,
+       "size": 28,
        "fill": null,
        "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1145,
+        435
+       ],
+       "p2": [
+        1195,
+        485
+       ],
+       "color": "red",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "red"
       },
       {
        "t": "ellipse",
-       "x": 920,
-       "y": 530,
+       "x": 1185.0,
+       "y": 482.0,
        "w": 70,
-       "h": 64,
+       "h": 56,
        "label": "E",
        "color": "black",
-       "size": 26,
+       "size": 28,
        "fill": null,
        "lc": "black"
       },
       {
        "t": "arrow",
        "p1": [
-        980,
-        394
+        1420,
+        442
        ],
        "p2": [
-        880,
-        430
+        1420,
+        478
        ],
-       "color": "black",
+       "color": "red",
        "label": null,
        "lx": 0,
        "ly": -14,
@@ -2586,39 +2912,31 @@
        "head": false,
        "size": 28,
        "both": false,
-       "lc": "black"
+       "lc": "red"
       },
       {
-       "t": "arrow",
-       "p1": [
-        1000,
-        394
-       ],
-       "p2": [
-        990,
-        430
-       ],
-       "color": "black",
-       "label": null,
-       "lx": 0,
-       "ly": -14,
-       "curve": 0,
-       "head": false,
+       "t": "ellipse",
+       "x": 1385.0,
+       "y": 482.0,
+       "w": 70,
+       "h": 56,
+       "label": "id",
+       "color": "green",
        "size": 28,
-       "both": false,
-       "lc": "black"
+       "fill": null,
+       "lc": "green"
       },
       {
        "t": "arrow",
        "p1": [
         1020,
-        394
+        542
        ],
        "p2": [
-        1120,
-        430
+        1020,
+        578
        ],
-       "color": "black",
+       "color": "red",
        "label": null,
        "lx": 0,
        "ly": -14,
@@ -2626,19 +2944,31 @@
        "head": false,
        "size": 28,
        "both": false,
-       "lc": "black"
+       "lc": "red"
+      },
+      {
+       "t": "ellipse",
+       "x": 985.0,
+       "y": 582.0,
+       "w": 70,
+       "h": 56,
+       "label": "id",
+       "color": "green",
+       "size": 28,
+       "fill": null,
+       "lc": "green"
       },
       {
        "t": "arrow",
        "p1": [
-        860,
-        494
+        1220,
+        542
        ],
        "p2": [
-        795,
-        530
+        1220,
+        578
        ],
-       "color": "black",
+       "color": "red",
        "label": null,
        "lx": 0,
        "ly": -14,
@@ -2646,52 +2976,24 @@
        "head": false,
        "size": 28,
        "both": false,
-       "lc": "black"
+       "lc": "red"
       },
       {
-       "t": "arrow",
-       "p1": [
-        880,
-        494
-       ],
-       "p2": [
-        875,
-        530
-       ],
-       "color": "black",
-       "label": null,
-       "lx": 0,
-       "ly": -14,
-       "curve": 0,
-       "head": false,
+       "t": "ellipse",
+       "x": 1185.0,
+       "y": 582.0,
+       "w": 70,
+       "h": 56,
+       "label": "id",
+       "color": "green",
        "size": 28,
-       "both": false,
-       "lc": "black"
-      },
-      {
-       "t": "arrow",
-       "p1": [
-        900,
-        494
-       ],
-       "p2": [
-        955,
-        530
-       ],
-       "color": "black",
-       "label": null,
-       "lx": 0,
-       "ly": -14,
-       "curve": 0,
-       "head": false,
-       "size": 28,
-       "both": false,
-       "lc": "black"
+       "fill": null,
+       "lc": "green"
       },
       {
        "t": "text",
-       "x": 860,
-       "y": 650,
+       "x": 1170,
+       "y": 700,
        "s": "(id + id) * id",
        "size": 32,
        "font": "body",
@@ -2705,7 +3007,7 @@
       {
        "t": "text",
        "x": 180,
-       "y": 762,
+       "y": 816,
        "s": "Unambiguous:  E -> E + T | T     T -> T * F | F     F -> ( E ) | id",
        "size": 36,
        "font": "body",
@@ -2714,8 +3016,8 @@
       {
        "t": "text",
        "x": 180,
-       "y": 816,
-       "s": "(* has higher precedence than +, both left-associative)",
+       "y": 870,
+       "s": "( * has higher precedence than +, both left-associative)",
        "size": 32,
        "font": "body",
        "color": "green"
@@ -2866,6 +3168,65 @@
        "size": 38,
        "font": "body",
        "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Also remember the four types of errors. Lexical errors, like an invalid character. Syntax errors, like a missing semicolon. Semantic errors, like a type mismatch. And logical errors, like an infinite loop, which the compiler cannot detect.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "Types of errors",
+       "size": 38,
+       "font": "bold",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "[k:Lexical]: invalid character, e.g. int a = 5 @;",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "[k:Syntax]: missing ; or unbalanced ( )",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "[k:Semantic]: type mismatch, undeclared variable",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "[k:Logical]: infinite loop, wrong formula  (compiler cannot detect)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "stamp",
+       "x": 1500,
+       "y": 560,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
       }
      ]
     }
@@ -3122,7 +3483,7 @@
        "t": "text",
        "x": 180,
        "y": 222,
-       "s": "For A -> α:  M[A, a] for every a in FIRST(α);  if ε ∈ FIRST(α): M[A, b] for b in FOLLOW(A)",
+       "s": "For A -> α:  M[A, a] for every a in FIRST(α);  if ε in FIRST(α): M[A, b] for b in FOLLOW(A)",
        "size": 30,
        "font": "body",
        "color": "blue"
@@ -3251,18 +3612,18 @@
      ]
     },
     {
-     "say": "E with id gives E goes to T E dash. T gives F T dash. F gives id, and it matches. T dash with plus gives epsilon. E dash with plus gives plus T E dash. We continue the same way, until the stack and the input are both just dollar. Accepted.",
+     "say": "E with id gives E goes to T E dash. T gives F T dash. F gives id, and it matches. T dash with plus gives epsilon, and E dash with plus gives plus T E dash. Plus matches, and then T and F expand again for the second id.",
      "els": [
       {
        "t": "table",
        "x": 180,
-       "y": 260,
+       "y": 290,
        "cw": [
-        420,
-        420,
-        420
+        250,
+        250,
+        250
        ],
-       "rh": 44,
+       "rh": 52,
        "rows": [
         [
          "Stack",
@@ -3272,12 +3633,12 @@
         [
          "$ E",
          "id + id * id $",
-         "E->T E'"
+         "E->TE'"
         ],
         [
          "$ E' T",
          "id + id * id $",
-         "T->F T'"
+         "T->FT'"
         ],
         [
          "$ E' T' F",
@@ -3297,7 +3658,7 @@
         [
          "$ E'",
          "+ id * id $",
-         "E'->+ T E'"
+         "E'->+TE'"
         ],
         [
          "$ E' T +",
@@ -3307,12 +3668,41 @@
         [
          "$ E' T",
          "id * id $",
-         "T->F T'"
+         "T->FT'"
         ],
         [
          "$ E' T' F",
          "id * id $",
          "F->id"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      }
+     ]
+    },
+    {
+     "say": "id matches. With star, T dash goes to star F T dash. Star matches, F gives id, and id matches. Finally T dash and E dash go to epsilon. Now the stack and the input are both just dollar, so the string is accepted.",
+     "els": [
+      {
+       "t": "table",
+       "x": 1000,
+       "y": 290,
+       "cw": [
+        250,
+        250,
+        250
+       ],
+       "rh": 52,
+       "rows": [
+        [
+         "Stack",
+         "Input",
+         "Action"
         ],
         [
          "$ E' T' id",
@@ -3322,7 +3712,7 @@
         [
          "$ E' T'",
          "* id $",
-         "T'->* F T'"
+         "T'->*FT'"
         ],
         [
          "$ E' T' F *",
@@ -3356,13 +3746,22 @@
         ]
        ],
        "color": "black",
-       "size": 26,
+       "size": 28,
        "hdr": true,
        "order": "row",
        "colors": {
-        "17,2": "green"
+        "8,2": "green"
        },
        "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 1000,
+       "y": 978,
+       "s": "Stack = $ and input = $  =>  [h:accepted]",
+       "size": 38,
+       "font": "body",
+       "color": "green"
       }
      ]
     }
@@ -3571,7 +3970,7 @@
        "t": "text",
        "x": 180,
        "y": 330,
-       "s": "I0: S'->.S,  S->.AA,  A->.aA,  A->.b",
+       "s": "I₀: S'->.S,  S->.AA,  A->.aA,  A->.b",
        "size": 32,
        "font": "body",
        "color": "red"
@@ -3580,7 +3979,7 @@
        "t": "text",
        "x": 180,
        "y": 384,
-       "s": "I1: S'->S.",
+       "s": "I₁: S'->S.",
        "size": 32,
        "font": "body",
        "color": "blue"
@@ -3589,7 +3988,7 @@
        "t": "text",
        "x": 180,
        "y": 438,
-       "s": "I2: S->A.A,  A->.aA,  A->.b",
+       "s": "I₂: S->A.A,  A->.aA,  A->.b",
        "size": 32,
        "font": "body",
        "color": "blue"
@@ -3598,7 +3997,7 @@
        "t": "text",
        "x": 180,
        "y": 492,
-       "s": "I3: A->.aA,  A->a.A,  A->.b",
+       "s": "I₃: A->a.A,  A->.aA,  A->.b",
        "size": 32,
        "font": "body",
        "color": "blue"
@@ -3607,7 +4006,7 @@
        "t": "text",
        "x": 180,
        "y": 546,
-       "s": "I4: A->b.",
+       "s": "I₄: A->b.",
        "size": 32,
        "font": "body",
        "color": "blue"
@@ -3616,7 +4015,7 @@
        "t": "text",
        "x": 180,
        "y": 600,
-       "s": "I5: S->AA.",
+       "s": "I₅: S->AA.",
        "size": 32,
        "font": "body",
        "color": "blue"
@@ -3625,17 +4024,301 @@
        "t": "text",
        "x": 180,
        "y": 654,
-       "s": "I6: A->aA.",
+       "s": "I₆: A->aA.",
        "size": 32,
        "font": "body",
        "color": "blue"
       },
       {
+       "t": "rect",
+       "x": 990,
+       "y": 438,
+       "w": 120,
+       "h": 64,
+       "label": "I₀",
+       "color": "red",
+       "size": 32,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "rect",
+       "x": 1350,
+       "y": 248,
+       "w": 120,
+       "h": 64,
+       "label": "I₁",
+       "color": "blue",
+       "size": 32,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1350,
+       "y": 438,
+       "w": 120,
+       "h": 64,
+       "label": "I₂",
+       "color": "blue",
+       "size": 32,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1350,
+       "y": 648,
+       "w": 120,
+       "h": 64,
+       "label": "I₃",
+       "color": "blue",
+       "size": 32,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1350,
+       "y": 858,
+       "w": 120,
+       "h": 64,
+       "label": "I₄",
+       "color": "blue",
+       "size": 32,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1700,
+       "y": 438,
+       "w": 120,
+       "h": 64,
+       "label": "I₅",
+       "color": "blue",
+       "size": 32,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1700,
+       "y": 648,
+       "w": 120,
+       "h": 64,
+       "label": "I₆",
+       "color": "blue",
+       "size": 32,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1112,
+        452
+       ],
+       "p2": [
+        1348,
+        292
+       ],
+       "color": "green",
+       "label": "S",
+       "lx": 0,
+       "ly": -12,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1112,
+        470
+       ],
+       "p2": [
+        1348,
+        470
+       ],
+       "color": "green",
+       "label": "A",
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1112,
+        488
+       ],
+       "p2": [
+        1360,
+        646
+       ],
+       "color": "green",
+       "label": "a",
+       "lx": 0,
+       "ly": -12,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1100,
+        504
+       ],
+       "p2": [
+        1365,
+        856
+       ],
+       "color": "green",
+       "label": "b",
+       "lx": -34,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1472,
+        470
+       ],
+       "p2": [
+        1698,
+        470
+       ],
+       "color": "green",
+       "label": "A",
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1472,
+        680
+       ],
+       "p2": [
+        1698,
+        680
+       ],
+       "color": "green",
+       "label": "A",
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1440,
+        504
+       ],
+       "p2": [
+        1440,
+        646
+       ],
+       "color": "green",
+       "label": "a",
+       "lx": 18,
+       "ly": 6,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1395,
+        714
+       ],
+       "p2": [
+        1395,
+        856
+       ],
+       "color": "green",
+       "label": "b",
+       "lx": -18,
+       "ly": 6,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1472,
+        494
+       ],
+       "p2": [
+        1472,
+        884
+       ],
+       "color": "green",
+       "label": "b",
+       "lx": 14,
+       "ly": -56,
+       "curve": -170,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1350,
+        664
+       ],
+       "p2": [
+        1350,
+        700
+       ],
+       "color": "green",
+       "label": "a",
+       "lx": -18,
+       "ly": 8,
+       "curve": 110,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "green"
+      },
+      {
        "t": "text",
        "x": 180,
        "y": 762,
-       "s": "goto: I0-S->I1, I0-A->I2, I0-a->I3, I0-b->I4, I2-A->I5, I3-A->I6",
-       "size": 30,
+       "s": "goto: I₀ on S -> I₁,  on A -> I₂,  on a -> I₃,  on b -> I₄",
+       "size": 32,
        "font": "body",
        "color": "green"
       },
@@ -3643,8 +4326,8 @@
        "t": "text",
        "x": 180,
        "y": 816,
-       "s": "I2, I3 on a -> I3;  on b -> I4",
-       "size": 30,
+       "s": "I₂ on A -> I₅,   I₃ on A -> I₆,   I₂, I₃ on a -> I₃,  on b -> I₄",
+       "size": 32,
        "font": "body",
        "color": "green"
       }
@@ -3706,7 +4389,7 @@
          "S"
         ],
         [
-         "I0",
+         "I₀",
          "s3",
          "s4",
          "",
@@ -3714,7 +4397,7 @@
          "1"
         ],
         [
-         "I1",
+         "I₁",
          "",
          "",
          "acc",
@@ -3722,7 +4405,7 @@
          ""
         ],
         [
-         "I2",
+         "I₂",
          "s3",
          "s4",
          "",
@@ -3730,7 +4413,7 @@
          ""
         ],
         [
-         "I3",
+         "I₃",
          "s3",
          "s4",
          "",
@@ -3738,7 +4421,7 @@
          ""
         ],
         [
-         "I4",
+         "I₄",
          "r3",
          "r3",
          "r3",
@@ -3746,7 +4429,7 @@
          ""
         ],
         [
-         "I5",
+         "I₅",
          "",
          "",
          "r1",
@@ -3754,7 +4437,7 @@
          ""
         ],
         [
-         "I6",
+         "I₆",
          "r2",
          "r2",
          "r2",
@@ -4683,20 +5366,747 @@
       {
        "t": "text",
        "x": 180,
-       "y": 546,
-       "s": "x = y op z,  x = op y,  x = y,  goto L,  if x relop y goto L,",
-       "size": 34,
+       "y": 492,
+       "s": "x = y op z,  x = op y,  x = y,  goto L,  if x relop y goto L,  param x,  call p, n,  x = y[i],  x = &y,  x = *y",
+       "size": 30,
        "font": "body",
        "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Here is the syntax tree and the D A G for a plus a times, b minus c, plus, b minus c times d. In the syntax tree, every sub expression gets its own node. In the D A G, common parts are shared. b minus c is drawn only once, and a is used from the same node. So the D A G is smaller, and it shows the compiler what to compute only once.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "e.g.  a + a * (b - c) + (b - c) * d",
+       "size": 34,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 530.0,
+       "y": 575.0,
+       "w": 60,
+       "h": 50,
+       "label": "+",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        530,
+        614
+       ],
+       "p2": [
+        410,
+        671
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 350.0,
+       "y": 660.0,
+       "w": 60,
+       "h": 50,
+       "label": "+",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        590,
+        613
+       ],
+       "p2": [
+        730,
+        672
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 730.0,
+       "y": 660.0,
+       "w": 60,
+       "h": 50,
+       "label": "*",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        355,
+        704
+       ],
+       "p2": [
+        295,
+        751
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 240.0,
+       "y": 745.0,
+       "w": 60,
+       "h": 50,
+       "label": "a",
+       "color": "green",
+       "size": 28,
+       "fill": null,
+       "lc": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        403,
+        707
+       ],
+       "p2": [
+        447,
+        748
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 440.0,
+       "y": 745.0,
+       "w": 60,
+       "h": 50,
+       "label": "*",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        747,
+        712
+       ],
+       "p2": [
+        733,
+        743
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 690.0,
+       "y": 745.0,
+       "w": 60,
+       "h": 50,
+       "label": "-",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        784,
+        705
+       ],
+       "p2": [
+        836,
+        750
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 830.0,
+       "y": 745.0,
+       "w": 60,
+       "h": 50,
+       "label": "d",
+       "color": "green",
+       "size": 28,
+       "fill": null,
+       "lc": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        450,
+        794
+       ],
+       "p2": [
+        420,
+        831
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 370.0,
+       "y": 830.0,
+       "w": 60,
+       "h": 50,
+       "label": "a",
+       "color": "green",
+       "size": 28,
+       "fill": null,
+       "lc": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        490,
+        794
+       ],
+       "p2": [
+        520,
+        831
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 510.0,
+       "y": 830.0,
+       "w": 60,
+       "h": 50,
+       "label": "-",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        705,
+        796
+       ],
+       "p2": [
+        685,
+        829
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 640.0,
+       "y": 830.0,
+       "w": 60,
+       "h": 50,
+       "label": "b",
+       "color": "green",
+       "size": 28,
+       "fill": null,
+       "lc": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        735,
+        796
+       ],
+       "p2": [
+        755,
+        829
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 740.0,
+       "y": 830.0,
+       "w": 60,
+       "h": 50,
+       "label": "c",
+       "color": "green",
+       "size": 28,
+       "fill": null,
+       "lc": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        525,
+        881
+       ],
+       "p2": [
+        505,
+        914
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 460.0,
+       "y": 915.0,
+       "w": 60,
+       "h": 50,
+       "label": "b",
+       "color": "green",
+       "size": 28,
+       "fill": null,
+       "lc": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        555,
+        881
+       ],
+       "p2": [
+        575,
+        914
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 560.0,
+       "y": 915.0,
+       "w": 60,
+       "h": 50,
+       "label": "c",
+       "color": "green",
+       "size": 28,
+       "fill": null,
+       "lc": "green"
       },
       {
        "t": "text",
        "x": 180,
-       "y": 600,
-       "s": "param x, call p, n,  x = y[i],  x = &y,  x = *y",
-       "size": 34,
+       "y": 650,
+       "s": "Syntax tree",
+       "size": 32,
        "font": "body",
        "color": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1420.0,
+       "y": 575.0,
+       "w": 60,
+       "h": 50,
+       "label": "+",
+       "color": "red",
+       "size": 28,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1421,
+        615
+       ],
+       "p2": [
+        1319,
+        670
+       ],
+       "color": "red",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "red"
+      },
+      {
+       "t": "ellipse",
+       "x": 1260.0,
+       "y": 660.0,
+       "w": 60,
+       "h": 50,
+       "label": "+",
+       "color": "red",
+       "size": 28,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1480,
+        614
+       ],
+       "p2": [
+        1600,
+        671
+       ],
+       "color": "red",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "red"
+      },
+      {
+       "t": "ellipse",
+       "x": 1600.0,
+       "y": 660.0,
+       "w": 60,
+       "h": 50,
+       "label": "*",
+       "color": "red",
+       "size": 28,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1314,
+        705
+       ],
+       "p2": [
+        1366,
+        750
+       ],
+       "color": "red",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "red"
+      },
+      {
+       "t": "ellipse",
+       "x": 1360.0,
+       "y": 745.0,
+       "w": 60,
+       "h": 50,
+       "label": "*",
+       "color": "red",
+       "size": 28,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1279,
+        712
+       ],
+       "p2": [
+        1231,
+        828
+       ],
+       "color": "red",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "red"
+      },
+      {
+       "t": "ellipse",
+       "x": 1190.0,
+       "y": 830.0,
+       "w": 60,
+       "h": 50,
+       "label": "a",
+       "color": "green",
+       "size": 28,
+       "fill": null,
+       "lc": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1361,
+        785
+       ],
+       "p2": [
+        1249,
+        840
+       ],
+       "color": "red",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "red"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1418,
+        787
+       ],
+       "p2": [
+        1502,
+        838
+       ],
+       "color": "red",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "red"
+      },
+      {
+       "t": "ellipse",
+       "x": 1500.0,
+       "y": 830.0,
+       "w": 60,
+       "h": 50,
+       "label": "-",
+       "color": "red",
+       "size": 28,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1615,
+        711
+       ],
+       "p2": [
+        1545,
+        829
+       ],
+       "color": "red",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "red"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1655,
+        704
+       ],
+       "p2": [
+        1715,
+        751
+       ],
+       "color": "red",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "red"
+      },
+      {
+       "t": "ellipse",
+       "x": 1710.0,
+       "y": 745.0,
+       "w": 60,
+       "h": 50,
+       "label": "d",
+       "color": "green",
+       "size": 28,
+       "fill": null,
+       "lc": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1512,
+        880
+       ],
+       "p2": [
+        1488,
+        915
+       ],
+       "color": "red",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "red"
+      },
+      {
+       "t": "ellipse",
+       "x": 1440.0,
+       "y": 915.0,
+       "w": 60,
+       "h": 50,
+       "label": "b",
+       "color": "green",
+       "size": 28,
+       "fill": null,
+       "lc": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1548,
+        880
+       ],
+       "p2": [
+        1572,
+        915
+       ],
+       "color": "red",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "red"
+      },
+      {
+       "t": "ellipse",
+       "x": 1560.0,
+       "y": 915.0,
+       "w": 60,
+       "h": 50,
+       "label": "c",
+       "color": "green",
+       "size": 28,
+       "fill": null,
+       "lc": "green"
+      },
+      {
+       "t": "text",
+       "x": 1560,
+       "y": 546,
+       "s": "DAG (shared nodes)",
+       "size": 32,
+       "font": "body",
+       "color": "red"
       }
      ]
     }
@@ -4780,8 +6190,8 @@
      "els": [
       {
        "t": "text",
-       "x": 700,
-       "y": 200,
+       "x": 560,
+       "y": 276,
        "s": "[h:Quadruples]",
        "size": 36,
        "font": "body",
@@ -4789,14 +6199,14 @@
       },
       {
        "t": "table",
-       "x": 700,
-       "y": 220,
+       "x": 560,
+       "y": 300,
        "cw": [
-        90,
-        150,
-        130,
-        130,
-        130
+        80,
+        140,
+        110,
+        110,
+        120
        ],
        "rh": 50,
        "rows": [
@@ -4864,8 +6274,8 @@
      "els": [
       {
        "t": "text",
-       "x": 700,
-       "y": 620,
+       "x": 1260,
+       "y": 276,
        "s": "[h:Triples]",
        "size": 36,
        "font": "body",
@@ -4873,13 +6283,13 @@
       },
       {
        "t": "table",
-       "x": 700,
-       "y": 640,
+       "x": 1260,
+       "y": 300,
        "cw": [
-        90,
-        150,
-        130,
-        130
+        80,
+        140,
+        120,
+        120
        ],
        "rh": 50,
        "rows": [
@@ -4935,21 +6345,53 @@
       },
       {
        "t": "text",
-       "x": 1340,
-       "y": 760,
-       "s": "[k:Indirect triples]: list of pointers",
-       "size": 30,
+       "x": 180,
+       "y": 762,
+       "s": "[k:Indirect triples]: a separate list of pointers to triples (easy reordering)",
+       "size": 34,
        "font": "body",
        "color": "blue"
       },
       {
-       "t": "text",
-       "x": 1340,
-       "y": 805,
-       "s": "to triples (easy reordering)",
-       "size": 30,
-       "font": "body",
-       "color": "blue"
+       "t": "table",
+       "x": 180,
+       "y": 820,
+       "cw": [
+        220,
+        110,
+        110,
+        110,
+        110,
+        110,
+        110
+       ],
+       "rh": 50,
+       "rows": [
+        [
+         "statement",
+         "35",
+         "36",
+         "37",
+         "38",
+         "39",
+         "40"
+        ],
+        [
+         "points to",
+         "(0)",
+         "(1)",
+         "(2)",
+         "(3)",
+         "(4)",
+         "(5)"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
       }
      ]
     }
@@ -5236,6 +6678,74 @@
        "size": 38,
        "font": "body",
        "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "A quick GATE style example. x is ten globally. Function g declares its own x as twenty, and then calls f, which prints x. With static scoping, f sees the global x, so it prints ten. With dynamic scoping, f uses the most recent x in the calling sequence, so it prints twenty.",
+     "els": [
+      {
+       "t": "text",
+       "x": 220,
+       "y": 654,
+       "s": "int x = 10;",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 220,
+       "y": 708,
+       "s": "void f() { print(x); }",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 220,
+       "y": 762,
+       "s": "void g() { int x = 20; f(); }",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 220,
+       "y": 816,
+       "s": "main() { g(); }",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 1100,
+       "y": 708,
+       "s": "Static scope  =>  prints [h:10]",
+       "size": 38,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 1100,
+       "y": 762,
+       "s": "Dynamic scope  =>  prints [h:20]",
+       "size": 38,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "stamp",
+       "x": 1600,
+       "y": 820,
+       "text": "GATE",
+       "color": "red",
+       "rot": -8,
+       "size": 34
       }
      ]
     }
@@ -5591,19 +7101,19 @@
        "t": "arrow",
        "p1": [
         1460,
-        740
+        705
        ],
        "p2": [
         1460,
-        700
+        745
        ],
        "color": "black",
        "label": "loop",
-       "lx": 60,
-       "ly": 0,
-       "curve": -90,
+       "lx": 58,
+       "ly": 10,
+       "curve": -150,
        "head": true,
-       "size": 24,
+       "size": 28,
        "both": false,
        "lc": "black"
       }
@@ -5662,85 +7172,153 @@
      "els": [
       {
        "t": "ellipse",
-       "x": 1130,
-       "y": 230,
+       "x": 1420.0,
+       "y": 218.0,
        "w": 160,
-       "h": 80,
-       "label": "+   c",
+       "h": 64,
+       "label": "+    c",
        "color": "red",
-       "size": 28,
+       "size": 30,
        "fill": null,
        "lc": "red"
       },
       {
-       "t": "ellipse",
-       "x": 1330,
-       "y": 380,
-       "w": 170,
-       "h": 80,
-       "label": "-   b,d",
-       "color": "red",
-       "size": 28,
-       "fill": null,
-       "lc": "red"
-      },
-      {
-       "t": "ellipse",
-       "x": 1530,
-       "y": 530,
-       "w": 150,
-       "h": 80,
-       "label": "+   a",
-       "color": "red",
-       "size": 28,
-       "fill": null,
-       "lc": "red"
-      },
-      {
-       "t": "ellipse",
-       "x": 1400,
-       "y": 700,
-       "w": 90,
-       "h": 70,
-       "label": "b0",
+       "t": "arrow",
+       "p1": [
+        1459,
+        281
+       ],
+       "p2": [
+        1321,
+        388
+       ],
        "color": "black",
-       "size": 26,
-       "fill": null,
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
        "lc": "black"
       },
       {
        "t": "ellipse",
-       "x": 1640,
-       "y": 700,
+       "x": 1195.0,
+       "y": 388.0,
+       "w": 170,
+       "h": 64,
+       "label": "-   b, d",
+       "color": "red",
+       "size": 30,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1507,
+        286
+       ],
+       "p2": [
+        1593,
+        724
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 1555.0,
+       "y": 728.0,
        "w": 90,
-       "h": 70,
+       "h": 64,
        "label": "c0",
        "color": "black",
-       "size": 26,
+       "size": 30,
        "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1239,
+        452
+       ],
+       "p2": [
+        1101,
+        559
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
        "lc": "black"
       },
       {
        "t": "ellipse",
-       "x": 1210,
-       "y": 530,
+       "x": 980.0,
+       "y": 558.0,
+       "w": 160,
+       "h": 64,
+       "label": "+    a",
+       "color": "red",
+       "size": 30,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1313,
+        453
+       ],
+       "p2": [
+        1421,
+        561
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 1405.0,
+       "y": 558.0,
        "w": 90,
-       "h": 70,
+       "h": 64,
        "label": "d0",
        "color": "black",
-       "size": 26,
+       "size": 30,
        "fill": null,
        "lc": "black"
       },
       {
        "t": "arrow",
        "p1": [
-        1180,
-        310
+        1039,
+        625
        ],
        "p2": [
-        1360,
-        385
+        979,
+        727
        ],
        "color": "black",
        "label": null,
@@ -5753,94 +7331,26 @@
        "lc": "black"
       },
       {
-       "t": "arrow",
-       "p1": [
-        1230,
-        310
-       ],
-       "p2": [
-        1640,
-        700
-       ],
+       "t": "ellipse",
+       "x": 915.0,
+       "y": 728.0,
+       "w": 90,
+       "h": 64,
+       "label": "b0",
        "color": "black",
-       "label": null,
-       "lx": 0,
-       "ly": -14,
-       "curve": 0,
-       "head": true,
-       "size": 28,
-       "both": false,
+       "size": 30,
+       "fill": null,
        "lc": "black"
       },
       {
        "t": "arrow",
        "p1": [
-        1380,
-        460
+        1128,
+        611
        ],
        "p2": [
-        1550,
-        540
-       ],
-       "color": "black",
-       "label": null,
-       "lx": 0,
-       "ly": -14,
-       "curve": 0,
-       "head": true,
-       "size": 28,
-       "both": false,
-       "lc": "black"
-      },
-      {
-       "t": "arrow",
-       "p1": [
-        1360,
-        460
-       ],
-       "p2": [
-        1260,
-        530
-       ],
-       "color": "black",
-       "label": null,
-       "lx": 0,
-       "ly": -14,
-       "curve": 0,
-       "head": true,
-       "size": 28,
-       "both": false,
-       "lc": "black"
-      },
-      {
-       "t": "arrow",
-       "p1": [
-        1570,
-        610
-       ],
-       "p2": [
-        1450,
-        700
-       ],
-       "color": "black",
-       "label": null,
-       "lx": 0,
-       "ly": -14,
-       "curve": 0,
-       "head": true,
-       "size": 28,
-       "both": false,
-       "lc": "black"
-      },
-      {
-       "t": "arrow",
-       "p1": [
-        1630,
-        610
-       ],
-       "p2": [
-        1680,
-        700
+        1555,
+        746
        ],
        "color": "black",
        "label": null,
@@ -5855,7 +7365,7 @@
      ]
     },
     {
-     "say": "So the optimized block is: a equals b plus c. d equals a minus d. c equals d plus c.",
+     "say": "So the optimized block is: a equals b plus c. d equals a minus d. c equals d plus c. This works if b is not used after the block.",
      "els": [
       {
        "t": "text",
@@ -5876,9 +7386,18 @@
        "color": "green"
       },
       {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "(if b is not used after the block)",
+       "size": 32,
+       "font": "body",
+       "color": "green"
+      },
+      {
        "t": "stamp",
-       "x": 700,
-       "y": 700,
+       "x": 560,
+       "y": 300,
        "text": "IMP!",
        "color": "red",
        "rot": -8,
@@ -5909,7 +7428,7 @@
        "t": "text",
        "x": 180,
        "y": 222,
-       "s": "1) [r:Common sub-expression elimination]: t = a*b; x = t; y = t",
+       "s": "1) [r:Common sub-expression elimination]: t = a * b; x = t; y = t",
        "size": 38,
        "font": "body",
        "color": "blue"
