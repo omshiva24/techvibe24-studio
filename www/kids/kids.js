@@ -166,7 +166,7 @@ function captions(t) {
   let size = 118; const font = n => `700 ${n}px Fredoka`, ls = '1px', gap = 28;
   let ws = words.map(w => tw(w, font(size), ls)), total = ws.reduce((a, b) => a + b, 0) + gap * (ws.length - 1);
   while (total > 920 && size > 80) { size -= 6; ws = words.map(w => tw(w, font(size), ls)); total = ws.reduce((a, b) => a + b, 0) + gap * (ws.length - 1); }
-  const a = clamp((p.t1 - t) / .15); let x = W / 2 - total / 2; const cy = 1240;
+  const a = clamp((p.t1 - t) / .15); let x = W / 2 - total / 2; const cy = 1400;
   words.forEach((w, i) => {
     const w0 = p.words[i][1]; if (t < w0 - .04) { x += ws[i] + gap; return; }
     const nw = norm(p.words[i][0]), pv = i > 0 ? norm(p.words[i - 1][0]) : '';
@@ -195,7 +195,7 @@ function bigTitle(t) { return;
 function quoteCard(t) {
   const T = TL.T, t0 = TL.card0; if (t < t0) return;
   const k = eIO((t - t0) / .8);
-  let g = c.createLinearGradient(0, 0, 0, H); g.addColorStop(0, `rgba(10,8,30,${.55 * k})`); g.addColorStop(.6, `rgba(10,8,30,${.35 * k})`); g.addColorStop(1, `rgba(10,8,30,${.6 * k})`);
+  let g = c.createLinearGradient(0, 0, 0, H); g.addColorStop(0, `rgba(10,8,30,${.6 * k})`); g.addColorStop(.6, `rgba(10,8,30,${.55 * k})`); g.addColorStop(1, `rgba(10,8,30,${.7 * k})`);
   c.fillStyle = g; c.fillRect(0, 0, W, H);
   const seg = TL.segs.find(x => x.id === 'm8'), w = seg ? seg.words : [];
   const at = (word, d) => { const x = w.find(q => norm(q[0]).startsWith(word)); return x ? x[1] : t0 + d; };
@@ -208,7 +208,7 @@ function quoteCard(t) {
     txt('Happy', 0, 0, '700 170px Kalam', GOLD, { glow: 'rgba(255,160,40,.9)', blur: 50 }); c.restore(); }
   if (a2 > 0) { c.save(); c.globalAlpha = a2; c.translate(W / 2, 1060 + 30 * (1 - a2)); const sc = .8 + .2 * eBack(a2); c.scale(sc, sc);
     txt("CHILDREN'S DAY", 0, 0, '700 128px Fredoka', WHITE, { glow: 'rgba(40,20,120,.8)', blur: 30, stroke: 'rgba(30,20,90,.5)', sw: 10 }); c.restore(); }
-  if (a3 > 0) { c.save(); c.globalAlpha = a3; txt('14  NOVEMBER', W / 2, 1185, '700 40px SG', GOLD, { ls: '10px' }); c.restore(); }
+  if (a3 > 0) { c.save(); c.globalAlpha = a3; txt('14  NOVEMBER', W / 2, 1185, '700 40px SG', GOLD, { ls: '10px', glow: 'rgba(0,0,0,.9)', blur: 16 }); c.restore(); }
   if (a5 > 0) { c.save(); c.globalAlpha = a5; txt('Dream big  ·  Stay kind  ·  Keep smiling', W / 2, 1290, '600 42px Fredoka', WHITE, { glow: 'rgba(0,0,0,.7)', blur: 14 });
     txt('@TECHVIBE24', W / 2, 1380, '700 36px SG', '#f2e6d0', { ls: '6px' }); c.restore(); }
   const e = T - t; if (e < .6) { c.save(); c.globalAlpha = 1 - e / .6; c.fillStyle = '#000'; c.fillRect(0, 0, W, H); c.restore(); }

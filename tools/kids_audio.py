@@ -87,7 +87,7 @@ for i in range(n): y += (act[i] - y) * (.3 if act[i] > y else .015); g[i] = y
 duck = np.pad(np.repeat(1 - .35 * g, hop), (0, N - n * hop), constant_values=1)
 fade = np.clip((T - tN) / 1.6, 0, 1) * np.clip(tN / .4, 0, 1)
 vox = voice + .12 * fftconvolve(voice, irs[0][:int(.6 * SR)] * .5)[:N]
-MG = 1.25
+MG = 0.68
 outL = (L * duck * fade) * MG + vox; outR = (Rr * duck * fade) * MG + vox
 st = np.stack([outL, outR], 1); st /= np.abs(st).max() / .9
 with wave.open(f'{B}/quote_mix.wav', 'wb') as w: w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR); w.writeframes((st[:int(T * SR)] * 32767).astype(np.int16).tobytes())
