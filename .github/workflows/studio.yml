@@ -159,3 +159,24 @@ jobs:
         run: |
           cd qa && tar czf quote_assets.tgz vo scenes depth
           gh release create "quote-${{ github.run_number }}" sheets/*.jpg quote_assets.tgz --title "Quote Short assets ${{ github.run_number }}" --notes "Voice + scenes" -R "${{ github.repository }}"
+
+  kids:
+    if: contains(github.event.head_commit.message, '[kids]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install numpy pillow onnxruntime edge-tts
+      - name: voiceover
+        run: python tools/news_assets.py kids/script.json ka vo
+      - name: scenes
+        env: { PROMPTS: kids_prompts }
+        run: python tools/news_assets.py kids/script.json ka img
+      - name: publish
+        if: always()
+        env: { GH_TOKEN: '${{ github.token }}' }
+        run: |
+          cd ka && tar czf kids_assets.tgz vo scenes depth
+          gh release create "kids-${{ github.run_number }}" kids_assets.tgz --title "Children's Day Short assets ${{ github.run_number }}" --notes "Voice + scenes" -R "${{ github.repository }}"
