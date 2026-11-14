@@ -19,12 +19,12 @@ float d=texture2D(dep,uv).r;vec2 o=par*(d-.5);d=texture2D(dep,uv-o).r;o=par*(d-.
 vec2 q=uv-o;vec2 ca=(v-.5)*.004;vec3 c=vec3(tap(q+ca).r,tap(q).g,tap(q-ca).b);
 vec3 b=(tap(q+vec2(px.x,0.))+tap(q-vec2(px.x,0.))+tap(q+vec2(0.,px.y))+tap(q-vec2(0.,px.y)))*.25;c=clamp(c+(c-b)*.6,0.,1.);
 float L=dot(c,vec3(.299,.587,.114));
-vec3 cold=mix(c,vec3(L)*vec3(.75,.92,1.15),.45);vec3 warm=mix(c,c*vec3(1.18,1.0,.78),.55);
+vec3 cold=mix(c,c*vec3(.85,.95,1.12),.6);vec3 warm=mix(c,c*vec3(1.1,1.0,.86),.5);
 c=temp<0.?mix(c,cold,-temp):mix(c,warm,temp);
-c=mix(c,c*vec3(.82,1.0,1.12),(1.-smoothstep(.03,.45,L))*.4);
-c=(c-.5)*1.16+.5;c*=bright;
-vec2 r=v-vec2(.5,.47);float vg=smoothstep(.25,.95,length(r*vec2(1.,.62)*1.55));c*=1.-.62*vg;
-float n=fract(sin(dot(v*vec2(1234.5,987.6)+tm,vec2(12.9898,78.233)))*43758.5453);c+=(n-.5)*.055;c*=1.-dim;
+c=mix(vec3(L),c,1.12);
+c=(c-.5)*1.05+.52;c*=bright;
+vec2 r=v-vec2(.5,.47);float vg=smoothstep(.3,1.,length(r*vec2(1.,.62)*1.55));c*=1.-.38*vg;
+float n=fract(sin(dot(v*vec2(1234.5,987.6)+tm,vec2(12.9898,78.233)))*43758.5453);c+=(n-.5)*.025;c*=1.-dim;
 gl_FragColor=vec4(clamp(c,0.,1.),1.);}`;
 let U = {};
 (function () {
@@ -44,17 +44,16 @@ const img = s => new Promise(r => { const i = new Image(); i.onload = () => r(i)
 const SCN = {};
 // per scene: camera move, colour temperature (-1 cold .. +1 golden), particles
 const LOOK = {
-  college: { cam: 'push', temp: -.85, fx: 'dust' }, photo: { cam: 'push', temp: .35, fx: 'dust' }, boat: { cam: 'drift', temp: .15, fx: 'rain' },
-  tiffin: { cam: 'slide', temp: .55, fx: 'dust' }, cricket: { cam: 'rise', temp: .8, fx: 'dust' }, kite: { cam: 'pull', temp: .9, fx: 'embers' },
-  friends: { cam: 'push', temp: .7, fx: 'embers' }, final: { cam: 'push', temp: .6, fx: 'confetti' },
+  stars: { cam: 'push', temp: -.25, fx: 'sparkle' }, dream: { cam: 'rise', temp: .05, fx: 'sparkle' }, bike: { cam: 'slide', temp: .45, fx: 'dust' },
+  paint: { cam: 'drift', temp: .2, fx: 'dust' }, kind: { cam: 'push', temp: .15, fx: 'rain' }, special: { cam: 'pull', temp: .45, fx: 'sparkle' },
+  grow: { cam: 'push', temp: .55, fx: 'embers' }, final: { cam: 'pull', temp: .35, fx: 'confetti' },
 };
 const CAMS = {
-  push: e => ({ zoom: 1.04 + .1 * e, pan: [0, -.008 * e], par: [.012 * (2 * e - 1), -.004] }),
-  pushFast: e => ({ zoom: 1.06 + .18 * e, pan: [0, 0], par: [.008 * (2 * e - 1), .004] }),
-  pull: e => ({ zoom: 1.18 - .12 * e, pan: [0, .012 * (1 - e)], par: [-.014 * (2 * e - 1), .004] }),
-  drift: e => ({ zoom: 1.12, pan: [.03 - .06 * e, 0], par: [.016 * (2 * e - 1), 0] }),
-  slide: e => ({ zoom: 1.1, pan: [-.025 + .05 * e, -.004], par: [-.012 * (2 * e - 1), 0] }),
-  rise: e => ({ zoom: 1.1, pan: [0, .03 - .05 * e], par: [0, -.012 * (2 * e - 1)] }),
+  push: e => ({ zoom: 1.05 + .14 * e, pan: [0, -.01 * e], par: [.02 * (2 * e - 1), -.006] }),
+  pull: e => ({ zoom: 1.2 - .15 * e, pan: [0, .012 * (1 - e)], par: [-.02 * (2 * e - 1), .006] }),
+  drift: e => ({ zoom: 1.13 + .03 * e, pan: [.035 - .07 * e, 0], par: [.022 * (2 * e - 1), 0] }),
+  slide: e => ({ zoom: 1.12 + .03 * e, pan: [-.03 + .06 * e, -.004], par: [-.02 * (2 * e - 1), 0] }),
+  rise: e => ({ zoom: 1.1 + .05 * e, pan: [0, .035 - .06 * e], par: [0, -.016 * (2 * e - 1)] }),
 };
 async function loadScenes(ids) {
   await Promise.all(ids.map(async id => {
@@ -87,7 +86,7 @@ const norm = s => s.toLowerCase().replace(/[^a-z']/g, '');
 function buildPages() {
   PAGES = [];
   for (const s of TL.segs) {
-    if (s.id === 'k8') continue;           // shown on the final card instead
+    if (s.id === 'm8') continue;           // shown on the final card instead
     let cur = []; const flush = () => { if (cur.length) PAGES.push({ seg: s.id, words: cur }); cur = []; };
     s.words.forEach((w, i) => {
       const prev = s.words[i - 1], gap = prev ? w[1] - prev[2] : 0, chars = cur.reduce((a, x) => a + x[0].length + 1, 0) + w[0].length;
@@ -102,7 +101,7 @@ function buildPages() {
 function init(tl) { TL = tl; buildPages(); return TL.segs.length; }
 window.init = init;
 window.READY = (async () => {
-  for (const [n, u, w] of [['Anton', 'fonts/Anton.ttf', '400'], ['Kalam', 'fonts/Kalam-Bold.ttf', '700'], ['KalamR', 'fonts/Kalam-Regular.ttf', '400'], ['Inter', 'fonts/Inter.ttf', '100 900'], ['SG', 'fonts/SpaceGrotesk.ttf', '300 700']]) {
+  for (const [n, u, w] of [['Anton', 'fonts/Anton.ttf', '400'], ['Kalam', 'fonts/Kalam-Bold.ttf', '700'], ['KalamR', 'fonts/Kalam-Regular.ttf', '400'], ['Fredoka', 'fonts/Fredoka.ttf', '300 700'], ['Inter', 'fonts/Inter.ttf', '100 900'], ['SG', 'fonts/SpaceGrotesk.ttf', '300 700']]) {
     try { const f = new FontFace(n, `url(${u})`, { weight: w }); await f.load(); document.fonts.add(f); } catch (e) { console.warn('font', n); }
   }
   await loadScenes(Object.keys(LOOK)); return Object.keys(SCN).length;
@@ -129,13 +128,19 @@ function particles(t, kind) {
   if (kind === 'rain') {
     c.strokeStyle = 'rgba(200,220,255,.22)'; c.lineWidth = 2;
     for (let i = 0; i < 160; i++) { const sp = 1600 + R(i, 1) * 900, x = R(i, 2) * W - 80, y = ((R(i, 3) * H * 1.2 + t * sp) % (H * 1.2)) - 100, l = 40 + R(i, 4) * 60; c.globalAlpha = .4 + R(i, 5) * .5; c.beginPath(); c.moveTo(x, y); c.lineTo(x + l * .12, y + l); c.stroke(); }
+  } else if (kind === 'sparkle') {
+    for (let i = 0; i < 70; i++) {
+      const x = R(i, 1) * W + Math.sin(t * .4 + i) * 30, y = ((R(i, 2) * H - t * (8 + R(i, 3) * 20)) % H + H) % H, tw = Math.pow(.5 + .5 * Math.sin(t * (2 + R(i, 4) * 3) + i * 2), 3);
+      const r = 3 + R(i, 5) * 9; c.globalAlpha = .25 + .75 * tw; c.drawImage(i % 3 ? G_G : G_W, x - r * 3, y - r * 3, r * 6, r * 6);
+      if (tw > .6) { c.strokeStyle = 'rgba(255,240,200,.8)'; c.lineWidth = 2; c.beginPath(); c.moveTo(x - r * 2.2, y); c.lineTo(x + r * 2.2, y); c.moveTo(x, y - r * 2.2); c.lineTo(x, y + r * 2.2); c.stroke(); }
+    }
   } else {
-    const n = kind === 'confetti' ? 70 : 50, spr = kind === 'dust' ? G_W : G_G;
+    const n = kind === 'confetti' ? 90 : 50, spr = kind === 'dust' ? G_W : G_G;
     for (let i = 0; i < n; i++) {
       const up = kind === 'embers' ? -1 : kind === 'confetti' ? 1 : -.3, sp = 20 + R(i, 1) * 50;
       const y = ((R(i, 2) * H + up * t * sp) % H + H) % H, x = R(i, 3) * W + Math.sin(t * .6 + i) * 40, r = (kind === 'dust' ? 2 : 3) + R(i, 4) * 6;
       c.globalAlpha = (kind === 'dust' ? .25 : .55) * (.5 + .5 * Math.sin(t * 2 + i));
-      if (kind === 'confetti') { c.save(); c.translate(x, y); c.rotate(t * 3 + i); c.fillStyle = i % 2 ? '#ffd27a' : '#fff1c9'; c.fillRect(-6, -3, 12, 6); c.restore(); }
+      if (kind === 'confetti') { c.save(); c.translate(x, y); c.rotate(t * 3 + i); c.fillStyle = ['#ffd166', '#ef476f', '#06d6a0', '#4cc9f0', '#ffffff'][i % 5]; c.globalAlpha = .9; c.fillRect(-8, -4, 16, 8); c.restore(); }
       else c.drawImage(spr, x - r * 3, y - r * 3, r * 6, r * 6);
     }
   }
@@ -158,19 +163,19 @@ function tw(s, font, ls = '0px') { c.save(); c.font = font; c.letterSpacing = ls
 function captions(t) {
   const p = PAGES.find(q => t >= q.t0 && t < q.t1); if (!p) return;
   const words = p.words.map(w => w[0].toUpperCase().replace(/[.,]+$/, ''));
-  let size = 132; const font = n => `400 ${n}px Anton`, ls = '2px', gap = 30;
+  let size = 118; const font = n => `700 ${n}px Fredoka`, ls = '1px', gap = 28;
   let ws = words.map(w => tw(w, font(size), ls)), total = ws.reduce((a, b) => a + b, 0) + gap * (ws.length - 1);
   while (total > 920 && size > 80) { size -= 6; ws = words.map(w => tw(w, font(size), ls)); total = ws.reduce((a, b) => a + b, 0) + gap * (ws.length - 1); }
   const a = clamp((p.t1 - t) / .15); let x = W / 2 - total / 2; const cy = 1240;
   words.forEach((w, i) => {
     const w0 = p.words[i][1]; if (t < w0 - .04) { x += ws[i] + gap; return; }
     const nw = norm(p.words[i][0]), pv = i > 0 ? norm(p.words[i - 1][0]) : '';
-    const key = /^(kid|kids|alive|paper|boats|tiffin|cricket|possible|grow|today|little)$/.test(nw);
+    const key = /^(dreaming|stars|sparks|okay|smile|curious|wonder|kind|kindness|superpower|special|child|grow|little)$/.test(nw);
     const k = clamp((t - w0 + .04) / .22);
     c.save(); c.globalAlpha = a * clamp(k * 2.5);
     c.translate(x + ws[i] / 2, cy + (1 - eOut(k)) * 26); const sc = 1 + (1 - eBack(k)) * .25; c.scale(sc, sc);
     c.filter = k < .6 ? `blur(${(1 - k / .6) * 8}px)` : 'none';
-    txt(w, 0, 0, font(size), key ? GOLD : WHITE, { glow: key ? 'rgba(255,170,40,.75)' : 'rgba(0,0,0,.85)', blur: key ? 40 : 24, ls });
+    txt(w, 0, 0, font(size), key ? GOLD : WHITE, { glow: key ? 'rgba(255,150,40,.8)' : 'rgba(10,20,60,.75)', blur: key ? 36 : 26, ls, stroke: 'rgba(20,25,60,.55)', sw: 8 });
     c.restore(); x += ws[i] + gap;
   });
 }
@@ -190,19 +195,22 @@ function bigTitle(t) { return;
 function quoteCard(t) {
   const T = TL.T, t0 = TL.card0; if (t < t0) return;
   const k = eIO((t - t0) / .8);
-  let g = c.createRadialGradient(W / 2, 960, 100, W / 2, 960, 900); g.addColorStop(0, `rgba(20,10,0,${.55 * k})`); g.addColorStop(1, `rgba(0,0,0,${.25 * k})`);
+  let g = c.createLinearGradient(0, 0, 0, H); g.addColorStop(0, `rgba(10,8,30,${.55 * k})`); g.addColorStop(.6, `rgba(10,8,30,${.35 * k})`); g.addColorStop(1, `rgba(10,8,30,${.6 * k})`);
   c.fillStyle = g; c.fillRect(0, 0, W, H);
-  const seg = TL.segs.find(x => x.id === 'k8'), w = seg ? seg.words : [];
+  const seg = TL.segs.find(x => x.id === 'm8'), w = seg ? seg.words : [];
   const at = (word, d) => { const x = w.find(q => norm(q[0]).startsWith(word)); return x ? x[1] : t0 + d; };
-  const a1 = eBack((t - at('happy', .3) + .05) / .5), a2 = eOut((t - at('children', .7)) / .5), a3 = eOut((t - at('day', 1.1) - .1) / .5), a4 = eOut((t - at('every', 1.8)) / .6), a5 = eOut((t - seg.vo1 - .2) / .6);
-  if (a1 > 0) { c.save(); c.globalAlpha = clamp(a1); c.translate(W / 2, 700); c.rotate(-.06); c.scale(.6 + .4 * a1, .6 + .4 * a1);
-    txt('Happy', 0, 0, '700 190px Kalam', GOLD, { glow: 'rgba(255,170,50,.85)', blur: 50 }); c.restore(); }
-  if (a2 > 0) { c.save(); c.globalAlpha = a2; txt("CHILDREN'S", W / 2, 900 + 30 * (1 - a2), '400 170px Anton', WHITE, { glow: 'rgba(0,0,0,.7)', blur: 30, ls: '4px' }); c.restore(); }
-  if (a3 > 0) { c.save(); c.globalAlpha = a3; txt('DAY', W / 2, 1080 + 30 * (1 - a3), '400 170px Anton', WHITE, { glow: 'rgba(0,0,0,.7)', blur: 30, ls: '8px' });
-    c.fillStyle = GOLD; c.fillRect(W / 2 - 150 * a3, 1185, 300 * a3, 4); txt('14  NOVEMBER', W / 2, 1235, '700 40px SG', GOLD, { ls: '10px' }); c.restore(); }
-  if (a4 > 0) { c.save(); c.globalAlpha = a4; txt('To every kid,', W / 2, 1345, '400 54px KalamR', WHITE, { glow: 'rgba(0,0,0,.8)', blur: 16 });
-    txt('and the kid inside all of us.', W / 2, 1415, '400 54px KalamR', WHITE, { glow: 'rgba(0,0,0,.8)', blur: 16 }); c.restore(); }
-  if (a5 > 0) { c.save(); c.globalAlpha = a5; txt('— from college students  ·  @TECHVIBE24', W / 2, 1520, '600 32px SG', '#f2e6d0', { ls: '3px' }); c.restore(); }
+  const q = eOut((t - t0 - .1) / .9);
+  if (q > 0) { c.save(); c.globalAlpha = q;
+    ['“Grow up, but never let', 'the child inside you', 'grow old.”'].forEach((l, i) => txt(l, W / 2, 470 + i * 78 + 20 * (1 - q), '400 64px KalamR', i === 2 ? GOLD : WHITE, { glow: 'rgba(0,0,0,.7)', blur: 18 }));
+    c.fillStyle = 'rgba(255,209,102,.8)'; c.fillRect(W / 2 - 90 * q, 700, 180 * q, 3); c.restore(); }
+  const a1 = eBack((t - at('happy', .3) + .05) / .5), a2 = eOut((t - at('children', .7)) / .5), a3 = eOut((t - at('day', 1.0) - .05) / .5), a5 = eOut((t - seg.vo1 - .3) / .6);
+  if (a1 > 0) { c.save(); c.globalAlpha = clamp(a1); c.translate(W / 2, 880); c.rotate(-.05); c.scale(.6 + .4 * a1, .6 + .4 * a1);
+    txt('Happy', 0, 0, '700 170px Kalam', GOLD, { glow: 'rgba(255,160,40,.9)', blur: 50 }); c.restore(); }
+  if (a2 > 0) { c.save(); c.globalAlpha = a2; c.translate(W / 2, 1060 + 30 * (1 - a2)); const sc = .8 + .2 * eBack(a2); c.scale(sc, sc);
+    txt("CHILDREN'S DAY", 0, 0, '700 128px Fredoka', WHITE, { glow: 'rgba(40,20,120,.8)', blur: 30, stroke: 'rgba(30,20,90,.5)', sw: 10 }); c.restore(); }
+  if (a3 > 0) { c.save(); c.globalAlpha = a3; txt('14  NOVEMBER', W / 2, 1185, '700 40px SG', GOLD, { ls: '10px' }); c.restore(); }
+  if (a5 > 0) { c.save(); c.globalAlpha = a5; txt('Dream big  ·  Stay kind  ·  Keep smiling', W / 2, 1290, '600 42px Fredoka', WHITE, { glow: 'rgba(0,0,0,.7)', blur: 14 });
+    txt('@TECHVIBE24', W / 2, 1380, '700 36px SG', '#f2e6d0', { ls: '6px' }); c.restore(); }
   const e = T - t; if (e < .6) { c.save(); c.globalAlpha = 1 - e / .6; c.fillStyle = '#000'; c.fillRect(0, 0, W, H); c.restore(); }
 }
 function watermark(t) {

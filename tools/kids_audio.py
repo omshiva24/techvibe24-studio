@@ -14,8 +14,8 @@ def add(buf, x, t0, g=1.0):
     if n > 0: buf[i0:i0 + n] += g * x[:n]
 def mtof(m): return 440 * 2 ** ((m - 69) / 12)
 L = np.zeros(N); Rr = np.zeros(N); WET = np.zeros(N)
-t2, t3, t5, t7, tc = seg['k2']['vo0'], seg['k3']['vo0'], seg['k5']['vo0'], seg['k7']['vo0'], tl['card0']
-BEAT = .75; CL = 4 * BEAT
+t2, t3, t5, t7, tc = .55, seg['m2']['vo0'], 1e9, seg['m7']['vo0'], tl['card0']    # no lonely intro, no percussion: soft and emotional
+BEAT = .85; CL = 4 * BEAT
 CH = [(48, [60, 64, 67]), (43, [59, 62, 67]), (45, [60, 64, 69]), (41, [60, 65, 69])]     # C  G  Am  F
 def piano(f, d=2.6, bright=1.0):
     t = np.arange(int(d * SR)) / SR
@@ -34,7 +34,7 @@ for i, m in enumerate([57, 60, 64, 60, 57, 60, 64, 62]):
     p = piano(mtof(m), 2.4, .6); add(L, p, tt, .09); add(Rr, p, tt, .08); add(WET, p, tt, .06)
 tick = hp(rng.standard_normal(int(.03 * SR)), 2500) * np.exp(-np.arange(int(.03 * SR)) / SR * 300)
 tt = .4
-while tt < t2 - .3: add(L, tick, tt, .05 if int(tt / .5) % 2 else .035); add(Rr, tick, tt, .04); tt += .5
+pass
 # --- from k2: warm progression, piano arpeggios + music-box melody
 MEL = [72, 76, 79, 76, 74, 71, 74, 79, 76, 72, 69, 72, 77, 76, 74, 72]
 t = t2 - .35; k = 0
@@ -68,7 +68,7 @@ while t < tc + 1.0:
     t += CL
 # --- rain ambience under the paper-boat scene
 rain = hp(rng.standard_normal(N), 1500) * .5 + lp(rng.standard_normal(N), 700) * .5
-renv = np.clip((tN - (seg['k3']['t0'] - .3)) / .6, 0, 1) * np.clip((seg['k4']['t0'] + .4 - tN) / .6, 0, 1)
+renv = np.clip((tN - (seg['m5']['t0'] - .3)) / .6, 0, 1) * np.clip((seg['m6']['t0'] + .4 - tN) / .6, 0, 1)
 L += rain * renv * .035; Rr += np.roll(rain, 1201) * renv * .035
 # --- final card: swell + chimes
 sw_t = np.arange(int(1.6 * SR)) / SR; swell = hp(rng.standard_normal(len(sw_t)), 3000) * (sw_t / 1.6) ** 3
