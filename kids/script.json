@@ -1,16 +1,79 @@
 {
-  "date": "14 NOV",
-  "voices": ["en-IN-PrabhatNeural", "en-US-GuyNeural", "en-IN-NeerjaExpressiveNeural", "en-US-ChristopherNeural"],
-  "rate": "-4%",
-  "pitch": "+0Hz",
-  "segments": [
-    {"id": "k1", "scenes": ["college"], "vo": "We are college students now. Assignments, deadlines, placements."},
-    {"id": "k2", "scenes": ["photo"], "vo": "But somewhere inside us, that little kid is still alive."},
-    {"id": "k3", "scenes": ["boat"], "vo": "The kid who made paper boats in the rain."},
-    {"id": "k4", "scenes": ["tiffin"], "vo": "Who shared tiffin with best friends."},
-    {"id": "k5", "scenes": ["cricket"], "vo": "Who played cricket till the street lights came on."},
-    {"id": "k6", "scenes": ["kite"], "vo": "Who believed that anything was possible."},
-    {"id": "k7", "scenes": ["friends"], "vo": "So today, let's not grow up too fast."},
-    {"id": "k8", "scenes": ["final"], "vo": "Happy Children's Day. To every kid, and to the kid inside all of us."}
-  ]
+ "date": "14 NOV",
+ "voices": [
+  "en-IN-PrabhatNeural",
+  "en-US-GuyNeural",
+  "en-IN-NeerjaExpressiveNeural",
+  "en-US-ChristopherNeural"
+ ],
+ "rate": "-4%",
+ "pitch": "+0Hz",
+ "segments": [
+  {
+   "id": "k1",
+   "scenes": [
+    "college"
+   ],
+   "vo": "We are college students now. Assignments, deadlines, placements.",
+   "gap": 0.45
+  },
+  {
+   "id": "k2",
+   "scenes": [
+    "photo"
+   ],
+   "vo": "But somewhere inside us, that little kid is still alive.",
+   "gap": 0.6
+  },
+  {
+   "id": "k3",
+   "scenes": [
+    "boat"
+   ],
+   "vo": "The kid who made paper boats in the rain.",
+   "gap": 0.55
+  },
+  {
+   "id": "k4",
+   "scenes": [
+    "tiffin"
+   ],
+   "vo": "Who shared tiffin with best friends.",
+   "gap": 0.45
+  },
+  {
+   "id": "k5",
+   "scenes": [
+    "cricket"
+   ],
+   "vo": "Who played cricket till the street lights came on.",
+   "gap": 0.45
+  },
+  {
+   "id": "k6",
+   "scenes": [
+    "kite"
+   ],
+   "vo": "Who believed that anything was possible.",
+   "gap": 0.45
+  },
+  {
+   "id": "k7",
+   "scenes": [
+    "friends"
+   ],
+   "vo": "So today, let's not grow up too fast.",
+   "gap": 0.45
+  },
+  {
+   "id": "k8",
+   "scenes": [
+    "final"
+   ],
+   "vo": "Happy Children's Day. To every kid, and to the kid inside all of us.",
+   "gap": 0.75
+  }
+ ],
+ "card_seg": "k8",
+ "tail": 3.2
 }
