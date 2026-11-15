@@ -13,14 +13,14 @@ async def one(voice, pi, bi, text, sem):
     path = f'{OUT}/{voice}/b{pi:03d}_{bi:02d}.mp3'
     if os.path.exists(path) and os.path.getsize(path) > 1000: return True
     async with sem:
-        for k in range(12):
+        for k in range(40):
             if time.time() > DEADLINE: return False
             try:
                 await asyncio.wait_for(edge_tts.Communicate(text, voice, rate='+0%').save(path), 120)
                 if os.path.getsize(path) > 1000: return True
             except Exception as e:
                 print('retry', voice, pi, bi, repr(e)[:100], flush=True)
-            await asyncio.sleep(min(60, 8 + 8 * k))
+            await asyncio.sleep(min(45, 6 + 6 * k))
     return False
 async def main():
     for v in VOICES:
