@@ -1105,8 +1105,8 @@
       },
       {
        "t": "text",
-       "x": 752.96,
-       "y": 314.8,
+       "x": 753,
+       "y": 315,
        "s": "Enrolls",
        "size": 28,
        "font": "body",
@@ -1323,8 +1323,8 @@
       },
       {
        "t": "text",
-       "x": 1546.56,
-       "y": 689.8,
+       "x": 1547,
+       "y": 690,
        "s": "Of",
        "size": 28,
        "font": "body",
@@ -1490,8 +1490,8 @@
       },
       {
        "t": "text",
-       "x": 733.12,
-       "y": 414.8,
+       "x": 733,
+       "y": 415,
        "s": "Pays",
        "size": 28,
        "font": "body",
@@ -2127,12 +2127,12 @@
       {
        "t": "arrow",
        "p1": [
-        1000,
-        340
+        1040,
+        360
        ],
        "p2": [
-        960,
-        340
+        970,
+        360
        ],
        "color": "red",
        "label": null,
@@ -2146,9 +2146,9 @@
       },
       {
        "t": "text",
-       "x": 1010,
-       "y": 350,
-       "s": "<- tuple (row)",
+       "x": 1050,
+       "y": 370,
+       "s": "tuple (row)",
        "size": 32,
        "font": "body",
        "color": "red"
@@ -2425,8 +2425,8 @@
       },
       {
        "t": "text",
-       "x": 1180,
-       "y": 745,
+       "x": 1440,
+       "y": 948,
        "s": "super",
        "size": 26,
        "font": "body",
@@ -2434,8 +2434,8 @@
       },
       {
        "t": "text",
-       "x": 1265,
-       "y": 785,
+       "x": 1420,
+       "y": 908,
        "s": "candidate",
        "size": 24,
        "font": "body",
@@ -3683,7 +3683,7 @@
       {
        "t": "table",
        "x": 180,
-       "y": 560,
+       "y": 690,
        "cw": [
         260,
         520,
@@ -3726,7 +3726,7 @@
       {
        "t": "stamp",
        "x": 1600,
-       "y": 600,
+       "y": 720,
        "text": "MOST ASKED",
        "color": "red",
        "rot": -8,
@@ -4801,7 +4801,7 @@
        "t": "text",
        "x": 180,
        "y": 222,
-       "s": "1NF) atomic values only (no lists in a cell)",
+       "s": "[r:1NF]:  atomic values only (no lists in a cell)",
        "size": 38,
        "font": "body",
        "color": "blue"
@@ -4815,7 +4815,7 @@
        "t": "text",
        "x": 180,
        "y": 276,
-       "s": "2NF) 1NF + no partial dependency",
+       "s": "[r:2NF]:  1NF + no partial dependency",
        "size": 38,
        "font": "body",
        "color": "blue"
@@ -4838,7 +4838,7 @@
        "t": "text",
        "x": 180,
        "y": 384,
-       "s": "3NF) for X -> A: X is a super key [k:OR] A is prime",
+       "s": "[r:3NF]:  for X -> A: X is a super key [k:OR] A is prime",
        "size": 38,
        "font": "body",
        "color": "blue"
@@ -4861,7 +4861,7 @@
        "t": "text",
        "x": 180,
        "y": 492,
-       "s": "BCNF) for X -> A: X must be a super key",
+       "s": "[r:BCNF]:  for X -> A: X must be a super key",
        "size": 38,
        "font": "body",
        "color": "blue"
@@ -4884,7 +4884,7 @@
        "t": "text",
        "x": 180,
        "y": 600,
-       "s": "4NF) BCNF + no multi-valued dependency",
+       "s": "[r:4NF]:  BCNF + no multi-valued dependency",
        "size": 38,
        "font": "body",
        "color": "blue"
@@ -4893,7 +4893,7 @@
        "t": "text",
        "x": 180,
        "y": 654,
-       "s": "5NF) 4NF + no join dependency",
+       "s": "[r:5NF]:  4NF + no join dependency",
        "size": 38,
        "font": "body",
        "color": "blue"
@@ -4948,10 +4948,10 @@
       },
       {
        "t": "text",
-       "x": 1070,
+       "x": 1075,
        "y": 790,
        "s": "1NF",
-       "size": 30,
+       "size": 28,
        "font": "body",
        "color": "blue"
       },
@@ -4960,16 +4960,16 @@
        "x": 1150,
        "y": 800,
        "s": "2NF",
-       "size": 30,
+       "size": 28,
        "font": "body",
        "color": "green"
       },
       {
        "t": "text",
-       "x": 1230,
-       "y": 730,
+       "x": 1222,
+       "y": 800,
        "s": "3NF",
-       "size": 30,
+       "size": 28,
        "font": "body",
        "color": "red"
       }
@@ -6709,7 +6709,7 @@
       },
       {
        "t": "text",
-       "x": 140,
+       "x": 168,
        "y": 470,
        "s": "T1",
        "size": 32,
@@ -6742,7 +6742,7 @@
       },
       {
        "t": "text",
-       "x": 140,
+       "x": 168,
        "y": 560,
        "s": "T2",
        "size": 32,
@@ -6775,7 +6775,7 @@
       },
       {
        "t": "text",
-       "x": 140,
+       "x": 168,
        "y": 650,
        "s": "T3",
        "size": 32,
@@ -6799,7 +6799,7 @@
       },
       {
        "t": "text",
-       "x": 140,
+       "x": 168,
        "y": 740,
        "s": "T4",
        "size": 32,
@@ -6832,7 +6832,7 @@
       },
       {
        "t": "text",
-       "x": 140,
+       "x": 168,
        "y": 830,
        "s": "T5",
        "size": 32,
@@ -7232,8 +7232,8 @@
       },
       {
        "t": "stamp",
-       "x": 1600,
-       "y": 400,
+       "x": 1650,
+       "y": 140,
        "text": "MOST ASKED",
        "color": "red",
        "rot": -8,

@@ -12,7 +12,7 @@ def beat(p, say, *els):
         if isinstance(e, list): flat += e
         elif e: flat.append(e)
     p['beats'].append({'say': ' '.join(say.split()), 'els': flat})
-def T(n, s, x=180, size=38, font='body', color='blue', y=None): return dict(t='text', x=x, y=L(n) if y is None else y, s=s, size=size, font=font, color=color)
+def T(n, s, x=180, size=38, font='body', color='blue', y=None): return dict(t='text', x=int(round(x)), y=int(round(L(n) if y is None else y)), s=s, size=size, font=font, color=color)
 def S(n, s, x=180, color='black', size=42, y=None): return T(n, s, x, size, 'bold', color, y)
 def N(n, k, s, x=180, color='blue', size=38): return T(n, f'{k}) {s}', x, size, 'body', color)
 def Box(x, y, w, h, label=None, color='black', size=32, fill=None, lc=None): return dict(t='rect', x=x, y=y, w=w, h=h, label=label, color=color, size=size, fill=fill, lc=lc or color)
@@ -212,7 +212,7 @@ p = page('Relational Model Terms', 3)
 beat(p, '''In the relational model, data is stored in tables called relations. Each row is a tuple, and each column is an attribute.
 The domain of an attribute is the set of allowed values, like the age must be a positive number.''',
      Tab(180, 250, [180, 220, 180, 200], 56, [['roll', 'name', 'dept', 'age'], ['101', 'Asha', 'CSE', '20'], ['102', 'Ravi', 'ECE', '21'], ['103', 'Meena', 'CSE', '20']], size=30),
-     Arr(1000, 340, 960, 340, color='red', label=None), T(0, '<- tuple (row)', x=1010, y=350, size=32, color='red'),
+     Arr(1040, 360, 970, 360, color='red'), T(0, 'tuple (row)', x=1050, y=370, size=32, color='red'),
      T(0, 'attribute (column)', x=420, y=520, size=32, color='red'), Arr(470, 495, 470, 470, color='red'))
 beat(p, '''The degree of a relation is the number of attributes, so here it is four. The cardinality is the number of tuples, here three.
 Remember: degree is columns, cardinality is rows.''',
@@ -235,7 +235,7 @@ And every candidate key is a super key, but not every super key is a candidate k
      T(8, 'Candidate keys: roll, email, phone', size=34, color='black'), T(9, 'Primary: roll  ->  alternate: email, phone', size=34, color='black'),
      T(11, 'primary key  ⊆  candidate keys  ⊆  super keys', color='green'),
      Ell(1150, 700, 640, 260, None, color='blue'), Ell(1250, 750, 440, 170, None, color='green'), Ell(1340, 790, 260, 90, 'primary', size=28, color='red'),
-     T(0, 'super', x=1180, y=745, size=26, color='blue'), T(0, 'candidate', x=1265, y=785, size=24, color='green'))
+     T(0, 'super', x=1440, y=948, size=26, color='blue'), T(0, 'candidate', x=1420, y=908, size=24, color='green'))
 
 kA = len(superkeys('ABCD', fd('A->BCD'))); kAB = len(superkeys('ABCD', fd('A->BCD, BC->AD')))
 p = page('Number of Super Keys', 3)
@@ -355,9 +355,9 @@ beat(p, '''We add rows with INSERT, change them with UPDATE, and remove them wit
      T(7, "UPDATE Emp SET salary = salary * 1.1 WHERE dept = 'ECE';", size=34, color='black'), T(8, 'DELETE FROM Emp WHERE eid = 7;', size=34, color='black'))
 beat(p, '''Exam favourite: DELETE versus TRUNCATE versus DROP. DELETE removes chosen rows, and can be rolled back. TRUNCATE removes all rows quickly,
 and keeps the structure. DROP removes the whole table, data and structure.''',
-     Tab(180, 560, [260, 520, 420], 52, [['', 'What it removes', 'Type'], ['DELETE', 'chosen rows (WHERE)', 'DML, can rollback'],
+     Tab(180, 690, [260, 520, 420], 52, [['', 'What it removes', 'Type'], ['DELETE', 'chosen rows (WHERE)', 'DML, can rollback'],
          ['TRUNCATE', 'all rows, keeps structure', 'DDL, fast'], ['DROP', 'whole table + structure', 'DDL']], size=28, colors={(r, 0): 'red' for r in range(1, 4)}),
-     Stamp(1600, 600, 'MOST ASKED'))
+     Stamp(1600, 720, 'MOST ASKED'))
 
 gb = q('select dept, count(*), avg(salary) from Emp group by dept having count(*) >= 2 order by dept')
 p = page('SELECT, GROUP BY & HAVING', 5)
@@ -485,19 +485,19 @@ beat(p, '''Normalization removes these anomalies by splitting a big table into s
 
 p = page('Normal Forms: 1NF to BCNF', 7)
 beat(p, '''First normal form: every value must be atomic, so no lists or repeating groups in a cell.''',
-     Stamp(1650, 140, 'MOST ASKED'), N(0, '1NF', 'atomic values only (no lists in a cell)'))
+     Stamp(1650, 140, 'MOST ASKED'), T(0, '[r:1NF]:  atomic values only (no lists in a cell)'))
 beat(p, '''Second normal form: it is in first normal form, and there is no partial dependency. That means no non prime attribute depends on only a part of a candidate key.''',
-     N(1, '2NF', '1NF + no partial dependency'), T(2, '(non-prime attribute depends on PART of a key)', x=320, size=32, color='green'))
+     T(1, '[r:2NF]:  1NF + no partial dependency'), T(2, '(non-prime attribute depends on PART of a key)', x=320, size=32, color='green'))
 beat(p, '''Third normal form: for every non trivial dependency X determines A, either X is a super key, or A is a prime attribute. This removes transitive dependencies.''',
-     N(3, '3NF', 'for X -> A: X is a super key [k:OR] A is prime'), T(4, '(removes transitive dependency)', x=320, size=32, color='green'))
+     T(3, '[r:3NF]:  for X -> A: X is a super key [k:OR] A is prime'), T(4, '(removes transitive dependency)', x=320, size=32, color='green'))
 beat(p, '''Boyce Codd normal form, B C N F, is stricter: for every non trivial dependency X determines A, X must be a super key. No exception for prime attributes.''',
-     N(5, 'BCNF', 'for X -> A: X must be a super key'), T(6, '(stricter than 3NF)', x=320, size=32, color='green'))
+     T(5, '[r:BCNF]:  for X -> A: X must be a super key'), T(6, '(stricter than 3NF)', x=320, size=32, color='green'))
 beat(p, '''Fourth normal form removes multi valued dependencies, and fifth normal form removes join dependencies. Remember the order:
 B C N F is inside third normal form, which is inside second, which is inside first.''',
-     N(7, '4NF', 'BCNF + no multi-valued dependency'), N(8, '5NF', '4NF + no join dependency'),
+     T(7, '[r:4NF]:  BCNF + no multi-valued dependency'), T(8, '[r:5NF]:  4NF + no join dependency'),
      Ell(1050, 600, 760, 360, None, color='blue'), Ell(1130, 650, 600, 270, None, color='green'), Ell(1210, 700, 440, 180, None, color='red'),
-     Ell(1290, 745, 280, 90, 'BCNF', size=30, color='black'), T(0, '1NF', x=1070, y=790, size=30, color='blue'), T(0, '2NF', x=1150, y=800, size=30, color='green'),
-     T(0, '3NF', x=1230, y=730, size=30, color='red'))
+     Ell(1290, 745, 280, 90, 'BCNF', size=30, color='black'), T(0, '1NF', x=1075, y=790, size=28, color='blue'), T(0, '2NF', x=1150, y=800, size=28, color='green'),
+     T(0, '3NF', x=1222, y=800, size=28, color='red'))
 
 nf1 = normal_form('ABCD', fd('AB->C, A->D')); nf2 = normal_form('ABCD', fd('AB->C, C->D')); nf3 = normal_form('ABC', fd('AB->C, C->B'))
 p = page('Finding the Normal Form', 7)
@@ -665,7 +665,7 @@ els = [Ln([(CK, 400), (CK, 880)], 'green', 4), T(0, 'checkpoint', x=CK - 70, y=3
        Ln([(CR, 400), (CR, 880)], 'red', 5), T(0, 'crash', x=CR - 35, y=390, size=28, color='red')]
 for i, (n, a, b, c) in enumerate(tx):
     y = 460 + i * 90; e = b if b else CR
-    els += [T(0, n, x=140, y=y + 10, size=32, color='black'), Ln([(a, y), (e, y)], 'blue', 6)]
+    els += [T(0, n, x=168, y=y + 10, size=32, color='black'), Ln([(a, y), (e, y)], 'blue', 6)]
     if c: els.append(T(0, 'commit', x=b - 40, y=y - 14, size=22, color='green'))
 act = {'T1': 'ignore', 'T2': '[g:REDO]', 'T3': '[r:UNDO]', 'T4': '[g:REDO]', 'T5': '[r:UNDO]'}
 beat(p, '''A checkpoint saves everything to disk at a point in time, so after a crash we only look at the log after the last checkpoint.
@@ -714,7 +714,7 @@ In a B tree, data pointers are stored in all nodes. In a B plus tree, data point
      Tab(180, 320, [380, 520, 560], 56, [['', 'B tree', 'B+ tree'], ['data pointers', 'in all nodes', 'only in leaves'], ['keys repeated?', 'no', 'yes (copied up)'],
          ['leaves linked?', 'no', '[g:yes], easy range queries'], ['fan-out', 'smaller', '[g:larger] (more keys per node)'], ['used in', 'less common', 'most DBMS indexes']], size=28,
          colors={(r, 0): 'red' for r in range(1, 6)}),
-     Stamp(1600, 400, 'MOST ASKED'))
+     Stamp(1650, 140, 'MOST ASKED'))
 beat(p, '''Because internal nodes of a B plus tree hold only keys, more keys fit in a block, so the tree is shorter. And because the leaves are linked,
 range queries like salary between forty and sixty thousand are very fast. That is why most databases use B plus trees.''',
      T(13, 'B+ tree: shorter tree + linked leaves  =>  [h:fast range queries]', color='green'))

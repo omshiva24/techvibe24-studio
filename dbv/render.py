@@ -12,7 +12,7 @@ CHAPS = S['chapters']
 INK = {'blue': (22, 50, 168), 'black': (30, 30, 36), 'red': (204, 36, 40), 'green': (16, 118, 66), 'grey': (120, 120, 128)}
 HLC = {'yellow': (255, 232, 64), 'pink': (255, 170, 200), 'green': (150, 240, 170)}
 FF = {'body': 'Kalam-Regular.ttf', 'bold': 'Kalam-Bold.ttf', 'light': 'Kalam-Light.ttf', 'cav': 'Caveat.ttf', 'anton': 'Anton.ttf',
-      'sg': 'SpaceGrotesk.ttf', 'inter': 'Inter.ttf', 'mono': 'JetBrainsMono.ttf', 'math': 'DejaVuSans-Oblique.ttf'}
+      'sg': 'SpaceGrotesk.ttf', 'inter': 'Inter.ttf', 'mono': 'JetBrainsMono.ttf', 'math': 'DejaVuSans-Oblique.ttf', 'one': 'PatrickHand-Regular.ttf'}
 _fc = {}
 def font(kind, size):
     k = (kind, size)
@@ -74,6 +74,10 @@ def runs(txt):
             kleene = pv.isalnum() or pv in ")'" or (pv == '>' and nx == ' ')
             if not kleene: out.append([ch, 'mul']); continue
         if ch == '∪': out.append([ch, 'big']); continue
+        if ch == '1':                                   # Kalam's 1 looks like I (1NF, T1, R1): use a flagged 1
+            if out and out[-1][1] == 'one': out[-1][0] += ch
+            else: out.append([ch, 'one'])
+            continue
         ok = ord(ch) in _CMAP or ch == ' '
         if out and out[-1][1] == ok: out[-1][0] += ch
         else: out.append([ch, ok])
@@ -89,6 +93,7 @@ def text_layer(e):
         for run, ok in runs(txt):                      # symbols the handwriting font lacks (ε, α, β, ∪, ∈, ₀) use DejaVu
             if ok == 'mul':                            # Kalam's * sits high and small: draw it bigger, centred like +
                 fm = font(e['font'], int(e['size'] * 1.5)); w = fm.getlength('*'); parts.append((x, '*', col, fm, int(e['size'] * .7))); x += w; continue
+            if ok == 'one': fo = font('one', int(e['size'] * 1.04)); parts.append((x + 1, run, col, fo, 0)); x += fo.getlength(run) + 2; continue
             if ok == 'big': fu = font('math', int(e['size'] * 1.1)); parts.append((x + 2, run, col, fu, 0)); x += fu.getlength(run) + 4; continue
             ff = f if ok else fb; w = ff.getlength(run); parts.append((x, run, col, ff, 0)); x += w
         if m in ('h', 'p'): hls.append((x0 - 4, x + 4, 'yellow' if m == 'h' else 'pink'))

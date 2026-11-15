@@ -6,9 +6,10 @@ def ts(t): return '%d:%02d:%02d' % (t // 3600, t % 3600 // 60, t % 60) if t >= 3
 chap = ['0:00 Introduction & contents']
 for pg in tl['pages']:
     if pg['kind'] == 'chapter': chap.append(f"{ts(int(pg['t0']))} Ch {pg['num']}: {pg['title']}")
-    NUM = {'RE to DFA: (a|b)*abb': 'RE to DFA: (a|b)*abb', 'FIRST & FOLLOW': 'FIRST & FOLLOW', 'LL(1) Parsing Table': 'LL(1) parsing table',
-           'LR(0) Items: S -> AA,  A -> aA | b': 'LR(0) items & SLR table', 'Three-Address Code: a = b * -c + b * -c': 'Three-address code, quadruples, triples',
-           'DAG for a Basic Block': 'DAG for a basic block'}
+    NUM = {'ER Diagram to Tables': 'ER diagram to tables', 'Number of Super Keys': 'Counting super keys', 'Division Operator': 'Division operator',
+           'SELECT, GROUP BY & HAVING': 'SQL GROUP BY & HAVING', 'Attribute Closure': 'Attribute closure', 'Finding Candidate Keys': 'Finding candidate keys',
+           'Finding the Normal Form': 'Finding the normal form', 'Conflict Serializability': 'Conflict serializability', 'Log-Based Recovery & Checkpoints': 'Recovery with checkpoints',
+           'Index Numerical: Block Accesses': 'Index block accesses', 'B+ Tree Insertion': 'B+ tree order & insertion'}
     if pg['kind'] == 'page' and pg['title'] in NUM:      # YouTube rejects < and > in descriptions, so no '->' here
         chap.append(f"{ts(int(pg['t0']))}   • {NUM[pg['title']]} (numerical)")
 open(f'{OUT}/chapters.txt', 'w').write('\n'.join(chap) + '\n')
