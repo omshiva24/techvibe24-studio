@@ -21,3 +21,5 @@ cdv/build/
 cdv/__pycache__/
 dbv/build/
 dbv/__pycache__/
+sev/build/
+sev/__pycache__/
