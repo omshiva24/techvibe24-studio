@@ -19,3 +19,5 @@ www/kids/scn/
 ka_assets/
 cdv/build/
 cdv/__pycache__/
+dbv/build/
+dbv/__pycache__/

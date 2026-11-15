@@ -1,0 +1,8530 @@
+{
+ "pages": [
+  {
+   "kind": "cover",
+   "title": "DBMS",
+   "ch": 0,
+   "beats": [
+    {
+     "say": "Database Management Systems. The complete D B M S subject in one video. Simple explanations, handwritten notes, and every important exam problem solved step by step.",
+     "els": []
+    },
+    {
+     "say": "This works for B Tech computer science in almost every university. A K T U, Anna University, V T U, J N T U, Mumbai, Pune, and private universities too. And it covers the full database part of GATE. So grab a pen, and let's start.",
+     "els": []
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Contents",
+   "ch": 0,
+   "beats": [
+    {
+     "say": "Here's our plan. Eleven chapters, from the basics to the exam numericals.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "What we will cover today",
+       "size": 42,
+       "font": "bold",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "We start with what a D B M S is, then the E R model, keys, relational algebra, and S Q L.",
+     "els": [
+      {
+       "t": "text",
+       "x": 200,
+       "y": 276,
+       "s": "1.  Introduction to DBMS",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 330,
+       "s": "2.  [h:ER Model]  (ER to tables)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 384,
+       "s": "3.  [h:Relational Model & Keys]  (super keys)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 438,
+       "s": "4.  Relational Algebra & Calculus",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 492,
+       "s": "5.  [h:SQL]  (GROUP BY, nested queries)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Then the big scoring topics: functional dependencies, normalization, transactions, concurrency control, and indexing with B plus trees. And at the end, a quick revision of the most asked questions. The highlighted ones are the most important.",
+     "els": [
+      {
+       "t": "text",
+       "x": 200,
+       "y": 546,
+       "s": "6.  [h:Functional Dependencies]  (closure, keys)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 600,
+       "s": "7.  [h:Normalization]  (1NF to BCNF)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 654,
+       "s": "8.  [h:Transactions]  (serializability)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 708,
+       "s": "9.  Concurrency Control & Recovery",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 762,
+       "s": "10.  [h:Indexing & B+ Trees]",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 816,
+       "s": "11.  Exam Revision - most asked questions",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "stamp",
+       "x": 1520,
+       "y": 520,
+       "text": "MOST ASKED",
+       "color": "red",
+       "rot": -10,
+       "size": 34
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Introduction to DBMS",
+   "ch": 1,
+   "beats": [
+    {
+     "say": "Chapter one. Introduction to D B M S. Let's build the basics first.",
+     "els": []
+    }
+   ],
+   "num": 1,
+   "subs": [
+    "DBMS vs file system",
+    "Three-schema architecture",
+    "Data independence",
+    "Languages & data models"
+   ],
+   "stars": 4
+  },
+  {
+   "kind": "page",
+   "title": "What is a DBMS?",
+   "ch": 1,
+   "beats": [
+    {
+     "say": "Data means raw facts, like a name or a marks value. A database is an organised collection of related data. And a D B M S, a database management system, is the software that stores, retrieves, and manages that data safely. Examples are MySQL, Oracle, PostgreSQL, and SQL Server.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Database] = organised collection of related data",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[h:DBMS] = software to store, retrieve & manage data safely",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "e.g. MySQL, Oracle, PostgreSQL, SQL Server",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    },
+    {
+     "say": "Before D B M S, data was kept in plain files. That caused many problems. The same data was stored again and again, called redundancy, so copies became inconsistent. Data was hard to search, there was weak security, and many users could not work at the same time safely. A D B M S solves all of these.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 380,
+       "cw": [
+        330,
+        520,
+        520
+       ],
+       "rh": 54,
+       "rows": [
+        [
+         "",
+         "File system",
+         "DBMS"
+        ],
+        [
+         "redundancy",
+         "[r:high], data repeated",
+         "[g:controlled]"
+        ],
+        [
+         "consistency",
+         "[r:copies disagree]",
+         "[g:constraints keep it correct]"
+        ],
+        [
+         "access",
+         "write a program each time",
+         "easy queries (SQL)"
+        ],
+        [
+         "security",
+         "weak",
+         "user-level permissions"
+        ],
+        [
+         "concurrency",
+         "unsafe",
+         "many users safely"
+        ],
+        [
+         "recovery",
+         "manual backup",
+         "automatic (logs)"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "stamp",
+       "x": 1640,
+       "y": 470,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Three-Schema Architecture",
+   "ch": 1,
+   "beats": [
+    {
+     "say": "The three schema architecture separates how users see data from how it is stored. It has three levels. The external level, also called the view level, shows each user only the part of the data they need.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "MUST DRAW",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "3 levels:",
+       "size": 38,
+       "font": "bold",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "1) [r:External / view level] - what each user sees",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 960,
+       "y": 230,
+       "w": 250,
+       "h": 72,
+       "label": "View 1",
+       "color": "green",
+       "size": 30,
+       "fill": null,
+       "lc": "green"
+      },
+      {
+       "t": "rect",
+       "x": 1260,
+       "y": 230,
+       "w": 250,
+       "h": 72,
+       "label": "View 2",
+       "color": "green",
+       "size": 30,
+       "fill": null,
+       "lc": "green"
+      },
+      {
+       "t": "rect",
+       "x": 1560,
+       "y": 230,
+       "w": 250,
+       "h": 72,
+       "label": "View 3",
+       "color": "green",
+       "size": 30,
+       "fill": null,
+       "lc": "green"
+      }
+     ]
+    },
+    {
+     "say": "The conceptual level, or logical level, describes the whole database: all tables, attributes and relationships. The internal level, or physical level, describes how data is actually stored on disk, with files, indexes and blocks.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "2) [r:Conceptual / logical level] - all tables & links",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "3) [r:Internal / physical level] - storage, files, indexes",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1010,
+       "y": 420,
+       "w": 750,
+       "h": 80,
+       "label": "Conceptual schema",
+       "color": "blue",
+       "size": 32,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1010,
+       "y": 590,
+       "w": 750,
+       "h": 80,
+       "label": "Internal schema",
+       "color": "red",
+       "size": 32,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "ellipse",
+       "x": 1235,
+       "y": 760,
+       "w": 300,
+       "h": 110,
+       "label": "Stored database",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1085,
+        302
+       ],
+       "p2": [
+        1180,
+        420
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1385,
+        302
+       ],
+       "p2": [
+        1330,
+        420
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1685,
+        302
+       ],
+       "p2": [
+        1480,
+        420
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1385,
+        500
+       ],
+       "p2": [
+        1385,
+        590
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1385,
+        670
+       ],
+       "p2": [
+        1385,
+        760
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      }
+     ]
+    },
+    {
+     "say": "Between the levels there are mappings. Because of these mappings we get data independence. Physical data independence means we can change the storage, like adding an index, without changing the logical schema. Logical data independence means we can change the logical schema, like adding a column, without changing user views. Logical independence is harder to achieve.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "Data independence",
+       "size": 38,
+       "font": "bold",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "[k:Physical]: change storage, logical schema unchanged",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "[k:Logical]: change logical schema, views unchanged",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "Logical independence is [r:harder]",
+       "size": 34,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    },
+    {
+     "say": "One more pair of terms. A schema is the design, or structure, of the database, which rarely changes. An instance is the actual data stored at a particular moment, which changes all the time.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "[h:Schema] = design (rarely changes)",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "[h:Instance] = data at a moment (changes often)",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Database Languages, Users & Data Models",
+   "ch": 1,
+   "beats": [
+    {
+     "say": "D B M S languages. D D L, data definition language, defines structure: CREATE, ALTER, DROP, TRUNCATE. D M L, data manipulation language, works on data: SELECT, INSERT, UPDATE, DELETE. D C L controls access: GRANT and REVOKE. And T C L controls transactions: COMMIT, ROLLBACK, SAVEPOINT.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 240,
+       "cw": [
+        200,
+        520,
+        560
+       ],
+       "rh": 56,
+       "rows": [
+        [
+         "Type",
+         "Meaning",
+         "Commands"
+        ],
+        [
+         "DDL",
+         "define structure",
+         "CREATE, ALTER, DROP, TRUNCATE"
+        ],
+        [
+         "DML",
+         "work on data",
+         "SELECT, INSERT, UPDATE, DELETE"
+        ],
+        [
+         "DCL",
+         "control access",
+         "GRANT, REVOKE"
+        ],
+        [
+         "TCL",
+         "control transactions",
+         "COMMIT, ROLLBACK, SAVEPOINT"
+        ]
+       ],
+       "color": "black",
+       "size": 30,
+       "hdr": true,
+       "order": "row",
+       "colors": {
+        "1,0": "red",
+        "2,0": "red",
+        "3,0": "red",
+        "4,0": "red"
+       },
+       "fills": {}
+      },
+      {
+       "t": "stamp",
+       "x": 1640,
+       "y": 300,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    },
+    {
+     "say": "The D B A, database administrator, is in charge of the database. The D B A defines the schema, gives permissions, takes backups, and tunes performance. Other users are application programmers, and end users.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "[h:DBA]: schema, permissions, backup & recovery, performance tuning",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "Users: DBA, application programmers, end users",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "A data model is a way to describe data. Older models are hierarchical, which is a tree, and network, which is a graph. The relational model uses tables and is the most popular. The E R model is used for design. And object oriented and No S Q L models are used for special needs.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "Data models: hierarchical (tree), network (graph), [h:relational (tables)],",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 330,
+       "y": 870,
+       "s": "ER (design), object-oriented, NoSQL",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "ER Model",
+   "ch": 2,
+   "beats": [
+    {
+     "say": "Chapter two. The E R model. This is how we design a database before building it.",
+     "els": []
+    }
+   ],
+   "num": 2,
+   "subs": [
+    "Entities & attributes",
+    "Relationships & cardinality",
+    "Weak entity, ISA, aggregation",
+    "ER to tables"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "ER Model: Entities & Attributes",
+   "ch": 2,
+   "beats": [
+    {
+     "say": "The entity relationship model, or E R model, describes data as entities, attributes and relationships. An entity is a real world object, like a student. An entity set is a collection of similar entities, like all students. An entity is drawn as a rectangle.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Entity] = real-world object (a student)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[h:Entity set] = all similar entities (all students)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1240,
+       "y": 420,
+       "w": 260,
+       "h": 90,
+       "label": "STUDENT",
+       "color": "black",
+       "size": 34,
+       "fill": null,
+       "lc": "black"
+      }
+     ]
+    },
+    {
+     "say": "Attributes are properties of an entity, drawn as ovals. The key attribute uniquely identifies an entity and is underlined, like roll number. A composite attribute can be divided, like name into first and last name. A multi valued attribute can have many values, like phone numbers, drawn as a double oval. And a derived attribute is calculated from another, like age from date of birth, drawn as a dashed oval.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "[r:Key] (underlined): roll_no",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "[r:Composite]: name = first + last",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "[r:Multi-valued] (double oval): phone",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "[r:Derived] (dashed oval): age, from DOB",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "[r:Simple / single-valued]: gender",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1000,
+       "y": 250,
+       "w": 200,
+       "h": 80,
+       "label": "roll_no",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         1040,
+         312
+        ],
+        [
+         1160,
+         312
+        ]
+       ],
+       "color": "black",
+       "w": 3
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1150,
+        328
+       ],
+       "p2": [
+        1270,
+        420
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 1300,
+       "y": 230,
+       "w": 170,
+       "h": 80,
+       "label": "name",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1385,
+        310
+       ],
+       "p2": [
+        1370,
+        420
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 1230,
+       "y": 120,
+       "w": 150,
+       "h": 64,
+       "label": "first",
+       "color": "black",
+       "size": 26,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 1420,
+       "y": 120,
+       "w": 150,
+       "h": 64,
+       "label": "last",
+       "color": "black",
+       "size": 26,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1310,
+        184
+       ],
+       "p2": [
+        1360,
+        230
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1480,
+        184
+       ],
+       "p2": [
+        1410,
+        230
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 1580,
+       "y": 300,
+       "w": 200,
+       "h": 80,
+       "label": "phone",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 1590,
+       "y": 308,
+       "w": 180,
+       "h": 64,
+       "label": null,
+       "color": "black",
+       "size": 32,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1600,
+        378
+       ],
+       "p2": [
+        1490,
+        430
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 1580,
+       "y": 560,
+       "w": 160,
+       "h": 80,
+       "label": "age",
+       "color": "green",
+       "size": 30,
+       "fill": null,
+       "lc": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1600,
+        580
+       ],
+       "p2": [
+        1500,
+        490
+       ],
+       "color": "green",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "green"
+      },
+      {
+       "t": "ellipse",
+       "x": 1000,
+       "y": 560,
+       "w": 200,
+       "h": 80,
+       "label": "gender",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1180,
+        570
+       ],
+       "p2": [
+        1240,
+        500
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Relationships, Cardinality & Participation",
+   "ch": 2,
+   "beats": [
+    {
+     "say": "A relationship connects entities and is drawn as a diamond. For example, a student enrolls in a course. The degree of a relationship is the number of entity sets in it: unary, binary or ternary.",
+     "els": [
+      {
+       "t": "rect",
+       "x": 240,
+       "y": 260,
+       "w": 260,
+       "h": 90,
+       "label": "STUDENT",
+       "color": "black",
+       "size": 32,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         800,
+         245
+        ],
+        [
+         930,
+         305
+        ],
+        [
+         800,
+         365
+        ],
+        [
+         670,
+         305
+        ],
+        [
+         800,
+         245
+        ]
+       ],
+       "color": "black",
+       "w": 4
+      },
+      {
+       "t": "text",
+       "x": 752.96,
+       "y": 314.8,
+       "s": "Enrolls",
+       "size": 28,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1100,
+       "y": 260,
+       "w": 260,
+       "h": 90,
+       "label": "COURSE",
+       "color": "black",
+       "size": 32,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        500,
+        305
+       ],
+       "p2": [
+        670,
+        305
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        930,
+        305
+       ],
+       "p2": [
+        1100,
+        305
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "text",
+       "x": 560,
+       "y": 290,
+       "s": "M",
+       "size": 32,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 1020,
+       "y": 290,
+       "s": "N",
+       "size": 32,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 1450,
+       "y": 276,
+       "s": "Degree: unary, [h:binary], ternary",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Cardinality tells how many entities can be linked. One to one, like a person and a passport. One to many, like a department and its employees. Many to one is the reverse. And many to many, like students and courses, where a student takes many courses and a course has many students.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "Cardinality ratio",
+       "size": 38,
+       "font": "bold",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "[k:1 : 1] person - passport",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "[k:1 : N] department - employees",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "[k:N : 1] employees - department",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "[k:M : N] students - courses",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "stamp",
+       "x": 900,
+       "y": 520,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    },
+    {
+     "say": "Participation tells whether every entity must take part. Total participation means every entity must be in the relationship, like every loan must belong to a branch. It is drawn with a double line. Partial participation means some may not take part, drawn with a single line.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "Participation",
+       "size": 38,
+       "font": "bold",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "[r:Total] (double line): every loan has a branch",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 870,
+       "s": "[r:Partial] (single line): not every customer has a loan",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1150,
+       "y": 640,
+       "w": 220,
+       "h": 80,
+       "label": "LOAN",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         1560,
+         625
+        ],
+        [
+         1670,
+         680
+        ],
+        [
+         1560,
+         735
+        ],
+        [
+         1450,
+         680
+        ],
+        [
+         1560,
+         625
+        ]
+       ],
+       "color": "black",
+       "w": 4
+      },
+      {
+       "t": "text",
+       "x": 1546.56,
+       "y": 689.8,
+       "s": "Of",
+       "size": 28,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         1370,
+         674
+        ],
+        [
+         1450,
+         674
+        ]
+       ],
+       "color": "black",
+       "w": 3
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         1370,
+         688
+        ],
+        [
+         1450,
+         688
+        ]
+       ],
+       "color": "black",
+       "w": 3
+      },
+      {
+       "t": "rect",
+       "x": 1150,
+       "y": 820,
+       "w": 220,
+       "h": 80,
+       "label": "BRANCH",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1560,
+        735
+       ],
+       "p2": [
+        1300,
+        820
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Weak Entity, Generalization & Aggregation",
+   "ch": 2,
+   "beats": [
+    {
+     "say": "A weak entity cannot be identified by its own attributes. It depends on a strong entity, called its owner. For example, a payment depends on a loan. A weak entity is drawn as a double rectangle, its identifying relationship as a double diamond, and its partial key, also called the discriminator, is underlined with a dashed line.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Weak entity]: no key of its own, depends on owner",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "double rectangle + double diamond + partial key (dashed)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 240,
+       "y": 360,
+       "w": 240,
+       "h": 90,
+       "label": "LOAN",
+       "color": "black",
+       "size": 32,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         760,
+         340
+        ],
+        [
+         890,
+         405
+        ],
+        [
+         760,
+         470
+        ],
+        [
+         630,
+         405
+        ],
+        [
+         760,
+         340
+        ]
+       ],
+       "color": "black",
+       "w": 4
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         760,
+         350
+        ],
+        [
+         874,
+         405
+        ],
+        [
+         760,
+         460
+        ],
+        [
+         646,
+         405
+        ],
+        [
+         760,
+         350
+        ]
+       ],
+       "color": "black",
+       "w": 3
+      },
+      {
+       "t": "text",
+       "x": 733.12,
+       "y": 414.8,
+       "s": "Pays",
+       "size": 28,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1040,
+       "y": 360,
+       "w": 260,
+       "h": 90,
+       "label": "PAYMENT",
+       "color": "black",
+       "size": 32,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1050,
+       "y": 370,
+       "w": 240,
+       "h": 70,
+       "label": null,
+       "color": "black",
+       "size": 32,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        480,
+        405
+       ],
+       "p2": [
+        630,
+        405
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         890,
+         398
+        ],
+        [
+         1040,
+         398
+        ]
+       ],
+       "color": "black",
+       "w": 3
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         890,
+         412
+        ],
+        [
+         1040,
+         412
+        ]
+       ],
+       "color": "black",
+       "w": 3
+      },
+      {
+       "t": "ellipse",
+       "x": 1400,
+       "y": 330,
+       "w": 230,
+       "h": 76,
+       "label": "payment_no",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1400,
+        380
+       ],
+       "p2": [
+        1300,
+        400
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         1440,
+         393
+        ],
+        [
+         1460,
+         393
+        ]
+       ],
+       "color": "black",
+       "w": 3
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         1475,
+         393
+        ],
+        [
+         1495,
+         393
+        ]
+       ],
+       "color": "black",
+       "w": 3
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         1510,
+         393
+        ],
+        [
+         1530,
+         393
+        ]
+       ],
+       "color": "black",
+       "w": 3
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         1545,
+         393
+        ],
+        [
+         1565,
+         393
+        ]
+       ],
+       "color": "black",
+       "w": 3
+      }
+     ]
+    },
+    {
+     "say": "Generalization is a bottom up process. We combine common features of lower entities into a higher entity, like car and bike into vehicle. Specialization is the top down opposite: we split an entity into sub groups, like employee into engineer and manager. Both use an I S A triangle.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "[r:Generalization] (bottom-up): car + bike -> vehicle",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "[r:Specialization] (top-down): employee -> engineer, manager",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1250,
+       "y": 560,
+       "w": 240,
+       "h": 76,
+       "label": "EMPLOYEE",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         1370,
+         650
+        ],
+        [
+         1310,
+         730
+        ],
+        [
+         1430,
+         730
+        ],
+        [
+         1370,
+         650
+        ]
+       ],
+       "color": "black",
+       "w": 4
+      },
+      {
+       "t": "text",
+       "x": 1344,
+       "y": 718,
+       "s": "ISA",
+       "size": 24,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1370,
+        636
+       ],
+       "p2": [
+        1370,
+        650
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1130,
+       "y": 800,
+       "w": 220,
+       "h": 70,
+       "label": "ENGINEER",
+       "color": "black",
+       "size": 26,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1400,
+       "y": 800,
+       "w": 220,
+       "h": 70,
+       "label": "MANAGER",
+       "color": "black",
+       "size": 26,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1330,
+        730
+       ],
+       "p2": [
+        1240,
+        800
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1410,
+        730
+       ],
+       "p2": [
+        1510,
+        800
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": false,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      }
+     ]
+    },
+    {
+     "say": "Aggregation treats a relationship as an entity, so that it can take part in another relationship. For example, the relationship \"employee works on project\" can be monitored by a manager.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 870,
+       "s": "[r:Aggregation]: a relationship treated as an entity",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 924,
+       "s": "e.g. (employee works-on project) monitored-by manager",
+       "size": 34,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "ER Diagram to Tables",
+   "ch": 2,
+   "beats": [
+    {
+     "say": "Converting an E R diagram to tables is a common exam question. Rule one: each strong entity becomes a table, and its key becomes the primary key. Rule two: a weak entity becomes a table that includes the owner's primary key. Rule three: a multi valued attribute becomes a separate table.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "MOST ASKED",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "1) Strong entity -> table, key -> primary key",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "2) Weak entity -> table + owner's key",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "3) Multi-valued attribute -> separate table",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Rule four is about relationships. For one to one, put the key of one side into the other table. For one to many, put the key of the one side as a foreign key in the many side. For many to many, make a new table with both keys, plus the relationship's own attributes.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "4) 1 : 1 -> key of either side into the other",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "5) 1 : N -> key of the \"1\" side into the \"N\" side",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "6) [h:M : N -> new table with both keys]",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Example. Student and course with a many to many relationship enrolls, which has a grade attribute. We get three tables. Student with student id and name. Course with course id and title. And enrolls with student id, course id and grade, where the two ids together form the primary key.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 560,
+       "cw": [
+        180,
+        220
+       ],
+       "rh": 54,
+       "rows": [
+        [
+         "sid",
+         "name"
+        ]
+       ],
+       "color": "black",
+       "size": 30,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 545,
+       "s": "STUDENT",
+       "size": 30,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "table",
+       "x": 640,
+       "y": 560,
+       "cw": [
+        180,
+        220
+       ],
+       "rh": 54,
+       "rows": [
+        [
+         "cid",
+         "title"
+        ]
+       ],
+       "color": "black",
+       "size": 30,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 640,
+       "y": 545,
+       "s": "COURSE",
+       "size": 30,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "table",
+       "x": 1100,
+       "y": 560,
+       "cw": [
+        160,
+        160,
+        180
+       ],
+       "rh": 54,
+       "rows": [
+        [
+         "sid",
+         "cid",
+         "grade"
+        ]
+       ],
+       "color": "black",
+       "size": 30,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 1100,
+       "y": 545,
+       "s": "ENROLLS",
+       "size": 30,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 1100,
+       "y": 665,
+       "s": "primary key = (sid, cid)",
+       "size": 30,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    },
+    {
+     "say": "GATE often asks for the minimum number of tables. For two entities with a many to many relationship, you need three tables. For one to many, two tables are enough. And for one to one with total participation on both sides, a single table is enough.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 924,
+       "s": "Minimum tables: [h:M:N -> 3]   1:N -> 2   1:1 (total both sides) -> 1",
+       "size": 34,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "stamp",
+       "x": 1600,
+       "y": 900,
+       "text": "GATE",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Relational Model & Keys",
+   "ch": 3,
+   "beats": [
+    {
+     "say": "Chapter three. The relational model and keys.",
+     "els": []
+    }
+   ],
+   "num": 3,
+   "subs": [
+    "Relation, tuple, domain",
+    "Super, candidate, primary, foreign keys",
+    "Counting super keys",
+    "Integrity constraints"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "Relational Model Terms",
+   "ch": 3,
+   "beats": [
+    {
+     "say": "In the relational model, data is stored in tables called relations. Each row is a tuple, and each column is an attribute. The domain of an attribute is the set of allowed values, like the age must be a positive number.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 250,
+       "cw": [
+        180,
+        220,
+        180,
+        200
+       ],
+       "rh": 56,
+       "rows": [
+        [
+         "roll",
+         "name",
+         "dept",
+         "age"
+        ],
+        [
+         "101",
+         "Asha",
+         "CSE",
+         "20"
+        ],
+        [
+         "102",
+         "Ravi",
+         "ECE",
+         "21"
+        ],
+        [
+         "103",
+         "Meena",
+         "CSE",
+         "20"
+        ]
+       ],
+       "color": "black",
+       "size": 30,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1000,
+        340
+       ],
+       "p2": [
+        960,
+        340
+       ],
+       "color": "red",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "red"
+      },
+      {
+       "t": "text",
+       "x": 1010,
+       "y": 350,
+       "s": "<- tuple (row)",
+       "size": 32,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 420,
+       "y": 520,
+       "s": "attribute (column)",
+       "size": 32,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        470,
+        495
+       ],
+       "p2": [
+        470,
+        470
+       ],
+       "color": "red",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "red"
+      }
+     ]
+    },
+    {
+     "say": "The degree of a relation is the number of attributes, so here it is four. The cardinality is the number of tuples, here three. Remember: degree is columns, cardinality is rows.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "[h:Degree] = number of attributes (columns) = 4",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "[h:Cardinality] = number of tuples (rows) = 3",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "stamp",
+       "x": 1500,
+       "y": 640,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    },
+    {
+     "say": "A relation schema is written like student, roll, name, dept, age. In a relation, the order of rows and columns does not matter, there are no duplicate rows, and each value is atomic.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "Schema: STUDENT(roll, name, dept, age)",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "no duplicate rows · order does not matter · atomic values",
+       "size": 34,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Keys in DBMS",
+   "ch": 3,
+   "beats": [
+    {
+     "say": "Keys are used to identify rows uniquely. A super key is any set of attributes that can uniquely identify a row, like roll number, or roll number with name. A candidate key is a minimal super key, which means no attribute can be removed from it.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "MOST ASKED",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[r:Super key]: any set that identifies a row uniquely",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[r:Candidate key]: a [h:minimal] super key",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "table",
+       "x": 1100,
+       "y": 420,
+       "cw": [
+        140,
+        200,
+        220,
+        190
+       ],
+       "rh": 54,
+       "rows": [
+        [
+         "roll",
+         "email",
+         "name",
+         "phone"
+        ],
+        [
+         "101",
+         "a@pu.in",
+         "Asha",
+         "98400"
+        ],
+        [
+         "102",
+         "r@pu.in",
+         "Ravi",
+         "98411"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      }
+     ]
+    },
+    {
+     "say": "The primary key is the candidate key chosen by the designer. It cannot be null and must be unique. The other candidate keys are alternate keys. A composite key has more than one attribute. And a foreign key is an attribute in one table that refers to the primary key of another table.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "[r:Primary key]: chosen candidate key (unique, not NULL)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "[r:Alternate key]: other candidate keys",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "[r:Composite key]: more than one attribute",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "[r:Foreign key]: refers to primary key of another table",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "In our table, roll number, email and phone are candidate keys. If we choose roll number as primary key, email and phone become alternate keys. And every candidate key is a super key, but not every super key is a candidate key.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "Candidate keys: roll, email, phone",
+       "size": 34,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "Primary: roll  ->  alternate: email, phone",
+       "size": 34,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "primary key  ⊆  candidate keys  ⊆  super keys",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "ellipse",
+       "x": 1150,
+       "y": 700,
+       "w": 640,
+       "h": 260,
+       "label": null,
+       "color": "blue",
+       "size": 32,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1250,
+       "y": 750,
+       "w": 440,
+       "h": 170,
+       "label": null,
+       "color": "green",
+       "size": 32,
+       "fill": null,
+       "lc": "green"
+      },
+      {
+       "t": "ellipse",
+       "x": 1340,
+       "y": 790,
+       "w": 260,
+       "h": 90,
+       "label": "primary",
+       "color": "red",
+       "size": 28,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "text",
+       "x": 1180,
+       "y": 745,
+       "s": "super",
+       "size": 26,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 1265,
+       "y": 785,
+       "s": "candidate",
+       "size": 24,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Number of Super Keys",
+   "ch": 3,
+   "beats": [
+    {
+     "say": "A favourite GATE question is counting super keys. Take a relation R with four attributes A, B, C, D. If the only candidate key is A, then any set containing A is a super key. The other three attributes can be in or out, so there are 2 to the power 3, which is 8 super keys.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1600,
+       "y": 140,
+       "text": "GATE",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "R(A, B, C, D),  only candidate key = A",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "A must be in;  B, C, D each in or out",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "Super keys = 2^3 = [h:8]",
+       "size": 42,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "If there are two candidate keys, A and B C, we use inclusion and exclusion. Sets containing A: 2 to the power 3, which is 8. Sets containing B and C: 2 to the power 2, which is 4. Sets containing both A and B C: 2 to the power 1, which is 2. So the total is 8 plus 4 minus 2, which is 10.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "Candidate keys = A and BC",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "containing A: 2^3 = 8",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "containing BC: 2^2 = 4",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "containing A and BC (ABC): 2^1 = 2",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "Super keys = 8 + 4 - 2 = [h:10]",
+       "size": 42,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "The general formula: with n attributes and a candidate key of k attributes, the number of super keys is 2 to the power n minus k.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "Formula: one key of k attributes, n attributes -> 2^(n - k)",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "Two keys K1, K2: 2^(n-|K1|) + 2^(n-|K2|) - 2^(n-|K1 ∪ K2|)",
+       "size": 34,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Integrity Constraints",
+   "ch": 3,
+   "beats": [
+    {
+     "say": "Integrity constraints are rules that keep data correct. A domain constraint says each value must come from the attribute's domain, like age must be a number. A key constraint says key values must be unique.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "1) [r:Domain constraint]: value must be from the domain",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "2) [r:Key constraint]: key values are unique",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Entity integrity says the primary key can never be null. Referential integrity says a foreign key value must either match a primary key value in the referenced table, or be null.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "3) [r:Entity integrity]: primary key is never NULL",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "4) [r:Referential integrity]: foreign key matches a primary key, or NULL",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "stamp",
+       "x": 1600,
+       "y": 320,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "table",
+       "x": 180,
+       "y": 500,
+       "cw": [
+        140,
+        190,
+        160
+       ],
+       "rh": 54,
+       "rows": [
+        [
+         "eid",
+         "name",
+         "dept"
+        ],
+        [
+         "1",
+         "Asha",
+         "CSE"
+        ],
+        [
+         "3",
+         "Meena",
+         "ECE"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 485,
+       "s": "EMP",
+       "size": 30,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "table",
+       "x": 1000,
+       "y": 500,
+       "cw": [
+        170,
+        200
+       ],
+       "rh": 54,
+       "rows": [
+        [
+         "dname",
+         "block"
+        ],
+        [
+         "CSE",
+         "Block A"
+        ],
+        [
+         "ECE",
+         "Block B"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 1000,
+       "y": 485,
+       "s": "DEPT",
+       "size": 30,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        650,
+        580
+       ],
+       "p2": [
+        1000,
+        580
+       ],
+       "color": "green",
+       "label": "foreign key -> primary key",
+       "lx": 0,
+       "ly": -16,
+       "curve": 0,
+       "head": true,
+       "size": 26,
+       "both": false,
+       "lc": "green"
+      }
+     ]
+    },
+    {
+     "say": "What happens when we delete a department that employees refer to? We can reject the delete, use ON DELETE CASCADE to also delete those employees, or use ON DELETE SET NULL to set their department to null.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 870,
+       "s": "Delete DEPT row: reject  |  ON DELETE CASCADE  |  ON DELETE SET NULL",
+       "size": 34,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Relational Algebra & Calculus",
+   "ch": 4,
+   "beats": [
+    {
+     "say": "Chapter four. Relational algebra and relational calculus. These are the theory behind every query.",
+     "els": []
+    }
+   ],
+   "num": 4,
+   "subs": [
+    "Select, project, set operators",
+    "Joins",
+    "Division",
+    "Tuple & domain calculus"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "Relational Algebra Operators",
+   "ch": 4,
+   "beats": [
+    {
+     "say": "Relational algebra is a procedural query language. It takes relations as input and gives a relation as output. Select, written with sigma, picks rows that satisfy a condition. Project, written with pi, picks columns, and removes duplicate rows.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "Procedural: relation(s) in -> relation out",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[r:σ Select]: picks rows      σ salary > 50000 (Emp)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "[r:π Project]: picks columns      π name, dept (Emp)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Union, intersection and set difference work like sets, but the two relations must be union compatible: same number of attributes, with matching domains. Cartesian product, written with a cross, pairs every row of one table with every row of the other. Rename, written with rho, gives a new name.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "[r:∪ Union], [r:∩ Intersection], [r:- Difference]: need union compatibility",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "[r:× Cartesian product]: every row with every row",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "[r:ρ Rename]: ρ E(Emp)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "The basic operators are select, project, union, difference, cartesian product and rename. Join, intersection and division can be built from them.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "Basic: σ, π, ∪, -, ×, ρ        Derived: ∩, ⋈ (join), ÷ (division)",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "stamp",
+       "x": 1600,
+       "y": 600,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Relational Algebra Examples",
+   "ch": 4,
+   "beats": [
+    {
+     "say": "Let's use this employee table with six rows. It has employee id, name, department and salary.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 220,
+       "cw": [
+        110,
+        170,
+        150,
+        170
+       ],
+       "rh": 50,
+       "rows": [
+        [
+         "eid",
+         "name",
+         "dept",
+         "salary"
+        ],
+        [
+         "1",
+         "Asha",
+         "CSE",
+         "60000"
+        ],
+        [
+         "2",
+         "Ravi",
+         "CSE",
+         "45000"
+        ],
+        [
+         "3",
+         "Meena",
+         "ECE",
+         "52000"
+        ],
+        [
+         "4",
+         "Kiran",
+         "ECE",
+         "38000"
+        ],
+        [
+         "5",
+         "Arun",
+         "MECH",
+         "41000"
+        ],
+        [
+         "6",
+         "Divya",
+         "CSE",
+         "70000"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 205,
+       "s": "EMP",
+       "size": 30,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "Query one. Find employees of C S E with salary more than fifty thousand. In relational algebra: project name and salary, of select dept equals C S E and salary greater than fifty thousand, on Emp. The answer is Asha with sixty thousand, and Divya with seventy thousand.",
+     "els": [
+      {
+       "t": "text",
+       "x": 860,
+       "y": 222,
+       "s": "π name, salary (σ dept='CSE' ∧ salary>50000 (Emp))",
+       "size": 32,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "table",
+       "x": 900,
+       "y": 260,
+       "cw": [
+        200,
+        200
+       ],
+       "rh": 50,
+       "rows": [
+        [
+         "name",
+         "salary"
+        ],
+        [
+         "Asha",
+         "60000"
+        ],
+        [
+         "Divya",
+         "70000"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {
+        "1,0": "green",
+        "2,0": "green"
+       },
+       "fills": {}
+      }
+     ]
+    },
+    {
+     "say": "Query two. Find names of employees earning less than forty five thousand. Project name, of select salary less than forty five thousand. The answer is Kiran and Arun.",
+     "els": [
+      {
+       "t": "text",
+       "x": 860,
+       "y": 600,
+       "s": "π name (σ salary < 45000 (Emp))",
+       "size": 32,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "table",
+       "x": 900,
+       "y": 640,
+       "cw": [
+        200
+       ],
+       "rh": 50,
+       "rows": [
+        [
+         "name"
+        ],
+        [
+         "Kiran"
+        ],
+        [
+         "Arun"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {
+        "1,0": "green",
+        "2,0": "green"
+       },
+       "fills": {}
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Joins",
+   "ch": 4,
+   "beats": [
+    {
+     "say": "A join combines related rows from two tables. A theta join uses any condition. An equi join uses only equality. A natural join is an equi join on attributes with the same name, and it shows the common column only once.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[r:Theta join]: any condition (<, >, =, ...)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[r:Equi join]: only =",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "[r:Natural join ⋈]: equal on common names, column shown once",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Outer joins also keep rows without a match. A left outer join keeps all rows of the left table, and fills null on the right. A right outer join keeps all rows of the right table. And a full outer join keeps all rows of both.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "[r:Left outer join]: all rows of left, NULL if no match",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "[r:Right outer join]: all rows of right",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "[r:Full outer join]: all rows of both",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "stamp",
+       "x": 1600,
+       "y": 300,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    },
+    {
+     "say": "Example. Join Emp and Dept on department name. Every employee gets the block of their department. With a left outer join from Dept to Emp, the civil department also appears, with null for the employee, because nobody works there.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 640,
+       "cw": [
+        170,
+        150,
+        190
+       ],
+       "rh": 46,
+       "rows": [
+        [
+         "name",
+         "dept",
+         "block"
+        ],
+        [
+         "Asha",
+         "CSE",
+         "Block A"
+        ],
+        [
+         "Ravi",
+         "CSE",
+         "Block A"
+        ],
+        [
+         "Meena",
+         "ECE",
+         "Block B"
+        ],
+        [
+         "Kiran",
+         "ECE",
+         "Block B"
+        ],
+        [
+         "Arun",
+         "MECH",
+         "Block C"
+        ],
+        [
+         "Divya",
+         "CSE",
+         "Block A"
+        ]
+       ],
+       "color": "black",
+       "size": 26,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 625,
+       "s": "Emp ⋈ Dept",
+       "size": 30,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "table",
+       "x": 900,
+       "y": 640,
+       "cw": [
+        170,
+        190
+       ],
+       "rh": 46,
+       "rows": [
+        [
+         "dname",
+         "name"
+        ],
+        [
+         "CIVIL",
+         "NULL"
+        ],
+        [
+         "CSE",
+         "Asha"
+        ],
+        [
+         "CSE",
+         "Ravi"
+        ],
+        [
+         "CSE",
+         "Divya"
+        ],
+        [
+         "ECE",
+         "Meena"
+        ],
+        [
+         "ECE",
+         "Kiran"
+        ],
+        [
+         "MECH",
+         "Arun"
+        ]
+       ],
+       "color": "black",
+       "size": 26,
+       "hdr": true,
+       "order": "row",
+       "colors": {
+        "4,1": "red",
+        "4,0": "red"
+       },
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 900,
+       "y": 625,
+       "s": "Dept LEFT OUTER JOIN Emp",
+       "size": 30,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Division Operator",
+   "ch": 4,
+   "beats": [
+    {
+     "say": "Division is used for \"for all\" questions, like: find students who have enrolled in all courses. Enroll divided by Course gives the students who are paired with every course in the course table.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Division ÷]: for \"ALL\" queries",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "Find students enrolled in [r:all] courses  ->  Enroll ÷ Course",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "stamp",
+       "x": 1600,
+       "y": 140,
+       "text": "GATE",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "table",
+       "x": 180,
+       "y": 360,
+       "cw": [
+        150,
+        150
+       ],
+       "rh": 48,
+       "rows": [
+        [
+         "sid",
+         "cid"
+        ],
+        [
+         "S1",
+         "DBMS"
+        ],
+        [
+         "S1",
+         "OS"
+        ],
+        [
+         "S1",
+         "CN"
+        ],
+        [
+         "S2",
+         "DBMS"
+        ],
+        [
+         "S2",
+         "OS"
+        ],
+        [
+         "S3",
+         "DBMS"
+        ],
+        [
+         "S3",
+         "OS"
+        ],
+        [
+         "S3",
+         "CN"
+        ],
+        [
+         "S4",
+         "CN"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 345,
+       "s": "ENROLL",
+       "size": 30,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "table",
+       "x": 620,
+       "y": 360,
+       "cw": [
+        150
+       ],
+       "rh": 48,
+       "rows": [
+        [
+         "cid"
+        ],
+        [
+         "DBMS"
+        ],
+        [
+         "OS"
+        ],
+        [
+         "CN"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 620,
+       "y": 345,
+       "s": "COURSE",
+       "size": 30,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "Check each student. S1 has D B M S, O S and C N, which is all three, so S1 qualifies. S2 has only D B M S and O S, so no. S3 has all three, so yes. S4 has only C N, so no. The answer is S1 and S3.",
+     "els": [
+      {
+       "t": "text",
+       "x": 900,
+       "y": 438,
+       "s": "S1: DBMS, OS, CN  ✓",
+       "size": 34,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 900,
+       "y": 492,
+       "s": "S2: DBMS, OS  ✗",
+       "size": 34,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 900,
+       "y": 546,
+       "s": "S3: DBMS, OS, CN  ✓",
+       "size": 34,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 900,
+       "y": 600,
+       "s": "S4: CN  ✗",
+       "size": 34,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "table",
+       "x": 900,
+       "y": 680,
+       "cw": [
+        150
+       ],
+       "rh": 48,
+       "rows": [
+        [
+         "sid"
+        ],
+        [
+         "S1"
+        ],
+        [
+         "S3"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {
+        "1,0": "green",
+        "2,0": "green"
+       },
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 900,
+       "y": 665,
+       "s": "Result",
+       "size": 30,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "Division can be written with basic operators too: the student ids in Enroll, minus the student ids that have some course missing.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 978,
+       "s": "R ÷ S = π sid (R) - π sid ((π sid (R) × S) - R)",
+       "size": 34,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Relational Calculus",
+   "ch": 4,
+   "beats": [
+    {
+     "say": "Relational calculus is non procedural. It says what we want, not how to get it. In tuple relational calculus, we write the set of tuples t, such that a condition holds. For example: all t such that t is in Emp, and t dot salary is greater than fifty thousand.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Non-procedural]: says WHAT, not HOW",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "Tuple relational calculus (TRC)",
+       "size": 36,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "{ t | t ∈ Emp ∧ t.salary > 50000 }",
+       "size": 40,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "In domain relational calculus, variables stand for single values of attributes, not whole tuples. For example: the names n, such that there exist e, d and s, with e, n, d, s in Emp, and s greater than fifty thousand.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "Domain relational calculus (DRC)",
+       "size": 36,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "{ <n> | ∃ e, d, s ( <e, n, d, s> ∈ Emp ∧ s > 50000 ) }",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "Expressions must be safe, which means they give a finite answer. Safe relational calculus and relational algebra have the same power. A language with this power is called relationally complete, and S Q L is relationally complete.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "[k:Safe] expression = finite answer",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "Algebra = safe TRC = safe DRC  (same power)",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "\"Relationally complete\": SQL",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "SQL",
+   "ch": 5,
+   "beats": [
+    {
+     "say": "Chapter five. S Q L, the language every database uses.",
+     "els": []
+    }
+   ],
+   "num": 5,
+   "subs": [
+    "DDL, DML, DCL, TCL",
+    "GROUP BY & HAVING",
+    "Joins & nested queries",
+    "Views & triggers"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "SQL: Creating & Changing Tables",
+   "ch": 5,
+   "beats": [
+    {
+     "say": "S Q L means structured query language. We create a table with CREATE TABLE. Here, the employee id is the primary key, name cannot be null, department refers to the Dept table, and salary must be positive.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "CREATE TABLE Emp (",
+       "size": 36,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 240,
+       "y": 276,
+       "s": "eid INT PRIMARY KEY,",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 240,
+       "y": 330,
+       "s": "name VARCHAR(30) NOT NULL,",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 240,
+       "y": 384,
+       "s": "dept VARCHAR(10) REFERENCES Dept(dname),",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 240,
+       "y": 438,
+       "s": "salary INT CHECK (salary > 0) );",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "We add rows with INSERT, change them with UPDATE, and remove them with DELETE.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "INSERT INTO Emp VALUES (7, 'Neha', 'CSE', 55000);",
+       "size": 34,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "UPDATE Emp SET salary = salary * 1.1 WHERE dept = 'ECE';",
+       "size": 34,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "DELETE FROM Emp WHERE eid = 7;",
+       "size": 34,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "Exam favourite: DELETE versus TRUNCATE versus DROP. DELETE removes chosen rows, and can be rolled back. TRUNCATE removes all rows quickly, and keeps the structure. DROP removes the whole table, data and structure.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 560,
+       "cw": [
+        260,
+        520,
+        420
+       ],
+       "rh": 52,
+       "rows": [
+        [
+         "",
+         "What it removes",
+         "Type"
+        ],
+        [
+         "DELETE",
+         "chosen rows (WHERE)",
+         "DML, can rollback"
+        ],
+        [
+         "TRUNCATE",
+         "all rows, keeps structure",
+         "DDL, fast"
+        ],
+        [
+         "DROP",
+         "whole table + structure",
+         "DDL"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {
+        "1,0": "red",
+        "2,0": "red",
+        "3,0": "red"
+       },
+       "fills": {}
+      },
+      {
+       "t": "stamp",
+       "x": 1600,
+       "y": 600,
+       "text": "MOST ASKED",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "SELECT, GROUP BY & HAVING",
+   "ch": 5,
+   "beats": [
+    {
+     "say": "The SELECT statement. SELECT columns FROM tables WHERE condition GROUP BY columns HAVING group condition ORDER BY columns. Aggregate functions are COUNT, SUM, AVG, MIN and MAX.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "SELECT ... FROM ... WHERE ... GROUP BY ... HAVING ... ORDER BY ...",
+       "size": 34,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "Aggregates: COUNT, SUM, AVG, MIN, MAX",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Question. For each department with at least two employees, show the count and the average salary. SELECT department, COUNT star, average of salary, FROM Emp, GROUP BY department, HAVING COUNT star greater than or equal to two.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "NUMERICAL",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "SELECT dept, COUNT(*), AVG(salary)",
+       "size": 34,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 240,
+       "y": 438,
+       "s": "FROM Emp GROUP BY dept",
+       "size": 34,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 240,
+       "y": 492,
+       "s": "HAVING COUNT(*) >= 2;",
+       "size": 34,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "Group by makes three groups: C S E with three employees, E C E with two, and mechanical with one. HAVING removes mechanical, because it has only one. So we get C S E, three, with average fifty eight thousand three hundred and thirty three, and E C E, two, with average forty five thousand.",
+     "els": [
+      {
+       "t": "table",
+       "x": 1060,
+       "y": 420,
+       "cw": [
+        170,
+        170,
+        260
+       ],
+       "rh": 52,
+       "rows": [
+        [
+         "dept",
+         "COUNT(*)",
+         "AVG(salary)"
+        ],
+        [
+         "CSE",
+         "3",
+         "58,333.33"
+        ],
+        [
+         "ECE",
+         "2",
+         "45,000"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {
+        "1,2": "green",
+        "2,2": "green"
+       },
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 1060,
+       "y": 620,
+       "s": "MECH removed by HAVING (only 1)",
+       "size": 30,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "Remember the order in which S Q L runs a query: FROM, then WHERE, then GROUP BY, then HAVING, then SELECT, and finally ORDER BY. That is why WHERE filters rows before grouping, and HAVING filters groups after grouping.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "Order: FROM -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY",
+       "size": 34,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "[h:WHERE] filters rows (before groups)   [h:HAVING] filters groups",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Joins & Nested Queries in SQL",
+   "ch": 5,
+   "beats": [
+    {
+     "say": "A join in S Q L. Show names and blocks of employees earning above fifty thousand. SELECT name and block, FROM Emp JOIN Dept, ON department equals department name, WHERE salary greater than fifty thousand. We get Asha in block A, Meena in block B and Divya in block A.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "SELECT e.name, d.block FROM Emp e JOIN Dept d",
+       "size": 32,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 240,
+       "y": 276,
+       "s": "ON e.dept = d.dname WHERE e.salary > 50000;",
+       "size": 32,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "table",
+       "x": 1300,
+       "y": 250,
+       "cw": [
+        180,
+        200
+       ],
+       "rh": 46,
+       "rows": [
+        [
+         "name",
+         "block"
+        ],
+        [
+         "Asha",
+         "Block A"
+        ],
+        [
+         "Meena",
+         "Block B"
+        ],
+        [
+         "Divya",
+         "Block A"
+        ]
+       ],
+       "color": "black",
+       "size": 26,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      }
+     ]
+    },
+    {
+     "say": "A nested query has a query inside another. The most asked one: find the second highest salary. SELECT MAX salary FROM Emp WHERE salary is less than the maximum salary. The highest is seventy thousand, so the answer is sixty thousand.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 470,
+       "text": "MOST ASKED",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "Second highest salary",
+       "size": 38,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "SELECT MAX(salary) FROM Emp",
+       "size": 34,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 240,
+       "y": 546,
+       "s": "WHERE salary < (SELECT MAX(salary) FROM Emp);",
+       "size": 34,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "Answer: [h:60000]",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    },
+    {
+     "say": "Useful operators with sub queries: IN checks membership, EXISTS checks if the sub query returns any row, and ANY and ALL compare with some or every value. A correlated sub query uses a column of the outer query, so it runs once for each outer row.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "[r:IN], [r:NOT IN], [r:EXISTS], [r:ANY], [r:ALL]",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "[k:Correlated] subquery: uses outer row, runs once per row",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "e.g. SELECT name FROM Emp e WHERE salary > (SELECT AVG(salary)",
+       "size": 30,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 330,
+       "y": 870,
+       "s": "FROM Emp WHERE dept = e.dept);",
+       "size": 30,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Views, Triggers & More",
+   "ch": 5,
+   "beats": [
+    {
+     "say": "A view is a virtual table, stored only as a query. It gives security, because users see only what they need, and makes complex queries simple.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:View] = virtual table (stored query)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "CREATE VIEW HighPaid AS SELECT name, salary FROM Emp WHERE salary > 50000;",
+       "size": 30,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "A trigger is code that runs automatically when an event happens, like an insert or update. It follows the event, condition, action rule. For example, log every salary change into an audit table.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "[h:Trigger] = runs automatically on INSERT / UPDATE / DELETE",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "Event -> Condition -> Action  (e.g. log salary changes)",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    },
+    {
+     "say": "A stored procedure is a saved program inside the database. A cursor lets us process query results one row at a time. And DCL commands GRANT and REVOKE give and take back permissions.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "[k:Stored procedure]: saved program in the DB",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "[k:Cursor]: process results row by row",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "GRANT SELECT ON Emp TO ravi;   REVOKE SELECT ON Emp FROM ravi;",
+       "size": 32,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Functional Dependencies",
+   "ch": 6,
+   "beats": [
+    {
+     "say": "Chapter six. Functional dependencies. This is the base of normalization, and GATE asks numericals from here every year.",
+     "els": []
+    }
+   ],
+   "num": 6,
+   "subs": [
+    "Armstrong's axioms",
+    "Attribute closure",
+    "Candidate keys",
+    "Canonical cover"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "Functional Dependencies",
+   "ch": 6,
+   "beats": [
+    {
+     "say": "A functional dependency X arrow Y means: if two rows have the same X value, they must have the same Y value. We say X determines Y. For example, roll number determines name.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:X -> Y]: same X value  =>  same Y value",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "e.g. roll -> name     (roll determines name)",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    },
+    {
+     "say": "A dependency is trivial if Y is a part of X, like A B determines A. Otherwise it is non trivial.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "[k:Trivial]: Y ⊆ X  (AB -> A)      [k:Non-trivial]: otherwise",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Armstrong's axioms let us find all dependencies. Reflexivity: if Y is a part of X, then X determines Y. Augmentation: if X determines Y, then X Z determines Y Z. Transitivity: if X determines Y and Y determines Z, then X determines Z.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1600,
+       "y": 360,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "Armstrong's axioms",
+       "size": 38,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "1) Reflexivity: Y ⊆ X  =>  X -> Y",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "2) Augmentation: X -> Y  =>  XZ -> YZ",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "3) Transitivity: X -> Y, Y -> Z  =>  X -> Z",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "From these we get three more rules. Union: if X determines Y and X determines Z, then X determines Y Z. Decomposition is the reverse. And pseudo transitivity: if X determines Y and W Y determines Z, then W X determines Z.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "Derived rules",
+       "size": 38,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "4) Union: X -> Y, X -> Z  =>  X -> YZ",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "5) Decomposition: X -> YZ  =>  X -> Y, X -> Z",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 870,
+       "s": "6) Pseudo-transitivity: X -> Y, WY -> Z  =>  WX -> Z",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Attribute Closure",
+   "ch": 6,
+   "beats": [
+    {
+     "say": "The closure of a set of attributes X, written X plus, is the set of all attributes that X determines. Start with X itself, and keep adding attributes using the dependencies, until nothing changes.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:X+] = all attributes X determines",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "Start with X; keep applying FDs until nothing changes",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    },
+    {
+     "say": "Classic example. R is A, B, C, G, H, I with dependencies: A determines B, A determines C, C G determines H, C G determines I, and B determines H. Find the closure of A G.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "NUMERICAL",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "R(A, B, C, G, H, I)",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "F = { A -> B, A -> C, CG -> H, CG -> I, B -> H }",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "Start with A G. A determines B, so add B. A determines C, so add C. Now we have C and G, so C G determines H, add H. And C G determines I, add I. So A G plus is A, B, C, G, H, I, which is all the attributes. So A G is a super key.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 480,
+       "cw": [
+        140,
+        200,
+        340
+       ],
+       "rh": 52,
+       "rows": [
+        [
+         "step",
+         "use",
+         "AG+ so far"
+        ],
+        [
+         "start",
+         "",
+         "AG"
+        ],
+        [
+         "1",
+         "A -> B",
+         "ABG"
+        ],
+        [
+         "2",
+         "A -> C",
+         "ABCG"
+        ],
+        [
+         "3",
+         "CG -> H",
+         "ABCGH"
+        ],
+        [
+         "4",
+         "CG -> I",
+         "ABCGHI"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {
+        "5,2": "green"
+       },
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 960,
+       "y": 546,
+       "s": "(AG)+ = ABCGHI = all  =>  AG is a [h:super key]",
+       "size": 34,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "Is it a candidate key? Check the smaller sets. A plus is A, B, C, H, which misses G and I. G plus is just G. So no smaller set works, and A G is a candidate key.",
+     "els": [
+      {
+       "t": "text",
+       "x": 960,
+       "y": 654,
+       "s": "A+ = ABCH,  G+ = G  (neither is all)",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 960,
+       "y": 708,
+       "s": "=> AG is a [h:candidate key]",
+       "size": 34,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Finding Candidate Keys",
+   "ch": 6,
+   "beats": [
+    {
+     "say": "Now let's find all candidate keys. R is A, B, C, D, E, with A determines B, B C determines E, and E D determines A. Trick one: an attribute that never appears on the right side must be in every key. Here C and D never appear on the right.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "GATE",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "R(A, B, C, D, E)    F = { A -> B, BC -> E, ED -> A }",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "Never on right side: [h:C, D]  =>  in every key",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "(CD)+ = CD   not all, so add one more attribute",
+       "size": 38,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "C D plus is just C D, so we try adding one more attribute. A C D plus: A gives B, B C gives E. So we get all five, and A C D is a key. B C D plus: B C gives E, E D gives A. All five, so B C D is a key. C D E plus: E D gives A, A gives B. All five, so C D E is a key too.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "(ACD)+ : A->B, BC->E  =>  ABCDE  ✓",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "(BCD)+ : BC->E, ED->A  =>  ABCDE  ✓",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "(CDE)+ : ED->A, A->B  =>  ABCDE  ✓",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "So the candidate keys are A C D, B C D and C D E. The prime attributes are those in any candidate key. Here, all five attributes are prime.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "Candidate keys: [h:ACD, BCD, CDE]",
+       "size": 40,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "Prime attributes: A, B, C, D, E (all)",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Canonical Cover",
+   "ch": 6,
+   "beats": [
+    {
+     "say": "A canonical cover, or minimal cover, is the smallest set of dependencies that means the same as the original set. Steps: split the right sides into single attributes, remove extra attributes on the left side, and remove redundant dependencies.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Canonical (minimal) cover]: smallest equivalent set of FDs",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "1) single attribute on the right",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "2) remove extraneous left attributes",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "3) remove redundant FDs",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Example. F is A determines B C, B determines C, A determines B, and A B determines C. Split: A determines B, A determines C, B determines C, A B determines C. In A B determines C, B is extra, because A alone gives C. So it becomes A determines C, a duplicate.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "NUMERICAL",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "F = { A -> BC, B -> C, A -> B, AB -> C }",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "Split: A -> B, A -> C, B -> C, AB -> C",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "AB -> C: A+ already has C  =>  B is extraneous  =>  A -> C",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Now A determines C is redundant, because A determines B and B determines C already give it. So the canonical cover is A determines B, and B determines C.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "A -> C is redundant (A -> B -> C)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "Canonical cover: [h:{ A -> B, B -> C }]",
+       "size": 42,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Normalization",
+   "ch": 7,
+   "beats": [
+    {
+     "say": "Chapter seven. Normalization. One of the most asked chapters in every exam.",
+     "els": []
+    }
+   ],
+   "num": 7,
+   "subs": [
+    "Anomalies",
+    "1NF, 2NF, 3NF, BCNF",
+    "Finding the normal form",
+    "Lossless & dependency preserving"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "Why Normalize? Anomalies",
+   "ch": 7,
+   "beats": [
+    {
+     "say": "Look at this table. The course name and instructor are repeated for every student in the course. This repetition causes three problems, called anomalies.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 230,
+       "cw": [
+        120,
+        160,
+        140,
+        180,
+        220
+       ],
+       "rh": 50,
+       "rows": [
+        [
+         "sid",
+         "sname",
+         "cid",
+         "cname",
+         "instructor"
+        ],
+        [
+         "S1",
+         "Asha",
+         "C1",
+         "DBMS",
+         "Dr. Rao"
+        ],
+        [
+         "S2",
+         "Ravi",
+         "C1",
+         "DBMS",
+         "Dr. Rao"
+        ],
+        [
+         "S3",
+         "Meena",
+         "C2",
+         "OS",
+         "Dr. Iyer"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {
+        "1,3": "yellow",
+        "2,3": "yellow",
+        "1,4": "yellow",
+        "2,4": "yellow"
+       }
+      }
+     ]
+    },
+    {
+     "say": "An insertion anomaly: we cannot add a new course until some student joins it. An update anomaly: if Dr Rao's course changes, we must update many rows, or the data becomes inconsistent. A deletion anomaly: if the only student of O S leaves, we lose the course details too.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "1) [r:Insertion]: can't add a course without a student",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "2) [r:Update]: change in many rows, else inconsistent",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "3) [r:Deletion]: deleting last student loses course details",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "stamp",
+       "x": 1600,
+       "y": 500,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    },
+    {
+     "say": "Normalization removes these anomalies by splitting a big table into smaller, well designed tables, using functional dependencies.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "[h:Normalization] = split tables using FDs to remove anomalies",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Normal Forms: 1NF to BCNF",
+   "ch": 7,
+   "beats": [
+    {
+     "say": "First normal form: every value must be atomic, so no lists or repeating groups in a cell.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "MOST ASKED",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "1NF) atomic values only (no lists in a cell)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Second normal form: it is in first normal form, and there is no partial dependency. That means no non prime attribute depends on only a part of a candidate key.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "2NF) 1NF + no partial dependency",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 320,
+       "y": 330,
+       "s": "(non-prime attribute depends on PART of a key)",
+       "size": 32,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    },
+    {
+     "say": "Third normal form: for every non trivial dependency X determines A, either X is a super key, or A is a prime attribute. This removes transitive dependencies.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "3NF) for X -> A: X is a super key [k:OR] A is prime",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 320,
+       "y": 438,
+       "s": "(removes transitive dependency)",
+       "size": 32,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    },
+    {
+     "say": "Boyce Codd normal form, B C N F, is stricter: for every non trivial dependency X determines A, X must be a super key. No exception for prime attributes.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "BCNF) for X -> A: X must be a super key",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 320,
+       "y": 546,
+       "s": "(stricter than 3NF)",
+       "size": 32,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    },
+    {
+     "say": "Fourth normal form removes multi valued dependencies, and fifth normal form removes join dependencies. Remember the order: B C N F is inside third normal form, which is inside second, which is inside first.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "4NF) BCNF + no multi-valued dependency",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "5NF) 4NF + no join dependency",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1050,
+       "y": 600,
+       "w": 760,
+       "h": 360,
+       "label": null,
+       "color": "blue",
+       "size": 32,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1130,
+       "y": 650,
+       "w": 600,
+       "h": 270,
+       "label": null,
+       "color": "green",
+       "size": 32,
+       "fill": null,
+       "lc": "green"
+      },
+      {
+       "t": "ellipse",
+       "x": 1210,
+       "y": 700,
+       "w": 440,
+       "h": 180,
+       "label": null,
+       "color": "red",
+       "size": 32,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "ellipse",
+       "x": 1290,
+       "y": 745,
+       "w": 280,
+       "h": 90,
+       "label": "BCNF",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "text",
+       "x": 1070,
+       "y": 790,
+       "s": "1NF",
+       "size": 30,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 1150,
+       "y": 800,
+       "s": "2NF",
+       "size": 30,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 1230,
+       "y": 730,
+       "s": "3NF",
+       "size": 30,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Finding the Normal Form",
+   "ch": 7,
+   "beats": [
+    {
+     "say": "Let's find the highest normal form. Step one, always find the candidate keys. Example one: R is A B C D, with A B determines C, and A determines D. The key is A B. A determines D is a partial dependency, because D depends on only A, a part of the key. So it is only in first normal form.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "NUMERICAL",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "Ex 1: R(ABCD), AB -> C, A -> D",
+       "size": 36,
+       "font": "bold",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "Key = AB.  A -> D: D depends on part of key (partial)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "=> highest normal form: [h:1NF]",
+       "size": 38,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "Example two: A B determines C, and C determines D. The key is A B. No partial dependency, so it is in second normal form. But C determines D, where C is not a super key and D is not prime. That is a transitive dependency, so it is not in third normal form.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "Ex 2: R(ABCD), AB -> C, C -> D",
+       "size": 36,
+       "font": "bold",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "Key = AB.  C -> D: C not super key, D not prime (transitive)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "=> highest normal form: [h:2NF]",
+       "size": 38,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "Example three: R is A B C, with A B determines C, and C determines B. The candidate keys are A B and A C, so B is prime. C determines B is allowed in third normal form because B is prime. But C is not a super key, so it is not in B C N F.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "Ex 3: R(ABC), AB -> C, C -> B",
+       "size": 36,
+       "font": "bold",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "Keys = AB, AC  =>  B is prime",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "C -> B: OK for 3NF (B prime), not BCNF (C not super key)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "=> highest normal form: [h:3NF]",
+       "size": 38,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "Quick tip: if all attributes are prime, the relation is at least in third normal form, like our earlier example with keys A C D, B C D and C D E.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 924,
+       "s": "Tip: all attributes prime  =>  at least 3NF",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Decomposition: Lossless & Dependency Preserving",
+   "ch": 7,
+   "beats": [
+    {
+     "say": "When we split R into R one and R two, the split must be lossless, which means joining them back gives exactly the original table, with no extra rows. The test: the common attributes, R one intersect R two, must be a key of R one or of R two.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Lossless join]: R1 ⋈ R2 = R (no extra rows)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "Test: (R1 ∩ R2) -> R1   or   (R1 ∩ R2) -> R2",
+       "size": 38,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "stamp",
+       "x": 1600,
+       "y": 200,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    },
+    {
+     "say": "Dependency preserving means every original dependency can still be checked inside one of the smaller tables, without a join.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "[h:Dependency preserving]: every FD checkable within one table",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Example. R is A B C, with A B determines C, and C determines B. It is not in B C N F because of C determines B. Decompose into R one, C B, and R two, A C. The common attribute is C, and C determines B, so C is a key of R one: lossless. But A B determines C cannot be checked in either table, so the dependency is lost.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "R(ABC): AB -> C, C -> B  (not BCNF)",
+       "size": 36,
+       "font": "bold",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "R1(C, B), R2(A, C);  R1 ∩ R2 = C, C -> B  =>  [g:lossless ✓]",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "AB -> C not inside R1 or R2  =>  [r:not dependency preserving ✗]",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Remember this result. Decomposition into third normal form is always lossless and dependency preserving. Decomposition into B C N F is always lossless, but may not preserve dependencies.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 680,
+       "cw": [
+        300,
+        330,
+        460
+       ],
+       "rh": 56,
+       "rows": [
+        [
+         "",
+         "Lossless",
+         "Dependency preserving"
+        ],
+        [
+         "3NF",
+         "[g:always]",
+         "[g:always]"
+        ],
+        [
+         "BCNF",
+         "[g:always]",
+         "[r:not always]"
+        ]
+       ],
+       "color": "black",
+       "size": 30,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Transactions & Serializability",
+   "ch": 8,
+   "beats": [
+    {
+     "say": "Chapter eight. Transactions and serializability.",
+     "els": []
+    }
+   ],
+   "num": 8,
+   "subs": [
+    "ACID & states",
+    "Schedules & conflicts",
+    "Conflict serializability",
+    "View serializability, recoverability"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "Transaction & ACID Properties",
+   "ch": 8,
+   "beats": [
+    {
+     "say": "A transaction is a set of operations that form one logical unit of work. For example, transferring five hundred rupees from account A to account B: read A, subtract five hundred, write A, read B, add five hundred, write B.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Transaction] = one logical unit of work",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "Transfer 500: R(A); A = A - 500; W(A); R(B); B = B + 500; W(B)",
+       "size": 34,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "A C I D. Atomicity: all or nothing. If the system fails after writing A, the change to A is undone. Consistency: the database moves from one correct state to another, so A plus B stays the same. Isolation: transactions running together do not disturb each other. Durability: once committed, changes survive even a crash.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "MOST ASKED",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "table",
+       "x": 180,
+       "y": 360,
+       "cw": [
+        260,
+        640,
+        480
+       ],
+       "rh": 60,
+       "rows": [
+        [
+         "Property",
+         "Meaning",
+         "Ensured by"
+        ],
+        [
+         "Atomicity",
+         "all or nothing",
+         "recovery manager (undo)"
+        ],
+        [
+         "Consistency",
+         "correct state -> correct state (A + B same)",
+         "programmer + constraints"
+        ],
+        [
+         "Isolation",
+         "concurrent = as if alone",
+         "concurrency control"
+        ],
+        [
+         "Durability",
+         "committed changes survive crashes",
+         "recovery manager (redo)"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {
+        "1,0": "red",
+        "2,0": "red",
+        "3,0": "red",
+        "4,0": "red"
+       },
+       "fills": {}
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Transaction States",
+   "ch": 8,
+   "beats": [
+    {
+     "say": "A transaction moves through states. It starts in the active state while running. After the last statement, it is partially committed. If all changes are saved safely, it becomes committed.",
+     "els": [
+      {
+       "t": "ellipse",
+       "x": 180,
+       "y": 420,
+       "w": 220,
+       "h": 90,
+       "label": "Active",
+       "color": "blue",
+       "size": 32,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 560,
+       "y": 280,
+       "w": 330,
+       "h": 90,
+       "label": "Partially\ncommitted",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1060,
+       "y": 280,
+       "w": 260,
+       "h": 90,
+       "label": "Committed",
+       "color": "green",
+       "size": 30,
+       "fill": null,
+       "lc": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        360,
+        430
+       ],
+       "p2": [
+        600,
+        360
+       ],
+       "color": "black",
+       "label": "last statement",
+       "lx": -80,
+       "ly": -6,
+       "curve": 0,
+       "head": true,
+       "size": 24,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        890,
+        325
+       ],
+       "p2": [
+        1060,
+        325
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      }
+     ]
+    },
+    {
+     "say": "If something goes wrong, it goes to the failed state. Then it is rolled back to the aborted state. After an abort, we can restart or kill the transaction. Committed and aborted transactions are finally terminated.",
+     "els": [
+      {
+       "t": "ellipse",
+       "x": 560,
+       "y": 600,
+       "w": 230,
+       "h": 90,
+       "label": "Failed",
+       "color": "red",
+       "size": 32,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "ellipse",
+       "x": 1060,
+       "y": 600,
+       "w": 260,
+       "h": 90,
+       "label": "Aborted",
+       "color": "red",
+       "size": 30,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "ellipse",
+       "x": 1500,
+       "y": 440,
+       "w": 280,
+       "h": 90,
+       "label": "Terminated",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        330,
+        500
+       ],
+       "p2": [
+        590,
+        610
+       ],
+       "color": "black",
+       "label": "error",
+       "lx": -30,
+       "ly": 10,
+       "curve": 0,
+       "head": true,
+       "size": 24,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        720,
+        370
+       ],
+       "p2": [
+        680,
+        600
+       ],
+       "color": "black",
+       "label": "fail",
+       "lx": 40,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 24,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        790,
+        645
+       ],
+       "p2": [
+        1060,
+        645
+       ],
+       "color": "black",
+       "label": "rollback",
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 24,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1300,
+        330
+       ],
+       "p2": [
+        1520,
+        445
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1300,
+        615
+       ],
+       "p2": [
+        1520,
+        515
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "text",
+       "x": 1080,
+       "y": 760,
+       "s": "restart or kill",
+       "size": 30,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Schedules & Conflicting Operations",
+   "ch": 8,
+   "beats": [
+    {
+     "say": "A schedule is the order in which operations of many transactions run. In a serial schedule, one transaction finishes before the next starts. It is always correct but slow. A concurrent schedule interleaves them, which is faster but can cause problems.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Serial]: one after another (correct, slow)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[h:Concurrent]: interleaved (fast, risky)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Two operations conflict if they belong to different transactions, use the same data item, and at least one of them is a write. So read write, write read and write write pairs conflict. Read read never conflicts.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1600,
+       "y": 280,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "Conflict: different T, same item, [r:at least one write]",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "table",
+       "x": 180,
+       "y": 430,
+       "cw": [
+        200,
+        200,
+        260
+       ],
+       "rh": 52,
+       "rows": [
+        [
+         "",
+         "R(X)",
+         "W(X)"
+        ],
+        [
+         "R(X)",
+         "[g:no]",
+         "[r:conflict]"
+        ],
+        [
+         "W(X)",
+         "[r:conflict]",
+         "[r:conflict]"
+        ]
+       ],
+       "color": "black",
+       "size": 30,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      }
+     ]
+    },
+    {
+     "say": "Problems without control: the lost update, where one write overwrites another. The dirty read, where a transaction reads uncommitted data. The unrepeatable read, where the same read gives different values. And the phantom problem, where new rows appear in a repeated query.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "1) [r:Lost update] (W-W)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "2) [r:Dirty read] (W-R, uncommitted)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "3) [r:Unrepeatable read] (R-W)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 870,
+       "s": "4) [r:Phantom] (new rows appear)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Conflict Serializability",
+   "ch": 8,
+   "beats": [
+    {
+     "say": "A schedule is conflict serializable if it can be turned into a serial schedule by swapping non conflicting operations. We test it with a precedence graph. Draw a node for each transaction. For each conflicting pair, draw an edge from the transaction that comes first to the one that comes later. If the graph has no cycle, the schedule is conflict serializable.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "NUMERICAL",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "Precedence graph: Ti -> Tj if Ti's op conflicts with a later Tj op",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[h:No cycle => conflict serializable]",
+       "size": 38,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "Example. Here is a schedule of three transactions. Look for conflicts. T1 reads Z, and later T2 writes Z, so draw T1 to T2. T3 reads X, and later T1 writes X, so draw T3 to T1. T3 writes Y, and later T2 reads and writes Y, so draw T3 to T2.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 300,
+       "cw": [
+        70,
+        150,
+        150,
+        150
+       ],
+       "rh": 40,
+       "rows": [
+        [
+         "",
+         "T1",
+         "T2",
+         "T3"
+        ],
+        [
+         "1",
+         "R(X)",
+         "",
+         ""
+        ],
+        [
+         "2",
+         "",
+         "R(Z)",
+         ""
+        ],
+        [
+         "3",
+         "R(Z)",
+         "",
+         ""
+        ],
+        [
+         "4",
+         "",
+         "",
+         "R(X)"
+        ],
+        [
+         "5",
+         "",
+         "",
+         "R(Y)"
+        ],
+        [
+         "6",
+         "W(X)",
+         "",
+         ""
+        ],
+        [
+         "7",
+         "",
+         "",
+         "W(Y)"
+        ],
+        [
+         "8",
+         "",
+         "R(Y)",
+         ""
+        ],
+        [
+         "9",
+         "",
+         "W(Z)",
+         ""
+        ],
+        [
+         "10",
+         "",
+         "W(Y)",
+         ""
+        ]
+       ],
+       "color": "black",
+       "size": 26,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "ellipse",
+       "x": 1095.0,
+       "y": 382.0,
+       "w": 110,
+       "h": 76,
+       "label": "T3",
+       "color": "red",
+       "size": 32,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1125,
+        458
+       ],
+       "p2": [
+        1025,
+        612
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 945.0,
+       "y": 612.0,
+       "w": 110,
+       "h": 76,
+       "label": "T1",
+       "color": "blue",
+       "size": 32,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1186,
+        453
+       ],
+       "p2": [
+        1364,
+        617
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 1345.0,
+       "y": 612.0,
+       "w": 110,
+       "h": 76,
+       "label": "T2",
+       "color": "blue",
+       "size": 32,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1058,
+        650
+       ],
+       "p2": [
+        1342,
+        650
+       ],
+       "color": "black",
+       "label": "Z",
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "text",
+       "x": 1050,
+       "y": 530,
+       "s": "X",
+       "size": 28,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 1300,
+       "y": 530,
+       "s": "Y",
+       "size": 28,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "The graph has no cycle. So the schedule is conflict serializable, and the equivalent serial order comes from the topological sort: T3, then T1, then T2.",
+     "els": [
+      {
+       "t": "text",
+       "x": 960,
+       "y": 870,
+       "s": "No cycle  =>  [h:conflict serializable]",
+       "size": 34,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 960,
+       "y": 924,
+       "s": "Serial order: T3 -> T1 -> T2",
+       "size": 36,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "Second example: R1 A, R2 A, W1 A, W2 A. T1 reads A before T2 writes it, so T1 to T2. T2 reads A before T1 writes it, so T2 to T1. That is a cycle, so it is not conflict serializable. This is exactly the lost update problem.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 978,
+       "s": "R1(A) R2(A) W1(A) W2(A): T1->T2 and T2->T1  =>  [r:cycle, not serializable]",
+       "size": 32,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "View Serializability & Recoverability",
+   "ch": 8,
+   "beats": [
+    {
+     "say": "Two schedules are view equivalent if three things match. The same transaction does the initial read of each item, each read gets its value from the same write, and the same transaction does the final write. Every conflict serializable schedule is view serializable, but not the other way. A view serializable schedule that is not conflict serializable always has a blind write, which is a write without a read.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "View equivalent if same:",
+       "size": 36,
+       "font": "bold",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "1) initial reads",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "2) read-from (who wrote the value read)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "3) final writes",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "Conflict serializable ⊆ View serializable  (blind writes)",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    },
+    {
+     "say": "Recoverability. A schedule is recoverable if a transaction commits only after every transaction it read from has committed. If T2 reads a value written by T1 and commits first, and then T1 fails, we cannot undo T2. That schedule is not recoverable.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1600,
+       "y": 420,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "[h:Recoverable]: Tj reads from Ti  =>  Ti commits before Tj",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "W1(A) R2(A) C2 ... T1 fails  =>  [r:not recoverable]",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "A cascading rollback happens when one failure forces many transactions to roll back. A cascadeless schedule avoids this, because transactions read only committed data. A strict schedule is even stronger: no read or write of an item until the last writer commits.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "[k:Cascadeless]: read only committed data",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "[k:Strict]: no read / write until the writer commits",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 870,
+       "s": "Strict ⊆ Cascadeless ⊆ Recoverable",
+       "size": 40,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Concurrency Control & Recovery",
+   "ch": 9,
+   "beats": [
+    {
+     "say": "Chapter nine. Concurrency control and recovery.",
+     "els": []
+    }
+   ],
+   "num": 9,
+   "subs": [
+    "Locks & 2PL",
+    "Deadlocks",
+    "Timestamp ordering",
+    "Log-based recovery"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "Locks & Two-Phase Locking",
+   "ch": 9,
+   "beats": [
+    {
+     "say": "Locks control access to data. A shared lock, S, is for reading. Many transactions can hold shared locks together. An exclusive lock, X, is for writing. Only one transaction can hold it, and nobody else can read or write.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Shared (S)]: read, many can share",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[h:Exclusive (X)]: write, only one",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "table",
+       "x": 1200,
+       "y": 230,
+       "cw": [
+        150,
+        150,
+        150
+       ],
+       "rh": 56,
+       "rows": [
+        [
+         "",
+         "S",
+         "X"
+        ],
+        [
+         "S",
+         "[g:yes]",
+         "[r:no]"
+        ],
+        [
+         "X",
+         "[r:no]",
+         "[r:no]"
+        ]
+       ],
+       "color": "black",
+       "size": 30,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 1200,
+       "y": 215,
+       "s": "Compatibility",
+       "size": 30,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "Two phase locking, or two P L. Each transaction has two phases. In the growing phase it can only take locks. In the shrinking phase it can only release locks. Once it releases any lock, it cannot take a new one. Two phase locking guarantees conflict serializability. But it does not prevent deadlocks.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 440,
+       "text": "MOST ASKED",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "Two-Phase Locking (2PL)",
+       "size": 38,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "[k:Growing phase]: only acquire locks",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "[k:Shrinking phase]: only release locks",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "[g:✓ conflict serializable]   [r:✗ deadlock possible]",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         1100,
+         820
+        ],
+        [
+         1350,
+         600
+        ],
+        [
+         1600,
+         820
+        ]
+       ],
+       "color": "blue",
+       "w": 5
+      },
+      {
+       "t": "text",
+       "x": 1270,
+       "y": 580,
+       "s": "lock point",
+       "size": 28,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 1110,
+       "y": 700,
+       "s": "growing",
+       "size": 28,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 1480,
+       "y": 700,
+       "s": "shrinking",
+       "size": 28,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         1060,
+         830
+        ],
+        [
+         1660,
+         830
+        ]
+       ],
+       "color": "black",
+       "w": 3
+      }
+     ]
+    },
+    {
+     "say": "Strict two phase locking holds all exclusive locks until commit or abort, which avoids cascading rollbacks. Rigorous two phase locking holds all locks, shared and exclusive, until commit.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "[k:Strict 2PL]: hold X locks till commit (no cascading)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "[k:Rigorous 2PL]: hold ALL locks till commit",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Deadlock Handling",
+   "ch": 9,
+   "beats": [
+    {
+     "say": "A deadlock happens when transactions wait for each other forever. For example, T1 holds A and wants B, while T2 holds B and wants A. We detect it with a wait for graph. A cycle means a deadlock.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Deadlock]: T1 holds A, wants B;  T2 holds B, wants A",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1190.0,
+       "y": 290.0,
+       "w": 120,
+       "h": 80,
+       "label": "T1",
+       "color": "red",
+       "size": 32,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1314,
+        330
+       ],
+       "p2": [
+        1586,
+        330
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 1590.0,
+       "y": 290.0,
+       "w": 120,
+       "h": 80,
+       "label": "T2",
+       "color": "red",
+       "size": 32,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1590,
+        370
+       ],
+       "p2": [
+        1310,
+        370
+       ],
+       "color": "black",
+       "label": "waits",
+       "lx": 0,
+       "ly": 40,
+       "curve": -60,
+       "head": true,
+       "size": 26,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "text",
+       "x": 1410,
+       "y": 300,
+       "s": "waits",
+       "size": 26,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "Wait-for graph: [r:cycle = deadlock]",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Deadlock prevention uses timestamps, where an older transaction has a smaller timestamp. In wait die, if an older transaction wants a lock held by a younger one, the older one waits. If a younger one wants a lock held by an older one, the younger one dies, which means it is rolled back.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 470,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "Prevention (older = smaller timestamp)",
+       "size": 36,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "table",
+       "x": 180,
+       "y": 470,
+       "cw": [
+        330,
+        420,
+        420
+       ],
+       "rh": 58,
+       "rows": [
+        [
+         "Requester",
+         "Wait-die",
+         "Wound-wait"
+        ],
+        [
+         "Older",
+         "[g:waits]",
+         "[r:wounds] (kills) younger"
+        ],
+        [
+         "Younger",
+         "[r:dies] (rollback)",
+         "[g:waits]"
+        ]
+       ],
+       "color": "black",
+       "size": 30,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      }
+     ]
+    },
+    {
+     "say": "In wound wait, an older transaction wounds the younger one, which means forces it to roll back, and a younger transaction waits. In both methods, the rolled back transaction restarts with its old timestamp, so it never starves. Another method is detection: find a cycle and roll back a victim.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "Restart with the [h:same old timestamp] => no starvation",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "Detection: find cycle, roll back a victim (least cost)",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Timestamp Ordering Protocol",
+   "ch": 9,
+   "beats": [
+    {
+     "say": "In timestamp ordering, each transaction gets a timestamp when it starts. Each data item keeps a read timestamp and a write timestamp, the largest timestamps of transactions that read and wrote it.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "TS(T) = start time;   item X keeps [k:RTS(X)] and [k:WTS(X)]",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Read rule: if T wants to read X, but a younger transaction already wrote X, meaning TS of T is less than the write timestamp, T is rolled back. Otherwise the read is allowed. Write rule: if a younger transaction already read or wrote X, T is rolled back. Otherwise the write is allowed.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "Read(X) by T",
+       "size": 36,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "TS(T) < WTS(X)  =>  rollback T;   else read, RTS = max(RTS, TS(T))",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "Write(X) by T",
+       "size": 36,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "TS(T) < RTS(X)  or  TS(T) < WTS(X)  =>  rollback T;   else write",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 300,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    },
+    {
+     "say": "Thomas write rule improves this. If T wants to write X but a younger transaction has already written it, T's write is outdated, so we simply ignore it instead of rolling back. Timestamp ordering is deadlock free, because no transaction ever waits.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "[h:Thomas write rule]: TS(T) < WTS(X)  =>  ignore the old write",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "[g:✓ conflict serializable]  [g:✓ deadlock-free]  (no waiting)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Log-Based Recovery & Checkpoints",
+   "ch": 9,
+   "beats": [
+    {
+     "say": "Recovery brings the database back to a correct state after a crash. The system keeps a log on stable storage, with records like T start, T writes X from old value to new value, and T commit. In deferred update, changes are written to the database only after commit, so we only need redo. In immediate update, changes can be written before commit, so we need both undo and redo.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "Log: <T start>, <T, X, old, new>, <T commit>",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[k:Deferred update]: write after commit  =>  only REDO",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "[k:Immediate update]: write anytime  =>  UNDO + REDO",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "A checkpoint saves everything to disk at a point in time, so after a crash we only look at the log after the last checkpoint. Here, five transactions run, and the system crashes at the red line.",
+     "els": [
+      {
+       "t": "line",
+       "pts": [
+        [
+         800,
+         400
+        ],
+        [
+         800,
+         880
+        ]
+       ],
+       "color": "green",
+       "w": 4
+      },
+      {
+       "t": "text",
+       "x": 730,
+       "y": 390,
+       "s": "checkpoint",
+       "size": 28,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         1450,
+         400
+        ],
+        [
+         1450,
+         880
+        ]
+       ],
+       "color": "red",
+       "w": 5
+      },
+      {
+       "t": "text",
+       "x": 1415,
+       "y": 390,
+       "s": "crash",
+       "size": 28,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 140,
+       "y": 470,
+       "s": "T1",
+       "size": 32,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         220,
+         460
+        ],
+        [
+         520,
+         460
+        ]
+       ],
+       "color": "blue",
+       "w": 6
+      },
+      {
+       "t": "text",
+       "x": 480,
+       "y": 446,
+       "s": "commit",
+       "size": 22,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 140,
+       "y": 560,
+       "s": "T2",
+       "size": 32,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         380,
+         550
+        ],
+        [
+         1000,
+         550
+        ]
+       ],
+       "color": "blue",
+       "w": 6
+      },
+      {
+       "t": "text",
+       "x": 960,
+       "y": 536,
+       "s": "commit",
+       "size": 22,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 140,
+       "y": 650,
+       "s": "T3",
+       "size": 32,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         600,
+         640
+        ],
+        [
+         1450,
+         640
+        ]
+       ],
+       "color": "blue",
+       "w": 6
+      },
+      {
+       "t": "text",
+       "x": 140,
+       "y": 740,
+       "s": "T4",
+       "size": 32,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         950,
+         730
+        ],
+        [
+         1250,
+         730
+        ]
+       ],
+       "color": "blue",
+       "w": 6
+      },
+      {
+       "t": "text",
+       "x": 1210,
+       "y": 716,
+       "s": "commit",
+       "size": 22,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 140,
+       "y": 830,
+       "s": "T5",
+       "size": 32,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         1150,
+         820
+        ],
+        [
+         1450,
+         820
+        ]
+       ],
+       "color": "blue",
+       "w": 6
+      }
+     ]
+    },
+    {
+     "say": "T1 committed before the checkpoint, so we ignore it. T2 and T4 committed after the checkpoint but before the crash, so we redo them. T3 and T5 had not committed when the crash happened, so we undo them. Shadow paging is another method that keeps two page tables and needs no log.",
+     "els": [
+      {
+       "t": "text",
+       "x": 1550,
+       "y": 470,
+       "s": "T1: ignore",
+       "size": 32,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 1550,
+       "y": 560,
+       "s": "T2: [g:REDO]",
+       "size": 32,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 1550,
+       "y": 650,
+       "s": "T3: [r:UNDO]",
+       "size": 32,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 1550,
+       "y": 740,
+       "s": "T4: [g:REDO]",
+       "size": 32,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 1550,
+       "y": 830,
+       "s": "T5: [r:UNDO]",
+       "size": 32,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 978,
+       "s": "committed after checkpoint -> REDO;  not committed -> UNDO;  before checkpoint -> ignore",
+       "size": 30,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Indexing, B+ Trees & Hashing",
+   "ch": 10,
+   "beats": [
+    {
+     "say": "Chapter ten. Indexing, B plus trees and hashing. GATE numericals come from here.",
+     "els": []
+    }
+   ],
+   "num": 10,
+   "subs": [
+    "Index types",
+    "Block-access numerical",
+    "B+ tree order & insertion",
+    "Hashing, query processing"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "File Organization & Index Types",
+   "ch": 10,
+   "beats": [
+    {
+     "say": "Records are stored in files. A heap file stores records in any order. A sequential file keeps them sorted on a key. A hash file uses a hash function on a key.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "Files: [k:heap] (any order), [k:sequential] (sorted), [k:hash]",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "An index is like the index of a book. It helps find records without reading the whole file. A dense index has an entry for every record. A sparse index has an entry for only some records, usually one per block, so the file must be sorted.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "[h:Dense]: entry for every record",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "[h:Sparse]: entry per block (file must be sorted)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "stamp",
+       "x": 1600,
+       "y": 280,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    },
+    {
+     "say": "A primary index is on the ordering key field of a sorted file, and is sparse. A clustering index is on an ordering field that is not a key. A secondary index is on a non ordering field, and is dense. A file can have only one primary or clustering index, but many secondary indexes. When an index becomes too big, we build a multilevel index, an index on the index.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 470,
+       "cw": [
+        280,
+        540,
+        300
+       ],
+       "rh": 54,
+       "rows": [
+        [
+         "Index",
+         "Built on",
+         "Dense / sparse"
+        ],
+        [
+         "Primary",
+         "ordering KEY field",
+         "sparse"
+        ],
+        [
+         "Clustering",
+         "ordering NON-key field",
+         "sparse"
+        ],
+        [
+         "Secondary",
+         "non-ordering field",
+         "dense"
+        ]
+       ],
+       "color": "black",
+       "size": 30,
+       "hdr": true,
+       "order": "row",
+       "colors": {
+        "1,0": "red",
+        "2,0": "red",
+        "3,0": "red"
+       },
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 924,
+       "s": "one primary OR clustering, many secondary;  big index -> [h:multilevel index]",
+       "size": 32,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Index Numerical: Block Accesses",
+   "ch": 10,
+   "beats": [
+    {
+     "say": "A classic numerical. A file has thirty thousand records. The block size is one thousand twenty four bytes, and each record is one hundred bytes. So the blocking factor is one thousand twenty four divided by one hundred, which is ten records per block, and the file needs three thousand blocks.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "NUMERICAL",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "r = 30,000 records, B = 1024 bytes, R = 100 bytes",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "bfr = ⌊1024 / 100⌋ = 10 records per block",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "blocks b = 30,000 / 10 = [h:3000]",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Without an index, a linear search needs about half the blocks on average, fifteen hundred. If the file is sorted on the key, binary search needs log base 2 of three thousand, rounded up, which is twelve block accesses.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "Linear search: b / 2 = 1500 block accesses (average)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "Binary search: ⌈log2 3000⌉ = [h:12]",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Now build a primary index. Each index entry has a nine byte key and a six byte block pointer, so fifteen bytes. That gives sixty eight entries per block. We need one entry per data block, so three thousand entries, which fit in forty five index blocks. Binary search on the index takes six accesses, plus one to read the data block. That is seven, instead of twelve.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "Index entry = 9 + 6 = 15 bytes  =>  68 entries per block",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "Index blocks = ⌈3000 / 68⌉ = 45",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "Accesses = ⌈log2 45⌉ + 1 = 6 + 1 = [h:7]",
+       "size": 40,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "12 -> 7 block accesses with the index",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "B Tree vs B+ Tree",
+   "ch": 10,
+   "beats": [
+    {
+     "say": "B trees and B plus trees are balanced search trees used for multilevel indexes. All leaves are at the same level, so search is always fast. In a B tree, data pointers are stored in all nodes. In a B plus tree, data pointers are only in the leaves, and internal nodes only guide the search.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "Balanced: all leaves at the same level",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "table",
+       "x": 180,
+       "y": 320,
+       "cw": [
+        380,
+        520,
+        560
+       ],
+       "rh": 56,
+       "rows": [
+        [
+         "",
+         "B tree",
+         "B+ tree"
+        ],
+        [
+         "data pointers",
+         "in all nodes",
+         "only in leaves"
+        ],
+        [
+         "keys repeated?",
+         "no",
+         "yes (copied up)"
+        ],
+        [
+         "leaves linked?",
+         "no",
+         "[g:yes], easy range queries"
+        ],
+        [
+         "fan-out",
+         "smaller",
+         "[g:larger] (more keys per node)"
+        ],
+        [
+         "used in",
+         "less common",
+         "most DBMS indexes"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {
+        "1,0": "red",
+        "2,0": "red",
+        "3,0": "red",
+        "4,0": "red",
+        "5,0": "red"
+       },
+       "fills": {}
+      },
+      {
+       "t": "stamp",
+       "x": 1600,
+       "y": 400,
+       "text": "MOST ASKED",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    },
+    {
+     "say": "Because internal nodes of a B plus tree hold only keys, more keys fit in a block, so the tree is shorter. And because the leaves are linked, range queries like salary between forty and sixty thousand are very fast. That is why most databases use B plus trees.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 924,
+       "s": "B+ tree: shorter tree + linked leaves  =>  [h:fast range queries]",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "B+ Tree Order",
+   "ch": 10,
+   "beats": [
+    {
+     "say": "GATE asks for the order of a B plus tree. Example: block size five hundred twelve bytes, key nine bytes, block pointer six bytes, and record pointer seven bytes. An internal node with order p has p block pointers and p minus one keys.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "GATE",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "B = 512, key V = 9, block ptr P = 6, record ptr Pr = 7 (bytes)",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "So p times six, plus p minus one times nine, must be at most five hundred twelve. That gives fifteen p at most five hundred twenty one, so p is thirty four.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "Internal node",
+       "size": 38,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "p × P + (p - 1) × V ≤ B",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "6p + 9(p - 1) ≤ 512  =>  15p ≤ 521",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "p = ⌊521 / 15⌋ = [h:34]",
+       "size": 42,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "A leaf node has p leaf pairs of key and record pointer, plus one block pointer to the next leaf. So p leaf times nine plus seven, plus six, must be at most five hundred twelve. Sixteen p leaf at most five hundred six, so p leaf is thirty one.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "Leaf node",
+       "size": 38,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "p_leaf × (V + Pr) + P ≤ B",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "16 p_leaf + 6 ≤ 512  =>  16 p_leaf ≤ 506",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "p_leaf = ⌊506 / 16⌋ = [h:31]",
+       "size": 42,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "B+ Tree Insertion",
+   "ch": 10,
+   "beats": [
+    {
+     "say": "Let's build a B plus tree. Each node holds at most three keys. Insert one, four, seven, ten, seventeen, twenty one, thirty one, twenty five, nineteen, twenty, twenty eight, and forty two. When a leaf gets four keys, it splits into two leaves, and the first key of the right leaf is copied up to the parent.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "NUMERICAL",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "Max 3 keys per node.  Insert: 1, 4, 7, 10, 17, 21, 31, 25, 19, 20, 28, 42",
+       "size": 34,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[k:Leaf split]: copy first key of right leaf up",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "[k:Internal split]: move middle key up",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "After all insertions, the root holds twenty. The internal nodes hold seven and seventeen on the left, and twenty five and thirty one on the right. The leaves hold all the keys in order: one four, seven ten, seventeen nineteen, twenty twenty one, twenty five twenty eight, and thirty one forty two.",
+     "els": [
+      {
+       "t": "table",
+       "x": 924,
+       "y": 470,
+       "cw": [
+        64,
+        64,
+        64
+       ],
+       "rh": 56,
+       "rows": [
+        [
+         "20",
+         "",
+         ""
+        ]
+       ],
+       "color": "red",
+       "size": 28,
+       "hdr": false,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "table",
+       "x": 558,
+       "y": 640,
+       "cw": [
+        64,
+        64,
+        64
+       ],
+       "rh": 56,
+       "rows": [
+        [
+         "7",
+         "17",
+         ""
+        ]
+       ],
+       "color": "blue",
+       "size": 28,
+       "hdr": false,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "table",
+       "x": 1290,
+       "y": 640,
+       "cw": [
+        64,
+        64,
+        64
+       ],
+       "rh": 56,
+       "rows": [
+        [
+         "25",
+         "31",
+         ""
+        ]
+       ],
+       "color": "blue",
+       "size": 28,
+       "hdr": false,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "table",
+       "x": 314,
+       "y": 810,
+       "cw": [
+        64,
+        64,
+        64
+       ],
+       "rh": 56,
+       "rows": [
+        [
+         "1",
+         "4",
+         ""
+        ]
+       ],
+       "color": "green",
+       "size": 28,
+       "hdr": false,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "table",
+       "x": 558,
+       "y": 810,
+       "cw": [
+        64,
+        64,
+        64
+       ],
+       "rh": 56,
+       "rows": [
+        [
+         "7",
+         "10",
+         ""
+        ]
+       ],
+       "color": "green",
+       "size": 28,
+       "hdr": false,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "table",
+       "x": 802,
+       "y": 810,
+       "cw": [
+        64,
+        64,
+        64
+       ],
+       "rh": 56,
+       "rows": [
+        [
+         "17",
+         "19",
+         ""
+        ]
+       ],
+       "color": "green",
+       "size": 28,
+       "hdr": false,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "table",
+       "x": 1046,
+       "y": 810,
+       "cw": [
+        64,
+        64,
+        64
+       ],
+       "rh": 56,
+       "rows": [
+        [
+         "20",
+         "21",
+         ""
+        ]
+       ],
+       "color": "green",
+       "size": 28,
+       "hdr": false,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "table",
+       "x": 1290,
+       "y": 810,
+       "cw": [
+        64,
+        64,
+        64
+       ],
+       "rh": 56,
+       "rows": [
+        [
+         "25",
+         "28",
+         ""
+        ]
+       ],
+       "color": "green",
+       "size": 28,
+       "hdr": false,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "table",
+       "x": 1534,
+       "y": 810,
+       "cw": [
+        64,
+        64,
+        64
+       ],
+       "rh": 56,
+       "rows": [
+        [
+         "31",
+         "42",
+         ""
+        ]
+       ],
+       "color": "green",
+       "size": 28,
+       "hdr": false,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        934,
+        526
+       ],
+       "p2": [
+        654,
+        640
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1094,
+        526
+       ],
+       "p2": [
+        1386,
+        640
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        566,
+        696
+       ],
+       "p2": [
+        410,
+        810
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        630,
+        696
+       ],
+       "p2": [
+        654,
+        810
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        694,
+        696
+       ],
+       "p2": [
+        898,
+        810
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1298,
+        696
+       ],
+       "p2": [
+        1142,
+        810
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1362,
+        696
+       ],
+       "p2": [
+        1386,
+        810
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1426,
+        696
+       ],
+       "p2": [
+        1630,
+        810
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        506,
+        838
+       ],
+       "p2": [
+        558,
+        838
+       ],
+       "color": "green",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        750,
+        838
+       ],
+       "p2": [
+        802,
+        838
+       ],
+       "color": "green",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        994,
+        838
+       ],
+       "p2": [
+        1046,
+        838
+       ],
+       "color": "green",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1238,
+        838
+       ],
+       "p2": [
+        1290,
+        838
+       ],
+       "color": "green",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1482,
+        838
+       ],
+       "p2": [
+        1534,
+        838
+       ],
+       "color": "green",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "green"
+      }
+     ]
+    },
+    {
+     "say": "Notice: every key appears in a leaf, the leaves are linked for range queries, and the tree stays balanced, with all leaves at the same level.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 978,
+       "s": "All keys in leaves · leaves linked · all leaves on one level",
+       "size": 34,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Hashing",
+   "ch": 10,
+   "beats": [
+    {
+     "say": "Hashing finds a record directly using a hash function on the key, like key mod table size. When two keys go to the same slot, it is a collision. Chaining keeps a linked list in each slot. Open addressing finds another free slot, using linear probing, quadratic probing, or double hashing.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "h(k) = k mod m;   same slot = [r:collision]",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[k:Chaining]: list per slot   [k:Open addressing]: linear / quadratic probing",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Example. Insert ten, twenty two, thirty one, four, fifteen, twenty eight, seventeen, eighty eight and fifty nine into a table of size eleven with linear probing. Fifteen goes to slot four, which is taken by four, so it moves to five. Seventeen moves from six to seven. Eighty eight moves from zero to one. And fifty nine starts at four and moves to eight.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "NUMERICAL",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "table",
+       "x": 180,
+       "y": 360,
+       "cw": [
+        110,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+       ],
+       "rh": 56,
+       "rows": [
+        [
+         "slot",
+         "0",
+         "1",
+         "2",
+         "3",
+         "4",
+         "5",
+         "6",
+         "7",
+         "8",
+         "9",
+         "10"
+        ],
+        [
+         "key",
+         "22",
+         "88",
+         "",
+         "",
+         "4",
+         "15",
+         "28",
+         "17",
+         "59",
+         "31",
+         "10"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {
+        "1,2": "red",
+        "1,6": "red",
+        "1,8": "red",
+        "1,9": "red"
+       },
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "15: 4 -> 5   17: 6 -> 7   88: 0 -> 1   59: 4 -> 5 -> 6 -> 7 -> 8",
+       "size": 34,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "Static hashing has a fixed number of buckets. Dynamic hashing grows with the data. Extendible hashing uses a directory with a global depth, and buckets with local depths. When a bucket overflows, it splits, and the directory doubles only if needed.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "[h:Extendible hashing]: directory (global depth) + buckets (local depth)",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "bucket overflow -> split;  directory doubles if local = global",
+       "size": 34,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Query Processing & NoSQL",
+   "ch": 10,
+   "beats": [
+    {
+     "say": "Query processing has three steps. Parsing and translation checks the query and converts it to relational algebra. Optimization chooses the cheapest plan. And evaluation runs that plan. The cost is mostly the number of disk block transfers and seeks.",
+     "els": [
+      {
+       "t": "rect",
+       "x": 180,
+       "y": 230,
+       "w": 360,
+       "h": 80,
+       "label": "Parse & translate",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 680,
+       "y": 230,
+       "w": 300,
+       "h": 80,
+       "label": "Optimize",
+       "color": "red",
+       "size": 30,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "rect",
+       "x": 1120,
+       "y": 230,
+       "w": 280,
+       "h": 80,
+       "label": "Evaluate",
+       "color": "black",
+       "size": 30,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1540,
+       "y": 230,
+       "w": 200,
+       "h": 80,
+       "label": "Result",
+       "color": "green",
+       "size": 30,
+       "fill": null,
+       "lc": "green"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        540,
+        270
+       ],
+       "p2": [
+        680,
+        270
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        980,
+        270
+       ],
+       "p2": [
+        1120,
+        270
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1400,
+        270
+       ],
+       "p2": [
+        1540,
+        270
+       ],
+       "color": "black",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "Cost = disk block transfers + seeks",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Heuristic optimization rules: do selections as early as possible, do projections early, and join small results first. This keeps intermediate tables small.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "Heuristics",
+       "size": 36,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "push σ (selection) down · do π (projection) early · join small results first",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "No S Q L databases store data without fixed tables, and scale across many servers. There are four types: key value stores like Redis, document stores like MongoDB, column family stores like Cassandra, and graph databases like Neo four J. The C A P theorem says a distributed system can fully guarantee only two of consistency, availability and partition tolerance at the same time.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "NoSQL types",
+       "size": 36,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "key-value (Redis) · document (MongoDB) · column-family (Cassandra) · graph (Neo4j)",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "[h:CAP theorem]: only 2 of Consistency, Availability, Partition tolerance",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Exam Revision",
+   "ch": 11,
+   "beats": [
+    {
+     "say": "Chapter eleven. Exam revision. If you're short on time, revise these first.",
+     "els": []
+    }
+   ],
+   "num": 11,
+   "subs": [
+    "Most asked questions",
+    "Last-minute tips"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "Most Asked Exam Questions",
+   "ch": 11,
+   "beats": [
+    {
+     "say": "Here are the most asked questions. D B M S versus file system, and the three schema architecture. Data independence. E R diagrams and converting them to tables. And keys, with counting super keys.",
+     "els": [
+      {
+       "t": "text",
+       "x": 200,
+       "y": 222,
+       "s": "1. DBMS vs file system; three-schema architecture",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 276,
+       "s": "2. Data independence (physical vs logical)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 330,
+       "s": "3. ER diagram + convert to tables",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 384,
+       "s": "4. Keys; count super keys",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Relational algebra queries and division. S Q L with group by, having, and the second highest salary. Attribute closure and candidate keys. And the normal forms, with finding the highest normal form.",
+     "els": [
+      {
+       "t": "text",
+       "x": 200,
+       "y": 438,
+       "s": "5. Relational algebra queries; division",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 492,
+       "s": "6. SQL: GROUP BY, HAVING, second highest salary",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 546,
+       "s": "7. Attribute closure + candidate keys",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 600,
+       "s": "8. 1NF, 2NF, 3NF, BCNF + find the normal form",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Lossless join and dependency preservation. A C I D and conflict serializability with the precedence graph. Two phase locking, deadlocks and timestamps. And the B plus tree order, insertion, and the indexing numerical.",
+     "els": [
+      {
+       "t": "text",
+       "x": 200,
+       "y": 654,
+       "s": "9. Lossless join, dependency preservation",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 708,
+       "s": "10. ACID; conflict serializability (precedence graph)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 762,
+       "s": "11. 2PL, deadlock (wait-die / wound-wait), timestamps",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 816,
+       "s": "12. B+ tree order + insertion; indexing numerical",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "One more tip for the exam. In normalization questions, always find the candidate keys first. And for numericals, write the formula before the answer. That way, you still get step marks, even if the final answer goes wrong.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 924,
+       "s": "Tip: find candidate keys first; [h:write the formula first] => step marks!",
+       "size": 38,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "outro",
+   "title": "All the Best!",
+   "ch": 11,
+   "beats": [
+    {
+     "say": "That's the complete D B M S subject. If this helped you, share it with your friends who have the exam, and subscribe to TechVibe24 for more one shot videos. Tell me in the comments which subject you want next. All the best for your exam!",
+     "els": []
+    }
+   ]
+  }
+ ],
+ "chapters": [
+  [
+   1,
+   "Introduction to DBMS",
+   [
+    "DBMS vs file system",
+    "Three-schema architecture",
+    "Data independence",
+    "Languages & data models"
+   ],
+   4
+  ],
+  [
+   2,
+   "ER Model",
+   [
+    "Entities & attributes",
+    "Relationships & cardinality",
+    "Weak entity, ISA, aggregation",
+    "ER to tables"
+   ],
+   5
+  ],
+  [
+   3,
+   "Relational Model & Keys",
+   [
+    "Relation, tuple, domain",
+    "Super, candidate, primary, foreign keys",
+    "Counting super keys",
+    "Integrity constraints"
+   ],
+   5
+  ],
+  [
+   4,
+   "Relational Algebra & Calculus",
+   [
+    "Select, project, set operators",
+    "Joins",
+    "Division",
+    "Tuple & domain calculus"
+   ],
+   5
+  ],
+  [
+   5,
+   "SQL",
+   [
+    "DDL, DML, DCL, TCL",
+    "GROUP BY & HAVING",
+    "Joins & nested queries",
+    "Views & triggers"
+   ],
+   5
+  ],
+  [
+   6,
+   "Functional Dependencies",
+   [
+    "Armstrong's axioms",
+    "Attribute closure",
+    "Candidate keys",
+    "Canonical cover"
+   ],
+   5
+  ],
+  [
+   7,
+   "Normalization",
+   [
+    "Anomalies",
+    "1NF, 2NF, 3NF, BCNF",
+    "Finding the normal form",
+    "Lossless & dependency preserving"
+   ],
+   5
+  ],
+  [
+   8,
+   "Transactions & Serializability",
+   [
+    "ACID & states",
+    "Schedules & conflicts",
+    "Conflict serializability",
+    "View serializability, recoverability"
+   ],
+   5
+  ],
+  [
+   9,
+   "Concurrency Control & Recovery",
+   [
+    "Locks & 2PL",
+    "Deadlocks",
+    "Timestamp ordering",
+    "Log-based recovery"
+   ],
+   5
+  ],
+  [
+   10,
+   "Indexing, B+ Trees & Hashing",
+   [
+    "Index types",
+    "Block-access numerical",
+    "B+ tree order & insertion",
+    "Hashing, query processing"
+   ],
+   5
+  ],
+  [
+   11,
+   "Exam Revision",
+   [
+    "Most asked questions",
+    "Last-minute tips"
+   ],
+   5
+  ]
+ ]
+}
