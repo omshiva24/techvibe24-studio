@@ -164,7 +164,10 @@ jobs:
   dbtts:
     if: contains(github.event.head_commit.message, '[dbtts]')
     runs-on: ubuntu-latest
-    timeout-minutes: 80
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix: { shard: [0, 1, 2, 3] }
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -175,11 +178,30 @@ jobs:
         run: |
           prev=$(gh release list -R "${{ github.repository }}" --limit 50 --json tagName --jq '[.[] | select(.tagName|startswith("dbtts"))][0].tagName' || true)
           if [ -n "$prev" ]; then gh release download "$prev" -p db_voice.tgz -R "${{ github.repository }}" && tar xzf db_voice.tgz && rm db_voice.tgz; fi
-          ls dbtts/* | head -3 || true
       - run: python dbv/tts.py dbv/db_script.json dbtts en-US-AndrewMultilingualNeural
-      - name: publish
+        env: { SHARD: '${{ matrix.shard }}/4', TTS_MINUTES: '40' }
+      - uses: actions/upload-artifact@v4
+        with: { name: 'dbvo-${{ matrix.shard }}', path: dbtts, retention-days: 3 }
+
+  dbtts-publish:
+    needs: dbtts
+    if: always() && contains(github.event.head_commit.message, '[dbtts]')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with: { pattern: 'dbvo-*', path: parts }
+      - name: merge and publish
         env: { GH_TOKEN: '${{ github.token }}' }
         run: |
+          V=en-US-AndrewMultilingualNeural; mkdir -p dbtts/$V
+          for d in parts/dbvo-*; do cp -n "$d/$V"/*.mp3 dbtts/$V/ 2>/dev/null || true; done
+          python3 - <<'PY'
+          import glob, json, os
+          V = 'en-US-AndrewMultilingualNeural'; m = {}
+          for f in sorted(glob.glob(f'parts/dbvo-*/{V}/texts_*.json')): m.update(json.load(open(f)))
+          m = {k: v for k, v in m.items() if os.path.exists(f'dbtts/{V}/{k}.mp3')}
+          json.dump(m, open(f'dbtts/{V}/texts.json', 'w'), indent=0, ensure_ascii=False); print('beats with voice:', len(m))
+          PY
           tar czf db_voice.tgz dbtts
           gh release create "dbtts-${{ github.run_number }}" db_voice.tgz --title "DBMS voiceover ${{ github.run_number }}" --notes "Beat voiceovers" -R "${{ github.repository }}"
 
