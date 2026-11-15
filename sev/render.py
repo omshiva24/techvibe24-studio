@@ -397,7 +397,7 @@ def cover_parts(outro):
     if not outro:
         ld.text((590, 150), 'SOFTWARE ENGINEERING', font=font('bold', 88), fill=INK['black'] + (255,), anchor='ms')
         ld.text((590, 236), 'Complete notes  ·  one shot', font=font('body', 54), fill=INK['blue'] + (255,), anchor='ms')
-        ld.text((590, 360), 'B.Tech CSE  ·  All universities  +  GATE', font=font('body', 48), fill=INK['red'] + (255,), anchor='ms')
+        ld.text((590, 360), 'B.Tech CSE  ·  All universities  +  UGC NET', font=font('body', 48), fill=INK['red'] + (255,), anchor='ms')
         ld.text((590, 470), 'Simple explanation + handwritten notes', font=font('body', 44), fill=INK['green'] + (255,), anchor='ms')
         ld.text((590, 590), 'Name: ____________     @TECHVIBE24', font=font('cav', 50), fill=INK['blue'] + (255,), anchor='ms')
     else:
