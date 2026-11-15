@@ -273,8 +273,8 @@ p = page('Requirements Engineering Process', 4)
 beat(p, '''Requirements engineering is the process of finding, writing and checking what the system must do. It has these steps:
 feasibility study, elicitation, analysis, specification, validation, and requirements management.''',
      T(0, '[h:Requirements engineering]: find, write & check what the system must do', size=34),
-     *[Box(200 + 285 * k, 320, 260, 66, s, color='blue', size=24) for k, s in enumerate(['Feasibility', 'Elicitation', 'Analysis', 'Specification', 'Validation'])],
-     *[Arr(460 + 285 * k, 353, 485 + 285 * k, 353) for k in range(4)], T(0, '+ requirements management (handle changes)', x=200, y=440, size=30, color='green'))
+     *[Box(200 + 295 * k, 320, 235, 66, s, color='blue', size=24) for k, s in enumerate(['Feasibility', 'Elicitation', 'Analysis', 'Specification', 'Validation'])],
+     *[Arr(435 + 295 * k, 353, 495 + 295 * k, 353) for k in range(4)], T(0, '+ requirements management (handle changes)', x=200, y=440, size=30, color='green'))
 beat(p, '''The feasibility study checks if the project is worth doing. Technical feasibility: do we have the technology and skills? Economic feasibility:
 do the benefits exceed the cost? Operational feasibility: will users actually use it? Schedule and legal feasibility are also checked.''',
      S(6, 'Feasibility study', size=36, color='red'), T(7, '[k:Technical] (tech & skills) · [k:Economic] (cost-benefit) · [k:Operational] (will users use it?)', size=30),
@@ -341,15 +341,15 @@ p = page('Data Dictionary & Decision Table', 4)
 beat(p, '''A data dictionary stores the meaning of every data item used in the D F D. It uses simple notation. Equals means "is made of".
 Plus means "and". Square brackets with a bar mean "either or". Curly brackets mean repetition. And round brackets mean optional.''',
      S(0, 'Data dictionary notation', size=36, color='red'),
-     Tab(180, 290, [180, 460], 50, [['Symbol', 'Meaning'], ['=', 'is composed of'], ['+', 'and'], ['[ a | b ]', 'either a or b'], ['{ }', 'repetition (0 or more)'], ['( )', 'optional']], size=28),
+     Tab(180, 290, [180, 460], 44, [['Symbol', 'Meaning'], ['=', 'is composed of'], ['+', 'and'], ['[ a | b ]', 'either a or b'], ['{ }', 'repetition (0 or more)'], ['( )', 'optional']], size=28),
      T(0, 'name = first_name + (middle_name) + last_name', x=900, y=L(2), size=32, color='black'),
      T(0, 'phone = [ mobile | landline ]', x=900, y=L(3), size=32, color='black'), T(0, 'order = customer + { item }', x=900, y=L(4), size=32, color='black'))
 beat(p, '''A decision table shows complex logic as conditions and actions. For example, a loan rule: if the salary is above thirty thousand and the credit score is good,
 approve the loan. If only one condition is true, send the case for manual review. If both are false, reject it. With two conditions, there are four rules.''',
-     Stamp(1650, 140), S(9, 'Decision table: loan approval', size=34, color='red'),
-     Tab(180, 760, [420, 120, 120, 120, 120], 46, [['Conditions / actions', 'R1', 'R2', 'R3', 'R4'], ['salary > 30,000', 'Y', 'Y', 'N', 'N'], ['good credit score', 'Y', 'N', 'Y', 'N'],
+     Stamp(1650, 140), S(8, 'Decision table: loan approval', size=34, color='red'),
+     Tab(180, 680, [420, 120, 120, 120, 120], 46, [['Conditions / actions', 'R1', 'R2', 'R3', 'R4'], ['salary > 30,000', 'Y', 'Y', 'N', 'N'], ['good credit score', 'Y', 'N', 'Y', 'N'],
          ['approve', 'X', '', '', ''], ['manual review', '', 'X', 'X', ''], ['reject', '', '', '', 'X']], size=26, colors={(3, 0): 'green', (4, 0): 'green', (5, 0): 'green'}),
-     T(0, '2 conditions => 2^2 = 4 rules', x=1140, y=860, size=32, color='red'))
+     T(0, '2 conditions => 2^2 = 4 rules', x=1140, y=790, size=32, color='red'))
 
 # ===================================================================================== CH 5
 p = chapter(5)
@@ -380,10 +380,10 @@ There are seven types, from worst to best.''',
      T(0, '[h:Cohesion] = how related the parts INSIDE a module are;  [g:HIGH is good]', size=34), Stamp(1650, 140, 'MOST ASKED'))
 beat(p, '''Coincidental cohesion is the worst: unrelated tasks are put together. Logical cohesion: tasks of a similar kind, like all input output functions.
 Temporal cohesion: tasks done at the same time, like initialisation. Procedural: tasks that follow a sequence.''',
-     *[T(2 + k, f'{k + 1}. [{c[0]}:{n}] - {d}', x=200, size=34) for k, (n, d, c) in enumerate(coh[:4])])
+     *[T(2 + k, f'{k + 1}. ' + (f'[{c[0]}:{n}]' if c != 'blue' else n) + f' - {d}', x=200, size=34) for k, (n, d, c) in enumerate(coh[:4])])
 beat(p, '''Communicational: tasks that work on the same data. Sequential: the output of one task is the input of the next. And functional cohesion is the best:
 all parts work together for one single, well defined task. Trick to remember the order: "Can Lazy Teachers Prepare Clear Simple Functions".''',
-     *[T(6 + k, f'{k + 5}. [{c[0]}:{n}] - {d}', x=200, size=34) for k, (n, d, c) in enumerate(coh[4:])],
+     *[T(6 + k, f'{k + 5}. ' + (f'[{c[0]}:{n}]' if c != 'blue' else n) + f' - {d}', x=200, size=34) for k, (n, d, c) in enumerate(coh[4:])],
      Arr(1680, 330, 1680, 760, color='green', label='better', lx=60, ly=0, size=26), T(10, 'Trick: "[h:C]an [h:L]azy [h:T]eachers [h:P]repare [h:C]lear [h:S]imple [h:F]unctions"', size=32, color='red'))
 
 cop = [('Data', 'pass only needed simple data', 'green'), ('Stamp', 'pass a whole structure / record', 'green'), ('Control', 'pass a flag that controls logic', 'blue'),
@@ -395,10 +395,10 @@ The golden rule of design is: high cohesion and low coupling.''',
      Stamp(1650, 140, 'MOST ASKED'))
 beat(p, '''There are six types, from best to worst. Data coupling is the best: modules pass only the simple data needed. Stamp coupling: they pass a whole structure,
 when only part of it is needed. Control coupling: one module passes a flag that controls the logic of another.''',
-     *[T(3 + k, f'{k + 1}. [{c[0]}:{n}] - {d}', x=200, size=34) for k, (n, d, c) in enumerate(cop[:3])])
+     *[T(3 + k, f'{k + 1}. ' + (f'[{c[0]}:{n}]' if c != 'blue' else n) + f' - {d}', x=200, size=34) for k, (n, d, c) in enumerate(cop[:3])])
 beat(p, '''External coupling: modules share an external data format, device or protocol. Common coupling: modules share global data. And content coupling is the worst:
 one module directly changes the code or data of another. Trick: "Don't Say Can't Ever Come Clean".''',
-     *[T(6 + k, f'{k + 4}. [{c[0]}:{n}] - {d}', x=200, size=34) for k, (n, d, c) in enumerate(cop[3:])],
+     *[T(6 + k, f'{k + 4}. ' + (f'[{c[0]}:{n}]' if c != 'blue' else n) + f' - {d}', x=200, size=34) for k, (n, d, c) in enumerate(cop[3:])],
      Arr(1680, 380, 1680, 760, color='red', label='worse', lx=60, ly=0, size=26), T(10, 'Trick: "[h:D]on\'t [h:S]ay [h:C]an\'t [h:E]ver [h:C]ome [h:C]lean"', size=32, color='red'))
 
 p = page('Architectural Styles & Structure Chart', 5)
@@ -433,8 +433,8 @@ and the system boundary is a rectangle. Here, the customer of an A T M can withd
 beat(p, '''Include means a use case always uses another one: every transaction includes authenticate. Extend means an optional extra behaviour:
 print receipt extends withdraw cash, only if the user wants it. Both are drawn as dashed arrows.''',
      Ell(1000, 600, 280, 80, 'Authenticate', size=24, color='green'), Ell(1000, 820, 280, 80, 'Print receipt', size=24, color='green'),
-     *Dash(920, 530, 1010, 610, color='green'), Arr(995, 600, 1010, 612, color='green'), T(0, '<<include>>', x=960, y=560, size=22, color='green'),
-     *Dash(1120, 820, 860, 540, color='red'), Arr(870, 552, 862, 543, color='red'), T(0, '<<extend>>', x=1020, y=730, size=22, color='red'),
+     *Dash(920, 530, 975, 580, color='green'), Arr(975, 580, 1015, 614, color='green'), T(0, '<<include>>', x=960, y=560, size=22, color='green'),
+     *Dash(1120, 820, 905, 588, color='red'), Arr(905, 588, 868, 548, color='red'), T(0, '<<extend>>', x=1020, y=730, size=22, color='red'),
      T(14, '[k:include]: always needed    [k:extend]: optional behaviour', size=32))
 
 p = page('Class Diagram', 6)
@@ -523,7 +523,7 @@ So the function points are six hundred twenty eight times one point zero seven, 
      T(11, f'FP = UFP × CAF = {ufp} × {caf:.2f} = [h:{fp:.2f}]', size=40, color='red'))
 
 cy = cyclomatic()
-gn = {1: (1450, 300), 2: (1450, 420), 3: (1340, 540), 4: (1230, 660), 5: (1450, 660), 6: (1340, 780), 7: (1650, 540)}
+gn = {1: (1450, 280), 2: (1450, 390), 3: (1450, 500), 4: (1340, 620), 5: (1560, 620), 6: (1450, 740), 7: (1720, 390)}
 p = page('Cyclomatic Complexity', 7)
 beat(p, '''Cyclomatic complexity, given by McCabe, measures the logical complexity of a program. It equals the number of independent paths,
 so it tells us the minimum number of test cases for path testing. First we draw the control flow graph, where nodes are statements and edges are the flow of control.''',
@@ -534,12 +534,12 @@ node five is b equals b minus a, node six joins the if and goes back to the loop
      T(6, '4:       a = a - b', x=200, size=30, color='black'), T(7, '5:    else b = b - a', x=200, size=30, color='black'), T(8, '6: end-if (back to 2)', x=200, size=30, color='black'),
      T(9, '7: print a', x=200, size=30, color='black'),
      *Tree({k: (x, y, str(k), 'red' if k in (2, 3) else 'blue') for k, (x, y) in gn.items()}, [(1, 2), (2, 3), (2, 7), (3, 4), (3, 5), (4, 6), (5, 6)], w=64, h=56, head=True),
-     Arr(1300, 790, 1405, 430, curve=170, color='black'))
+     Arr(1418, 750, 1418, 400, curve=-300, color='black'))
 beat(p, f'''Now three ways to find V of G. One: edges minus nodes plus two. There are eight edges and seven nodes, so eight minus seven plus two is three.
 Two: predicate nodes plus one. There are two decisions, node two and node three, so two plus one is three. Three: the number of regions in the graph, which is also three.''',
      T(11, f"V(G) = E - N + 2 = {cy['E']} - {cy['N']} + 2 = [h:{cy['V']}]", size=34, color='red'), T(12, f"V(G) = P + 1 = {cy['P']} + 1 = [h:{cy['Vp']}]", size=34, color='red'),
-     T(13, 'V(G) = number of regions = [h:3]', size=34, color='red'), T(0, 'R1', x=1330, y=670, size=26, color='green'), T(0, 'R2', x=1180, y=520, size=26, color='green'),
-     T(0, 'R3', x=1700, y=780, size=26, color='green'))
+     T(13, 'V(G) = number of regions = [h:3]', size=34, color='red'), T(0, 'R1', x=1432, y=632, size=26, color='green'), T(0, 'R2', x=1310, y=540, size=26, color='green'),
+     T(0, 'R3', x=1680, y=660, size=26, color='green'))
 beat(p, '''So we need three test cases, one for each independent path. Path one: one, two, seven. Path two: one, two, three, four, six, two, seven.
 Path three: one, two, three, five, six, two, seven. If V of G is more than ten, the module is considered too complex and should be split.''',
      T(14, 'Paths: 1-2-7 | 1-2-3-4-6-2-7 | 1-2-3-5-6-2-7     (V(G) > 10 => too complex)', size=30, color='green'))
@@ -566,8 +566,8 @@ Bugs cluster together in a few modules. And the pesticide paradox: running the s
 p = page('Levels of Testing', 8)
 beat(p, '''There are four levels of testing. Unit testing tests each module alone, usually by the developer. Integration testing tests modules joined together, to check their interfaces.
 System testing tests the complete system against the S R S. And acceptance testing is done by the customer, to decide whether to accept the software.''',
-     *[Box(200 + 380 * k, 240, 340, 66, s, size=26, color='blue') for k, s in enumerate(['Unit', 'Integration', 'System', 'Acceptance'])],
-     *[Arr(540 + 380 * k, 273, 580 + 380 * k, 273) for k in range(3)],
+     *[Box(200 + 390 * k, 240, 320, 66, s, size=26, color='blue') for k, s in enumerate(['Unit', 'Integration', 'System', 'Acceptance'])],
+     *[Arr(520 + 390 * k, 273, 590 + 390 * k, 273) for k in range(3)],
      T(3, '[k:Unit]: each module alone   [k:Integration]: modules together (interfaces)', size=32), T(4, '[k:System]: whole system vs SRS   [k:Acceptance]: by customer', size=32))
 beat(p, '''Acceptance testing has two types. Alpha testing is done by users at the developer's site. Beta testing is done by real users at their own site, before the final release.
 System testing also includes performance, load, stress, security, usability and recovery testing.''',
@@ -611,7 +611,7 @@ It measures how good the test cases are. Regression testing re runs old tests af
      T(8, '[k:Smoke testing]: quick check that main functions work', size=32))
 beat(p, '''Here is the comparison between black box and white box testing.''',
      Stamp(1650, 140, 'MOST ASKED'),
-     Tab(180, 560, [280, 560, 560], 54, [['', 'Black-box', 'White-box'], ['knowledge of code', 'not needed', 'needed'], ['done by', 'testers, users', 'developers'],
+     Tab(180, 690, [280, 560, 560], 46, [['', 'Black-box', 'White-box'], ['knowledge of code', 'not needed', 'needed'], ['done by', 'testers, users', 'developers'],
          ['based on', 'requirements (SRS)', 'code structure'], ['techniques', 'EP, BVA, decision table', 'statement, branch, path coverage'], ['also called', 'functional / behavioural', 'structural / glass-box']],
          size=28, colors={(r, 0): 'red' for r in range(1, 6)}))
 
@@ -704,8 +704,8 @@ technical risks, like new technology that may not work; and business risks, like
      T(0, '[h:Risk] = possible future problem'), T(1, '[k:Project] (budget, schedule) · [k:Technical] (new tech) · [k:Business] (market)', size=32))
 beat(p, '''Risk management has four steps. Identify the risks. Analyse them, by estimating the probability and the impact. Plan how to handle them,
 by avoiding, transferring, reducing or accepting. And monitor them throughout the project. The R M M M plan means risk mitigation, monitoring and management.''',
-     *[Box(200 + 380 * k, 380, 340, 66, s, size=26, color='blue') for k, s in enumerate(['Identify', 'Analyse', 'Plan', 'Monitor'])],
-     *[Arr(540 + 380 * k, 413, 580 + 380 * k, 413) for k in range(3)], T(6, '[h:RMMM] = Risk Mitigation, Monitoring & Management', size=34),
+     *[Box(200 + 390 * k, 380, 320, 66, s, size=26, color='blue') for k, s in enumerate(['Identify', 'Analyse', 'Plan', 'Monitor'])],
+     *[Arr(520 + 390 * k, 413, 590 + 390 * k, 413) for k in range(3)], T(6, '[h:RMMM] = Risk Mitigation, Monitoring & Management', size=34),
      Stamp(1650, 140))
 beat(p, f'''Risk exposure is the probability of the risk, times the loss if it happens. Example: there is a forty percent chance that a key developer leaves,
 and the loss would be two lakh rupees. Risk exposure is zero point four times two lakh, which is eighty thousand rupees. Higher exposure means higher priority.''',
@@ -770,7 +770,7 @@ beat(p, '''Software maintenance means changing the software after delivery. Ther
 to a new environment, like a new operating system or new laws. Perfective maintenance adds new features or improves performance, as users ask.
 And preventive maintenance improves the code to prevent future problems. Perfective maintenance takes the largest share, about half.''',
      Stamp(1650, 140, 'MOST ASKED'), *[T(k, f'[r:{n}] - {d}', size=34) for k, (n, s_, d) in enumerate(mt)],
-     *[x for k, (n, s_, d) in enumerate(mt) for x in (Box(1100, 250 + 70 * k, max(30, s_ * 11), 46, None, color='blue', fill='yellow'), T(0, f'{s_}%', x=1110 + max(30, s_ * 11), y=284 + 70 * k, size=28, color='black'))])
+     *[x for k, (n, s_, d) in enumerate(mt) for x in (Box(1100, L(k) - 34, max(30, s_ * 11), 42, None, color='blue', fill='yellow'), T(0, f'{s_}%', x=1112 + max(30, s_ * 11), y=L(k) - 4, size=28, color='black'))])
 beat(p, '''Reverse engineering analyses existing software to recover its design and specification, for example from old code with no documents.
 Re engineering means reverse engineering, then restructuring, then forward engineering, to build an improved version. Forward engineering is the normal process,
 from requirements to code. Legacy systems are old but important systems that are often re engineered.''',
@@ -789,8 +789,8 @@ like the code, the S R S or test cases. A baseline is a reviewed and approved ve
 beat(p, '''S C M activities are: identification of items, version control, change control, configuration auditing, and status reporting. In change control,
 a change request is evaluated by the change control board, and if approved, the change is made, tested, and a new baseline is released. Tools like Git are used for version control.''',
      Stamp(1650, 140), T(3, 'Activities: identification · [h:version control] · [h:change control] · audit · status reporting', size=30),
-     *[Box(200 + 300 * k, 470, 270, 70, s, size=24, color='blue') for k, s in enumerate(['Change request', 'CCB evaluates', 'Approve?', 'Make & test', 'New baseline'])],
-     *[Arr(470 + 300 * k, 505, 500 + 300 * k, 505) for k in range(4)], T(0, 'CCB = change control board;  Git for version control', x=200, y=600, size=30, color='green'))
+     *[Box(200 + 320 * k, 470, 255, 70, s, size=24, color='blue') for k, s in enumerate(['Change request', 'CCB evaluates', 'Approve?', 'Make & test', 'New baseline'])],
+     *[Arr(455 + 320 * k, 505, 520 + 320 * k, 505) for k in range(4)], T(0, 'CCB = change control board;  Git for version control', x=200, y=600, size=30, color='green'))
 beat(p, '''CASE tools, computer aided software engineering tools, help in software development. Upper CASE tools help in the early phases, like requirements and design,
 for example U M L and D F D tools. Lower CASE tools help in the later phases, like coding, testing and maintenance, for example code generators, debuggers and test tools.
 Integrated CASE tools cover the whole life cycle.''',

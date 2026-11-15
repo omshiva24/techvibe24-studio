@@ -6,12 +6,13 @@ def ts(t): return '%d:%02d:%02d' % (t // 3600, t % 3600 // 60, t % 60) if t >= 3
 chap = ['0:00 Introduction & contents']
 for pg in tl['pages']:
     if pg['kind'] == 'chapter': chap.append(f"{ts(int(pg['t0']))} Ch {pg['num']}: {pg['title']}")
-    NUM = {'ER Diagram to Tables': 'ER diagram to tables', 'Number of Super Keys': 'Counting super keys', 'Division Operator': 'Division operator',
-           'SELECT, GROUP BY & HAVING': 'SQL GROUP BY & HAVING', 'Attribute Closure': 'Attribute closure', 'Finding Candidate Keys': 'Finding candidate keys',
-           'Finding the Normal Form': 'Finding the normal form', 'Conflict Serializability': 'Conflict serializability', 'Log-Based Recovery & Checkpoints': 'Recovery with checkpoints',
-           'Index Numerical: Block Accesses': 'Index block accesses', 'B+ Tree Insertion': 'B+ tree order & insertion'}
+    NUM = {'Spiral Model': 'Spiral model', 'Comparing SDLC Models': 'Comparing SDLC models', 'Scrum Framework': 'Scrum framework',
+           'Data Flow Diagrams (DFD)': 'Data flow diagrams', 'Cohesion': 'Cohesion types', 'Coupling': 'Coupling types', 'Class Diagram': 'UML class diagram',
+           'Function Point Analysis': 'Function points (numerical)', 'Cyclomatic Complexity': 'Cyclomatic complexity (numerical)',
+           'Black-Box Testing: EP & BVA': 'Boundary value analysis (numerical)', 'Basic COCOMO - Numerical': 'COCOMO (numerical)',
+           'Project Scheduling: CPM & PERT': 'CPM & PERT (numerical)', 'SEI CMM Levels & Six Sigma': 'CMM levels'}
     if pg['kind'] == 'page' and pg['title'] in NUM:      # YouTube rejects < and > in descriptions, so no '->' here
-        chap.append(f"{ts(int(pg['t0']))}   • {NUM[pg['title']]} (numerical)")
+        chap.append(f"{ts(int(pg['t0']))}   • {NUM[pg['title']]}")
 open(f'{OUT}/chapters.txt', 'w').write('\n'.join(chap) + '\n')
 def srt_t(t): ms = int(round(t * 1000)); return '%02d:%02d:%02d,%03d' % (ms // 3600000, ms % 3600000 // 60000, ms % 60000 // 1000, ms % 1000)
 subs = []
