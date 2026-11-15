@@ -302,8 +302,8 @@ p = page('Joins', 4)
 beat(p, '''A join combines related rows from two tables. A theta join uses any condition. An equi join uses only equality.
 A natural join is an equi join on attributes with the same name, and it shows the common column only once.''',
      T(0, '[r:Theta join]: any condition (<, >, =, ...)'), T(1, '[r:Equi join]: only ='), T(2, '[r:Natural join ⋈]: equal on common names, column shown once'))
-beat(p, '''Outer joins also keep rows without a match. A left outer join keeps all rows of the left table, and fills null on the right.
-A right outer join keeps all rows of the right table. And a full outer join keeps all rows of both.''',
+beat(p, '''Outer joins also keep the rows that have no match. A left outer join keeps every row of the left table, and puts null on the right side.
+A right outer join keeps every row of the right table. And a full outer join keeps every row from both tables.''',
      T(4, '[r:Left outer join]: all rows of left, NULL if no match'), T(5, '[r:Right outer join]: all rows of right'), T(6, '[r:Full outer join]: all rows of both'),
      Stamp(1600, 300))
 beat(p, '''Example. Join Emp and Dept on department name. Every employee gets the block of their department. With a left outer join from Dept to Emp,
@@ -452,7 +452,7 @@ Trick one: an attribute that never appears on the right side must be in every ke
 beat(p, '''C D plus is just C D, so we try adding one more attribute. A C D plus: A gives B, B C gives E. So we get all five, and A C D is a key.
 B C D plus: B C gives E, E D gives A. All five, so B C D is a key. C D E plus: E D gives A, A gives B. All five, so C D E is a key too.''',
      T(4, '(ACD)+ : A->B, BC->E  =>  ABCDE  ✓'), T(5, '(BCD)+ : BC->E, ED->A  =>  ABCDE  ✓'), T(6, '(CDE)+ : ED->A, A->B  =>  ABCDE  ✓'))
-beat(p, f'''So the candidate keys are A C D, B C D and C D E. The prime attributes are those in any candidate key. Here, all five attributes are prime.''',
+beat(p, f'''So we get three candidate keys: A C D, B C D, and C D E. A prime attribute is one that appears in some candidate key. In this example, all five attributes are prime.''',
      T(8, f"Candidate keys: [h:{', '.join(K2)}]", size=40, color='red'), T(9, 'Prime attributes: A, B, C, D, E (all)', color='green'))
 
 cc = canonical_cover(fd('A->BC, B->C, A->B, AB->C'))
@@ -501,8 +501,8 @@ B C N F is inside third normal form, which is inside second, which is inside fir
 
 nf1 = normal_form('ABCD', fd('AB->C, A->D')); nf2 = normal_form('ABCD', fd('AB->C, C->D')); nf3 = normal_form('ABC', fd('AB->C, C->B'))
 p = page('Finding the Normal Form', 7)
-beat(p, '''Let's find the highest normal form. Step one, always find the candidate keys. Example one: R is A B C D, with A B determines C, and A determines D.
-The key is A B. A determines D is a partial dependency, because D depends on only A, a part of the key. So it is only in first normal form.''',
+beat(p, '''Now let's find the highest normal form. First, always find the candidate keys. Example one: R is A B C D, where A B determines C, and A determines D.
+The key is A B. Now, A determines D is a partial dependency, because D depends only on A, which is just a part of the key. So this relation is only in first normal form.''',
      Stamp(1650, 140, 'NUMERICAL'), S(0, 'Ex 1: R(ABCD), AB -> C, A -> D', size=36), T(1, 'Key = AB.  A -> D: D depends on part of key (partial)'),
      T(2, f'=> highest normal form: [h:{nf1}]', color='red'))
 beat(p, '''Example two: A B determines C, and C determines D. The key is A B. No partial dependency, so it is in second normal form.
@@ -532,7 +532,7 @@ but may not preserve dependencies.''',
 
 # ===================================================================================== CH 8
 p = chapter(8)
-beat(p, 'Chapter eight. Transactions and serializability.')
+beat(p, 'Now, chapter eight. We move on to transactions and serializability.')
 
 p = page('Transaction & ACID Properties', 8)
 beat(p, '''A transaction is a set of operations that form one logical unit of work. For example, transferring five hundred rupees from account A to account B:
@@ -583,7 +583,7 @@ T3 reads X, and later T1 writes X, so draw T3 to T1. T3 writes Y, and later T2 r
      Tab(180, 300, [70, 150, 150, 150], 40, rows, size=26),
      *Tree({'T3': (1150, 420, 'T3', 'red'), 'T1': (1000, 650, 'T1', 'blue'), 'T2': (1400, 650, 'T2', 'blue')}, [('T3', 'T1'), ('T3', 'T2')], w=110, h=76, size=32, head=True),
      Arr(1058, 650, 1342, 650, color='black', label='Z', ly=-14), T(0, 'X', x=1050, y=530, size=28, color='red'), T(0, 'Y', x=1300, y=530, size=28, color='red'))
-beat(p, f'''The graph has no cycle. So the schedule is conflict serializable, and the equivalent serial order comes from the topological sort: T3, then T1, then T2.''',
+beat(p, f'''There is no cycle in this graph. So the schedule is conflict serializable. To get the equivalent serial order, do a topological sort, which gives T3 first, then T1, and then T2.''',
      T(0, 'No cycle  =>  [h:conflict serializable]', x=960, y=L(12), size=34, color='green'),
      T(0, f"Serial order: {' -> '.join('T' + str(t) for t in order)}", x=960, y=L(13), size=36, color='red'))
 beat(p, '''Second example: R1 A, R2 A, W1 A, W2 A. T1 reads A before T2 writes it, so T1 to T2. T2 reads A before T1 writes it, so T2 to T1. That is a cycle,
@@ -631,8 +631,8 @@ We detect it with a wait for graph. A cycle means a deadlock.''',
      *Tree({'T1': (1250, 330, 'T1', 'red'), 'T2': (1650, 330, 'T2', 'red')}, [('T1', 'T2')], w=120, h=80, size=32, head=True),
      Arr(1590, 370, 1310, 370, color='black', curve=-60, label='waits', ly=40, size=26), T(0, 'waits', x=1410, y=300, size=26),
      T(1, 'Wait-for graph: [r:cycle = deadlock]'))
-beat(p, '''Deadlock prevention uses timestamps, where an older transaction has a smaller timestamp. In wait die, if an older transaction wants a lock held by a younger one,
-the older one waits. If a younger one wants a lock held by an older one, the younger one dies, which means it is rolled back.''',
+beat(p, '''To prevent deadlocks, we can use timestamps. An older transaction has a smaller timestamp. In the wait die scheme, when an older transaction needs a lock that a younger one holds,
+the older one simply waits. But when a younger one needs a lock that an older one holds, the younger one dies, which means it is rolled back.''',
      Stamp(1650, 470), S(3, 'Prevention (older = smaller timestamp)', size=36, color='red'),
      Tab(180, 470, [330, 420, 420], 58, [['Requester', 'Wait-die', 'Wound-wait'], ['Older', '[g:waits]', '[r:wounds] (kills) younger'], ['Younger', '[r:dies] (rollback)', '[g:waits]']],
          size=30))
@@ -685,9 +685,9 @@ beat(p, '''Records are stored in files. A heap file stores records in any order.
 beat(p, '''An index is like the index of a book. It helps find records without reading the whole file. A dense index has an entry for every record.
 A sparse index has an entry for only some records, usually one per block, so the file must be sorted.''',
      T(2, '[h:Dense]: entry for every record'), T(3, '[h:Sparse]: entry per block (file must be sorted)'), Stamp(1600, 280))
-beat(p, '''A primary index is on the ordering key field of a sorted file, and is sparse. A clustering index is on an ordering field that is not a key.
-A secondary index is on a non ordering field, and is dense. A file can have only one primary or clustering index, but many secondary indexes.
-When an index becomes too big, we build a multilevel index, an index on the index.''',
+beat(p, '''A primary index is built on the ordering key field of a sorted file, and it is sparse. A clustering index is built on an ordering field that is not a key.
+A secondary index is built on a non ordering field, and it is dense. Each file can have just one primary or clustering index, but it can have many secondary indexes.
+And when an index grows too big, we build a multilevel index, which is simply an index on the index.''',
      Tab(180, 470, [280, 540, 300], 54, [['Index', 'Built on', 'Dense / sparse'], ['Primary', 'ordering KEY field', 'sparse'], ['Clustering', 'ordering NON-key field', 'sparse'],
          ['Secondary', 'non-ordering field', 'dense']], size=30, colors={(r, 0): 'red' for r in range(1, 4)}),
      T(13, 'one primary OR clustering, many secondary;  big index -> [h:multilevel index]', size=32, color='green'))
@@ -698,8 +698,8 @@ beat(p, '''A classic numerical. A file has thirty thousand records. The block si
 So the blocking factor is one thousand twenty four divided by one hundred, which is ten records per block, and the file needs three thousand blocks.''',
      Stamp(1650, 140, 'NUMERICAL'), T(0, 'r = 30,000 records, B = 1024 bytes, R = 100 bytes', color='black'),
      T(1, f'bfr = ⌊1024 / 100⌋ = {ix["bfr"]} records per block'), T(2, f'blocks b = 30,000 / {ix["bfr"]} = [h:{ix["b"]}]'))
-beat(p, f'''Without an index, a linear search needs about half the blocks on average, fifteen hundred. If the file is sorted on the key, binary search needs
-log base 2 of three thousand, rounded up, which is twelve block accesses.''',
+beat(p, f'''With no index, a linear search reads about half of the blocks on average, so fifteen hundred block accesses. If the file is sorted on the key, a binary search needs
+log base two of three thousand, rounded up. That is twelve block accesses.''',
      T(4, f'Linear search: b / 2 = {ix["lin"]} block accesses (average)'), T(5, f'Binary search: ⌈log2 {ix["b"]}⌉ = [h:{ix["binary"]}]'))
 beat(p, f'''Now build a primary index. Each index entry has a nine byte key and a six byte block pointer, so fifteen bytes. That gives sixty eight entries per block.
 We need one entry per data block, so three thousand entries, which fit in forty five index blocks. Binary search on the index takes six accesses,
@@ -708,8 +708,8 @@ plus one to read the data block. That is seven, instead of twelve.''',
      T(9, f'Accesses = ⌈log2 {ix["bi"]}⌉ + 1 = 6 + 1 = [h:{ix["idx"]}]', color='red', size=40), T(10, f'{ix["binary"]} -> {ix["idx"]} block accesses with the index', color='green'))
 
 p = page('B Tree vs B+ Tree', 10)
-beat(p, '''B trees and B plus trees are balanced search trees used for multilevel indexes. All leaves are at the same level, so search is always fast.
-In a B tree, data pointers are stored in all nodes. In a B plus tree, data pointers are only in the leaves, and internal nodes only guide the search.''',
+beat(p, '''B trees and B plus trees are balanced search trees, and they are used for multilevel indexes. Every leaf sits at the same level, so searching is always fast.
+In a B tree, data pointers are kept in every node. In a B plus tree, the data pointers are kept only in the leaves, and the internal nodes just guide the search.''',
      T(0, 'Balanced: all leaves at the same level'),
      Tab(180, 320, [380, 520, 560], 56, [['', 'B tree', 'B+ tree'], ['data pointers', 'in all nodes', 'only in leaves'], ['keys repeated?', 'no', 'yes (copied up)'],
          ['leaves linked?', 'no', '[g:yes], easy range queries'], ['fan-out', 'smaller', '[g:larger] (more keys per node)'], ['used in', 'less common', 'most DBMS indexes']], size=28,
@@ -761,8 +761,8 @@ beat(p, '''Notice: every key appears in a leaf, the leaves are linked for range 
 
 HT, probes = linear_probe([10, 22, 31, 4, 15, 28, 17, 88, 59], 11)
 p = page('Hashing', 10)
-beat(p, '''Hashing finds a record directly using a hash function on the key, like key mod table size. When two keys go to the same slot, it is a collision.
-Chaining keeps a linked list in each slot. Open addressing finds another free slot, using linear probing, quadratic probing, or double hashing.''',
+beat(p, '''Hashing finds a record directly, by applying a hash function to the key, for example the key mod the table size. When two keys land in the same slot, we call it a collision.
+Chaining keeps a linked list in every slot. Open addressing looks for another free slot, using linear probing, quadratic probing, or double hashing.''',
      T(0, 'h(k) = k mod m;   same slot = [r:collision]'), T(1, '[k:Chaining]: list per slot   [k:Open addressing]: linear / quadratic probing'))
 beat(p, '''Example. Insert ten, twenty two, thirty one, four, fifteen, twenty eight, seventeen, eighty eight and fifty nine into a table of size eleven with linear probing.
 Fifteen goes to slot four, which is taken by four, so it moves to five. Seventeen moves from six to seven. Eighty eight moves from zero to one.
@@ -804,8 +804,8 @@ beat(p, '''Relational algebra queries and division. S Q L with group by, having,
 And the normal forms, with finding the highest normal form.''', *[T(k, f'{k + 1}. {qq}', x=200, size=36) for k, qq in enumerate(qs) if 4 <= k < 8])
 beat(p, '''Lossless join and dependency preservation. A C I D and conflict serializability with the precedence graph. Two phase locking, deadlocks and timestamps.
 And the B plus tree order, insertion, and the indexing numerical.''', *[T(k, f'{k + 1}. {qq}', x=200, size=36) for k, qq in enumerate(qs) if k >= 8])
-beat(p, '''One more tip for the exam. In normalization questions, always find the candidate keys first. And for numericals, write the formula before the answer.
-That way, you still get step marks, even if the final answer goes wrong.''',
+beat(p, '''Here's one last exam tip. In normalization questions, always start by finding the candidate keys. And in numericals, write the formula before the answer.
+This way you still earn step marks, even if your final answer goes wrong.''',
      T(13, 'Tip: find candidate keys first; [h:write the formula first] => step marks!', color='red'))
 
 p = page('All the Best!', 11, kind='outro')

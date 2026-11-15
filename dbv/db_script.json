@@ -3068,7 +3068,7 @@
      ]
     },
     {
-     "say": "Outer joins also keep rows without a match. A left outer join keeps all rows of the left table, and fills null on the right. A right outer join keeps all rows of the right table. And a full outer join keeps all rows of both.",
+     "say": "Outer joins also keep the rows that have no match. A left outer join keeps every row of the left table, and puts null on the right side. A right outer join keeps every row of the right table. And a full outer join keeps every row from both tables.",
      "els": [
       {
        "t": "text",
@@ -4504,7 +4504,7 @@
      ]
     },
     {
-     "say": "So the candidate keys are A C D, B C D and C D E. The prime attributes are those in any candidate key. Here, all five attributes are prime.",
+     "say": "So we get three candidate keys: A C D, B C D, and C D E. A prime attribute is one that appears in some candidate key. In this example, all five attributes are prime.",
      "els": [
       {
        "t": "text",
@@ -4983,7 +4983,7 @@
    "ch": 7,
    "beats": [
     {
-     "say": "Let's find the highest normal form. Step one, always find the candidate keys. Example one: R is A B C D, with A B determines C, and A determines D. The key is A B. A determines D is a partial dependency, because D depends on only A, a part of the key. So it is only in first normal form.",
+     "say": "Now let's find the highest normal form. First, always find the candidate keys. Example one: R is A B C D, where A B determines C, and A determines D. The key is A B. Now, A determines D is a partial dependency, because D depends only on A, which is just a part of the key. So this relation is only in first normal form.",
      "els": [
       {
        "t": "stamp",
@@ -5242,7 +5242,7 @@
    "ch": 8,
    "beats": [
     {
-     "say": "Chapter eight. Transactions and serializability.",
+     "say": "Now, chapter eight. We move on to transactions and serializability.",
      "els": []
     }
    ],
@@ -5957,7 +5957,7 @@
      ]
     },
     {
-     "say": "The graph has no cycle. So the schedule is conflict serializable, and the equivalent serial order comes from the topological sort: T3, then T1, then T2.",
+     "say": "There is no cycle in this graph. So the schedule is conflict serializable. To get the equivalent serial order, do a topological sort, which gives T3 first, then T1, and then T2.",
      "els": [
       {
        "t": "text",
@@ -6444,7 +6444,7 @@
      ]
     },
     {
-     "say": "Deadlock prevention uses timestamps, where an older transaction has a smaller timestamp. In wait die, if an older transaction wants a lock held by a younger one, the older one waits. If a younger one wants a lock held by an older one, the younger one dies, which means it is rolled back.",
+     "say": "To prevent deadlocks, we can use timestamps. An older transaction has a smaller timestamp. In the wait die scheme, when an older transaction needs a lock that a younger one holds, the older one simply waits. But when a younger one needs a lock that an older one holds, the younger one dies, which means it is rolled back.",
      "els": [
       {
        "t": "stamp",
@@ -6988,7 +6988,7 @@
      ]
     },
     {
-     "say": "A primary index is on the ordering key field of a sorted file, and is sparse. A clustering index is on an ordering field that is not a key. A secondary index is on a non ordering field, and is dense. A file can have only one primary or clustering index, but many secondary indexes. When an index becomes too big, we build a multilevel index, an index on the index.",
+     "say": "A primary index is built on the ordering key field of a sorted file, and it is sparse. A clustering index is built on an ordering field that is not a key. A secondary index is built on a non ordering field, and it is dense. Each file can have just one primary or clustering index, but it can have many secondary indexes. And when an index grows too big, we build a multilevel index, which is simply an index on the index.",
      "els": [
       {
        "t": "table",
@@ -7093,7 +7093,7 @@
      ]
     },
     {
-     "say": "Without an index, a linear search needs about half the blocks on average, fifteen hundred. If the file is sorted on the key, binary search needs log base 2 of three thousand, rounded up, which is twelve block accesses.",
+     "say": "With no index, a linear search reads about half of the blocks on average, so fifteen hundred block accesses. If the file is sorted on the key, a binary search needs log base two of three thousand, rounded up. That is twelve block accesses.",
      "els": [
       {
        "t": "text",
@@ -7164,7 +7164,7 @@
    "ch": 10,
    "beats": [
     {
-     "say": "B trees and B plus trees are balanced search trees used for multilevel indexes. All leaves are at the same level, so search is always fast. In a B tree, data pointers are stored in all nodes. In a B plus tree, data pointers are only in the leaves, and internal nodes only guide the search.",
+     "say": "B trees and B plus trees are balanced search trees, and they are used for multilevel indexes. Every leaf sits at the same level, so searching is always fast. In a B tree, data pointers are kept in every node. In a B plus tree, the data pointers are kept only in the leaves, and the internal nodes just guide the search.",
      "els": [
       {
        "t": "text",
@@ -7918,7 +7918,7 @@
    "ch": 10,
    "beats": [
     {
-     "say": "Hashing finds a record directly using a hash function on the key, like key mod table size. When two keys go to the same slot, it is a collision. Chaining keeps a linked list in each slot. Open addressing finds another free slot, using linear probing, quadratic probing, or double hashing.",
+     "say": "Hashing finds a record directly, by applying a hash function to the key, for example the key mod the table size. When two keys land in the same slot, we call it a collision. Chaining keeps a linked list in every slot. Open addressing looks for another free slot, using linear probing, quadratic probing, or double hashing.",
      "els": [
       {
        "t": "text",
@@ -8379,7 +8379,7 @@
      ]
     },
     {
-     "say": "One more tip for the exam. In normalization questions, always find the candidate keys first. And for numericals, write the formula before the answer. That way, you still get step marks, even if the final answer goes wrong.",
+     "say": "Here's one last exam tip. In normalization questions, always start by finding the candidate keys. And in numericals, write the formula before the answer. This way you still earn step marks, even if your final answer goes wrong.",
      "els": [
       {
        "t": "text",
