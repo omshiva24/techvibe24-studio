@@ -395,8 +395,8 @@ def cover_parts(outro):
     ld.rounded_rectangle([0, 0, 1179, 639], radius=36, fill=(251, 248, 239, 255))
     for i in range(6): ld.line([(40, 250 + 62 * i), (1140, 250 + 62 * i)], fill=(176, 200, 232, 255), width=2)
     if not outro:
-        ld.text((590, 140), 'MATHEMATICAL FOUNDATIONS', font=font('bold', 74), fill=INK['black'] + (255,), anchor='ms')
-        ld.text((590, 228), 'of Computer Science  ·  one shot', font=font('body', 54), fill=INK['blue'] + (255,), anchor='ms')
+        ld.text((590, 162), 'MATHEMATICAL FOUNDATIONS', font=font('bold', 66), fill=INK['black'] + (255,), anchor='ms')
+        ld.text((590, 236), 'of Computer Science  ·  one shot', font=font('body', 54), fill=INK['blue'] + (255,), anchor='ms')
         ld.text((590, 360), 'B.Sc (Hons) CS  ·  Pondicherry Univ. + all universities', font=font('body', 42), fill=INK['red'] + (255,), anchor='ms')
         ld.text((590, 470), 'Simple explanation + handwritten notes', font=font('body', 44), fill=INK['green'] + (255,), anchor='ms')
         ld.text((590, 590), 'Name: ____________     @TECHVIBE24', font=font('cav', 50), fill=INK['blue'] + (255,), anchor='ms')

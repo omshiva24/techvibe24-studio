@@ -353,7 +353,7 @@ beat(p, '''Computers store numbers in binary, base two. To convert a decimal num
 For two hundred and forty one: divide by two again and again. Reading the remainders upwards gives one one one one zero zero zero one.''',
      Stamp(1650, 140, 'NUMERICAL'), T(0, 'decimal -> base b: divide by b, read remainders [h:bottom to top]', size=34),
      Tab(180, 300, [180, 180, 200], 46, [['n', 'n / 2', 'remainder']] + [[str(n), str(q), f'[r:{r}]'] for n, q, r in st2], size=28),
-     Arr(820, 700, 820, 330, 'red', label='read up', lx=70, ly=0, size=26), T(0, f'241 = ([h:{b2}])₂', x=900, y=520, size=40, color='black'))
+     Arr(800, 700, 800, 330, 'red'), T(0, 'read up', x=760, y=310, size=26, color='red'), T(0, f'241 = ([h:{b2}])₂', x=900, y=520, size=40, color='black'))
 beat(p, f'''To convert binary to octal, group the bits in threes from the right. For hexadecimal, group them in fours. So two hundred and forty one is F one in hexadecimal. And twelve thousand three hundred and forty five
 is three zero zero seven one in octal. To go back to decimal, multiply each digit by the power of the base and add.''',
      T(0, '[k:binary -> hex]: groups of 4 bits;  binary -> octal: groups of 3', x=900, y=L(8), size=30),
@@ -538,8 +538,8 @@ p = page('Groups & Algebraic Structures', 11)
 beat(p, '''An algebraic structure is a set with one or more operations. A binary operation on G is closed if combining two elements of G gives an element of G.
 A semigroup is closed and associative. A monoid is a semigroup with an identity element. A group is a monoid where every element has an inverse. And if the operation is also commutative, it is an abelian group.''',
      Stamp(1650, 140, 'MOST ASKED'),
-     Tab(180, 260, [320, 260, 260, 260, 260], 54, [['', 'Closure', 'Associative', 'Identity', 'Inverse'], ['Semigroup', '✓', '✓', '', ''], ['Monoid', '✓', '✓', '✓', ''],
-         ['[h:Group]', '✓', '✓', '✓', '✓'], ['Abelian group', 'group + commutative', '', '', '']], size=29, colors={(r, c): 'green' for r in range(1, 4) for c in range(1, 5)}),
+     Tab(180, 260, [300, 200, 230, 200, 200, 260], 54, [['', 'Closure', 'Associative', 'Identity', 'Inverse', 'Commutative'], ['Semigroup', '✓', '✓', '', '', ''], ['Monoid', '✓', '✓', '✓', '', ''],
+         ['[h:Group]', '✓', '✓', '✓', '✓', ''], ['Abelian group', '✓', '✓', '✓', '✓', '✓']], size=29, colors={(r, cc): 'green' for r in range(1, 5) for cc in range(1, 6)}),
      T(7, 'e.g. (ℕ, +): monoid (identity 0, no inverses)   ·   (ℤ, +): abelian group', size=32))
 beat(p, '''Example: the integers mod four under addition mod four. Here is its Cayley table. Every row has each element exactly once. The identity is zero. The inverse of one is three, of two is two, and of three is one.
 It is commutative, so it is an abelian group. It is also cyclic, because one generates every element: one, two, three, zero.''',
@@ -602,7 +602,7 @@ deg = {v: sum(v in e for e in gbe) for v in gb}
 p = page('Graph Basics & Handshaking Lemma', 13)
 beat(p, '''A graph G is a set of vertices V and a set of edges E. The degree of a vertex is the number of edges touching it. In this graph, b and d have degree three, and the others have degree two.''',
      T(0, '[h:G = (V, E)];  degree = number of edges at a vertex', size=36),
-     *sum([WEdge(gb[a], gb[b]) for a, b in gbe], []), *[Node(gb[v], v) for v in gb], *[T(0, str(deg[v]), x=gb[v][0] + 40, y=gb[v][1] - 34, size=26, color='red') for v in gb])
+     *sum([WEdge(gb[a], gb[b]) for a, b in gbe], []), *[Node(gb[v], v) for v in gb], *[T(0, str(deg[v]), x=gb[v][0] + 60 * (gb[v][0] - 1400) / math.hypot(gb[v][0] - 1400, gb[v][1] - 520) - 7, y=gb[v][1] + 60 * (gb[v][1] - 520) / math.hypot(gb[v][0] - 1400, gb[v][1] - 520) + 9, size=26, color='red') for v in gb])
 beat(p, f'''The handshaking lemma: the sum of all degrees equals twice the number of edges, because each edge adds two to the total. Here the degrees add up to twelve, so there are six edges.
 A result: the number of vertices with odd degree is always even.''',
      Stamp(1650, 140, 'MOST ASKED'), T(2, '[h:Σ deg(v) = 2|E|]', size=40, color='red'), T(3, f'{" + ".join(str(deg[v]) for v in gb)} = {sum(deg.values())} = 2 × {len(gbe)} ✓', size=34),
