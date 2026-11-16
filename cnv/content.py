@@ -337,7 +337,7 @@ which is x cube plus x square plus one.''',
      T(1, 'generator has 4 bits  =>  append [h:3 zeros]', size=34), T(2, 'divide 100100[r:000] by 1101 using XOR', size=34))
 beat(p, '''Now divide. At each step, if the leading bit is one, X O R with the generator. If the leading bit is zero, X O R with all zeros. Then bring down the next bit.
 After six steps, the remainder is zero zero one.''',
-     crc_div(1060, 270, D_, Gn, size=30, rh=40))
+     crc_div(1150, 270, D_, Gn, size=36, rh=46))
 beat(p, f'''So the C R C is zero zero one, and the transmitted codeword is the data followed by the remainder: one zero zero one zero zero zero zero one.
 The receiver divides the whole codeword by the same generator. If the remainder is zero, there is no error. A C R C with r bits detects all burst errors of length r or less.''',
      T(4, f'Remainder (CRC) = [h:{rem}]', size=36, color='red'), T(5, f'Codeword = 100100 + {rem} = [h:{code}]', size=36, color='black'),
@@ -362,7 +362,7 @@ beat(p, f'''Now suppose bit five gets flipped, and the receiver gets zero one on
 Writing them as c four, c two, c one gives one zero one, which is five in binary. So the error is at position five. Flip it back, and we get the correct codeword.''',
      T(10, f'Received: {bad[:4]}[r:{bad[4]}]{bad[5:]}', size=36, color='black'),
      T(11, f'c4 c2 c1 = {s4} {s2} {s1} = [h:{pos}]  =>  error at position {pos}, flip it', size=36),
-     T(13, 'Hamming code: corrects 1-bit errors, detects 2-bit errors (d_min = 3)', size=30, color='green'))
+     T(13, 'd_min = 3: corrects 1-bit errors (or only detects up to 2-bit errors)', size=30, color='green'))
 
 # ===================================================================================== CH 4
 p = chapter(4)
@@ -375,10 +375,10 @@ beat(p, '''Flow control makes sure a fast sender does not overwhelm a slow recei
 In stop and wait A R Q, the sender sends one frame, then stops and waits for its acknowledgement.''',
      T(0, '[h:Flow control]: don\'t overwhelm a slow receiver', size=34), T(1, '[h:ARQ]: ACKs + timer + retransmission', size=34), T(2, 'Stop-and-wait: send [r:one] frame, wait for its ACK', size=34),
      Life(sx, 300, 960, 'Sender'), Life(rx, 300, 960, 'Receiver'),
-     Msg(sx, rx, 340, 'Frame 0', 'blue'), Msg(rx, sx, 400, 'ACK 1', 'green'), Msg(sx, rx, 470, 'Frame 1', 'blue'))
+     Msg(sx, rx, 340, 'Frame 0', 'blue'), Msg(rx, sx, 400, 'ACK 1', 'green'), Arr(sx, 500, 1392, 520, color='blue', label='Frame 1', ly=-22, size=26))
 beat(p, '''If a frame is lost, the sender's timer runs out, and it sends the frame again. Sequence numbers zero and one are used, so the receiver can spot duplicate frames. One bit is enough.''',
-     Ln([(1380, 495), (1420, 535)], 'red', 5), Ln([(1420, 495), (1380, 535)], 'red', 5), T(0, 'lost', x=1440, y=500, size=26, color='red'),
-     Ln([(sx - 30, 480), (sx - 30, 650)], 'red', 4), T(0, 'timeout', x=sx - 160, y=575, size=26, color='red'),
+     Ln([(1392, 500), (1432, 540)], 'red', 5), Ln([(1432, 500), (1392, 540)], 'red', 5), T(0, 'lost', x=1390, y=578, size=26, color='red'),
+     Ln([(sx - 30, 510), (sx - 30, 660)], 'red', 4), T(0, 'timeout', x=sx - 160, y=575, size=26, color='red'),
      Msg(sx, rx, 680, 'Frame 1 (again)', 'blue'), Msg(rx, sx, 740, 'ACK 0', 'green'),
      T(4, 'Seq. numbers 0, 1  =>  [k:1 bit]', size=34), T(5, 'lost frame / lost ACK  =>  timeout => resend', size=34))
 beat(p, '''The efficiency of stop and wait is one divided by one plus two a, where a is propagation delay divided by transmission delay. When the distance is large, a is large, and stop and wait wastes most of the time.''',
@@ -736,8 +736,8 @@ Video calls need low delay and low jitter, while file transfer needs high reliab
 p = chapter(11)
 beat(p, 'Chapter eleven. The application layer, and network security.')
 
-dns_nodes = {'root': (1320, 300, 'root', 'red', 120), 'com': (1080, 450, '.com', 'blue', 110), 'in': (1320, 450, '.in', 'blue', 100), 'org': (1560, 450, '.org', 'blue', 110),
-             'g': (1080, 600, 'google', 'green', 140), 'ac': (1320, 600, 'ac', 'green', 100), 'pu': (1320, 750, 'pondiuni', 'green', 160)}
+dns_nodes = {'root': (1440, 300, 'root', 'red', 120), 'com': (1200, 450, '.com', 'blue', 110), 'in': (1440, 450, '.in', 'blue', 100), 'org': (1680, 450, '.org', 'blue', 110),
+             'g': (1200, 600, 'google', 'green', 140), 'ac': (1440, 600, 'ac', 'green', 100), 'pu': (1440, 750, 'pondiuni', 'green', 160)}
 def dns_tree():
     out = []; done = set()
     def ell(n): cx, cy, lab, col, w = dns_nodes[n]; return Ell(cx - w / 2, cy - 28, w, 56, lab, color=col, size=26, lc=col)
