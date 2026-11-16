@@ -25,3 +25,5 @@ sev/build/
 sev/__pycache__/
 tocv/build/
 tocv/__pycache__/
+cnv/build/
+cnv/__pycache__/
