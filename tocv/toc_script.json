@@ -1,0 +1,7356 @@
+{
+ "pages": [
+  {
+   "kind": "cover",
+   "title": "Theory of Computation",
+   "ch": 0,
+   "beats": [
+    {
+     "say": "Theory of Computation. The complete subject in one video. Simple explanations, handwritten notes, state diagrams, and every important exam problem solved step by step.",
+     "els": []
+    },
+    {
+     "say": "This works for B Tech computer science in almost every university. A K T U, Anna University, V T U, J N T U, Mumbai, Pune, and private universities too. And it covers the full theory of computation part of GATE. So grab a pen, and let's start.",
+     "els": []
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Contents",
+   "ch": 0,
+   "beats": [
+    {
+     "say": "Here's our plan. Twelve chapters, from the basics to the exam problems.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "What we will cover today",
+       "size": 42,
+       "font": "bold",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "We start with the basics, then finite automata: D F A, N F A, minimization, regular expressions, and the pumping lemma.",
+     "els": [
+      {
+       "t": "text",
+       "x": 200,
+       "y": 276,
+       "s": "1.  Basics & Chomsky hierarchy",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 330,
+       "s": "2.  [h:DFA]  (design, divisibility)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 384,
+       "s": "3.  [h:NFA]  (NFA to DFA)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 438,
+       "s": "4.  [h:DFA minimization]  & Moore / Mealy",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 492,
+       "s": "5.  Regular expressions  (Arden's theorem)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 546,
+       "s": "6.  [h:Pumping lemma]  & closure properties",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Then context free grammars, the C Y K algorithm, pushdown automata, Turing machines, decidability, and P versus N P. At the end, a quick revision of the most asked questions. The highlighted topics are the most important.",
+     "els": [
+      {
+       "t": "text",
+       "x": 200,
+       "y": 600,
+       "s": "7.  [h:CFG]  (ambiguity, CNF)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 654,
+       "s": "8.  CYK & properties of CFLs",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 708,
+       "s": "9.  [h:Pushdown automata]",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 762,
+       "s": "10.  [h:Turing machines]",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 816,
+       "s": "11.  [h:Decidability]  & P vs NP",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 870,
+       "s": "12.  Exam revision",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "stamp",
+       "x": 1520,
+       "y": 560,
+       "text": "MOST ASKED",
+       "color": "red",
+       "rot": -10,
+       "size": 34
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Basics of Theory of Computation",
+   "ch": 1,
+   "beats": [
+    {
+     "say": "Chapter one. The basics. Let's learn the language of this subject first.",
+     "els": []
+    }
+   ],
+   "num": 1,
+   "subs": [
+    "Alphabet, string, language",
+    "Operations on languages",
+    "Chomsky hierarchy"
+   ],
+   "stars": 3
+  },
+  {
+   "kind": "page",
+   "title": "Alphabet, String & Language",
+   "ch": 1,
+   "beats": [
+    {
+     "say": "Theory of computation studies what computers can and cannot do, using simple mathematical machines called automata. An alphabet, written as sigma, is a finite, non empty set of symbols. For example, sigma equals zero and one, or sigma equals a and b.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Automata] = simple mathematical models of computers",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[h:Alphabet Σ] = finite, non-empty set of symbols",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "Σ = {0, 1}   or   Σ = {a, b}",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "A string is a finite sequence of symbols from the alphabet, like a b b a. Its length is the number of symbols, so the length of a b b a is four. The empty string, written epsilon, has length zero. Sigma star is the set of all strings over sigma, including epsilon. Sigma plus is the same, without epsilon.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "[h:String]: finite sequence of symbols, e.g. w = abba,  |w| = 4",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "[h:ε] = empty string,  |ε| = 0",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "Σ* = all strings (including ε);   Σ+ = Σ* - {ε}",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "Σ^k = strings of length k;  |Σ^k| = |Σ|^k",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    },
+    {
+     "say": "A language is any set of strings over an alphabet. It can be finite, like the strings of length two, or infinite, like all strings that start with a. The empty language, written phi, has no strings at all, which is different from the language that contains only epsilon.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "[h:Language L] ⊆ Σ*  (any set of strings)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "e.g. L = {aa, ab, ba, bb} (finite),  L = {w | w starts with a} (infinite)",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "∅ = no strings  ≠  {ε} = one string (the empty one)",
+       "size": 38,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "stamp",
+       "x": 1600,
+       "y": 700,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Operations & The Chomsky Hierarchy",
+   "ch": 1,
+   "beats": [
+    {
+     "say": "Operations on languages. Union, intersection and complement work like sets. Concatenation joins every string of L one with every string of L two. The Kleene star of L is all strings formed by joining zero or more strings of L. And the reverse of a string writes it backwards.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "L1 ∪ L2,  L1 ∩ L2,  complement,  [k:L1L2] (concatenation)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[k:L*] = ε ∪ L ∪ LL ∪ LLL ...   (Kleene star);   reverse: (abc)^R = cba",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "The Chomsky hierarchy arranges languages in four types. Type three, regular languages, are generated by regular grammars and accepted by finite automata. Type two, context free languages, are accepted by pushdown automata. Type one, context sensitive languages, by linear bounded automata. And type zero, recursively enumerable languages, are accepted by Turing machines. Each type contains the one below it.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "MOST ASKED",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "table",
+       "x": 180,
+       "y": 330,
+       "cw": [
+        170,
+        380,
+        520,
+        500
+       ],
+       "rh": 56,
+       "rows": [
+        [
+         "Type",
+         "Language",
+         "Grammar",
+         "Machine"
+        ],
+        [
+         "3",
+         "Regular",
+         "regular (A -> aB | a)",
+         "finite automata"
+        ],
+        [
+         "2",
+         "Context-free",
+         "A -> α",
+         "pushdown automata"
+        ],
+        [
+         "1",
+         "Context-sensitive",
+         "αAβ -> αγβ  (|γ| ≥ 1)",
+         "linear bounded automata"
+        ],
+        [
+         "0",
+         "Recursively enumerable",
+         "unrestricted",
+         "Turing machine"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {
+        "1,3": "red",
+        "2,3": "red",
+        "3,3": "red",
+        "4,3": "red"
+       },
+       "fills": {}
+      }
+     ]
+    },
+    {
+     "say": "Remember it as nested circles. Regular is the smallest, inside context free, inside context sensitive, inside recursively enumerable.",
+     "els": [
+      {
+       "t": "ellipse",
+       "x": 980,
+       "y": 640,
+       "w": 840,
+       "h": 370,
+       "label": null,
+       "color": "blue",
+       "size": 32,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1090,
+       "y": 685,
+       "w": 620,
+       "h": 280,
+       "label": null,
+       "color": "green",
+       "size": 32,
+       "fill": null,
+       "lc": "green"
+      },
+      {
+       "t": "ellipse",
+       "x": 1200,
+       "y": 730,
+       "w": 400,
+       "h": 190,
+       "label": null,
+       "color": "red",
+       "size": 32,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "ellipse",
+       "x": 1300,
+       "y": 775,
+       "w": 200,
+       "h": 100,
+       "label": "Regular",
+       "color": "black",
+       "size": 26,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "text",
+       "x": 1015,
+       "y": 835,
+       "s": "RE",
+       "size": 28,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 1115,
+       "y": 835,
+       "s": "CSL",
+       "size": 28,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 1222,
+       "y": 835,
+       "s": "CFL",
+       "size": 28,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 870,
+       "s": "Regular ⊂ CFL ⊂ CSL ⊂ RE",
+       "size": 36,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Deterministic Finite Automata",
+   "ch": 2,
+   "beats": [
+    {
+     "say": "Chapter two. Deterministic finite automata. Designing D F As is the most common exam question.",
+     "els": []
+    }
+   ],
+   "num": 2,
+   "subs": [
+    "DFA as a 5-tuple",
+    "Designing DFAs",
+    "Divisibility DFA"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "DFA: Definition",
+   "ch": 2,
+   "beats": [
+    {
+     "say": "A deterministic finite automaton, or D F A, is a machine with a finite number of states. It reads the input one symbol at a time, and moves from state to state. It has no memory other than its current state.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:DFA]: finite states, reads input left to right, no extra memory",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Formally, a D F A is a five tuple: Q, sigma, delta, q zero, F. Q is the finite set of states. Sigma is the input alphabet. Delta is the transition function, from Q cross sigma to Q. q zero is the start state. And F is the set of final, or accepting, states.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "M = (Q, Σ, δ, q0, F)",
+       "size": 42,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "Q) finite set of states",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "Σ) input alphabet",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "δ) transition function  δ : Q × Σ -> Q",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "q0) start state",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "F) set of final states, F ⊆ Q",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "In a D F A, every state has exactly one move for every input symbol. The string is accepted if the machine ends in a final state after reading the whole input. We draw states as circles, the start state with an arrow, and final states as double circles.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "exactly [r:one] move for each state and symbol;  accept if it ends in F",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1258,
+       "y": 778,
+       "w": 84,
+       "h": 84,
+       "label": "q",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1168,
+        820
+       ],
+       "p2": [
+        1254,
+        820
+       ],
+       "color": "green",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "green"
+      },
+      {
+       "t": "text",
+       "x": 1210,
+       "y": 915,
+       "s": "start state",
+       "size": 26,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "ellipse",
+       "x": 1558,
+       "y": 778,
+       "w": 84,
+       "h": 84,
+       "label": "f",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1566,
+       "y": 786,
+       "w": 68,
+       "h": 68,
+       "label": null,
+       "color": "blue",
+       "size": 32,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "text",
+       "x": 1530,
+       "y": 915,
+       "s": "final state",
+       "size": 26,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "DFA Design: Strings Ending with \"ab\"",
+   "ch": 2,
+   "beats": [
+    {
+     "say": "Let's design a D F A for all strings over a and b that end with a b. First, write a few strings in the language: a b, a a b, b a b, a b a b. We need three states. q zero means we have not seen anything useful. q one means the last symbol was a. q two means the last two symbols were a b, which is the final state.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "NUMERICAL",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "L = { w ∈ {a, b}* | w ends with ab }",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "e.g. ab, aab, bab, abab ...",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "[k:q0]: nothing useful   [k:q1]: last symbol a   [k:q2]: last two ab ([r:final])",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Now the moves. From q zero, a goes to q one, and b stays in q zero. From q one, a stays in q one, because the last symbol is still a, and b goes to q two. From q two, a goes back to q one, and b goes back to q zero, because b b does not help us.",
+     "els": [
+      {
+       "t": "ellipse",
+       "x": 1008,
+       "y": 598,
+       "w": 84,
+       "h": 84,
+       "label": "q0",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        918,
+        640
+       ],
+       "p2": [
+        1004,
+        640
+       ],
+       "color": "green",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "green"
+      },
+      {
+       "t": "ellipse",
+       "x": 1338,
+       "y": 598,
+       "w": 84,
+       "h": 84,
+       "label": "q1",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1668,
+       "y": 598,
+       "w": 84,
+       "h": 84,
+       "label": "q2",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1676,
+       "y": 606,
+       "w": 68,
+       "h": 68,
+       "label": null,
+       "color": "blue",
+       "size": 32,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1092,
+        640
+       ],
+       "p2": [
+        1334,
+        640
+       ],
+       "color": "black",
+       "label": "a",
+       "lx": 0,
+       "ly": -10,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1422,
+        630
+       ],
+       "p2": [
+        1664,
+        630
+       ],
+       "color": "black",
+       "label": "b",
+       "lx": 0,
+       "ly": -40,
+       "curve": -60,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1668,
+        650
+       ],
+       "p2": [
+        1426,
+        650
+       ],
+       "color": "black",
+       "label": "a",
+       "lx": 0,
+       "ly": 60,
+       "curve": -60,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1668,
+        640
+       ],
+       "p2": [
+        1096,
+        640
+       ],
+       "color": "black",
+       "label": "b",
+       "lx": 0,
+       "ly": 180,
+       "curve": -300,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1028,
+        601
+       ],
+       "p2": [
+        1072,
+        601
+       ],
+       "color": "black",
+       "label": "b",
+       "lx": 0,
+       "ly": -82,
+       "curve": -140,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1358,
+        601
+       ],
+       "p2": [
+        1402,
+        601
+       ],
+       "color": "black",
+       "label": "a",
+       "lx": 0,
+       "ly": -82,
+       "curve": -140,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "table",
+       "x": 180,
+       "y": 420,
+       "cw": [
+        150,
+        150,
+        150
+       ],
+       "rh": 54,
+       "rows": [
+        [
+         "δ",
+         "a",
+         "b"
+        ],
+        [
+         "-> q0",
+         "q1",
+         "q0"
+        ],
+        [
+         "q1",
+         "q1",
+         "q2"
+        ],
+        [
+         "* q2",
+         "q1",
+         "q0"
+        ]
+       ],
+       "color": "black",
+       "size": 30,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      }
+     ]
+    },
+    {
+     "say": "Let's test the string a b a b. Start at q zero. a goes to q one, b to q two, a to q one, and b to q two. We end in q two, a final state, so a b a b is accepted.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "abab:  q0 -> q1 -> q2 -> q1 -> q2   [g:accepted ✓]",
+       "size": 34,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "Minimal DFA for \"ends with a string of length n\" has n + 1 states",
+       "size": 32,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "DFA for Binary Numbers Divisible by 3",
+   "ch": 2,
+   "beats": [
+    {
+     "say": "Another favourite: a D F A for binary numbers divisible by three. The trick is to keep the remainder. There are three possible remainders, zero, one and two, so we need three states. When we read a new bit, the number doubles and the bit is added. So the new remainder is two times the old remainder plus the bit, mod three.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "NUMERICAL",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "States = remainders 0, 1, 2  (q0 = start & [r:final])",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "new remainder = (2 × r + bit) mod 3",
+       "size": 40,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "From q zero: zero gives zero, one gives one. From q one: zero gives two, and one gives three mod three, which is zero. From q two: zero gives four mod three, one, and one gives five mod three, two.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 380,
+       "cw": [
+        170,
+        170,
+        170
+       ],
+       "rh": 54,
+       "rows": [
+        [
+         "δ",
+         "0",
+         "1"
+        ],
+        [
+         "->* q0",
+         "q0",
+         "q1"
+        ],
+        [
+         "q1",
+         "q2",
+         "q0"
+        ],
+        [
+         "q2",
+         "q1",
+         "q2"
+        ]
+       ],
+       "color": "black",
+       "size": 30,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "ellipse",
+       "x": 1058,
+       "y": 598,
+       "w": 84,
+       "h": 84,
+       "label": "q0",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1066,
+       "y": 606,
+       "w": 68,
+       "h": 68,
+       "label": null,
+       "color": "blue",
+       "size": 32,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        968,
+        640
+       ],
+       "p2": [
+        1054,
+        640
+       ],
+       "color": "green",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "green"
+      },
+      {
+       "t": "ellipse",
+       "x": 1378,
+       "y": 598,
+       "w": 84,
+       "h": 84,
+       "label": "q1",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1698,
+       "y": 598,
+       "w": 84,
+       "h": 84,
+       "label": "q2",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1142,
+        640
+       ],
+       "p2": [
+        1374,
+        640
+       ],
+       "color": "black",
+       "label": "1",
+       "lx": 0,
+       "ly": -45,
+       "curve": -70,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1378,
+        640
+       ],
+       "p2": [
+        1146,
+        640
+       ],
+       "color": "black",
+       "label": "1",
+       "lx": 0,
+       "ly": 65,
+       "curve": -70,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1462,
+        640
+       ],
+       "p2": [
+        1694,
+        640
+       ],
+       "color": "black",
+       "label": "0",
+       "lx": 0,
+       "ly": -45,
+       "curve": -70,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1698,
+        640
+       ],
+       "p2": [
+        1466,
+        640
+       ],
+       "color": "black",
+       "label": "0",
+       "lx": 0,
+       "ly": 65,
+       "curve": -70,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1078,
+        601
+       ],
+       "p2": [
+        1122,
+        601
+       ],
+       "color": "black",
+       "label": "0",
+       "lx": 0,
+       "ly": -82,
+       "curve": -140,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1718,
+        601
+       ],
+       "p2": [
+        1762,
+        601
+       ],
+       "color": "black",
+       "label": "1",
+       "lx": 0,
+       "ly": -82,
+       "curve": -140,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      }
+     ]
+    },
+    {
+     "say": "Check: twelve is one one zero zero in binary. The path is q zero, q one, q zero, q zero, q zero. It ends in q zero, so twelve is divisible by three. Ten is one zero one zero, which ends in q one, so it is not divisible. In general, binary numbers divisible by n need n states.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "12 = 1100: q0 -> q1 -> q0 -> q0 -> q0  [g:✓]",
+       "size": 32,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "10 = 1010: q0 -> q1 -> q2 -> q2 -> q1  [r:✗]",
+       "size": 32,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 870,
+       "s": "Divisible by n (binary)  =>  n states",
+       "size": 34,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 924,
+       "s": "Tip: #a mod 3 = 0 AND #b mod 2 = 0  =>  3 × 2 = 6 states (product)",
+       "size": 32,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "DFA for Even a's and Even b's",
+   "ch": 2,
+   "beats": [
+    {
+     "say": "Next: a D F A for strings with an even number of a's and an even number of b's. We track two things at once, whether the count of a's is even or odd, and whether the count of b's is even or odd. That gives two times two, four states.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "NUMERICAL",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "L = { w | #a even  AND  #b even }",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[k:q0]: (even, even)  [r:start & final]",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "[k:q1]: (odd a, even b)",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "[k:q2]: (even a, odd b)",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "[k:q3]: (odd, odd)",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Reading a changes only the a count, so it moves left and right: q zero and q one swap, and q two and q three swap. Reading b changes only the b count, so it moves up and down: q zero and q two swap, and q one and q three swap.",
+     "els": [
+      {
+       "t": "ellipse",
+       "x": 1108,
+       "y": 378,
+       "w": 84,
+       "h": 84,
+       "label": "q0",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1116,
+       "y": 386,
+       "w": 68,
+       "h": 68,
+       "label": null,
+       "color": "blue",
+       "size": 32,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1018,
+        420
+       ],
+       "p2": [
+        1104,
+        420
+       ],
+       "color": "green",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "green"
+      },
+      {
+       "t": "ellipse",
+       "x": 1518,
+       "y": 378,
+       "w": 84,
+       "h": 84,
+       "label": "q1",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1108,
+       "y": 738,
+       "w": 84,
+       "h": 84,
+       "label": "q2",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1518,
+       "y": 738,
+       "w": 84,
+       "h": 84,
+       "label": "q3",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1192,
+        420
+       ],
+       "p2": [
+        1514,
+        420
+       ],
+       "color": "black",
+       "label": "a",
+       "lx": 0,
+       "ly": -40,
+       "curve": -60,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1518,
+        420
+       ],
+       "p2": [
+        1196,
+        420
+       ],
+       "color": "black",
+       "label": "a",
+       "lx": 0,
+       "ly": 60,
+       "curve": -60,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1192,
+        780
+       ],
+       "p2": [
+        1514,
+        780
+       ],
+       "color": "black",
+       "label": "a",
+       "lx": 0,
+       "ly": -40,
+       "curve": -60,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1518,
+        780
+       ],
+       "p2": [
+        1196,
+        780
+       ],
+       "color": "black",
+       "label": "a",
+       "lx": 0,
+       "ly": 60,
+       "curve": -60,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1150,
+        462
+       ],
+       "p2": [
+        1150,
+        734
+       ],
+       "color": "black",
+       "label": "b",
+       "lx": 50,
+       "ly": 10,
+       "curve": -60,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1150,
+        738
+       ],
+       "p2": [
+        1150,
+        466
+       ],
+       "color": "black",
+       "label": "b",
+       "lx": -50,
+       "ly": 10,
+       "curve": -60,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1560,
+        462
+       ],
+       "p2": [
+        1560,
+        734
+       ],
+       "color": "black",
+       "label": "b",
+       "lx": 50,
+       "ly": 10,
+       "curve": -60,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1560,
+        738
+       ],
+       "p2": [
+        1560,
+        466
+       ],
+       "color": "black",
+       "label": "b",
+       "lx": -50,
+       "ly": 10,
+       "curve": -60,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      }
+     ]
+    },
+    {
+     "say": "Test a b a b. q zero, then a to q one, b to q three, a to q two, and b back to q zero. Two a's and two b's, and we end in q zero, so it is accepted. If the question changes to even a's or even b's, keep the same machine, and only change the final states.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "abab: q0 -> q1 -> q3 -> q2 -> q0  [g:✓]",
+       "size": 32,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "Same 4 states, change only F:",
+       "size": 32,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "#a odd, #b odd => F = {q3}",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "#a even OR #b even => F = {q0, q1, q2}",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "NFA & Epsilon-NFA",
+   "ch": 3,
+   "beats": [
+    {
+     "say": "Chapter three. Non deterministic finite automata, and how to convert them into D F As.",
+     "els": []
+    }
+   ],
+   "num": 3,
+   "subs": [
+    "NFA vs DFA",
+    "NFA to DFA (subset construction)",
+    "Epsilon-closure"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "NFA: Definition",
+   "ch": 3,
+   "beats": [
+    {
+     "say": "In a non deterministic finite automaton, or N F A, a state can have zero, one, or many moves on the same symbol. So the machine can be in many states at once. A string is accepted if at least one path ends in a final state. The only change in the five tuple is delta, which goes from Q cross sigma to the power set of Q.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:NFA]: zero, one or many moves on a symbol",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "accept if [r:at least one] path ends in a final state",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "M = (Q, Σ, δ, q0, F),   δ : Q × Σ -> 2^Q",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "Example: strings over zero and one whose second last symbol is one. q zero loops on zero and one, and guesses on one that this is the second last symbol, moving to q one. Then any symbol takes it to q two, the final state. This N F A has only three states, and it is much easier to design than the D F A.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "L = { w | second last symbol is 1 }",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 1058,
+       "y": 558,
+       "w": 84,
+       "h": 84,
+       "label": "q0",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        968,
+        600
+       ],
+       "p2": [
+        1054,
+        600
+       ],
+       "color": "green",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "green"
+      },
+      {
+       "t": "ellipse",
+       "x": 1378,
+       "y": 558,
+       "w": 84,
+       "h": 84,
+       "label": "q1",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1698,
+       "y": 558,
+       "w": 84,
+       "h": 84,
+       "label": "q2",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1706,
+       "y": 566,
+       "w": 68,
+       "h": 68,
+       "label": null,
+       "color": "blue",
+       "size": 32,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1078,
+        561
+       ],
+       "p2": [
+        1122,
+        561
+       ],
+       "color": "black",
+       "label": "0, 1",
+       "lx": 0,
+       "ly": -82,
+       "curve": -140,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1142,
+        600
+       ],
+       "p2": [
+        1374,
+        600
+       ],
+       "color": "black",
+       "label": "1",
+       "lx": 0,
+       "ly": -10,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1462,
+        600
+       ],
+       "p2": [
+        1694,
+        600
+       ],
+       "color": "black",
+       "label": "0, 1",
+       "lx": 0,
+       "ly": -10,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      }
+     ]
+    },
+    {
+     "say": "Important facts. Every N F A can be converted to an equivalent D F A, so both accept exactly the regular languages. But the D F A may need up to two to the power n states.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 690,
+       "cw": [
+        380,
+        520,
+        520
+       ],
+       "rh": 54,
+       "rows": [
+        [
+         "",
+         "DFA",
+         "NFA"
+        ],
+        [
+         "moves per symbol",
+         "exactly one",
+         "zero, one or many"
+        ],
+        [
+         "ε-moves",
+         "no",
+         "allowed (ε-NFA)"
+        ],
+        [
+         "power",
+         "regular languages",
+         "[g:same] (regular languages)"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {
+        "1,0": "red",
+        "2,0": "red",
+        "3,0": "red"
+       },
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 978,
+       "s": "n-state NFA  ->  DFA with up to [h:2^n] states",
+       "size": 34,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "NFA to DFA: Subset Construction",
+   "ch": 3,
+   "beats": [
+    {
+     "say": "To convert an N F A to a D F A, we use subset construction. Each D F A state is a set of N F A states. Start with the set containing only q zero. For each set and each symbol, find all the N F A states we can reach. If it is a new set, add it as a new D F A state.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "NUMERICAL",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "DFA state = set of NFA states;  start = {q0}",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "δ_D(S, a) = ∪ δ_N(q, a) for q in S",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Let's convert our N F A. From q zero, zero gives q zero, and one gives q zero and q one, a new state. From q zero q one, zero gives q zero and q two, and one gives q zero, q one and q two. We continue until no new sets appear. We get four states.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 330,
+       "cw": [
+        130,
+        380,
+        380,
+        380
+       ],
+       "rh": 56,
+       "rows": [
+        [
+         "DFA",
+         "NFA states",
+         "on 0",
+         "on 1"
+        ],
+        [
+         "A",
+         "{q0}",
+         "A = {q0}",
+         "B = {q0, q1}"
+        ],
+        [
+         "B",
+         "{q0, q1}",
+         "C = {q0, q2}",
+         "D = {q0, q1, q2}"
+        ],
+        [
+         "C *",
+         "{q0, q2}",
+         "A = {q0}",
+         "B = {q0, q1}"
+        ],
+        [
+         "D *",
+         "{q0, q1, q2}",
+         "C = {q0, q2}",
+         "D = {q0, q1, q2}"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {
+        "3,0": "red",
+        "4,0": "red"
+       },
+       "fills": {}
+      }
+     ]
+    },
+    {
+     "say": "Any set that contains the N F A final state q two is a final state of the D F A. So C and D are final. The N F A had three states, and the D F A has four.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "Final DFA states: any set containing q2  =>  [h:C, D]",
+       "size": 38,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "NFA: 3 states  ->  DFA: 4 states  (≤ 2^3 = 8)",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Epsilon-NFA & Epsilon-Closure",
+   "ch": 3,
+   "beats": [
+    {
+     "say": "An epsilon N F A can also move without reading any input, using epsilon moves. The epsilon closure of a state is the set of all states we can reach using only epsilon moves, including the state itself.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:ε-NFA]: can move without reading input",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[h:ε-closure(q)] = q + all states reachable by ε-moves only",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Example. q zero has an epsilon move to q one, q one loops on a, q one has an epsilon move to q two, and q two loops on b. The epsilon closure of q zero is q zero, q one and q two. The epsilon closure of q one is q one and q two. And the epsilon closure of q two is only q two.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "ellipse",
+       "x": 1058,
+       "y": 518,
+       "w": 84,
+       "h": 84,
+       "label": "q0",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        968,
+        560
+       ],
+       "p2": [
+        1054,
+        560
+       ],
+       "color": "green",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "green"
+      },
+      {
+       "t": "ellipse",
+       "x": 1378,
+       "y": 518,
+       "w": 84,
+       "h": 84,
+       "label": "q1",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1698,
+       "y": 518,
+       "w": 84,
+       "h": 84,
+       "label": "q2",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1706,
+       "y": 526,
+       "w": 68,
+       "h": 68,
+       "label": null,
+       "color": "blue",
+       "size": 32,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1142,
+        560
+       ],
+       "p2": [
+        1374,
+        560
+       ],
+       "color": "black",
+       "label": "ε",
+       "lx": 0,
+       "ly": -10,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1462,
+        560
+       ],
+       "p2": [
+        1694,
+        560
+       ],
+       "color": "black",
+       "label": "ε",
+       "lx": 0,
+       "ly": -10,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1398,
+        521
+       ],
+       "p2": [
+        1442,
+        521
+       ],
+       "color": "black",
+       "label": "a",
+       "lx": 0,
+       "ly": -82,
+       "curve": -140,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1718,
+        521
+       ],
+       "p2": [
+        1762,
+        521
+       ],
+       "color": "black",
+       "label": "b",
+       "lx": 0,
+       "ly": -82,
+       "curve": -140,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "ε-closure(q0) = {q0, q1, q2}",
+       "size": 38,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "ε-closure(q1) = {q1, q2}",
+       "size": 38,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "ε-closure(q2) = {q2}",
+       "size": 38,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "To convert an epsilon N F A to a D F A, the start state becomes the epsilon closure of q zero, and after every move we take the epsilon closure again. This machine accepts a star b star.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 924,
+       "s": "ε-NFA -> DFA: start = ε-closure(q0); after each move, take ε-closure",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 978,
+       "s": "This ε-NFA accepts a*b*",
+       "size": 34,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "DFA Minimization & Moore/Mealy",
+   "ch": 4,
+   "beats": [
+    {
+     "say": "Chapter four. D F A minimization, and Moore and Mealy machines.",
+     "els": []
+    }
+   ],
+   "num": 4,
+   "subs": [
+    "Equivalent states",
+    "Partition method",
+    "Moore & Mealy machines"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "DFA Minimization: Partition Method",
+   "ch": 4,
+   "beats": [
+    {
+     "say": "Minimization finds the D F A with the fewest states for the same language. Two states are equivalent if, for every input string, both lead to final states or both lead to non final states. Step one: remove unreachable states. Step two: split the states into groups again and again, until no group changes.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "NUMERICAL",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Equivalent states]: same accept / reject result for every string",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "1) remove unreachable states   2) refine groups until no change",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Here is a D F A with six states, A to F. A is the start state, and E is the final state. No arrow comes into F, so F is unreachable. We remove it.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 330,
+       "cw": [
+        140,
+        120,
+        120
+       ],
+       "rh": 50,
+       "rows": [
+        [
+         "δ",
+         "a",
+         "b"
+        ],
+        [
+         "-> A",
+         "B",
+         "C"
+        ],
+        [
+         "B",
+         "B",
+         "D"
+        ],
+        [
+         "C",
+         "B",
+         "C"
+        ],
+        [
+         "D",
+         "B",
+         "E"
+        ],
+        [
+         "* E",
+         "B",
+         "C"
+        ],
+        [
+         "F",
+         "D",
+         "E"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {
+        "6,0": "red",
+        "6,1": "red",
+        "6,2": "red"
+       },
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 716,
+       "s": "F is [r:unreachable]  ->  remove",
+       "size": 32,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "Zero equivalence: split into non final states A, B, C, D, and the final state E. One equivalence: on input b, D goes to the final state E, but A, B and C do not. So D separates. Two equivalence: on b, B goes to D, but A and C go to C. So B separates. Three equivalence: nothing changes, so we stop. A and C are equivalent.",
+     "els": [
+      {
+       "t": "text",
+       "x": 720,
+       "y": 330,
+       "s": "P0:  {ABCD}  {E}",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 720,
+       "y": 384,
+       "s": "P1:  {ABC}  {D}  {E}",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 720,
+       "y": 438,
+       "s": "P2:  {AC}  {B}  {D}  {E}",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 720,
+       "y": 492,
+       "s": "P3:  {AC}  {B}  {D}  {E}   (no change)",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 720,
+       "y": 546,
+       "s": "=> [h:A ≡ C]",
+       "size": 38,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "So the minimized D F A has four states: A C together, B, D and E. This is the D F A for a or b star, a b b.",
+     "els": [
+      {
+       "t": "ellipse",
+       "x": 858,
+       "y": 788,
+       "w": 84,
+       "h": 84,
+       "label": "AC",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        768,
+        830
+       ],
+       "p2": [
+        854,
+        830
+       ],
+       "color": "green",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "green"
+      },
+      {
+       "t": "ellipse",
+       "x": 1138,
+       "y": 788,
+       "w": 84,
+       "h": 84,
+       "label": "B",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1418,
+       "y": 788,
+       "w": 84,
+       "h": 84,
+       "label": "D",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1698,
+       "y": 788,
+       "w": 84,
+       "h": 84,
+       "label": "E",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1706,
+       "y": 796,
+       "w": 68,
+       "h": 68,
+       "label": null,
+       "color": "blue",
+       "size": 32,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        942,
+        830
+       ],
+       "p2": [
+        1134,
+        830
+       ],
+       "color": "black",
+       "label": "a",
+       "lx": 0,
+       "ly": -10,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1222,
+        830
+       ],
+       "p2": [
+        1414,
+        830
+       ],
+       "color": "black",
+       "label": "b",
+       "lx": 0,
+       "ly": -10,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1502,
+        830
+       ],
+       "p2": [
+        1694,
+        830
+       ],
+       "color": "black",
+       "label": "b",
+       "lx": 0,
+       "ly": -10,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1418,
+        822
+       ],
+       "p2": [
+        1226,
+        822
+       ],
+       "color": "black",
+       "label": "a",
+       "lx": 0,
+       "ly": 70,
+       "curve": -80,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1698,
+        830
+       ],
+       "p2": [
+        1226,
+        830
+       ],
+       "color": "black",
+       "label": "a",
+       "lx": 0,
+       "ly": 115,
+       "curve": -170,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1698,
+        830
+       ],
+       "p2": [
+        946,
+        830
+       ],
+       "color": "black",
+       "label": "b",
+       "lx": 0,
+       "ly": -175,
+       "curve": 330,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        922,
+        869
+       ],
+       "p2": [
+        878,
+        869
+       ],
+       "color": "black",
+       "label": "b",
+       "lx": 0,
+       "ly": 96,
+       "curve": -140,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1158,
+        791
+       ],
+       "p2": [
+        1202,
+        791
+       ],
+       "color": "black",
+       "label": "a",
+       "lx": 0,
+       "ly": -82,
+       "curve": -140,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 978,
+       "s": "4 states;  accepts (a|b)*abb",
+       "size": 32,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Moore & Mealy Machines",
+   "ch": 4,
+   "beats": [
+    {
+     "say": "Finite automata only say yes or no. Moore and Mealy machines produce an output. In a Moore machine, the output depends only on the current state. It is a six tuple, with an output alphabet delta, and an output function lambda from Q to delta. For an input of length n, a Moore machine gives n plus one outputs.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Moore]: output depends on [r:state] only;   λ : Q -> Δ",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "input length n  =>  n + 1 outputs",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "In a Mealy machine, the output depends on the state and the current input, so the output is written on the transitions. For an input of length n, it gives n outputs. Every Moore machine can be converted to a Mealy machine and back, so they are equivalent.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "[h:Mealy]: output depends on [r:state + input];   λ : Q × Σ -> Δ",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "input length n  =>  n outputs",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Here is the comparison.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "MOST ASKED",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "table",
+       "x": 180,
+       "y": 470,
+       "cw": [
+        360,
+        560,
+        560
+       ],
+       "rh": 56,
+       "rows": [
+        [
+         "",
+         "Moore",
+         "Mealy"
+        ],
+        [
+         "output depends on",
+         "present state only",
+         "present state + input"
+        ],
+        [
+         "output written",
+         "inside the state",
+         "on the transition"
+        ],
+        [
+         "outputs for n inputs",
+         "n + 1",
+         "n"
+        ],
+        [
+         "number of states",
+         "usually more",
+         "usually fewer"
+        ],
+        [
+         "reaction to input",
+         "one step later",
+         "immediate"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {
+        "1,0": "red",
+        "2,0": "red",
+        "3,0": "red",
+        "4,0": "red",
+        "5,0": "red"
+       },
+       "fills": {}
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Regular Expressions",
+   "ch": 5,
+   "beats": [
+    {
+     "say": "Chapter five. Regular expressions, and Arden's theorem.",
+     "els": []
+    }
+   ],
+   "num": 5,
+   "subs": [
+    "Identities",
+    "RE to FA",
+    "FA to RE (Arden's theorem)"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "Regular Expressions & Identities",
+   "ch": 5,
+   "beats": [
+    {
+     "say": "A regular expression describes a regular language using three operators: union, written plus, concatenation, and the Kleene star. The basic expressions are phi, epsilon, and single symbols. For example, a plus b, star, a b b means any string that ends with a b b.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:RE operators]: + (union), concatenation, * (star);   base: ∅, ε, a",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "Precedence: * > concatenation > +",
+       "size": 38,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "(a + b)*abb = strings ending with abb",
+       "size": 38,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    },
+    {
+     "say": "Some common examples. All strings of a and b: a plus b star. Strings with at least one a: a plus b star, a, a plus b star. Strings of even length: open bracket a plus b, a plus b, close bracket, star. Strings that start and end with the same symbol: a, a plus b star, a, plus b, a plus b star, b, plus a, plus b.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "table",
+       "x": 180,
+       "y": 380,
+       "cw": [
+        660,
+        660
+       ],
+       "rh": 52,
+       "rows": [
+        [
+         "Language",
+         "Regular expression"
+        ],
+        [
+         "all strings",
+         "(a + b)*"
+        ],
+        [
+         "at least one a",
+         "(a + b)* a (a + b)*"
+        ],
+        [
+         "even length",
+         "((a + b)(a + b))*"
+        ],
+        [
+         "no two consecutive a",
+         "(b + ab)* (ε + a)"
+        ],
+        [
+         "start & end with same symbol",
+         "a(a+b)*a + b(a+b)*b + a + b"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      }
+     ]
+    },
+    {
+     "say": "Identities you must remember: phi plus R is R. phi R is phi. epsilon R is R. epsilon star is epsilon, and phi star is epsilon. R plus R is R. R star R star is R star. R R star is R plus. And a plus b star equals a star b star, star.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "∅ + R = R   ∅R = ∅   εR = R   ε* = ε   ∅* = ε",
+       "size": 34,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "R + R = R   R*R* = R*   RR* = R+   (R*)* = R*",
+       "size": 34,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 870,
+       "s": "(a + b)* = (a*b*)* = (a* + b*)*",
+       "size": 34,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "RE to Finite Automata",
+   "ch": 5,
+   "beats": [
+    {
+     "say": "To convert a regular expression to an automaton, we use Thompson's construction, which builds an epsilon N F A from small pieces. For a single symbol a, two states with an a move.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Thompson's construction]: RE -> ε-NFA, piece by piece",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "a",
+       "size": 36,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "ellipse",
+       "x": 438,
+       "y": 258,
+       "w": 84,
+       "h": 84,
+       "label": "i",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 738,
+       "y": 258,
+       "w": 84,
+       "h": 84,
+       "label": "f",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 746,
+       "y": 266,
+       "w": 68,
+       "h": 68,
+       "label": null,
+       "color": "blue",
+       "size": 32,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        522,
+        300
+       ],
+       "p2": [
+        734,
+        300
+       ],
+       "color": "black",
+       "label": "a",
+       "lx": 0,
+       "ly": -10,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      }
+     ]
+    },
+    {
+     "say": "For union, R plus S, add a new start state with epsilon moves to both machines, and epsilon moves from both to a new final state. For concatenation, R S, connect the final state of R to the start of S with an epsilon move.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "R + S",
+       "size": 36,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "ellipse",
+       "x": 258,
+       "y": 558,
+       "w": 84,
+       "h": 84,
+       "label": "i",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 470,
+       "y": 470,
+       "w": 200,
+       "h": 80,
+       "label": "R",
+       "color": "blue",
+       "size": 30,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 470,
+       "y": 650,
+       "w": 200,
+       "h": 80,
+       "label": "S",
+       "color": "blue",
+       "size": 30,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 818,
+       "y": 558,
+       "w": 84,
+       "h": 84,
+       "label": "f",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 826,
+       "y": 566,
+       "w": 68,
+       "h": 68,
+       "label": null,
+       "color": "blue",
+       "size": 32,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        330,
+        570
+       ],
+       "p2": [
+        470,
+        515
+       ],
+       "color": "black",
+       "label": "ε",
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 26,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        330,
+        630
+       ],
+       "p2": [
+        470,
+        690
+       ],
+       "color": "black",
+       "label": "ε",
+       "lx": 0,
+       "ly": 30,
+       "curve": 0,
+       "head": true,
+       "size": 26,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        670,
+        510
+       ],
+       "p2": [
+        820,
+        570
+       ],
+       "color": "black",
+       "label": "ε",
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 26,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        670,
+        690
+       ],
+       "p2": [
+        820,
+        630
+       ],
+       "color": "black",
+       "label": "ε",
+       "lx": 0,
+       "ly": 30,
+       "curve": 0,
+       "head": true,
+       "size": 26,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "text",
+       "x": 1150,
+       "y": 438,
+       "s": "RS",
+       "size": 36,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "rect",
+       "x": 1150,
+       "y": 560,
+       "w": 200,
+       "h": 80,
+       "label": "R",
+       "color": "blue",
+       "size": 30,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1460,
+       "y": 560,
+       "w": 200,
+       "h": 80,
+       "label": "S",
+       "color": "blue",
+       "size": 30,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1350,
+        600
+       ],
+       "p2": [
+        1460,
+        600
+       ],
+       "color": "black",
+       "label": "ε",
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 26,
+       "both": false,
+       "lc": "black"
+      }
+     ]
+    },
+    {
+     "say": "For the star, R star, add a new start and final state. Add epsilon moves to enter R, to skip it completely, and to go back from the end of R to its start, to repeat it.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "R*",
+       "size": 36,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "ellipse",
+       "x": 258,
+       "y": 838,
+       "w": 84,
+       "h": 84,
+       "label": "i",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 520,
+       "y": 840,
+       "w": 200,
+       "h": 80,
+       "label": "R",
+       "color": "blue",
+       "size": 30,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 878,
+       "y": 838,
+       "w": 84,
+       "h": 84,
+       "label": "f",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 886,
+       "y": 846,
+       "w": 68,
+       "h": 68,
+       "label": null,
+       "color": "blue",
+       "size": 32,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        342,
+        880
+       ],
+       "p2": [
+        520,
+        880
+       ],
+       "color": "black",
+       "label": "ε",
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 26,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        720,
+        880
+       ],
+       "p2": [
+        878,
+        880
+       ],
+       "color": "black",
+       "label": "ε",
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 26,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        300,
+        922
+       ],
+       "p2": [
+        920,
+        922
+       ],
+       "color": "black",
+       "label": "ε (skip)",
+       "lx": 0,
+       "ly": 78,
+       "curve": -120,
+       "head": true,
+       "size": 24,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        700,
+        840
+       ],
+       "p2": [
+        540,
+        840
+       ],
+       "color": "black",
+       "label": "ε (repeat)",
+       "lx": 0,
+       "ly": -56,
+       "curve": -80,
+       "head": true,
+       "size": 24,
+       "both": false,
+       "lc": "black"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "FA to RE: Arden's Theorem",
+   "ch": 5,
+   "beats": [
+    {
+     "say": "To convert a finite automaton to a regular expression, we use Arden's theorem. It says: if R equals Q plus R P, and P does not contain epsilon, then R equals Q P star. We write one equation for each state, showing how we can enter it, and add epsilon for the start state.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "NUMERICAL",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Arden]: R = Q + RP  (ε ∉ P)  =>  [r:R = QP*]",
+       "size": 40,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "Write an equation for each state: incoming moves (+ ε for start)",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Example. q one is the start state and q two is final. q one loops on a, q two loops on a, and b moves between them both ways. So q one equals epsilon, plus q one a, plus q two b. And q two equals q one b, plus q two a.",
+     "els": [
+      {
+       "t": "ellipse",
+       "x": 1178,
+       "y": 478,
+       "w": 84,
+       "h": 84,
+       "label": "q1",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1088,
+        520
+       ],
+       "p2": [
+        1174,
+        520
+       ],
+       "color": "green",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "green"
+      },
+      {
+       "t": "ellipse",
+       "x": 1578,
+       "y": 478,
+       "w": 84,
+       "h": 84,
+       "label": "q2",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1586,
+       "y": 486,
+       "w": 68,
+       "h": 68,
+       "label": null,
+       "color": "blue",
+       "size": 32,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1198,
+        481
+       ],
+       "p2": [
+        1242,
+        481
+       ],
+       "color": "black",
+       "label": "a",
+       "lx": 0,
+       "ly": -82,
+       "curve": -140,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1598,
+        481
+       ],
+       "p2": [
+        1642,
+        481
+       ],
+       "color": "black",
+       "label": "a",
+       "lx": 0,
+       "ly": -82,
+       "curve": -140,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1262,
+        520
+       ],
+       "p2": [
+        1574,
+        520
+       ],
+       "color": "black",
+       "label": "b",
+       "lx": 0,
+       "ly": -45,
+       "curve": -70,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1578,
+        520
+       ],
+       "p2": [
+        1266,
+        520
+       ],
+       "color": "black",
+       "label": "b",
+       "lx": 0,
+       "ly": 65,
+       "curve": -70,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "q1 = ε + q1 a + q2 b",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "q2 = q1 b + q2 a",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "Apply Arden to q two: q two equals q one b, a star. Put this in the first equation: q one equals epsilon plus q one, open bracket a plus b a star b. By Arden, q one equals a plus b a star b, star. So q two equals a plus b a star b, star, b a star. Since q two is final, that is the answer. It means all strings with an odd number of b's.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "q2 = q1 b a*        (Arden on q2)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "q1 = ε + q1 (a + b a* b)  =>  q1 = (a + ba*b)*",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "q2 = (a + ba*b)* b a*",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "RE = [h:(a + ba*b)* ba*]   = odd number of b's  ✓",
+       "size": 40,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Regular Grammar & Finite Automata",
+   "ch": 5,
+   "beats": [
+    {
+     "say": "Regular grammars are type three grammars. In a right linear grammar, every production looks like A goes to a B, or A goes to a. A left linear grammar has the variable on the left, like A goes to B a. Both generate exactly the regular languages.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Right linear]: A -> aB | a      [h:Left linear]: A -> Ba | a",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "both generate exactly the regular languages",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Converting a D F A to a right linear grammar is easy. Each state becomes a variable. For every move from A to B on a, write A goes to a B. And for every final state, add a production to epsilon. For our D F A for strings ending with a b, we get this grammar.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "δ(A, a) = B   =>   A -> aB;     final state F   =>   F -> ε",
+       "size": 34,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "q0 -> a q1 | b q0",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "q1 -> a q1 | b q2",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "q2 -> a q1 | b q0 | ε",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "(DFA for strings ending with ab)",
+       "size": 30,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    },
+    {
+     "say": "To go the other way, from a right linear grammar to a finite automaton, just reverse the steps. Variables become states, and each production becomes a move.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "Grammar -> FA: variables = states, A -> aB = move from A to B on a",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Properties of Regular Languages",
+   "ch": 6,
+   "beats": [
+    {
+     "say": "Chapter six. Properties of regular languages. The pumping lemma is asked in almost every exam.",
+     "els": []
+    }
+   ],
+   "num": 6,
+   "subs": [
+    "Pumping lemma",
+    "Closure properties",
+    "Myhill-Nerode"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "Pumping Lemma for Regular Languages",
+   "ch": 6,
+   "beats": [
+    {
+     "say": "The pumping lemma is used to prove that a language is not regular. It says: if L is regular, there is a number n, the pumping length, such that every string w in L with length at least n can be split as x y z, where the length of x y is at most n, y is not empty, and x y to the power i z is in L for every i greater than or equal to zero.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "MOST ASKED",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "L regular  =>  ∃ n: every w ∈ L, |w| ≥ n, w = xyz with",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[r:|xy| ≤ n],   [r:|y| ≥ 1],   [r:x y^i z ∈ L for all i ≥ 0]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "We use it by contradiction. Let's prove that a to the power n, b to the power n is not regular. Assume it is regular, with pumping length n. Take w equals a to the n, b to the n. Since x y has length at most n, y contains only a's. Say y is a to the k, with k at least one.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "Prove L = {aⁿbⁿ | n ≥ 0} is not regular",
+       "size": 36,
+       "font": "bold",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "1) Assume L is regular, pumping length n",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "2) w = aⁿbⁿ;  |xy| ≤ n  =>  y = a^k,  k ≥ 1",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Now pump with i equals two. x y y z has n plus k a's but only n b's. So it is not in L. This is a contradiction, so a to the n b to the n is not regular. A finite automaton cannot count without limit.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "3) i = 2:  x y² z = a^(n+k) bⁿ  ∉ L",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "4) [r:Contradiction]  =>  L is not regular",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1080,
+       "y": 690,
+       "w": 300,
+       "h": 70,
+       "label": "a a a ... a",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1380,
+       "y": 690,
+       "w": 280,
+       "h": 70,
+       "label": "b b b ... b",
+       "color": "green",
+       "size": 28,
+       "fill": null,
+       "lc": "green"
+      },
+      {
+       "t": "text",
+       "x": 1110,
+       "y": 800,
+       "s": "x",
+       "size": 30,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 1210,
+       "y": 800,
+       "s": "y (pump)",
+       "size": 30,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 1500,
+       "y": 800,
+       "s": "z",
+       "size": 30,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 924,
+       "s": "Not regular: aⁿbⁿ, ww, palindromes, a^(n²), a^p (p prime), equal a's and b's",
+       "size": 30,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Closure & Decision Properties of Regular Languages",
+   "ch": 6,
+   "beats": [
+    {
+     "say": "Regular languages are closed under almost every operation. If L one and L two are regular, then their union, intersection, complement, difference, concatenation, Kleene star, reverse, homomorphism and inverse homomorphism are all regular.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Closed under]: ∪, ∩, complement, difference, concatenation, *,",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 330,
+       "y": 276,
+       "s": "reverse, homomorphism, inverse homomorphism, quotient",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Watch out for GATE traps. A finite union of regular languages is regular, but an infinite union may not be. A subset of a regular language may not be regular: a to the n b to the n is a subset of a star b star, which is regular. Every finite language is regular.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "[r:Traps]: infinite union may not be regular",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "subset of regular may not be regular:  aⁿbⁿ ⊆ a*b*",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "every [g:finite] language is regular",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Decision properties: for regular languages, membership, emptiness, finiteness, and equivalence of two automata are all decidable. Emptiness is checked by seeing if any final state is reachable. Finiteness is checked by looking for a cycle on a path from the start to a final state.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "[h:Decidable]: membership, emptiness, finiteness, equivalence",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "empty: no final state reachable;  infinite: a useful cycle",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "The Myhill Nerode theorem says a language is regular if and only if it has a finite number of equivalence classes. That number is exactly the number of states in the minimal D F A.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "[k:Myhill-Nerode]: L regular <=> finitely many equivalence classes",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "#classes = #states of the minimal DFA",
+       "size": 34,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Context-Free Grammars",
+   "ch": 7,
+   "beats": [
+    {
+     "say": "Chapter seven. Context free grammars.",
+     "els": []
+    }
+   ],
+   "num": 7,
+   "subs": [
+    "Derivations & parse trees",
+    "Ambiguity",
+    "Simplification",
+    "CNF & GNF"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "Context-Free Grammar & Derivations",
+   "ch": 7,
+   "beats": [
+    {
+     "say": "A context free grammar is a four tuple: V, T, P, S. V is the set of variables, or non terminals. T is the set of terminals. P is the set of productions, where the left side is a single variable. And S is the start symbol. For example, S goes to a S b, or epsilon, generates a to the n b to the n, which is not regular.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "G = (V, T, P, S);   production: A -> α  (A is one variable)",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "S -> aSb | ε   generates  {aⁿbⁿ | n ≥ 0}",
+       "size": 38,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "A derivation replaces variables step by step. In a leftmost derivation, we always replace the leftmost variable. In a rightmost derivation, the rightmost one. For the grammar E goes to E plus E, E times E, or id, the leftmost derivation of id plus id times id is shown here.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "[k:Leftmost]: replace leftmost variable    [k:Rightmost]: rightmost",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "E -> E + E | E * E | id",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "E => E + E => id + E => id + E * E => id + id * E => id + id * id",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "A parse tree shows a derivation as a tree. The root is the start symbol, the inside nodes are variables, and the leaves, read from left to right, form the string, called the yield.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "[h:Parse tree]: root = start symbol",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "leaves (left to right) = the string (yield)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1180,
+       "y": 560,
+       "w": 80,
+       "h": 60,
+       "label": "E",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 1040,
+       "y": 660,
+       "w": 80,
+       "h": 60,
+       "label": "E",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 1190,
+       "y": 660,
+       "w": 60,
+       "h": 60,
+       "label": "+",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 1320,
+       "y": 660,
+       "w": 80,
+       "h": 60,
+       "label": "E",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 1040,
+       "y": 760,
+       "w": 80,
+       "h": 60,
+       "label": "id",
+       "color": "green",
+       "size": 26,
+       "fill": null,
+       "lc": "green"
+      },
+      {
+       "t": "ellipse",
+       "x": 1230,
+       "y": 760,
+       "w": 80,
+       "h": 60,
+       "label": "E",
+       "color": "black",
+       "size": 26,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 1330,
+       "y": 760,
+       "w": 60,
+       "h": 60,
+       "label": "*",
+       "color": "black",
+       "size": 26,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 1420,
+       "y": 760,
+       "w": 80,
+       "h": 60,
+       "label": "E",
+       "color": "black",
+       "size": 26,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "ellipse",
+       "x": 1230,
+       "y": 860,
+       "w": 80,
+       "h": 60,
+       "label": "id",
+       "color": "green",
+       "size": 26,
+       "fill": null,
+       "lc": "green"
+      },
+      {
+       "t": "ellipse",
+       "x": 1420,
+       "y": 860,
+       "w": 80,
+       "h": 60,
+       "label": "id",
+       "color": "green",
+       "size": 26,
+       "fill": null,
+       "lc": "green"
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         1205,
+         616
+        ],
+        [
+         1090,
+         660
+        ]
+       ],
+       "color": "black",
+       "w": 3
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         1220,
+         620
+        ],
+        [
+         1220,
+         660
+        ]
+       ],
+       "color": "black",
+       "w": 3
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         1235,
+         616
+        ],
+        [
+         1350,
+         660
+        ]
+       ],
+       "color": "black",
+       "w": 3
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         1080,
+         720
+        ],
+        [
+         1080,
+         760
+        ]
+       ],
+       "color": "black",
+       "w": 3
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         1345,
+         718
+        ],
+        [
+         1275,
+         760
+        ]
+       ],
+       "color": "black",
+       "w": 3
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         1360,
+         720
+        ],
+        [
+         1360,
+         760
+        ]
+       ],
+       "color": "black",
+       "w": 3
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         1375,
+         718
+        ],
+        [
+         1450,
+         760
+        ]
+       ],
+       "color": "black",
+       "w": 3
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         1270,
+         820
+        ],
+        [
+         1270,
+         860
+        ]
+       ],
+       "color": "black",
+       "w": 3
+      },
+      {
+       "t": "line",
+       "pts": [
+        [
+         1460,
+         820
+        ],
+        [
+         1460,
+         860
+        ]
+       ],
+       "color": "black",
+       "w": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Ambiguous Grammar",
+   "ch": 7,
+   "beats": [
+    {
+     "say": "A grammar is ambiguous if some string has two or more different parse trees, or two leftmost derivations. The expression grammar is ambiguous, because id plus id times id can be grouped as id plus, id times id, or as id plus id, times id.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Ambiguous]: a string has ≥ 2 parse trees (or 2 leftmost derivations)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "E -> E + E | E * E | id:   id + (id * id)   and   (id + id) * id",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "We remove ambiguity by adding precedence and associativity: E goes to E plus T or T, T goes to T times F or F, F goes to id. Some languages are inherently ambiguous, which means every grammar for them is ambiguous. For example, a to the i b to the j c to the k, where i equals j or j equals k.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "Unambiguous: E -> E + T | T,  T -> T * F | F,  F -> id",
+       "size": 34,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "[r:Inherently ambiguous]: { aⁱbʲcᵏ | i = j or j = k }",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Remember for GATE: checking whether any given context free grammar is ambiguous is undecidable. There is no algorithm that works for every grammar.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "GATE",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "Is a CFG ambiguous?  =>  [r:undecidable]",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Simplifying a CFG",
+   "ch": 7,
+   "beats": [
+    {
+     "say": "Before converting to a normal form, we simplify the grammar in three steps. First, remove null productions, that is, productions to epsilon. Second, remove unit productions, like A goes to B. And third, remove useless symbols, which are never reached from S or never produce a terminal string.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "NUMERICAL",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "1) remove [r:ε-productions]",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "2) remove [r:unit productions] (A -> B)",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "3) remove [r:useless symbols] (unreachable / non-generating)",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Example of null removal. S goes to A B A, A goes to a A or epsilon, B goes to b B or epsilon. A and B are nullable, so S is nullable too. For each production, add every version with the nullable symbols left out. From A B A we get A B A, A B, B A, A A, A and B. A goes to a A or a. B goes to b B or b.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "S -> ABA,  A -> aA | ε,  B -> bB | ε",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "Nullable: A, B, S",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "S -> ABA | AB | BA | AA | A | B",
+       "size": 38,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "A -> aA | a       B -> bB | b",
+       "size": 38,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "Example of unit removal. S goes to A or b b, A goes to B or b, and B goes to S or a. Through unit chains, S, A and B can all reach each other. So each gets all the non unit productions: a, b and b b.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "S -> A | bb,   A -> B | b,   B -> S | a",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "unit pairs: S, A, B all reach each other",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "S -> a | b | bb     A -> a | b | bb     B -> a | b | bb",
+       "size": 38,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Chomsky & Greibach Normal Forms",
+   "ch": 7,
+   "beats": [
+    {
+     "say": "In Chomsky normal form, or C N F, every production is either A goes to B C, two variables, or A goes to a, a single terminal. To convert, first simplify the grammar. Then replace terminals in long productions with new variables, and break long right sides into pairs.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "MOST ASKED",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:CNF]: A -> BC  or  A -> a",
+       "size": 40,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "simplify -> replace terminals -> break into pairs",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Example. S goes to a S b, or a b. Add A goes to a, and B goes to b. Then S goes to A S B, or A B. A S B has three variables, so add C goes to S B. The C N F is: S goes to A C or A B, C goes to S B, A goes to a, and B goes to b.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "S -> aSb | ab",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "A -> a,  B -> b   =>   S -> ASB | AB",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "C -> SB          =>   S -> AC | AB",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "CNF:  S -> AC | AB,   C -> SB,   A -> a,   B -> b",
+       "size": 40,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "In C N F, a string of length n always takes exactly two n minus one steps to derive, and its parse tree is a binary tree. In Greibach normal form, G N F, every production is A goes to a, followed by zero or more variables. A string of length n then takes exactly n steps.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "CNF: |w| = n  =>  [h:2n - 1] derivation steps",
+       "size": 36,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "[h:GNF]: A -> a α   (α = string of variables)",
+       "size": 40,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "GNF: |w| = n  =>  [h:n] derivation steps",
+       "size": 36,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "CYK & Properties of CFLs",
+   "ch": 8,
+   "beats": [
+    {
+     "say": "Chapter eight. The C Y K algorithm, and properties of context free languages.",
+     "els": []
+    }
+   ],
+   "num": 8,
+   "subs": [
+    "CYK algorithm",
+    "Pumping lemma for CFL",
+    "Closure properties"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "CYK Algorithm",
+   "ch": 8,
+   "beats": [
+    {
+     "say": "The C Y K algorithm checks if a string belongs to a context free grammar. The grammar must be in Chomsky normal form. It uses dynamic programming, filling a triangular table from short substrings to the whole string. It takes order n cube time.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "NUMERICAL",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:CYK]: membership test, grammar in CNF, dynamic programming, O(n³)",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "S -> AB | BC   A -> BA | a   B -> CC | b   C -> AB | a",
+       "size": 34,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "w = baaba",
+       "size": 34,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "Step one, single symbols. b comes from B. a comes from A and C. Step two, length two. For b a, we combine B with A or C. B A gives A, and B C gives S. So the cell is A and S. We continue for longer substrings, trying every way to split them into two parts.",
+     "els": [
+      {
+       "t": "table",
+       "x": 240,
+       "y": 390,
+       "cw": [
+        150,
+        210,
+        210,
+        210,
+        210,
+        210
+       ],
+       "rh": 60,
+       "rows": [
+        [
+         "len 5",
+         "{A, C, S}",
+         "",
+         "",
+         "",
+         ""
+        ],
+        [
+         "len 4",
+         "∅",
+         "{A, C, S}",
+         "",
+         "",
+         ""
+        ],
+        [
+         "len 3",
+         "∅",
+         "{B}",
+         "{B}",
+         "",
+         ""
+        ],
+        [
+         "len 2",
+         "{A, S}",
+         "{B}",
+         "{C, S}",
+         "{A, S}",
+         ""
+        ],
+        [
+         "len 1",
+         "{B}",
+         "{A, C}",
+         "{A, C}",
+         "{B}",
+         "{A, C}"
+        ],
+        [
+         "",
+         "b",
+         "a",
+         "a",
+         "b",
+         "a"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": false,
+       "order": "row",
+       "colors": {
+        "0,1": "red",
+        "5,1": "black",
+        "5,2": "black",
+        "5,3": "black",
+        "5,4": "black",
+        "5,5": "black"
+       },
+       "fills": {}
+      }
+     ]
+    },
+    {
+     "say": "The top cell, for the whole string, contains S. So b a a b a is generated by the grammar, and it is accepted.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 978,
+       "s": "S ∈ top cell  =>  \"baaba\" is [h:accepted]",
+       "size": 36,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Pumping Lemma for CFLs & Closure Properties",
+   "ch": 8,
+   "beats": [
+    {
+     "say": "The pumping lemma for context free languages: every long string w can be split into five parts, u v x y z, where the length of v x y is at most n, v y is not empty, and u v to the i, x, y to the i, z is in L for every i. Using it, we can prove that a to the n b to the n c to the n is not context free.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "w = uvxyz,  |vxy| ≤ n,  |vy| ≥ 1,  u vⁱ x yⁱ z ∈ L  ∀ i ≥ 0",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "Not CFL: aⁿbⁿcⁿ,  ww,  a^(n²),  a^p (p prime)",
+       "size": 34,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "Closure properties. Context free languages are closed under union, concatenation, Kleene star, reverse and homomorphism. But they are not closed under intersection and complement. For example, a to the n b to the n c to the m and a to the m b to the n c to the n are both context free, but their intersection, a to the n b to the n c to the n, is not.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "GATE",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "[g:Closed]: ∪, concatenation, *, reverse, homomorphism",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "[r:Not closed]: ∩, complement",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "aⁿbⁿcᵐ ∩ aᵐbⁿcⁿ = aⁿbⁿcⁿ  (not CFL)",
+       "size": 34,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "Two useful facts. The intersection of a context free language and a regular language is always context free. And deterministic context free languages are closed under complement, but not under union or intersection.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "CFL ∩ Regular = [h:CFL]",
+       "size": 36,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "DCFL: closed under complement; not under ∪, ∩",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Pushdown Automata",
+   "ch": 9,
+   "beats": [
+    {
+     "say": "Chapter nine. Pushdown automata.",
+     "els": []
+    }
+   ],
+   "num": 9,
+   "subs": [
+    "PDA as a 7-tuple",
+    "PDA for a^n b^n",
+    "DPDA vs NPDA"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "Pushdown Automata",
+   "ch": 9,
+   "beats": [
+    {
+     "say": "A pushdown automaton, or P D A, is a finite automaton with a stack. The stack gives it unlimited memory, but it can only use the top of the stack. That is why it can accept context free languages like a to the n b to the n.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:PDA] = finite automaton + [r:stack] (last in, first out)",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "accepts exactly the context-free languages",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1300,
+       "y": 360,
+       "w": 400,
+       "h": 70,
+       "label": "a  a  b  b  ...",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "text",
+       "x": 1720,
+       "y": 405,
+       "s": "input tape",
+       "size": 26,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1360,
+       "y": 520,
+       "w": 280,
+       "h": 110,
+       "label": "Finite\ncontrol",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1420,
+        520
+       ],
+       "p2": [
+        1360,
+        432
+       ],
+       "color": "red",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "red"
+      },
+      {
+       "t": "rect",
+       "x": 1380,
+       "y": 700,
+       "w": 120,
+       "h": 60,
+       "label": "a",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1380,
+       "y": 760,
+       "w": 120,
+       "h": 60,
+       "label": "a",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1380,
+       "y": 820,
+       "w": 120,
+       "h": 60,
+       "label": "Z0",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "text",
+       "x": 1520,
+       "y": 780,
+       "s": "stack",
+       "size": 26,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1500,
+        630
+       ],
+       "p2": [
+        1460,
+        700
+       ],
+       "color": "red",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "red"
+      }
+     ]
+    },
+    {
+     "say": "A P D A is a seven tuple: Q, sigma, gamma, delta, q zero, Z zero, and F. Gamma is the stack alphabet, and Z zero is the initial stack symbol. The transition function delta takes the state, an input symbol or epsilon, and the top of the stack, and gives a new state and a string to replace the top.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "M = (Q, Σ, Γ, δ, q0, Z0, F)",
+       "size": 40,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "Γ = stack alphabet,  Z0 = initial stack symbol",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "δ(q, a, X) = (p, γ):  read a, pop X, push γ",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "A P D A can accept in two ways: by final state, or by empty stack. Both are equivalent for non deterministic P D As.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "Acceptance: by [k:final state]  or  by [k:empty stack]  (equivalent)",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "PDA for aⁿbⁿ",
+   "ch": 9,
+   "beats": [
+    {
+     "say": "Let's design a P D A for a to the n b to the n, with n at least one. The idea: push every a onto the stack. Then for each b, pop one a. If the stack is back to Z zero when the input ends, the counts were equal, so we accept.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "NUMERICAL",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "Idea: push each a;  pop one a for each b;  accept when only Z0 is left",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "The transitions are: in q zero, on a with Z zero on top, push a. On a with a on top, push another a. On b with a on top, pop it and go to q one. In q one, on b with a on top, pop. And on epsilon with Z zero on top, go to the final state q f.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "δ(q0, a, Z0) = (q0, aZ0)       δ(q0, a, a) = (q0, aa)",
+       "size": 34,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "δ(q0, b, a) = (q1, ε)          δ(q1, b, a) = (q1, ε)",
+       "size": 34,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "δ(q1, ε, Z0) = (qf, Z0)",
+       "size": 34,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    },
+    {
+     "say": "Now the moves on a a b b, written as instantaneous descriptions: the state, the remaining input, and the stack. We push two a's, pop two a's, and reach q f. So a a b b is accepted.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 520,
+       "cw": [
+        200,
+        260,
+        260,
+        420
+       ],
+       "rh": 50,
+       "rows": [
+        [
+         "step",
+         "state",
+         "input",
+         "stack (top first)"
+        ],
+        [
+         "0",
+         "q0",
+         "aabb",
+         "Z0"
+        ],
+        [
+         "1",
+         "q0",
+         "abb",
+         "aZ0"
+        ],
+        [
+         "2",
+         "q0",
+         "bb",
+         "aaZ0"
+        ],
+        [
+         "3",
+         "q1",
+         "b",
+         "aZ0"
+        ],
+        [
+         "4",
+         "q1",
+         "ε",
+         "Z0"
+        ],
+        [
+         "5",
+         "qf",
+         "ε",
+         "Z0"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {
+        "6,1": "green"
+       },
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 1360,
+       "y": 860,
+       "s": "[g:accepted ✓]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "DPDA vs NPDA & CFG to PDA",
+   "ch": 9,
+   "beats": [
+    {
+     "say": "A deterministic P D A has at most one move in every situation. Non deterministic P D As are more powerful than deterministic ones. For example, even length palindromes, w w reverse, need a non deterministic P D A, because the machine must guess where the middle is. But w c w reverse, with a marker c in the middle, can be done by a D P D A.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "MOST ASKED",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:NPDA > DPDA]  (unlike DFA = NFA)",
+       "size": 38,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "ww^R needs NPDA (guess the middle);   wcw^R: DPDA is enough",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "So the power of machines: D F A equals N F A, but D P D A is less than N P D A. For Turing machines, deterministic and non deterministic are equal again.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 380,
+       "cw": [
+        420,
+        520,
+        360
+       ],
+       "rh": 56,
+       "rows": [
+        [
+         "Machine",
+         "Deterministic vs non-det.",
+         "Language"
+        ],
+        [
+         "Finite automata",
+         "DFA = NFA",
+         "regular"
+        ],
+        [
+         "Pushdown automata",
+         "[r:DPDA < NPDA]",
+         "DCFL ⊂ CFL"
+        ],
+        [
+         "Turing machine",
+         "DTM = NTM",
+         "RE"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      }
+     ]
+    },
+    {
+     "say": "Every context free grammar can be converted to a P D A, and every P D A to a context free grammar. Deterministic context free languages are never inherently ambiguous, which is why they are used to build parsers for programming languages.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "CFG <=> PDA (always convertible)",
+       "size": 36,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "DCFLs have unambiguous grammars (used in parsers: LR(k))",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "CFG to PDA Conversion",
+   "ch": 9,
+   "beats": [
+    {
+     "say": "A common exam question: convert a C F G to a P D A. We use a P D A with just one state, which accepts by empty stack. Start with S on the stack. For every production A goes to alpha, add a move that pops A and pushes alpha, without reading input. And for every terminal a, add a move that reads a and pops a.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "NUMERICAL",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "one state q, accept by empty stack, start with S on the stack",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "A -> α   =>   δ(q, ε, A) = (q, α)",
+       "size": 36,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "terminal a   =>   δ(q, a, a) = (q, ε)",
+       "size": 36,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "Example: S goes to a S b, or a b. The moves are: on epsilon with S on top, replace S with a S b, or with a b. On a with a on top, pop. And on b with b on top, pop.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "S -> aSb | ab",
+       "size": 38,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "δ(q, ε, S) = { (q, aSb), (q, ab) }",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "δ(q, a, a) = (q, ε)      δ(q, b, b) = (q, ε)",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Let's run it on a a b b. Replace S with a S b, match a, replace S with a b, then match a, b, and b. The input is finished and the stack is empty, so the string is accepted. Notice that the P D A simply follows a leftmost derivation.",
+     "els": [
+      {
+       "t": "table",
+       "x": 1080,
+       "y": 520,
+       "cw": [
+        80,
+        260,
+        260
+       ],
+       "rh": 48,
+       "rows": [
+        [
+         "#",
+         "input",
+         "stack"
+        ],
+        [
+         "0",
+         "aabb",
+         "S"
+        ],
+        [
+         "1",
+         "aabb",
+         "aSb"
+        ],
+        [
+         "2",
+         "abb",
+         "Sb"
+        ],
+        [
+         "3",
+         "abb",
+         "abb"
+        ],
+        [
+         "4",
+         "bb",
+         "bb"
+        ],
+        [
+         "5",
+         "b",
+         "b"
+        ],
+        [
+         "6",
+         "ε",
+         "ε"
+        ]
+       ],
+       "color": "black",
+       "size": 26,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "PDA follows the leftmost derivation",
+       "size": 32,
+       "font": "body",
+       "color": "green"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "[g:empty stack => accepted ✓]",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Turing Machines",
+   "ch": 10,
+   "beats": [
+    {
+     "say": "Chapter ten. Turing machines, the most powerful model of computation.",
+     "els": []
+    }
+   ],
+   "num": 10,
+   "subs": [
+    "TM as a 7-tuple",
+    "TM for a^n b^n",
+    "Variants & LBA",
+    "Chomsky hierarchy"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "Turing Machine",
+   "ch": 10,
+   "beats": [
+    {
+     "say": "A Turing machine has a finite control and an infinite tape divided into cells. The head can read and write a symbol, and move left or right. Unlike a P D A, it can go back and change the input. The Church Turing thesis says that anything that can be computed by an algorithm can be computed by a Turing machine.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:TM]: finite control + infinite tape;  read, write, move L / R",
+       "size": 38,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[k:Church-Turing thesis]: algorithm = Turing machine",
+       "size": 38,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "rect",
+       "x": 1060,
+       "y": 400,
+       "w": 80,
+       "h": 70,
+       "label": "a",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1140,
+       "y": 400,
+       "w": 80,
+       "h": 70,
+       "label": "a",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1220,
+       "y": 400,
+       "w": 80,
+       "h": 70,
+       "label": "b",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1300,
+       "y": 400,
+       "w": 80,
+       "h": 70,
+       "label": "b",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1380,
+       "y": 400,
+       "w": 80,
+       "h": 70,
+       "label": "B",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1460,
+       "y": 400,
+       "w": 80,
+       "h": 70,
+       "label": "B",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1540,
+       "y": 400,
+       "w": 80,
+       "h": 70,
+       "label": "B",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 1620,
+       "y": 400,
+       "w": 80,
+       "h": 70,
+       "label": "B",
+       "color": "black",
+       "size": 28,
+       "fill": null,
+       "lc": "black"
+      },
+      {
+       "t": "text",
+       "x": 1710,
+       "y": 445,
+       "s": "...",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 1150,
+       "y": 560,
+       "w": 220,
+       "h": 90,
+       "label": "Control",
+       "color": "blue",
+       "size": 28,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        1220,
+        560
+       ],
+       "p2": [
+        1180,
+        472
+       ],
+       "color": "red",
+       "label": null,
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 28,
+       "both": false,
+       "lc": "red"
+      },
+      {
+       "t": "text",
+       "x": 1090,
+       "y": 525,
+       "s": "head",
+       "size": 26,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "A Turing machine is a seven tuple: Q, sigma, gamma, delta, q zero, B, and F. Gamma is the tape alphabet, and B is the blank symbol. Delta of q and X gives a new state, a symbol to write, and a direction, left or right.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "M = (Q, Σ, Γ, δ, q0, B, F)",
+       "size": 40,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "δ(q, X) = (p, Y, L / R):  write Y, move left or right",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "B = blank symbol;  Σ ⊂ Γ",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "A Turing machine can accept, reject, or run forever. The languages it accepts are recursively enumerable. If it always halts, the language is recursive, or decidable.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 654,
+       "s": "halts & accepts  ·  halts & rejects  ·  [r:loops forever]",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 708,
+       "s": "[k:Recursive (decidable)]: TM always halts",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "[k:Recursively enumerable]: TM halts on every string in L",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "TM for aⁿbⁿ",
+   "ch": 10,
+   "beats": [
+    {
+     "say": "Let's design a Turing machine for a to the n b to the n. The idea: mark the first a as X, go right to the first b and mark it as Y, then come back to the next a. Repeat. When no a's are left, check that only Y's remain.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "NUMERICAL",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "Idea: a -> X, find b -> Y, come back; repeat; then only Y's left",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Here is the transition table. q zero marks an a as X. q one moves right to find a b. q two moves back left to the X. And q three checks that only Y's are left, then accepts in q four.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 330,
+       "cw": [
+        130,
+        220,
+        220,
+        220,
+        220,
+        220
+       ],
+       "rh": 54,
+       "rows": [
+        [
+         "",
+         "a",
+         "b",
+         "X",
+         "Y",
+         "B"
+        ],
+        [
+         "-> q0",
+         "(q1, X, R)",
+         "",
+         "",
+         "(q3, Y, R)",
+         ""
+        ],
+        [
+         "q1",
+         "(q1, a, R)",
+         "(q2, Y, L)",
+         "",
+         "(q1, Y, R)",
+         ""
+        ],
+        [
+         "q2",
+         "(q2, a, L)",
+         "",
+         "(q0, X, R)",
+         "(q2, Y, L)",
+         ""
+        ],
+        [
+         "q3",
+         "",
+         "",
+         "",
+         "(q3, Y, R)",
+         "(q4, B, R)"
+        ],
+        [
+         "* q4",
+         "",
+         "",
+         "",
+         "",
+         ""
+        ]
+       ],
+       "color": "black",
+       "size": 26,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      }
+     ]
+    },
+    {
+     "say": "Now run it on a a b b. The instantaneous description shows the tape with the state written just before the head. After 13 moves, the machine reaches q four, so a a b b is accepted.",
+     "els": [
+      {
+       "t": "table",
+       "x": 180,
+       "y": 690,
+       "cw": [
+        300,
+        300,
+        300,
+        300,
+        300,
+        300,
+        300
+       ],
+       "rh": 44,
+       "rows": [
+        [
+         "q0aabb",
+         "Xq1abb",
+         "Xaq1bb",
+         "Xq2aYb",
+         "q2XaYb",
+         "Xq0aYb",
+         "XXq1Yb"
+        ],
+        [
+         "XXYq1b",
+         "XXq2YY",
+         "Xq2XYY",
+         "XXq0YY",
+         "XXYq3Y",
+         "XXYYq3",
+         "XXYYBq4"
+        ]
+       ],
+       "color": "black",
+       "size": 24,
+       "hdr": false,
+       "order": "row",
+       "colors": {
+        "1,6": "green"
+       },
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 978,
+       "s": "ID: tape with the state written before the head symbol",
+       "size": 30,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "TM Variants, LBA & Chomsky Hierarchy",
+   "ch": 10,
+   "beats": [
+    {
+     "say": "Variants of Turing machines, like multi tape, multi track, two way infinite tape, and non deterministic Turing machines, all have the same power as the basic Turing machine. They may be faster, but they accept the same languages. A universal Turing machine can simulate any other Turing machine, given its description.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "multi-tape, multi-track, two-way tape, [k:non-deterministic] TM",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "=> [h:same power] as the basic TM",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "[k:Universal TM]: simulates any TM from its description",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "A linear bounded automaton, or L B A, is a non deterministic Turing machine whose tape is limited to the length of the input. L B As accept the context sensitive languages.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "[h:LBA] = TM with tape limited to input length  ->  context-sensitive languages",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Here is the complete Chomsky hierarchy in one table. Remember: each machine is more powerful than the one above it.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "MOST ASKED",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "table",
+       "x": 180,
+       "y": 460,
+       "cw": [
+        140,
+        360,
+        400,
+        400,
+        300
+       ],
+       "rh": 56,
+       "rows": [
+        [
+         "Type",
+         "Language",
+         "Grammar",
+         "Machine",
+         "Example"
+        ],
+        [
+         "3",
+         "Regular",
+         "A -> aB | a",
+         "finite automata",
+         "a*b*"
+        ],
+        [
+         "2",
+         "Context-free",
+         "A -> α",
+         "pushdown automata",
+         "aⁿbⁿ"
+        ],
+        [
+         "1",
+         "Context-sensitive",
+         "|α| ≤ |β|",
+         "linear bounded automata",
+         "aⁿbⁿcⁿ"
+        ],
+        [
+         "0",
+         "Recursively enumerable",
+         "unrestricted",
+         "Turing machine",
+         "halting problem"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {
+        "1,3": "red",
+        "2,3": "red",
+        "3,3": "red",
+        "4,3": "red"
+       },
+       "fills": {}
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Decidability & Complexity",
+   "ch": 11,
+   "beats": [
+    {
+     "say": "Chapter eleven. Decidability and complexity. These are pure theory questions, and GATE asks them every year.",
+     "els": []
+    }
+   ],
+   "num": 11,
+   "subs": [
+    "Halting problem",
+    "Rice's theorem & PCP",
+    "Decision properties",
+    "P, NP, NP-complete"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "Decidability & The Halting Problem",
+   "ch": 11,
+   "beats": [
+    {
+     "say": "A problem is decidable if some Turing machine always halts and gives the correct yes or no answer. Recursive languages are decidable. Recursively enumerable languages are semi decidable: the machine says yes for strings in the language, but may loop forever for others.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Decidable] = TM always halts with yes / no  (recursive)",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[h:Semi-decidable] = halts on yes, may loop on no  (RE)",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "The halting problem asks: given a Turing machine M and an input w, does M halt on w? Alan Turing proved this is undecidable. The idea: suppose a machine H solves it. Build a machine D that runs H on itself, and does the opposite: if H says D halts, D loops, and if H says D loops, D halts. This is a contradiction, so H cannot exist.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "MOST ASKED",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "[r:Halting problem]: does M halt on w?  =>  undecidable (but RE)",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "rect",
+       "x": 300,
+       "y": 520,
+       "w": 260,
+       "h": 90,
+       "label": "H(M, w)",
+       "color": "blue",
+       "size": 30,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        560,
+        545
+       ],
+       "p2": [
+        760,
+        500
+       ],
+       "color": "black",
+       "label": "halts",
+       "lx": 0,
+       "ly": -14,
+       "curve": 0,
+       "head": true,
+       "size": 24,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "arrow",
+       "p1": [
+        560,
+        585
+       ],
+       "p2": [
+        760,
+        640
+       ],
+       "color": "black",
+       "label": "loops",
+       "lx": 0,
+       "ly": 30,
+       "curve": 0,
+       "head": true,
+       "size": 24,
+       "both": false,
+       "lc": "black"
+      },
+      {
+       "t": "rect",
+       "x": 760,
+       "y": 460,
+       "w": 330,
+       "h": 70,
+       "label": "D loops forever",
+       "color": "red",
+       "size": 26,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "rect",
+       "x": 760,
+       "y": 610,
+       "w": 330,
+       "h": 70,
+       "label": "D halts",
+       "color": "red",
+       "size": 26,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "text",
+       "x": 300,
+       "y": 740,
+       "s": "D runs H on itself and does the opposite  =>  contradiction",
+       "size": 30,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "Important results. If a language and its complement are both recursively enumerable, then the language is recursive. The complement of the halting problem is not even recursively enumerable.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "L and complement(L) both RE  =>  L is [h:recursive]",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 870,
+       "s": "complement of halting problem: [r:not RE]",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Reductions, Rice's Theorem & PCP",
+   "ch": 11,
+   "beats": [
+    {
+     "say": "To prove a new problem is undecidable, we reduce a known undecidable problem to it. If A reduces to B, and A is undecidable, then B is undecidable too.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:Reduction]: A ≤ B and A undecidable  =>  B undecidable",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Rice's theorem says: every non trivial property of the language of a Turing machine is undecidable. Non trivial means some machines have the property and some do not. So questions like \"is the language of M empty?\", \"is it finite?\", or \"is it regular?\" are all undecidable.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "[h:Rice's theorem]: every non-trivial property of L(M) is undecidable",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "e.g. is L(M) empty? finite? regular? = Σ*?  =>  all undecidable",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "The Post correspondence problem, P C P, gives a set of dominoes, each with a top and a bottom string. The question: is there a sequence where the top and bottom strings match? P C P is undecidable in general. For this instance, the sequence two, one, three, two, four works: both the top and the bottom read a b c a a a b c.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "[k:PCP]: find dominoes whose top string = bottom string  =>  [r:undecidable]",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "table",
+       "x": 180,
+       "y": 530,
+       "cw": [
+        140,
+        140,
+        140,
+        140,
+        140
+       ],
+       "rh": 54,
+       "rows": [
+        [
+         "#",
+         "1",
+         "2",
+         "3",
+         "4"
+        ],
+        [
+         "top",
+         "b",
+         "a",
+         "ca",
+         "abc"
+        ],
+        [
+         "bottom",
+         "ca",
+         "ab",
+         "a",
+         "c"
+        ]
+       ],
+       "color": "black",
+       "size": 30,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      },
+      {
+       "t": "text",
+       "x": 1000,
+       "y": 546,
+       "s": "Sequence 2, 1, 3, 2, 4:",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 1000,
+       "y": 600,
+       "s": "top    = abcaaabc",
+       "size": 32,
+       "font": "body",
+       "color": "black"
+      },
+      {
+       "t": "text",
+       "x": 1000,
+       "y": 654,
+       "s": "bottom = abcaaabc  [g:✓ match]",
+       "size": 32,
+       "font": "body",
+       "color": "black"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Closure Properties: GATE Table",
+   "ch": 11,
+   "beats": [
+    {
+     "say": "Now the closure table for all language classes. Y means closed, N means not closed. Regular languages are closed under everything. Context free languages are not closed under intersection and complement. Deterministic context free languages are closed under complement, but not under union, intersection or concatenation.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "GATE",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "table",
+       "x": 180,
+       "y": 230,
+       "cw": [
+        240,
+        150,
+        150,
+        180,
+        160,
+        140,
+        160,
+        190,
+        180
+       ],
+       "rh": 58,
+       "rows": [
+        [
+         "Class",
+         "∪",
+         "∩",
+         "compl.",
+         "concat",
+         "star",
+         "reverse",
+         "homom.",
+         "∩ Reg"
+        ],
+        [
+         "Regular",
+         "[g:Y]",
+         "[g:Y]",
+         "[g:Y]",
+         "[g:Y]",
+         "[g:Y]",
+         "[g:Y]",
+         "[g:Y]",
+         "[g:Y]"
+        ],
+        [
+         "DCFL",
+         "[r:N]",
+         "[r:N]",
+         "[g:Y]",
+         "[r:N]",
+         "[r:N]",
+         "[r:N]",
+         "[r:N]",
+         "[g:Y]"
+        ],
+        [
+         "CFL",
+         "[g:Y]",
+         "[r:N]",
+         "[r:N]",
+         "[g:Y]",
+         "[g:Y]",
+         "[g:Y]",
+         "[g:Y]",
+         "[g:Y]"
+        ],
+        [
+         "CSL",
+         "[g:Y]",
+         "[g:Y]",
+         "[g:Y]",
+         "[g:Y]",
+         "[g:Y]",
+         "[g:Y]",
+         "[r:N]",
+         "[g:Y]"
+        ],
+        [
+         "Recursive",
+         "[g:Y]",
+         "[g:Y]",
+         "[g:Y]",
+         "[g:Y]",
+         "[g:Y]",
+         "[g:Y]",
+         "[r:N]",
+         "[g:Y]"
+        ],
+        [
+         "RE",
+         "[g:Y]",
+         "[g:Y]",
+         "[r:N]",
+         "[g:Y]",
+         "[g:Y]",
+         "[g:Y]",
+         "[g:Y]",
+         "[g:Y]"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      }
+     ]
+    },
+    {
+     "say": "Context sensitive and recursive languages are closed under complement, but not under general homomorphism. Recursively enumerable languages are closed under union and intersection, but not under complement. And every class is closed under intersection with a regular language.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "complement: [g:REG, DCFL, CSL, REC]  ·  [r:not CFL, not RE]",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "homomorphism: [r:not CSL, not REC]  (ε-free homomorphism is fine)",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 870,
+       "s": "every class ∩ regular  =>  same class",
+       "size": 32,
+       "font": "body",
+       "color": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Countability & Non-RE Languages",
+   "ch": 11,
+   "beats": [
+    {
+     "say": "Why do non R E languages exist? Sigma star is countable, because we can list all strings by length. Every Turing machine can be written as a string, so there are only countably many Turing machines. But the set of all languages, the power set of sigma star, is uncountable, by Cantor's diagonal argument. So there are more languages than Turing machines.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "Σ* is [h:countable] (list strings by length)",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "TMs are countable (each TM is a string)",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "all languages 2^Σ* are [r:uncountable] (diagonal argument)",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 384,
+       "s": "=> some languages are [r:not RE]",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "A famous example is the diagonal language, L d. Number all strings and all Turing machines. L d contains string number i whenever machine number i does not accept it. No Turing machine can accept it, so L d is not even R E.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "IMP!",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "[k:L_d] = { w_i | M_i does not accept w_i }  =>  [r:not RE]",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "The universal language, L u, contains a machine M and a string w whenever M accepts w. It is R E, because a universal Turing machine can simulate M on w. But it is not recursive. So remember three levels: recursive, R E but not recursive, and not R E.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 600,
+       "s": "[k:L_u] = { <M, w> | M accepts w }  =>  RE but not recursive",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "table",
+       "x": 180,
+       "y": 650,
+       "cw": [
+        520,
+        520,
+        520
+       ],
+       "rh": 56,
+       "rows": [
+        [
+         "Recursive",
+         "RE, not recursive",
+         "not RE"
+        ],
+        [
+         "aⁿbⁿcⁿ, any CFL",
+         "L_u, halting problem",
+         "L_d, complement of L_u"
+        ],
+        [
+         "TM always halts",
+         "TM halts on yes",
+         "no TM at all"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {
+        "0,0": "green",
+        "0,1": "blue",
+        "0,2": "red"
+       },
+       "fills": {}
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "Decision Properties: GATE Table",
+   "ch": 11,
+   "beats": [
+    {
+     "say": "This table is asked in almost every GATE paper. It shows which questions are decidable, D, or undecidable, U, for each class of languages. For regular languages, everything is decidable. For context free languages, membership, emptiness and finiteness are decidable, but equivalence is not.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "GATE",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "table",
+       "x": 180,
+       "y": 240,
+       "cw": [
+        380,
+        260,
+        260,
+        260,
+        280,
+        300
+       ],
+       "rh": 58,
+       "rows": [
+        [
+         "Problem",
+         "Regular",
+         "DCFL",
+         "CFL",
+         "CSL",
+         "Recursive / RE"
+        ],
+        [
+         "Membership",
+         "[g:D]",
+         "[g:D]",
+         "[g:D]",
+         "[g:D]",
+         "[g:D] / [r:U]"
+        ],
+        [
+         "Emptiness",
+         "[g:D]",
+         "[g:D]",
+         "[g:D]",
+         "[r:U]",
+         "[r:U]"
+        ],
+        [
+         "Finiteness",
+         "[g:D]",
+         "[g:D]",
+         "[g:D]",
+         "[r:U]",
+         "[r:U]"
+        ],
+        [
+         "Equivalence",
+         "[g:D]",
+         "[g:D]",
+         "[r:U]",
+         "[r:U]",
+         "[r:U]"
+        ],
+        [
+         "Is L = Σ* ?",
+         "[g:D]",
+         "[g:D]",
+         "[r:U]",
+         "[r:U]",
+         "[r:U]"
+        ],
+        [
+         "Ambiguity",
+         "-",
+         "-",
+         "[r:U]",
+         "-",
+         "-"
+        ]
+       ],
+       "color": "black",
+       "size": 28,
+       "hdr": true,
+       "order": "row",
+       "colors": {},
+       "fills": {}
+      }
+     ]
+    },
+    {
+     "say": "Remember the special ones. Membership is decidable all the way up to recursive languages, but not for recursively enumerable. Equivalence of two D C F Ls is decidable, but equivalence of two C F Ls is not. And for context sensitive languages, only membership is decidable.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "membership: decidable up to recursive;  [r:undecidable for RE]",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "equivalence: DCFL [g:decidable], CFL [r:undecidable]",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 870,
+       "s": "CSL: only membership is decidable",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "title": "P, NP & NP-Complete",
+   "ch": 11,
+   "beats": [
+    {
+     "say": "Complexity theory asks how much time a problem needs. P is the class of problems solved in polynomial time by a deterministic machine, like sorting and shortest path. N P is the class of problems whose solutions can be checked in polynomial time, or solved in polynomial time by a non deterministic machine. Every problem in P is also in N P.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 222,
+       "s": "[h:P]: solvable in polynomial time (sorting, shortest path)",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 276,
+       "s": "[h:NP]: solution [r:verifiable] in polynomial time",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 330,
+       "s": "P ⊆ NP;   P = NP ?  is still unsolved",
+       "size": 34,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "A problem is N P hard if every N P problem reduces to it in polynomial time. It is N P complete if it is N P hard and also in N P. The first N P complete problem was S A T, by the Cook Levin theorem. Others are three S A T, clique, vertex cover, Hamiltonian cycle, the travelling salesman decision problem, and subset sum.",
+     "els": [
+      {
+       "t": "stamp",
+       "x": 1650,
+       "y": 140,
+       "text": "MOST ASKED",
+       "color": "red",
+       "rot": -8,
+       "size": 34
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 438,
+       "s": "[k:NP-hard]: every NP problem reduces to it",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 492,
+       "s": "[k:NP-complete] = NP-hard ∩ NP",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 546,
+       "s": "SAT (Cook-Levin), 3-SAT, clique, vertex cover, Hamiltonian cycle, TSP, subset sum",
+       "size": 30,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1080,
+       "y": 640,
+       "w": 520,
+       "h": 300,
+       "label": null,
+       "color": "blue",
+       "size": 32,
+       "fill": null,
+       "lc": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1140,
+       "y": 720,
+       "w": 220,
+       "h": 140,
+       "label": "P",
+       "color": "green",
+       "size": 34,
+       "fill": null,
+       "lc": "green"
+      },
+      {
+       "t": "text",
+       "x": 1420,
+       "y": 700,
+       "s": "NP",
+       "size": 34,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "ellipse",
+       "x": 1430,
+       "y": 760,
+       "w": 230,
+       "h": 110,
+       "label": null,
+       "color": "red",
+       "size": 32,
+       "fill": null,
+       "lc": "red"
+      },
+      {
+       "t": "text",
+       "x": 1460,
+       "y": 822,
+       "s": "NP-complete",
+       "size": 26,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 1180,
+       "y": 980,
+       "s": "NP-hard extends beyond NP",
+       "size": 26,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    },
+    {
+     "say": "To prove a new problem B is N P complete: show B is in N P, then reduce a known N P complete problem A to B in polynomial time. The direction matters: from the known problem to the new one. If any N P complete problem is solved in polynomial time, then P equals N P. Note that two SAT is in P, but three SAT is N P complete.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 762,
+       "s": "Prove B NP-complete: B ∈ NP, and known NPC A ≤p B",
+       "size": 32,
+       "font": "body",
+       "color": "red"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 816,
+       "s": "any NPC problem in P  =>  P = NP",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 180,
+       "y": 870,
+       "s": "[g:2-SAT ∈ P]   but   [r:3-SAT is NP-complete]",
+       "size": 32,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "chapter",
+   "title": "Exam Revision",
+   "ch": 12,
+   "beats": [
+    {
+     "say": "Chapter twelve. Exam revision. If you're short on time, revise these first.",
+     "els": []
+    }
+   ],
+   "num": 12,
+   "subs": [
+    "Most asked questions",
+    "Last-minute tips"
+   ],
+   "stars": 5
+  },
+  {
+   "kind": "page",
+   "title": "Most Asked Exam Questions",
+   "ch": 12,
+   "beats": [
+    {
+     "say": "Here are the most asked questions. The Chomsky hierarchy. D F A design. N F A to D F A. And D F A minimization.",
+     "els": [
+      {
+       "t": "text",
+       "x": 200,
+       "y": 222,
+       "s": "1. Chomsky hierarchy (grammar + machine)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 276,
+       "s": "2. DFA design: ends with ab, divisible by 3",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 330,
+       "s": "3. NFA to DFA (subset construction)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 384,
+       "s": "4. DFA minimization (partition method)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "Arden's theorem and regular expressions. The pumping lemma. Ambiguity, simplification and normal forms. And C Y K with the closure properties of context free languages.",
+     "els": [
+      {
+       "t": "text",
+       "x": 200,
+       "y": 438,
+       "s": "5. RE identities; Arden's theorem (FA to RE)",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 492,
+       "s": "6. Pumping lemma: aⁿbⁿ not regular",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 546,
+       "s": "7. Ambiguity; simplification; CNF & GNF",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 600,
+       "s": "8. CYK algorithm; closure of CFLs",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "P D A design with instantaneous descriptions. Turing machine design. The halting problem, Rice's theorem and P C P. And the decidability table with P and N P.",
+     "els": [
+      {
+       "t": "text",
+       "x": 200,
+       "y": 654,
+       "s": "9. PDA for aⁿbⁿ (with IDs); DPDA vs NPDA",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 708,
+       "s": "10. TM for aⁿbⁿ; variants; LBA",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 762,
+       "s": "11. Halting problem; Rice's theorem; PCP",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      },
+      {
+       "t": "text",
+       "x": 200,
+       "y": 816,
+       "s": "12. Decidability table; P, NP, NP-complete",
+       "size": 36,
+       "font": "body",
+       "color": "blue"
+      }
+     ]
+    },
+    {
+     "say": "One last exam tip. For every machine design, write the idea in one line, draw the diagram neatly, and test it on one example string. That way you still get step marks, even if a small transition is wrong.",
+     "els": [
+      {
+       "t": "text",
+       "x": 180,
+       "y": 924,
+       "s": "Tip: [h:idea + neat diagram + test one string] => full marks!",
+       "size": 38,
+       "font": "body",
+       "color": "red"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "outro",
+   "title": "All the Best!",
+   "ch": 12,
+   "beats": [
+    {
+     "say": "That's the complete theory of computation subject. If this helped you, share it with your friends who have the exam, and subscribe to TechVibe24 for more one shot videos. Tell me in the comments which subject you want next. All the best for your exam!",
+     "els": []
+    }
+   ]
+  }
+ ],
+ "chapters": [
+  [
+   1,
+   "Basics of Theory of Computation",
+   [
+    "Alphabet, string, language",
+    "Operations on languages",
+    "Chomsky hierarchy"
+   ],
+   3
+  ],
+  [
+   2,
+   "Deterministic Finite Automata",
+   [
+    "DFA as a 5-tuple",
+    "Designing DFAs",
+    "Divisibility DFA"
+   ],
+   5
+  ],
+  [
+   3,
+   "NFA & Epsilon-NFA",
+   [
+    "NFA vs DFA",
+    "NFA to DFA (subset construction)",
+    "Epsilon-closure"
+   ],
+   5
+  ],
+  [
+   4,
+   "DFA Minimization & Moore/Mealy",
+   [
+    "Equivalent states",
+    "Partition method",
+    "Moore & Mealy machines"
+   ],
+   5
+  ],
+  [
+   5,
+   "Regular Expressions",
+   [
+    "Identities",
+    "RE to FA",
+    "FA to RE (Arden's theorem)"
+   ],
+   5
+  ],
+  [
+   6,
+   "Properties of Regular Languages",
+   [
+    "Pumping lemma",
+    "Closure properties",
+    "Myhill-Nerode"
+   ],
+   5
+  ],
+  [
+   7,
+   "Context-Free Grammars",
+   [
+    "Derivations & parse trees",
+    "Ambiguity",
+    "Simplification",
+    "CNF & GNF"
+   ],
+   5
+  ],
+  [
+   8,
+   "CYK & Properties of CFLs",
+   [
+    "CYK algorithm",
+    "Pumping lemma for CFL",
+    "Closure properties"
+   ],
+   5
+  ],
+  [
+   9,
+   "Pushdown Automata",
+   [
+    "PDA as a 7-tuple",
+    "PDA for a^n b^n",
+    "DPDA vs NPDA"
+   ],
+   5
+  ],
+  [
+   10,
+   "Turing Machines",
+   [
+    "TM as a 7-tuple",
+    "TM for a^n b^n",
+    "Variants & LBA",
+    "Chomsky hierarchy"
+   ],
+   5
+  ],
+  [
+   11,
+   "Decidability & Complexity",
+   [
+    "Halting problem",
+    "Rice's theorem & PCP",
+    "Decision properties",
+    "P, NP, NP-complete"
+   ],
+   5
+  ],
+  [
+   12,
+   "Exam Revision",
+   [
+    "Most asked questions",
+    "Last-minute tips"
+   ],
+   5
+  ]
+ ]
+}
