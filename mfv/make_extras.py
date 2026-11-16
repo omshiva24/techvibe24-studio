@@ -27,8 +27,8 @@ def place(base, im, x, y):
     sh.paste((0, 0, 0, 110), (x + 14, y + 18), a); sh = sh.filter(ImageFilter.GaussianBlur(14))
     base.alpha_composite(sh); base.alpha_composite(im, (x, y))
 base = paper.convert('RGBA')
-c1 = card(find('CRC: Cyclic Redundancy Check'), (160, 100, 1900, 1010), 600, 6)
-c2 = card(find('Subnetting Numerical'), (160, 100, 1900, 820), 560, -5)
+c1 = card(find('Venn Diagram Numerical'), (160, 100, 1900, 1000), 600, 6)
+c2 = card(find('Truth Tables & Tautology'), (160, 100, 1900, 900), 560, -5)
 place(base, c1, 712, 262); place(base, c2, 728, 22)
 d = ImageDraw.Draw(base)
 def fitF(txt, name, size, maxw):

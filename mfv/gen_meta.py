@@ -6,17 +6,18 @@ def ts(t): return '%d:%02d:%02d' % (t // 3600, t % 3600 // 60, t % 60) if t >= 3
 chap = ['0:00 Introduction & contents']
 for pg in tl['pages']:
     if pg['kind'] == 'chapter': chap.append(f"{ts(int(pg['t0']))} Ch {pg['num']}: {pg['title']}")
-    NUM = {'The OSI Model': 'OSI model', 'TCP/IP Model vs OSI': 'TCP/IP vs OSI', 'Network Devices': 'Network devices', 'Delays in a Network': 'Delays (numerical)',
-           'Line Coding: NRZ & Manchester': 'Line coding (Manchester)', 'Nyquist & Shannon Capacity': 'Nyquist & Shannon (numerical)', 'Framing: Byte & Bit Stuffing': 'Byte & bit stuffing',
-           'Error Detection: Parity & Checksum': 'Checksum (numerical)', 'CRC: Cyclic Redundancy Check': 'CRC (numerical)', 'Hamming Code': 'Hamming code (numerical)',
-           'Stop-and-Wait ARQ': 'Stop-and-wait ARQ', 'Go-Back-N & Selective Repeat': 'Go-Back-N vs Selective Repeat', 'Sliding Window Numerical': 'Sliding window (numerical)',
-           'ALOHA: Pure & Slotted': 'Pure & slotted ALOHA', 'CSMA, CSMA/CD & CSMA/CA': 'CSMA/CD & CSMA/CA', 'Ethernet (IEEE 802.3)': 'Ethernet frame',
-           'IPv4 Address & Classes': 'IPv4 classes', 'Subnetting Numerical': 'Subnetting (numerical)', 'CIDR & VLSM': 'CIDR & VLSM (numerical)',
-           'Private Addresses, NAT & Supernetting': 'NAT & supernetting', 'IPv4 Header': 'IPv4 header', 'IP Fragmentation Numerical': 'Fragmentation (numerical)', 'IPv6': 'IPv6',
-           'ARP, ICMP & DHCP': 'ARP, ICMP, DHCP', 'Routing Basics: RIP, OSPF & BGP': 'RIP, OSPF, BGP', "Dijkstra's Algorithm (Link State)": 'Dijkstra (numerical)',
-           'Distance Vector Routing': 'Distance vector (numerical)', 'Transport Layer: UDP vs TCP': 'TCP vs UDP', 'TCP Header & Connection': '3-way handshake',
-           'TCP Congestion Control': 'TCP congestion (numerical)', 'Leaky Bucket & Token Bucket': 'Leaky & token bucket', 'DNS: Domain Name System': 'DNS',
-           'HTTP, FTP & Email': 'HTTP, FTP, email & ports', 'Cryptography & RSA': 'RSA (numerical)', 'Formula Sheet': 'Formula sheet'}
+    NUM = {'Truth Tables & Tautology': 'Truth tables & tautology', 'Logical Equivalences': 'Logical equivalences (laws)', 'Normal Forms: PDNF & PCNF': 'PDNF & PCNF (numerical)',
+           'Rules of Inference': 'Rules of inference', 'Valid Argument: Step by Step': 'Valid argument (numerical)', 'Predicates & Quantifiers': 'Predicates & quantifiers',
+           'Methods of Proof': 'Proof methods', 'Venn Diagram Numerical': 'Venn diagram (numerical)', 'Functions': 'Functions', 'Sequences & Summations': 'Sequences & summations',
+           'Matrices & Zero-One Matrices': 'Matrices', 'Relations & Their Properties': 'Properties of relations', "Representing Relations & Warshall's Algorithm": "Warshall's algorithm",
+           'Equivalence Relations & Partial Orders': 'Equivalence & Hasse diagram', 'Divisibility & Modular Arithmetic': 'Division algorithm & mod', 'Integer Representations': 'Base conversion',
+           'Modular Exponentiation': 'Modular exponentiation', 'Primes & Prime Factorization': 'Primes', 'GCD: Euclidean Algorithm': 'GCD (Euclid) numerical',
+           'Linear Congruences & CRT': 'Linear congruence & CRT', "Fermat's Little Theorem": "Fermat's little theorem", 'Mathematical Induction': 'Mathematical induction',
+           'Strong Induction & Well-Ordering': 'Strong induction', 'Recursive Definitions & Structural Induction': 'Recursive definitions', 'Pigeonhole Principle': 'Pigeonhole principle',
+           'Permutations & Combinations': 'Permutations & combinations', 'Binomial Theorem & Inclusion-Exclusion': 'Binomial theorem & inclusion-exclusion',
+           'Groups & Algebraic Structures': 'Groups', 'Subgroups, Lagrange & Homomorphism': "Lagrange's theorem", 'Solving Recurrence Relations': 'Recurrence relations (numerical)',
+           'Non-homogeneous Recurrences & Generating Functions': 'Generating functions', 'Euler & Hamiltonian Graphs': 'Euler & Hamiltonian', 'Planar Graphs & Graph Colouring': 'Planar graphs & colouring',
+           'Trees & Minimum Spanning Tree': 'Trees & MST (numerical)', 'Formula Sheet': 'Formula sheet'}
     if pg['kind'] == 'page' and pg['title'] in NUM:      # YouTube rejects < and > in descriptions, so no '->' here
         chap.append(f"{ts(int(pg['t0']))}   • {NUM[pg['title']]}")
 open(f'{OUT}/chapters.txt', 'w').write('\n'.join(chap) + '\n')
