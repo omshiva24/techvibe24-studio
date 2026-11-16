@@ -29,7 +29,7 @@ def place(base, im, x, y):
 base = paper.convert('RGBA')
 c1 = card(find('DFA Design: Strings Ending with "ab"'), (160, 100, 1900, 1010), 600, 6)
 c2 = card(find('CYK Algorithm'), (160, 100, 1700, 800), 560, -5)
-place(base, c1, 660, 250); place(base, c2, 690, 20)
+place(base, c1, 712, 262); place(base, c2, 728, 22)
 d = ImageDraw.Draw(base)
 d.text((60, 175), 'THEORY OF', font=F('Anton.ttf', 128), fill=(16, 24, 58), anchor='ls')
 d.text((60, 330), 'COMPUTATION', font=F('Anton.ttf', 122), fill=(22, 60, 190), anchor='ls')
