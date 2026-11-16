@@ -10,8 +10,8 @@ for pg in tl['pages']:
            "DFA for Even a's and Even b's": "DFA even a's and b's", 'NFA to DFA: Subset Construction': 'NFA to DFA (numerical)',
            'DFA Minimization: Partition Method': 'DFA minimization (numerical)', "FA to RE: Arden's Theorem": "Arden's theorem (numerical)",
            'Pumping Lemma for Regular Languages': 'Pumping lemma', 'Ambiguous Grammar': 'Ambiguity', 'Simplifying a CFG': 'Simplifying a CFG',
-           'Chomsky & Greibach Normal Forms': 'CNF and GNF', 'CYK Algorithm': 'CYK algorithm (numerical)', 'PDA for aⁿbⁿ': 'PDA design (numerical)',
-           'CFG to PDA Conversion': 'CFG to PDA', 'TM for aⁿbⁿ': 'Turing machine design (numerical)', 'Decidability & The Halting Problem': 'Halting problem',
+           'Chomsky & Greibach Normal Forms': 'CNF and GNF', 'CYK Algorithm': 'CYK algorithm (numerical)', 'PDA for a^n b^n': 'PDA design (numerical)',
+           'CFG to PDA Conversion': 'CFG to PDA', 'TM for a^n b^n': 'Turing machine design (numerical)', 'Decidability & The Halting Problem': 'Halting problem',
            'Closure Properties: GATE Table': 'Closure table', 'Decision Properties: GATE Table': 'Decidability table', 'P, NP & NP-Complete': 'P, NP, NP-complete'}
     if pg['kind'] == 'page' and pg['title'] in NUM:      # YouTube rejects < and > in descriptions, so no '->' here
         chap.append(f"{ts(int(pg['t0']))}   • {NUM[pg['title']]}")

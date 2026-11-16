@@ -32,15 +32,17 @@ def State(p, name, final=False, start=False, color='blue', size=28):
 def Edge(a, b, label, curve=0, color='black', off=0, size=28, pad=20):
     (x1, y1), (x2, y2) = a, b; dx, dy = x2 - x1, y2 - y1; d = math.hypot(dx, dy); ux, uy = dx / d, dy / d; nx, ny = -uy, ux
     p1 = (x1 + ux * R0 + nx * off, y1 + uy * R0 + ny * off); p2 = (x2 - ux * (R0 + 4) + nx * off, y2 - uy * (R0 + 4) + ny * off)
-    bx, by = nx * curve / 2, ny * curve / 2                                   # bulge at the middle of the curve
+    # the renderer already puts the label at the apex of a curve; we only push it a little outwards
     if curve: sx, sy = (nx, ny) if curve > 0 else (-nx, -ny)
     else: sx, sy = (0, -1) if abs(dx) >= abs(dy) else (1, 0)
-    lx, ly = bx + sx * pad, by + sy * pad + 10
+    if sy > .5: lx, ly = 0, 16 + size * .8              # below
+    elif sy < -.5: lx, ly = 0, -16                      # above
+    else: lx, ly = sx * (pad + 12), size * .35          # beside
     return Arr(*p1, *p2, color=color, label=label, lx=lx, ly=ly, curve=curve, size=size)
 def Loop(p, label, pos='top', color='black', size=28):
     cx, cy = p
-    if pos == 'top': return Arr(cx - 22, cy - R0 + 3, cx + 22, cy - R0 + 3, color=color, curve=-140, label=label, ly=-82, size=size)
-    return Arr(cx + 22, cy + R0 - 3, cx - 22, cy + R0 - 3, color=color, curve=-140, label=label, ly=96, size=size)
+    if pos == 'top': return Arr(cx - 22, cy - R0 + 3, cx + 22, cy - R0 + 3, color=color, curve=-140, label=label, ly=-12, size=size)
+    return Arr(cx + 22, cy + R0 - 3, cx - 22, cy + R0 - 3, color=color, curve=-140, label=label, ly=34, size=size)
 
 CHAPTERS = [
  (1, 'Basics of Theory of Computation', ['Alphabet, string, language', 'Operations on languages', 'Chomsky hierarchy'], 3),
@@ -254,7 +256,7 @@ pq = {'AC': (900, 830), 'B': (1180, 830), 'D': (1460, 830), 'E': (1740, 830)}
 beat(p, '''So the minimized D F A has four states: A C together, B, D and E. This is the D F A for a or b star, a b b.''',
      *State(pq['AC'], 'AC', start=True), *State(pq['B'], 'B'), *State(pq['D'], 'D'), *State(pq['E'], 'E', final=True),
      Edge(pq['AC'], pq['B'], 'a'), Edge(pq['B'], pq['D'], 'b'), Edge(pq['D'], pq['E'], 'b'), Edge(pq['D'], pq['B'], 'a', curve=-80, off=8),
-     Edge(pq['E'], pq['B'], 'a', curve=-170), Edge(pq['E'], pq['AC'], 'b', curve=330), Loop(pq['AC'], 'b', pos='bottom'), Loop(pq['B'], 'a'),
+     Edge(pq['E'], pq['B'], 'a', curve=-170), Edge(pq['E'], pq['AC'], 'b', curve=450), Loop(pq['AC'], 'b', pos='bottom'), Loop(pq['B'], 'a'),
      T(14, '4 states;  accepts (a|b)*abb', x=180, size=32, color='green'))
 
 p = page('Moore & Mealy Machines', 4)
@@ -302,9 +304,9 @@ For concatenation, R S, connect the final state of R to the start of S with an e
      S(4, 'RS', x=1150, size=36, color='red'), Box(1150, 560, 200, 80, 'R', size=30, color='blue'), Box(1460, 560, 200, 80, 'S', size=30, color='blue'),
      Arr(1350, 600, 1460, 600, label='ε', size=26))
 beat(p, '''For the star, R star, add a new start and final state. Add epsilon moves to enter R, to skip it completely, and to go back from the end of R to its start, to repeat it.''',
-     S(11, 'R*', size=36, color='red'), *State((300, 880), 'i'), Box(520, 840, 200, 80, 'R', size=30, color='blue'), *State((920, 880), 'f', final=True),
-     Arr(342, 880, 520, 880, label='ε', size=26), Arr(720, 880, 878, 880, label='ε', size=26), Arr(300, 922, 920, 922, curve=-120, label='ε (skip)', ly=78, size=24),
-     Arr(700, 840, 540, 840, curve=-80, label='ε (repeat)', ly=-56, size=24))
+     S(9, 'R*', x=1150, size=36, color='red'), *State((1260, 860), 'i'), Box(1440, 820, 200, 80, 'R', size=30, color='blue'), *State((1820, 860), 'f', final=True),
+     Arr(1302, 860, 1440, 860, label='ε', size=26), Arr(1640, 860, 1778, 860, label='ε', size=26), Arr(1260, 902, 1820, 902, curve=120, label='ε (skip)', ly=30, size=24),
+     Arr(1620, 820, 1460, 820, curve=80, label='ε (repeat)', size=24))
 
 p = page("FA to RE: Arden's Theorem", 5)
 beat(p, '''To convert a finite automaton to a regular expression, we use Arden's theorem. It says: if R equals Q plus R P, and P does not contain epsilon,
@@ -346,14 +348,14 @@ and x y to the power i z is in L for every i greater than or equal to zero.''',
      T(1, '[r:|xy| ≤ n],   [r:|y| ≥ 1],   [r:x y^i z ∈ L for all i ≥ 0]', size=36))
 beat(p, '''We use it by contradiction. Let's prove that a to the power n, b to the power n is not regular. Assume it is regular, with pumping length n.
 Take w equals a to the n, b to the n. Since x y has length at most n, y contains only a's. Say y is a to the k, with k at least one.''',
-     S(3, 'Prove L = {aⁿbⁿ | n ≥ 0} is not regular', size=36, color='red'), N(4, 1, 'Assume L is regular, pumping length n', size=34),
-     N(5, 2, 'w = aⁿbⁿ;  |xy| ≤ n  =>  y = a^k,  k ≥ 1', size=34))
+     S(3, 'Prove L = {a^n b^n | n ≥ 0} is not regular', size=36, color='red'), N(4, 1, 'Assume L is regular, pumping length n', size=34),
+     N(5, 2, 'w = a^n b^n;  |xy| ≤ n  =>  y = a^k,  k ≥ 1', size=34))
 beat(p, '''Now pump with i equals two. x y y z has n plus k a's but only n b's. So it is not in L. This is a contradiction, so a to the n b to the n is not regular.
 A finite automaton cannot count without limit.''',
-     N(6, 3, 'i = 2:  x y² z = a^(n+k) bⁿ  ∉ L', size=34), N(7, 4, '[r:Contradiction]  =>  L is not regular', size=34),
+     N(6, 3, 'i = 2:  x y² z = a^(n+k) b^n  ∉ L', size=34), N(7, 4, '[r:Contradiction]  =>  L is not regular', size=34),
      Box(1080, 690, 300, 70, 'a a a ... a', size=28, color='blue'), Box(1380, 690, 280, 70, 'b b b ... b', size=28, color='green'),
      T(0, 'x', x=1110, y=800, size=30, color='red'), T(0, 'y (pump)', x=1210, y=800, size=30, color='red'), T(0, 'z', x=1500, y=800, size=30, color='red'),
-     T(13, 'Not regular: aⁿbⁿ, ww, palindromes, a^(n²), a^p (p prime), equal a\'s and b\'s', size=30, color='green'))
+     T(13, 'Not regular: a^n b^n, ww, palindromes, a^(n²), a^p (p prime), equal a\'s and b\'s', size=30, color='green'))
 
 p = page('Closure & Decision Properties of Regular Languages', 6)
 beat(p, '''Regular languages are closed under almost every operation. If L one and L two are regular, then their union, intersection, complement, difference,
@@ -361,7 +363,7 @@ concatenation, Kleene star, reverse, homomorphism and inverse homomorphism are a
      Stamp(1650, 140), T(0, '[h:Closed under]: ∪, ∩, complement, difference, concatenation, *,', size=34), T(1, 'reverse, homomorphism, inverse homomorphism, quotient', size=34, x=330))
 beat(p, '''Watch out for GATE traps. A finite union of regular languages is regular, but an infinite union may not be. A subset of a regular language may not be regular:
 a to the n b to the n is a subset of a star b star, which is regular. Every finite language is regular.''',
-     T(3, '[r:Traps]: infinite union may not be regular', size=34), T(4, 'subset of regular may not be regular:  aⁿbⁿ ⊆ a*b*', size=34),
+     T(3, '[r:Traps]: infinite union may not be regular', size=34), T(4, 'subset of regular may not be regular:  a^n b^n ⊆ a*b*', size=34),
      T(5, 'every [g:finite] language is regular', size=34))
 beat(p, '''Decision properties: for regular languages, membership, emptiness, finiteness, and equivalence of two automata are all decidable. Emptiness is checked by seeing
 if any final state is reachable. Finiteness is checked by looking for a cycle on a path from the start to a final state.''',
@@ -377,7 +379,7 @@ beat(p, 'Chapter seven. Context free grammars.')
 p = page('Context-Free Grammar & Derivations', 7)
 beat(p, '''A context free grammar is a four tuple: V, T, P, S. V is the set of variables, or non terminals. T is the set of terminals. P is the set of productions,
 where the left side is a single variable. And S is the start symbol. For example, S goes to a S b, or epsilon, generates a to the n b to the n, which is not regular.''',
-     T(0, 'G = (V, T, P, S);   production: A -> α  (A is one variable)', color='black'), T(1, 'S -> aSb | ε   generates  {aⁿbⁿ | n ≥ 0}', color='red'))
+     T(0, 'G = (V, T, P, S);   production: A -> α  (A is one variable)', color='black'), T(1, 'S -> aSb | ε   generates  {a^n b^n | n ≥ 0}', color='red'))
 beat(p, '''A derivation replaces variables step by step. In a leftmost derivation, we always replace the leftmost variable. In a rightmost derivation, the rightmost one.
 For the grammar E goes to E plus E, E times E, or id, the leftmost derivation of id plus id times id is shown here.''',
      T(3, '[k:Leftmost]: replace leftmost variable    [k:Rightmost]: rightmost'), T(4, 'E -> E + E | E * E | id', color='black'),
@@ -398,7 +400,7 @@ because id plus id times id can be grouped as id plus, id times id, or as id plu
 beat(p, '''We remove ambiguity by adding precedence and associativity: E goes to E plus T or T, T goes to T times F or F, F goes to id.
 Some languages are inherently ambiguous, which means every grammar for them is ambiguous. For example, a to the i b to the j c to the k, where i equals j or j equals k.''',
      T(3, 'Unambiguous: E -> E + T | T,  T -> T * F | F,  F -> id', color='black', size=34),
-     T(4, '[r:Inherently ambiguous]: { aⁱbʲcᵏ | i = j or j = k }', size=34))
+     T(4, '[r:Inherently ambiguous]: { a^i b^j c^k | i = j or j = k }', size=34))
 beat(p, '''Remember for GATE: checking whether any given context free grammar is ambiguous is undecidable. There is no algorithm that works for every grammar.''',
      Stamp(1650, 140, 'GATE'), T(6, 'Is a CFG ambiguous?  =>  [r:undecidable]', size=38))
 
@@ -450,12 +452,12 @@ beat(p, '''The top cell, for the whole string, contains S. So b a a b a is gener
 p = page('Pumping Lemma for CFLs & Closure Properties', 8)
 beat(p, '''The pumping lemma for context free languages: every long string w can be split into five parts, u v x y z, where the length of v x y is at most n,
 v y is not empty, and u v to the i, x, y to the i, z is in L for every i. Using it, we can prove that a to the n b to the n c to the n is not context free.''',
-     T(0, 'w = uvxyz,  |vxy| ≤ n,  |vy| ≥ 1,  u vⁱ x yⁱ z ∈ L  ∀ i ≥ 0', size=34), T(1, 'Not CFL: aⁿbⁿcⁿ,  ww,  a^(n²),  a^p (p prime)', size=34, color='red'))
+     T(0, 'w = uvxyz,  |vxy| ≤ n,  |vy| ≥ 1,  u v^i x y^i z ∈ L  ∀ i ≥ 0', size=34), T(1, 'Not CFL: a^n b^n c^n,  ww,  a^(n²),  a^p (p prime)', size=34, color='red'))
 beat(p, '''Closure properties. Context free languages are closed under union, concatenation, Kleene star, reverse and homomorphism.
 But they are not closed under intersection and complement. For example, a to the n b to the n c to the m and a to the m b to the n c to the n are both context free,
 but their intersection, a to the n b to the n c to the n, is not.''',
      Stamp(1650, 140, 'GATE'), T(3, '[g:Closed]: ∪, concatenation, *, reverse, homomorphism', size=34), T(4, '[r:Not closed]: ∩, complement', size=34),
-     T(5, 'aⁿbⁿcᵐ ∩ aᵐbⁿcⁿ = aⁿbⁿcⁿ  (not CFL)', size=34, color='black'))
+     T(5, 'a^n b^n c^m ∩ a^m b^n c^n = a^n b^n c^n  (not CFL)', size=34, color='black'))
 beat(p, '''Two useful facts. The intersection of a context free language and a regular language is always context free. And deterministic context free languages
 are closed under complement, but not under union or intersection.''',
      T(7, 'CFL ∩ Regular = [h:CFL]', size=36, color='red'), T(8, 'DCFL: closed under complement; not under ∪, ∩', size=34))
@@ -479,7 +481,7 @@ beat(p, '''A P D A can accept in two ways: by final state, or by empty stack. Bo
      T(7, 'Acceptance: by [k:final state]  or  by [k:empty stack]  (equivalent)', size=34))
 
 ids, ok = pda_anbn('aabb')
-p = page('PDA for aⁿbⁿ', 9)
+p = page('PDA for a^n b^n', 9)
 beat(p, '''Let's design a P D A for a to the n b to the n, with n at least one. The idea: push every a onto the stack. Then for each b, pop one a.
 If the stack is back to Z zero when the input ends, the counts were equal, so we accept.''',
      Stamp(1650, 140, 'NUMERICAL'), T(0, 'Idea: push each a;  pop one a for each b;  accept when only Z0 is left', size=34))
@@ -535,7 +537,7 @@ beat(p, '''A Turing machine can accept, reject, or run forever. The languages it
      T(10, '[k:Recursively enumerable]: TM halts on every string in L', size=34))
 
 ids, ok = run_tm('aabb')
-p = page('TM for aⁿbⁿ', 10)
+p = page('TM for a^n b^n', 10)
 beat(p, '''Let's design a Turing machine for a to the n b to the n. The idea: mark the first a as X, go right to the first b and mark it as Y, then come back to the next a.
 Repeat. When no a's are left, check that only Y's remain.''',
      Stamp(1650, 140, 'NUMERICAL'), T(0, 'Idea: a -> X, find b -> Y, come back; repeat; then only Y\'s left', size=34))
@@ -545,7 +547,7 @@ beat(p, '''Here is the transition table. q zero marks an a as X. q one moves rig
          ['* q4', '', '', '', '', '']], size=26))
 half = (len(ids) + 1) // 2
 beat(p, f'''Now run it on a a b b. The instantaneous description shows the tape with the state written just before the head. After {len(ids) - 1} moves, the machine reaches q four, so a a b b is accepted.''',
-     Tab(180, 690, [300] * half, 44, [ids[:half], ids[half:] + [''] * (2 * half - len(ids))], size=24, hdr=False, colors={(1, len(ids) - half - 1): 'green'}),
+     Tab(180, 700, [230] * half, 44, [ids[:half], ids[half:] + [''] * (2 * half - len(ids))], size=24, hdr=False, colors={(1, len(ids) - half - 1): 'green'}),
      T(14, 'ID: tape with the state written before the head symbol', size=30, color='green'))
 
 p = page('TM Variants, LBA & Chomsky Hierarchy', 10)
@@ -558,7 +560,7 @@ beat(p, '''A linear bounded automaton, or L B A, is a non deterministic Turing m
 beat(p, '''Here is the complete Chomsky hierarchy in one table. Remember: each machine is more powerful than the one above it.''',
      Stamp(1650, 140, 'MOST ASKED'),
      Tab(180, 460, [140, 360, 400, 400, 300], 56, [['Type', 'Language', 'Grammar', 'Machine', 'Example'], ['3', 'Regular', 'A -> aB | a', 'finite automata', 'a*b*'],
-         ['2', 'Context-free', 'A -> α', 'pushdown automata', 'aⁿbⁿ'], ['1', 'Context-sensitive', '|α| ≤ |β|', 'linear bounded automata', 'aⁿbⁿcⁿ'],
+         ['2', 'Context-free', 'A -> α', 'pushdown automata', 'a^n b^n'], ['1', 'Context-sensitive', '|α| ≤ |β|', 'linear bounded automata', 'a^n b^n c^n'],
          ['0', 'Recursively enumerable', 'unrestricted', 'Turing machine', 'halting problem']], size=28, colors={(r, 3): 'red' for r in range(1, 5)}))
 
 # ===================================================================================== CH 11
@@ -616,7 +618,7 @@ beat(p, '''A famous example is the diagonal language, L d. Number all strings an
 beat(p, '''The universal language, L u, contains a machine M and a string w whenever M accepts w. It is R E, because a universal Turing machine can simulate M on w. But it is not recursive.
 So remember three levels: recursive, R E but not recursive, and not R E.''',
      T(7, '[k:L_u] = { <M, w> | M accepts w }  =>  RE but not recursive', size=34),
-     Tab(180, 650, [520, 520, 520], 56, [['Recursive', 'RE, not recursive', 'not RE'], ['aⁿbⁿcⁿ, any CFL', 'L_u, halting problem', 'L_d, complement of L_u'],
+     Tab(180, 650, [520, 520, 520], 56, [['Recursive', 'RE, not recursive', 'not RE'], ['a^n b^n c^n, any CFL', 'L_u, halting problem', 'L_d, complement of L_u'],
          ['TM always halts', 'TM halts on yes', 'no TM at all']], size=28, colors={(0, 0): 'green', (0, 1): 'blue', (0, 2): 'red'}))
 
 D_, U_ = '[g:D]', '[r:U]'
@@ -624,7 +626,7 @@ p = page('Decision Properties: GATE Table', 11)
 beat(p, '''This table is asked in almost every GATE paper. It shows which questions are decidable, D, or undecidable, U, for each class of languages.
 For regular languages, everything is decidable. For context free languages, membership, emptiness and finiteness are decidable, but equivalence is not.''',
      Stamp(1650, 140, 'GATE'),
-     Tab(180, 240, [380, 260, 260, 260, 280, 300], 58, [['Problem', 'Regular', 'DCFL', 'CFL', 'CSL', 'Recursive / RE'],
+     Tab(180, 240, [340, 230, 230, 230, 230, 300], 58, [['Problem', 'Regular', 'DCFL', 'CFL', 'CSL', 'Recursive / RE'],
          ['Membership', D_, D_, D_, D_, D_ + ' / ' + U_], ['Emptiness', D_, D_, D_, U_, U_], ['Finiteness', D_, D_, D_, U_, U_],
          ['Equivalence', D_, D_, U_, U_, U_], ['Is L = Σ* ?', D_, D_, U_, U_, U_], ['Ambiguity', '-', '-', U_, '-', '-']], size=28))
 beat(p, '''Remember the special ones. Membership is decidable all the way up to recursive languages, but not for recursively enumerable. Equivalence of two D C F Ls is decidable,
@@ -641,8 +643,8 @@ beat(p, '''A problem is N P hard if every N P problem reduces to it in polynomia
 by the Cook Levin theorem. Others are three S A T, clique, vertex cover, Hamiltonian cycle, the travelling salesman decision problem, and subset sum.''',
      Stamp(1650, 140, 'MOST ASKED'), T(4, '[k:NP-hard]: every NP problem reduces to it', size=34), T(5, '[k:NP-complete] = NP-hard ∩ NP', size=34),
      T(6, 'SAT (Cook-Levin), 3-SAT, clique, vertex cover, Hamiltonian cycle, TSP, subset sum', size=30),
-     Ell(1080, 640, 520, 300, None, color='blue'), Ell(1140, 720, 220, 140, 'P', size=34, color='green'), T(0, 'NP', x=1420, y=700, size=34, color='blue'),
-     Ell(1430, 760, 230, 110, None, color='red'), T(0, 'NP-complete', x=1460, y=822, size=26, color='red'), T(0, 'NP-hard extends beyond NP', x=1180, y=980, size=26, color='red'))
+     Ell(1080, 600, 520, 300, None, color='blue'), Ell(1120, 680, 200, 140, 'P', size=34, color='green'), T(0, 'NP', x=1330, y=650, size=34, color='blue'),
+     Ell(1400, 560, 460, 380, None, color='red'), T(0, 'NP-hard', x=1660, y=700, size=28, color='red'), T(0, 'NP-complete', x=1406, y=764, size=26, color='red'))
 beat(p, '''To prove a new problem B is N P complete: show B is in N P, then reduce a known N P complete problem A to B in polynomial time. The direction matters: from the known problem to the new one.
 If any N P complete problem is solved in polynomial time, then P equals N P. Note that two SAT is in P, but three SAT is N P complete.''',
      T(10, 'Prove B NP-complete: B ∈ NP, and known NPC A ≤p B', size=32, color='red'), T(11, 'any NPC problem in P  =>  P = NP', size=32),
@@ -654,8 +656,8 @@ beat(p, "Chapter twelve. Exam revision. If you're short on time, revise these fi
 
 p = page('Most Asked Exam Questions', 12)
 qs = ['Chomsky hierarchy (grammar + machine)', 'DFA design: ends with ab, divisible by 3', 'NFA to DFA (subset construction)', 'DFA minimization (partition method)',
-      "RE identities; Arden's theorem (FA to RE)", 'Pumping lemma: aⁿbⁿ not regular', 'Ambiguity; simplification; CNF & GNF', 'CYK algorithm; closure of CFLs',
-      'PDA for aⁿbⁿ (with IDs); DPDA vs NPDA', 'TM for aⁿbⁿ; variants; LBA', "Halting problem; Rice's theorem; PCP", 'Decidability table; P, NP, NP-complete']
+      "RE identities; Arden's theorem (FA to RE)", 'Pumping lemma: a^n b^n not regular', 'Ambiguity; simplification; CNF & GNF', 'CYK algorithm; closure of CFLs',
+      'PDA for a^n b^n (with IDs); DPDA vs NPDA', 'TM for a^n b^n; variants; LBA', "Halting problem; Rice's theorem; PCP", 'Decidability table; P, NP, NP-complete']
 beat(p, '''Here are the most asked questions. The Chomsky hierarchy. D F A design. N F A to D F A. And D F A minimization.''', *[T(k, f'{k + 1}. {q}', x=200, size=36) for k, q in enumerate(qs[:4])])
 beat(p, '''Arden's theorem and regular expressions. The pumping lemma. Ambiguity, simplification and normal forms. And C Y K with the closure properties of context free languages.''',
      *[T(k, f'{k + 1}. {q}', x=200, size=36) for k, q in enumerate(qs) if 4 <= k < 8])

@@ -29,6 +29,8 @@ for p in S['pages']:
         for e2, b2 in shapes:
             if ov(b, b2) and not (b2[0] <= b[0] and b[2] <= b2[2] and b2[1] <= b[1] and b[3] <= b2[3]):
                 print(f"HIT  {p['title'][:30]:30} {e['s'][:50]!r} x {e2['t']}")
+    for e2, b2 in shapes:
+        if b2[2] > 1885 or b2[3] > 1015: print(f"OUT  {p['title'][:30]:30} {e2['t']} right={b2[2]:.0f} bottom={b2[3]:.0f}")
     for i, (e, b) in enumerate(texts):
         for e2, b2 in texts[i + 1:]:
             if ov(b, b2): print(f"TXT  {p['title'][:30]:30} {e['s'][:35]!r} / {e2['s'][:35]!r}")

@@ -74,7 +74,7 @@ def runs(txt):
             kleene = pv.isalnum() or pv in ")'" or (pv == '>' and nx == ' ')
             if not kleene: out.append([ch, 'mul']); continue
         if ch == '∪': out.append([ch, 'big']); continue
-        if ch == '1':                                   # Kalam's 1 looks like I (1NF, T1, R1): use a flagged 1
+        if ch in '1Z':                                  # Kalam's 1 looks like I and its Z like 2 (Z0): use the flagged font
             if out and out[-1][1] == 'one': out[-1][0] += ch
             else: out.append([ch, 'one'])
             continue
