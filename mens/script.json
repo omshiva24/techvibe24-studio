@@ -1,15 +1,65 @@
 {
   "date": "2026-11-19",
-  "voices": ["en-US-ChristopherNeural", "en-US-GuyNeural", "en-US-AndrewMultilingualNeural", "en-IN-PrabhatNeural"],
+  "voices": [
+    "en-US-ChristopherNeural",
+    "en-US-GuyNeural",
+    "en-US-AndrewMultilingualNeural",
+    "en-IN-PrabhatNeural"
+  ],
   "rate": "-6%",
   "pitch": "-4Hz",
   "segments": [
-    {"id": "q1", "scenes": ["dawn"], "vo": "He wakes up before the sun... and sleeps after everyone else."},
-    {"id": "q2", "scenes": ["work"], "vo": "He carries the weight of the whole family... without a single complaint."},
-    {"id": "q3", "scenes": ["bench"], "vo": "He hides his pain behind a smile... and just says, I'm fine."},
-    {"id": "q4", "scenes": ["father", "friends"], "vo": "A father. A brother. A son. A friend."},
-    {"id": "q5", "scenes": ["cliff"], "vo": "His strength is not in his muscles... it is in his sacrifices."},
-    {"id": "q6", "scenes": ["peak"], "vo": "Our silent heroes."},
-    {"id": "q7", "scenes": ["walk"], "vo": "So today, check on the men in your life. Happy International Men's Day."}
+    {
+      "id": "q1",
+      "scenes": [
+        "dawn"
+      ],
+      "vo": "He wakes up before the sun... and sleeps after everyone else."
+    },
+    {
+      "id": "q2",
+      "scenes": [
+        "work"
+      ],
+      "vo": "He carries the weight of the whole family... without a single complaint."
+    },
+    {
+      "id": "q3",
+      "scenes": [
+        "bench"
+      ],
+      "vo": "He hides his pain behind a smile... and just says, I'm fine."
+    },
+    {
+      "id": "q4",
+      "scenes": [
+        "father",
+        "friends"
+      ],
+      "vo": "A father. A brother. A son. A friend."
+    },
+    {
+      "id": "q5",
+      "scenes": [
+        "cliff"
+      ],
+      "vo": "His strength is not in his muscles... it is in his sacrifices."
+    },
+    {
+      "id": "q6",
+      "scenes": [
+        "peak"
+      ],
+      "vo": "Our silent heroes.",
+      "gap": 0.9
+    },
+    {
+      "id": "q7",
+      "scenes": [
+        "walk"
+      ],
+      "vo": "So today, check on the men in your life. Happy International Men's Day.",
+      "gap": 1.4
+    }
   ]
 }
