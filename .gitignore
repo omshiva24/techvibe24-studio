@@ -31,3 +31,5 @@ mfv/build/
 mfv/__pycache__/
 build_mens/
 www/mens/scn/
+adv/build/
+adv/__pycache__/
